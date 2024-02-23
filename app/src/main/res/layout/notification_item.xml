@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/size_5">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_pic"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        android:background="@drawable/ic_red_dot"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/size_10"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_13"
+            android:fontFamily="@font/muli_bold"
+            android:id="@+id/title"
+            android:text="Pankaj"
+            android:padding="@dimen/text_size_2"
+            android:maxLines="1"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:padding="@dimen/text_size_2"
+            android:id="@+id/description"
+            android:fontFamily="@font/muli_regular"
+            android:textSize="13dp"
+            android:text="Hey my name is pankaj sharma"/>
+
+    </LinearLayout>
+
+</LinearLayout>

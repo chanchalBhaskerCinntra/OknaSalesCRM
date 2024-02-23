@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/customer_lead"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="visible">
+
+
+            <EditText
+                android:id="@+id/dateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/size_10"
+                android:background="@drawable/rounded_border_edit"
+                android:clickable="true"
+                android:drawableLeft="@drawable/ic_calendar_icon"
+                android:drawablePadding="@dimen/size_5"
+                android:focusable="false"
+                android:padding="@dimen/size_10"
+                android:text="2023-01-01"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"
+                android:visibility="visible" />
+
+
+            <LinearLayout
+                android:id="@+id/employeeListLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:visibility="visible"
+                android:layout_marginRight="@dimen/size_10"
+                android:background="@drawable/rounded_border_edit">
+
+                <Spinner
+                    android:id="@+id/empSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_40"
+                    android:dropDownWidth="wrap_content"
+                    android:dropDownVerticalOffset="@dimen/text_45"
+                    android:forceHasOverlappingRendering="false"
+                    android:gravity="center_vertical|start"
+                    android:paddingLeft="@dimen/size_5"
+                    android:spinnerMode="dropdown"
+                    android:textSize="@dimen/text_size_14" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/showlisting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:drawableRight="@drawable/ic_arrow_left_24dp"
+            android:drawableTint="@color/black"
+            android:fontFamily="@font/muli_bold"
+            android:padding="@dimen/size_10"
+            android:text="Show on Map"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14" />
+
+        <com.baoyz.widget.PullRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:refreshColors="@array/scheme_colors"
+            app:refreshType="smartisan">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/customer_lead_List"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.baoyz.widget.PullRefreshLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/no_datafound"
+        android:layout_width="@dimen/size_120"
+        android:layout_height="@dimen/size_120"
+        android:layout_gravity="center"
+        android:background="@drawable/nodatafound"
+        android:visibility="gone" />
+
+    <include android:id="@+id/loaderLayout"
+        layout="@layout/loader" />
+
+
+</FrameLayout>

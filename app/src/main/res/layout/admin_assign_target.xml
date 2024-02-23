@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/assign_target"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Assign Target"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/weekly"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_weight="1"
+            android:background="@drawable/admin_button_border"
+            android:fontFamily="@font/muli"
+            android:text="Weekly"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            app:backgroundTint="#4A79E4" />
+
+        <Button
+            android:id="@+id/monthly"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_weight="1"
+            android:background="@drawable/admin_button_border"
+            android:fontFamily="@font/muli"
+            android:text="Monthly"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            app:backgroundTint="#FFFFFF" />
+
+        <Button
+            android:id="@+id/quarterly"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_weight="1"
+            android:background="@drawable/admin_button_border"
+            android:fontFamily="@font/muli"
+            android:text="Quaterly"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            app:backgroundTint="#FFFFFF" />
+
+        <Button
+            android:id="@+id/yearly"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_weight="1"
+            android:background="@drawable/admin_button_border"
+            android:fontFamily="@font/muli"
+            android:text="Yearly"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            app:backgroundTint="#FFFFFF" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/enter_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/admin_border"
+        android:ems="10"
+        android:hint="@string/ex_40_000"
+        android:inputType="numberSigned"
+        android:textColor="#000000"
+        android:textColorHint="#ABABAB" />
+
+    <Button
+        android:id="@+id/done_assign"
+        android:layout_width="@dimen/size_120"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/size_20"
+        android:background="@drawable/admin_button_border"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/done"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:backgroundTint="#4A79E4" />
+</LinearLayout>

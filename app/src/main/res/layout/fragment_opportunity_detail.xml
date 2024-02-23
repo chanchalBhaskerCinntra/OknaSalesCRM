@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:id="@+id/main_edit_qt_frame">
+    <LinearLayout
+        android:background="@color/hint_color"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            android:id="@+id/header_one_button_title"
+            layout="@layout/header_one_button_title"/>
+
+<ScrollView
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:paddingBottom="@dimen/text_size_20"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/block_c"
+            android:paddingLeft="@dimen/text_size_15"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/opportunity_no_txt"
+                android:fontFamily="@font/muli_regular"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:textColor="@color/hint_color"
+                android:text="@string/opprtunity_no">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/opportunity_no_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:textColor="@color/black"
+                android:fontFamily="@font/muli_regular"
+                android:text="56">
+
+            </TextView>
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+
+
+
+            <TextView
+                android:id="@+id/opportunity_name_txt"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/opportunity_name">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/opportunity_name_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="Max Teq ">
+
+            </TextView>
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+
+            <LinearLayout
+                android:id="@+id/businessPartners"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/text_50"
+                    android:layout_gravity="left"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+
+                    <TextView
+                        android:id="@+id/bussiness_partner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:fontFamily="@font/muli_regular"
+                        android:text="@string/bussiness_partner"
+                        android:textColor="@color/hint_color"
+                        android:textSize="@dimen/text_size_12">
+
+                    </TextView>
+                    <EditText
+                        android:textColorHint="@color/hint_color"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:background="@color/transparent"
+                        android:id="@+id/bussiness_partner_value"
+                        android:layout_marginTop="@dimen/text_size_5"
+                        android:padding="@dimen/text_size_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/black"
+                        android:hint="@string/bussiness_partner">
+                    </EditText>
+                </LinearLayout>
+                <LinearLayout
+
+                    android:gravity="center"
+                    android:layout_gravity="right"
+                    android:layout_width="@dimen/text_50"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_width="@dimen/text_size_24"
+                        android:layout_height="@dimen/text_size_24"
+                        android:src="@drawable/ic_arrow_left_24dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+            <LinearLayout
+                android:id="@+id/contact"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/text_50"
+                    android:layout_gravity="left"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+
+                    <TextView
+                        android:id="@+id/contact_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:fontFamily="@font/muli_regular"
+                        android:text="@string/contact_person"
+                        android:textColor="@color/hint_color"
+                        android:textSize="@dimen/text_size_12">
+
+                    </TextView>
+                    <EditText
+                        android:textColorHint="@color/hint_color"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:focusable="false"
+                        android:background="@color/transparent"
+                        android:id="@+id/contact_value"
+                        android:layout_marginTop="@dimen/text_size_5"
+                        android:padding="@dimen/text_size_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/black"
+                        android:hint="@string/contact_person">
+                    </EditText>
+                </LinearLayout>
+                <LinearLayout
+
+                    android:gravity="center"
+                    android:layout_gravity="right"
+                    android:layout_width="@dimen/text_50"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_width="@dimen/text_size_24"
+                        android:layout_height="@dimen/text_size_24"
+                        android:src="@drawable/ic_arrow_left_24dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+
+
+
+
+            <TextView
+                android:id="@+id/predicted_closing"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                  android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/predicted_closing_date">
+
+            </TextView>
+            <TextView
+                android:id="@+id/predicted_closing_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="5/02/2021">
+
+            </TextView>
+
+           <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+            <TextView
+                android:id="@+id/remark"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/remarks">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/remark_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="">
+
+            </TextView>
+
+
+
+
+
+
+
+      </LinearLayout>
+        <View
+            android:layout_marginTop="@dimen/text_size_15"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_10"
+            android:background="@color/hint_color"/>
+
+        <LinearLayout
+            android:paddingLeft="@dimen/text_size_15"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/stage_txt"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/stage">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/stage_value"
+                android:layout_marginTop="@dimen/text_size_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="">
+
+            </TextView>
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+
+            <TextView
+                android:id="@+id/potential_txt"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/potential_ammount">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/potential_value"
+                android:layout_marginTop="@dimen/text_size_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="">
+
+            </TextView>
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+
+            <TextView
+                android:id="@+id/closing_rate_txt"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/closing_rate">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/closing_rate_value"
+                android:layout_marginTop="@dimen/text_size_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="">
+
+            </TextView>
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+            <TextView
+                android:id="@+id/stage_start_date_txt"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/stage_start_date">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/stage_start_date_value"
+                android:layout_marginTop="@dimen/text_size_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="">
+
+            </TextView>
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+            <TextView
+                android:id="@+id/stage_end_txt"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/stage_End_date">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/stage_end_date_value"
+                android:layout_marginTop="@dimen/text_size_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="">
+
+            </TextView>
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+            <TextView
+                android:id="@+id/sales_employee_txt"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/sales_employee">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/sales_employee_value"
+                android:layout_marginTop="@dimen/text_size_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="">
+
+            </TextView>
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+
+            <TextView
+                android:id="@+id/remark_txt"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/remarks">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/stage_remark_value"
+                android:layout_marginTop="@dimen/text_size_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="">
+
+            </TextView>
+
+
+        </LinearLayout>
+        <View
+            android:layout_marginTop="@dimen/text_size_15"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_10"
+            android:background="@color/hint_color"/>
+
+        <LinearLayout
+            android:id="@+id/all_stages"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_40">
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+                <TextView
+                    android:id="@+id/all_stages_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_size_15"
+                    android:fontFamily="@font/muli_regular"
+                    android:text="@string/all_stages"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_14">
+
+                </TextView>
+
+            </LinearLayout>
+            <LinearLayout
+
+                android:gravity="center"
+                android:layout_gravity="right"
+                android:layout_width="@dimen/text_50"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_width="@dimen/text_size_24"
+                    android:layout_height="@dimen/text_size_24"
+                    android:src="@drawable/ic_arrow_left_24dp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_marginTop="@dimen/text_size_15"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_10"
+            android:background="@color/hint_color"/>
+
+    </LinearLayout>
+</ScrollView>
+    </LinearLayout>
+
+</FrameLayout>

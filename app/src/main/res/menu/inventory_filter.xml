@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.learn2crack.recyclerviewsearch.MainActivity">
+
+    <group>
+        <item
+            android:id="@+id/all"
+            android:title="All Inventory" />
+        <item
+            android:id="@+id/my"
+            android:title="Minimum Amount" />
+
+        <item
+            android:id="@+id/newest"
+            android:title="Maximum Amount" />
+        <item
+            android:id="@+id/alpha"
+            android:title="Alphabetical Order" />
+
+
+    </group>
+
+
+</menu>
+

@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.cinntra.okana">
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission
+        android:name="android.permission.INTERNAL_SYSTEM_WINDOW"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission
+        android:name="android.permission.READ_PRECISE_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+
+    <application
+        android:name="com.cinntra.okana.globals.MyApp"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher_okna"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/config"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_okna_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CinntraSales"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:icon">
+        <activity
+            android:name=".activities.EditExpenseActivity"
+            android:exported="false"
+            android:theme="@style/FullScreenMateial" />
+        <activity
+            android:name=".activities.ListedDoctor"
+            android:exported="false"
+            android:theme="@style/FullScreenMateial" />
+        <activity
+            android:name=".activities.bpActivity.AddBranchActivity"
+            android:exported="false"
+            android:theme="@style/FullScreenMateial" />
+        <activity
+            android:name=".activities.bpActivity.UpdateBranchActivity"
+            android:exported="false"
+            android:theme="@style/FullScreenMateial" />
+        <activity
+            android:name=".activities.bpActivity.UpdateContactActivity"
+            android:exported="false"
+            android:theme="@style/FullScreenMateial" />
+        <activity
+            android:name=".activities.MyMapLocation"
+            android:exported="false"
+            android:label="@string/title_activity_my_map_location" />
+        <activity
+            android:name=".activities.DoctorScreen"
+            android:exported="false"
+            android:label="Doctor Screen"
+            android:theme="@style/FullScreenMateial" />
+        <activity
+            android:name=".activities.GetAllFileFromFolder"
+            android:exported="false"
+            android:label="@string/title_activity_my_map_location" />
+        <activity
+            android:name=".activities.Splash"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.SearchActivity" />
+        <activity
+            android:name=".activities.InvoiceActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/invoice"
+            android:screenOrientation="portrait" /> <!-- android:theme="@style/FullScreen" -->
+        <activity
+            android:name=".activities.QuotationActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/quotations"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.DemoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/quotations"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.WebViewToPdf"
+            android:exported="false" /> <!-- android:theme="@style/FullScreen" -->
+        <activity
+            android:name=".activities.OpportunitiesActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_invoice"
+            android:screenOrientation="portrait" /> <!-- android:theme="@style/FullScreen" -->
+        <activity
+            android:name=".activities.OrderActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/sales_order"
+            android:screenOrientation="portrait" /> <!-- android:theme="@style/FullScreen" -->
+        <activity
+            android:name=".activities.SignUp"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="New User"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.SqlSetting"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.Login"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.Notifications"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activities.DeliveryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".activities.InvoiceItemList"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".activities.InventoryActivity"
+            android:label="@string/inventory"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".activities.ExpenseActivity"
+            android:label="@string/expense"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.PaymentDetails"
+            android:label="Payment Details"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.AddExpense"
+            android:label="@string/addexpense"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenMateial" />
+        <activity
+            android:name=".activities.AddPaymentDetails"
+            android:label="@string/addpaymentdetails"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen" /> <!--  -->
+        <activity
+            android:name="com.cinntra.okana.globals.MainBaseActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".activities.LeadsActivity"
+            android:label="@string/leads"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.CampaignActivity"
+            android:label="@string/campaign"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.CreateContact"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".activities.AddQuotationAct"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenMateial" />
+        <activity
+            android:name=".activities.AddOrderAct"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenMateial" />
+        <activity
+            android:name=".activities.bpActivity.AddBPCustomer"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenMateial" />
+        <activity
+            android:name=".activities.AddOpportunityActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenMateial"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activities.AddLead"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenMateial"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activities.AddCampaign"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenMateial"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activities.BussinessPartners"
+            android:label="@string/customer"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activities.ItemsList"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".activities.OwnerList"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".activities.SelectedItems"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".activities.AddContact"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen" /> <!-- Receivers -->
+        <receiver
+            android:name="com.cinntra.okana.receivers.ConnectivityReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_map_api_key" />
+        <!--
+ <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCPyJtXV5WCzTH9P7TwCd8hl8V-UiiVhKc" />
+        -->
+        <activity
+            android:name=".activities.MapsActivity"
+            android:label="@string/title_activity_maps"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".activities.LocationListing"
+            android:label="@string/location"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Opportunities_Pipeline_Activity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_invoice"
+            android:screenOrientation="portrait" />
+
+        <receiver android:name="com.cinntra.okana.receivers.NotificationPublisher" />
+        <!--
+       <receiver android:name=".receivers.CallRecorder$CallReceiver"
+            tools:ignore="Instantiatable" />
+        -->
+        <!--
+  <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        -->
+        <!--
+     <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        -->
+        <!--
+ <receiver
+            android:name="com.cinntra.standalone.receivers.CallReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
+        -->
+        <service android:name="com.cinntra.okana.services.GoogleService" />
+        <service
+            android:name="com.cinntra.okana.FirebaseMessageReceiver"
+            android:foregroundServiceType="location"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".workManager.WorkManagerApplication"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:foregroundServiceType="location"/>
+
+        <service android:name=".workManager.BackgroundLocationService"
+            android:exported="false"
+            android:enabled="true"
+            android:foregroundServiceType="location"/>
+    </application>
+
+</manifest>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_56">
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tab_1"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/header"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"/>
+
+            <View
+                android:layout_marginTop="@dimen/text_size_20"
+                android:layout_gravity="right"
+                android:background="@color/hint_color"
+                android:layout_width="@dimen/view_devider"
+                android:layout_height="@dimen/text_size_15"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tab_2"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contents"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"/>
+
+            <View
+                android:layout_marginTop="@dimen/text_size_20"
+                android:layout_gravity="right"
+                android:background="@color/hint_color"
+                android:layout_width="@dimen/view_devider"
+                android:layout_height="@dimen/text_size_15"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tab_3"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/logistics"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"/>
+            <View
+                android:layout_marginTop="@dimen/text_size_20"
+                android:layout_gravity="right"
+                android:background="@color/hint_color"
+                android:layout_width="@dimen/view_devider"
+                android:layout_height="@dimen/text_size_15"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <View
+                android:layout_marginTop="@dimen/text_size_20"
+                android:layout_gravity="left"
+                android:background="@color/hint_color"
+                android:layout_width="@dimen/view_devider"
+                android:layout_height="@dimen/text_size_15"/>
+            <TextView
+                android:id="@+id/tab_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/accounting"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"/>
+
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

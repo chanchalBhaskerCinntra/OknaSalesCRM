@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Re-name user" />
+    <item android:title="Suspend user" />
+    <item android:title="Edit user profile" />
+    <item android:title="Reset password" />
+    <item android:title="Assign target" />
+</menu>

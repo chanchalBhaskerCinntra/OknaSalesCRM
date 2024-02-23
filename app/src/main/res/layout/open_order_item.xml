@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cl_calendar_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_margin="@dimen/text_size_5"
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@string/stage_End_date"
+            android:fontFamily="@font/muli_semibold"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:layout_marginTop="@dimen/text_size_2"
+            android:layout_marginLeft="@dimen/text_size_4"
+            android:layout_below="@id/title"
+            android:id="@+id/doc_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/muli_regular"
+            android:textColor="@color/hint_color"
+            android:text="@string/stage_End_date"
+            android:textSize="@dimen/text_size_14" />
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:id="@+id/arr"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/text_40"
+            android:layout_height="@dimen/text_40"
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+        <TextView
+            android:layout_margin="@dimen/size_5"
+            android:id="@+id/status"
+            android:maxLength="8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/arr"
+            android:fontFamily="@font/muli_regular"
+            android:textColor="@color/graph_green"
+            android:text="@string/stage_End_date"
+            android:textSize="@dimen/text_size_14" />
+
+        <TextView
+            android:id="@+id/amount"
+            android:layout_toLeftOf="@id/arr"
+            android:layout_marginTop="@dimen/size_5"
+            android:layout_below="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/muli_regular"
+            android:textColor="@color/hint_color"
+            android:gravity="right"
+            android:text="@string/stage_End_date"
+            android:textSize="@dimen/text_size_14" />
+
+    </RelativeLayout>
+</LinearLayout>

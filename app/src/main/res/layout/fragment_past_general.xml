@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.BlankFragment"
+    android:background="@color/white"
+    android:id="@+id/open_opp_container">
+    <include
+        android:id="@+id/loader"
+        layout="@layout/loader"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/week"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_30"
+                android:background="@drawable/background_grey_rounded"
+                android:text="Week"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_14"
+                android:textColor="@color/black"
+                android:layout_marginRight="@dimen/size_4"
+                android:fontFamily="@font/muli_regular"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/month"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_30"
+                android:layout_marginRight="@dimen/size_4"
+                android:background="@drawable/background_grey_rounded"
+                android:text="Month"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_14"
+                android:textColor="@color/black"
+                android:fontFamily="@font/muli_regular"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/quarterly"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_30"
+                android:background="@drawable/background_grey_rounded"
+                android:text="Quarter"
+                android:layout_marginRight="@dimen/size_4"
+                android:textSize="@dimen/text_size_14"
+                android:textColor="@color/black"
+                android:fontFamily="@font/muli_regular"
+                android:gravity="center"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/year"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_30"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_14"
+                android:textColor="@color/black"
+                android:fontFamily="@font/muli_regular"
+                android:background="@drawable/background_grey_rounded"
+                android:text="Year"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/size_10"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+
+
+
+</FrameLayout>

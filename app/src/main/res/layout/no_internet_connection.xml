@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/size_300"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/dialog_bg">
+
+    <ImageView
+        android:id="@+id/nointernetsign"
+        android:layout_width="@dimen/size_50"
+        android:layout_height="@dimen/size_50"
+        android:visibility="visible"
+        android:background="@drawable/ic_no_internet_"
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="@dimen/size_30"
+        />
+
+    <TextView
+        android:id="@+id/no_internet_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_18"
+        android:text="@string/noInternet"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/nointernetsign"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+
+        />
+
+    <Button
+        android:id="@+id/try_again"
+        android:layout_width="@dimen/size_100"
+        android:layout_height="@dimen/size_55"
+        android:visibility="visible"
+        app:backgroundTint="@color/colorPrimary"
+        android:text="@string/ok"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        android:fontFamily="@font/muli_bold"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="@dimen/size_20"
+        app:layout_constraintTop_toBottomOf="@id/no_internet_text"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

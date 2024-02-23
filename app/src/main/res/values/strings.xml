@@ -1,0 +1,787 @@
+<resources>
+    <string name="app_name">OKNA : Sales CRM</string>
+    <string name="home">Dashboard</string>
+    <string name="graph">Graph</string>
+    <string name="notifications">Notifications</string>
+    <string name="calender">Calender</string>
+    <string name="settings">Settings</string>
+    <string name="name1">Mandatory field 1<font color='#FF0000'>*</font></string>
+    <string name="dashboard">DashBoard</string>
+    <string name="name">Name</string>
+    <string name="mobile">Mobile Number</string>
+    <string name="email">E-mail</string>
+    <string name="pass">Password</string>
+    <string name="create_pass">Create Password</string>
+    <string name="con_pass">Confirm Password</string>
+    <string name="good_mrng">Good Morning</string>
+    <string name="sales_quotation">Sales Quick Links</string>
+    <string name="budget_1_svng">2 Budget,1 Savings</string>
+    <string name="add_new"> + Add New</string>
+    <string name="recent_transaction"> Recent Transaction</string>
+    <string name="see_all"> See All</string>
+    <string name="total_txt"> Sales This Month </string>
+    <string name="income"> Income </string>
+    <string name="expense"> Expense </string>
+    <string name="delivery"> Delivery </string>
+    <string name="deliveries"> Deliveries </string>
+    <string name="product_name"> Product Name </string>
+    <string name="today">Today</string>
+    <string name="events">Events</string>
+    <string name="tasks">Tasks</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="won">Won</string>
+    <string name="lost">Lost</string>
+    <string name="pipeline">Pipeline</string>
+    <string name="opportunities">Opportunities</string>
+    <string name="notification">Notification</string>
+    <string name="quotation">Quotation</string>
+    <string name="quotation_update">Update Quotation</string>
+    <string name="order_detal">Order Detail</string>
+    <string name="quotations">Quotations</string>
+    <string name="opportunity">Opportunity</string>
+    <string name="update_opportunity">Update Opportunity</string>
+    <string name="quotation_detail">Detail Quotation</string>
+    <string name="order_detail">Order Detail</string>
+    <string name="cancel">Cancel</string>
+    <string name="trip_name_mand">Trip Name <font color='#FF0000'>*</font></string>
+    <string name="expense_employee_mand">Expanse Sales Employee <font color='#FF0000'>*</font></string>
+    <string name="expense_employee_name_mand">Expense Employee Name <font color='#FF0000'>*</font></string>
+    <string name="expense_mode_mand">Type Of Expense <font color='#FF0000'>*</font></string>
+    <string name="create">Create</string>
+    <string name="opportunity_name_mand">Opportunity Name<font color='#FF0000'>*</font></string>
+    <string name="opportunity_name">Opportunity Name</string>
+    <string name="bussiness_partner">Business Partner</string>
+    <string name="contact_person">Contact Person</string>
+    <string name="sales_employee">Sales Employee</string>
+    <string name="remarks">Remarks</string>
+    <string name="stage">Stage</string>
+    <string name="potential_ammount">Potential Amount</string>
+    <string name="closing">Closing Rate</string>
+    <string name="stage_start_date">Stage Start Date</string>
+    <string name="stage_End_date">Stage End Date</string>
+    <string name="sales_order">Orders</string>
+    <string name="new_order">Add Order</string>
+    <string name="series">Series</string>
+    <string name="currency">Currency</string>
+    <string name="posting_date">Posting Date</string>
+    <string name="posting_datemand">Posting Date<font color='#FF0000'>*</font></string>
+    <string name="ceated_datemand">Created Date <font color='#FF0000'>*</font></string>
+    <string name="delievery_date">Delivery Date</string>
+    <string name="document_date">Document Date</string>
+    <string name="document_date_mand">Document Date<font color='#FF0000'>*</font></string>
+    <string name="customer_date">Customer Date</string>
+    <string name="customer_ref_no">Customer Ref. No.</string>
+    <string name="selected_items">Selected Items</string>
+    <string name="items">Items</string>
+    <string name="item">Item</string>
+    <string name="total_before_discont">Total Before Discount</string>
+    <string name="discont">Discount</string>
+    <string name="_discont">Discount % </string>
+    <string name="tax">Tax </string>
+    <string name="total">Total </string>
+    <string name="rounding">Rounding </string>
+    <string name="ship_to">Ship To </string>
+    <string name="bill_to">Bill To </string>
+    <string name="shipping_type">Shipping Type </string>
+    <string name="payment_term">Payment Terms </string>
+    <string name="payment_method">Payment Methods </string>
+    <string name="bp_project">BP Project </string>
+    <string name="title_activity_invoice">Opportunities </string>
+    <string name="order_label">Sales Orders </string>
+    <string name="invoice">Invoice </string>
+    <string name="invoices">Invoices </string>
+    <string name="inventory">Inventory </string>
+    <string name="header">Header </string>
+    <string name="contents">Contents </string>
+    <string name="logistics">Logistics </string>
+    <string name="accounting">Accounting </string>
+    <string name="doc_no"> Doc. No. </string>
+    <string name="customer">Customer </string>
+    <string name="view_all_iem">Click to view all Items. </string>
+    <string name="view_all">View All </string>
+    <string name="valid_untill">Valid Until </string>
+    <string name="valid_untill_mand">Valid Date <font color='#FF0000'>*</font></string>
+    <string name="save">Save </string>
+    <string name="done">Done </string>
+    <string name="choose_item">Choose Item </string>
+    <string name="alternative">Alternative </string>
+    <string name="item_code">Item Code </string>
+    <string name="description">Description </string>
+    <string name="warehouse">Warehouse </string>
+    <string name="gross_price">Gross Price </string>
+    <string name="tax_code">Tax Code </string>
+    <string name="quantity">Quanity</string>
+    <string name="unit_price">Unit Price</string>
+    <string name="measure_unit">Unit of Measure</string>
+    <string name="project">Project</string>
+    <string name="distribution_rule">Distribution Rule</string>
+    <string name="open_inv_qty">Open Inv. Qty.</string>
+    <string name="item_per_sell_unit">Items per Sales Unit </string>
+
+    <string name="general"> General </string>
+    <string name="foreign_name"> Foreign Name </string>
+    <string name="account_balance"> Account Balance </string>
+    <string name="credit_limit"> Credit Limit </string>
+    <string name="industry"> Industry </string>
+    <string name="group"> Group </string>
+    <string name="telephone"> Telephone </string>
+    <string name="e_maiul"> E-Mail </string>
+    <string name="website"> Website </string>
+    <string name="main_contact"> Main Contact </string>
+    <string name="all_contacts"> All Contacts </string>
+    <string name="all_address"> All Addresses </string>
+    <string name="bp_type"> BP Type </string>
+    <string name="owner"> Owner </string>
+    <string name="code"> Code </string>
+    <string name="contact_id"> Contact Id </string>
+    <string name="first_name"> First Name </string>
+    <string name="first_name_mand"> First Name <font color='#FF0000'>*</font></string>
+    <string name="last_name"> Last Name </string>
+    <string name="last_name_mand"> Last Name <font color='#FF0000'>*</font></string>
+    <string name="title"> Title </string>
+    <string name="date_mand">Date <font color='#FF0000'>*</font></string>
+    <string name="position_mand"> Position <font color='#FF0000'>*</font></string>
+    <string name="title_mand"> Title <font color='#FF0000'>*</font></string>
+    <string name="time_mand">Time <font color='#FF0000'>*</font></string>
+    <string name="host_mand"> Host <font color='#FF0000'>*</font></string>
+    <string name="repeated_mand">Repeated <font color='#FF0000'>*</font></string>
+    <string name="position">Position </string>
+    <string name="mobile_no"> Mobile Number </string>
+    <string name="fax"> Fax </string>
+    <string name="temp"> Mobile Number </string>
+    <string name="appointment"> Appointments </string>
+    <string name="past"> Past </string>
+    <string name="upcoming"> Upcoming </string>
+    <string name="phone_number"> Phone Number </string>
+    <string name="address">Address </string>
+    <string name="address_mand">Address <font color='#FF0000'>*</font></string>
+    <string name="city"> City </string>
+    <string name="city_mand">City <font color='#FF0000'>*</font></string>
+    <string name="zip_code"> Zip Code </string>
+    <string name="registration_date"> Registration Date </string>
+    <string name="member_status"> Member Status </string>
+    <string name="login"> Login </string>
+    <string name="forgot"> Forgot ?  </string>
+    <string name="forgot_pass"> Forgot Password ?  </string>
+    <string name="sales_overview"> Sales Analytics </string>
+    <string name="overview"> Overview : </string>
+    <string name="act_proj"> Actual Projection  </string>
+    <string name="intial_proj"> Initial Projection  </string>
+    <string name="current_proj"> Current Projection </string>
+    <string name="proj_sale"> Projected Sales </string>
+    <string name="diff_sale">Sales Difference </string>
+    <string name="order">    Order </string>
+    <string name="orders">    Orders </string>
+    <string name="shopping"> Shopping </string>
+    <string name="actual">   Actual </string>
+    <string name="Rs">\u20B9</string>
+    <string name="location"> Address </string>
+    <string name="all_day"> All Day </string>
+    <string name="from"> From </string>
+    <string name="to">   To </string>
+    <string name="host"> Host </string>
+    <string name="participant"> Participants </string>
+    <string name="contact"> Contact </string>
+    <string name="customers"> Customers </string>
+    <string name="bussiness_partners"> Business Partners </string>
+    <string name="new_contact"> New Contact </string>
+    <string name="account"> Account </string>
+    <string name="repeat">  Repeat </string>
+    <string name="task_owener"> Task Owner </string>
+    <string name="subject">  Subject </string>
+    <string name="due_date"> Due Date </string>
+    <string name="date"> 2021-02-11 </string>
+    <string name="status">Status </string>
+    <string name="status_mand">Status <font color='#FF0000'>*</font></string>
+    <string name="priority"> Priority </string>
+    <string name="submit"> Submit </string>
+    <string name="performance"> Performance </string>
+    <string name="days"> Days </string>
+    <string name="average"> Average </string>
+    <string name="aging"> Aging </string>
+    <string name="select_tax"> Select Tax </string>
+    <string name="something_wron_msz">Something went wrong. </string>
+    <string name="qty"> Quantity </string>
+    <string name="enter_qty"> Enter Quantity </string>
+    <string name="discount_percent"> Enter Discount (%) on Item </string>
+    <string name="iteration"> Iteration </string>
+    <string name="onetime_coll"> Onetime Collection </string>
+    <string name="last_6_months"> Last 6 Months </string>
+    <string name="top_5_sales_txt"> Top 5 Customers by Sales Amount </string>
+    <string name="top_5_selling_txt"> Best Selling Item by Sales Amount </string>
+    <string name="send_notification_email"> Send Notification Email </string>
+
+    <string name="opprtunity_no"> Opportunity No. </string>
+    <string name="predicted_closing_date"> Predicted Closing date </string>
+    <string name="all_stages"> All Stages </string>
+    <string name="closing_rate"> Closing Rate </string>
+    <string name="month_1">1 Month </string>
+    <string name="month_3">3 Month </string>
+    <string name="month_6">6 Month </string>
+    <string name="year"> Year </string>
+    <string name="overdue"> Overdue </string>
+    <string name="closed"> Closed </string>
+    <string name="delivery_status"> Delivery Status </string>
+    <string name="inventory_status"> Inventory Status </string>
+    <string name="information"> Information </string>
+    <string name="employee_details"> Employee Details </string>
+    <string name="related_app"> About </string>
+    <string name="submit_feedback"> - Submit feedback </string>
+    <string name="rate_app"> - Rate our app </string>
+    <string name="about_company"> - About Company </string>
+    <string name="other_apps"> - Other  Apps </string>
+    <string name="user_name"> User Name </string>
+    <string name="register"> Register </string>
+    <string name="sql_detail"> Details </string>
+    <string name="enter_ip"> Sql Ip </string>
+    <string name="user"> User </string>
+    <string name="sql_pass">  Password </string>
+    <string name="or"> Or </string>
+    <string name="select"> Select </string>
+    <string name="login_here"> Login here </string>
+    <string name="already_account"> Already have an Account? </string>
+    <string name="not_account"> Don\'t have an Account? </string>
+    <string name="register_here"> Register Here </string>
+    <string name="enter_ip_"> Enter Sql IP </string>
+    <string name="enter_user"> Enter Sql User </string>
+    <string name="enter_sql_pass"> Enter Sql password </string>
+    <string name="choose_database"> Choose Database </string>
+    <string name="slow_moving"> Slow Moving </string>
+    <string name="fast_moving"> Fast Moving </string>
+    <string name="non_moving">  Non  Moving </string>
+    <string name="new_event">  New Event </string>
+    <string name="add_quotation">  Add Quotation </string>
+    <string name="add_order">  Add Order </string>
+    <string name="add_opportunity">  Add Opportunity </string>
+    <string name="opportunity_owner"> Opportunity owner </string>
+    <string name="add_bussiness"> Add Business Partner </string>
+    <string name="update_bussiness"> Update Business Partner </string>
+    <string name="update"> Update </string>
+    <string name="type"> Type </string>
+    <string name="lead_source"> Lead Source </string>
+    <string name="probability"> Probability </string>
+
+    <string name="not_autorize"> Not Authorized.Please contact administrator. </string>
+
+
+    <string name="collection_vs_project"> Collection vs Projection Amount </string>
+
+
+    <!-- Pankaj Declaration -->
+    <string name="add_location">Add Location</string>
+    <string name="participant_">Participant</string>
+    <string name="participant_name">Participant Name</string>
+    <string name="related_document">Related Document</string>
+    <string name="reports_to">Reports To</string>
+    <string name="department">Department</string>
+    <string name="role">Role</string>
+    <string name="contact_owner">Contact Owner</string>
+    <string name="upload">Upload</string>
+    <string name="next">Next</string>
+    <string name="ex_5000">Ex. 5000</string>
+    <string name="ex_10">Ex. 10</string>
+    <string name="grand_total">Grand Total</string>
+    <string name="prepared_for">Prepared For</string>
+    <string name="contact_name">Contact Name</string>
+    <string name="billing_name">Billing Name</string>
+    <string name="billing_address">Billing Address</string>
+    <string name="ship_to_different">Ship to different address?</string>
+    <string name="shipping_name">Shipping Name</string>
+    <string name="shipping_namemand">Shipping Name <font color='#FF0000'>*</font></string>
+    <string name="shipping_address">Shipping Address </string>
+    <string name="shipping_addressmand">Shipping Address <font color='#FF0000'>*</font></string>
+    <string name="quote_information">Quote Information</string>
+    <string name="quote_name">Quote Name</string>
+    <string name="zero">0</string>
+    <string name="state">State</string>
+    <string name="country">Country</string>
+    <string name="select_country">Select Country</string>
+    <string name="date_text">Date</string>
+    <string name="time">Time</string>
+    <string name="owner_list">Owners List</string>
+    <string name="progress_status">Progress Status</string>
+    <string name="shipping_handling">Shipping &amp; Handling</string>
+    <string name="can_not_empty">Can\'t be empty.</string>
+    <string name="start_date">Start Date</string>
+    <string name="annual_revenue">Annual Revenue</string>
+    <string name="company_id">Company ID</string>
+    <string name="invoice_no">Invoice No.</string>
+    <string name="parent_account">Parent Account</string>
+    <string name="close_date">Close Date</string>
+    <string name="attachment">Attachment</string>
+    <string name="add_attachment">Add Attachment</string>
+    <string name="ratings">Ratings</string>
+    <string name="cardcode">Cardcode</string>
+    <string name="edit_order">Edit Order</string>
+    <string name="details_order"> Order Details</string>
+    <string name="order_information">Order Information</string>
+    <string name="invoice_information">Invoice Information</string>
+    <string name="contact_detail">Contact Details</string>
+    <string name="not_found">Data not found</string>
+    <string name="select_state"> Select State</string>
+    <string name="no_notification">No Notifications</string>
+    <string name="no_notification_here">No Notifications here.</string>
+    <string name="delivery_detail">Delivery Detail</string>
+
+
+    <string name="in_stock_quantity">In stock Quantity</string>
+    <string name="total_amount">Total Amount</string>
+    <string name="see_more">See more...</string>
+    <string name="add">Add</string>
+    <string name="ok">Ok</string>
+    <string name="amount">Amount</string>
+    <string name="order_name">Order Name</string>
+    <string name="collect_payment">Collect Payment</string>
+    <string name="contact_person_">Contact Person :</string>
+    <string name="order_id">Order ID :</string>
+    <string name="product_details">Product Details</string>
+    <string name="rs_5000">Rs. 5000</string>
+    <string name="shipping">Shipping :</string>
+    <string name="tax_">Tax :</string>
+    <string name="grand_total_">Grand Total :</string>
+    <string name="track_your_payment">Track Your Payment</string>
+    <string name="received">Received</string>
+    <string name="due">Due</string>
+    <string name="total_amount_">Total Amount : </string>
+    <string name="transaction_no">Transaction No</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="amount_mode">Amount Mode</string>
+
+
+    <!--  ************** Arrays Declaration ********************  -->
+
+    <array name="sales_overview_array">
+        <item>This Month</item>
+        <item>Last 3 Months</item>
+        <item>This 6 Months</item>
+        <item>This Year</item>
+    </array>
+
+    <array name="heirarchyList">
+        <item>Team</item>
+        <item>Manager</item>
+        <item>Sales Person</item>
+
+    </array>
+    <array name="lead_source">
+        <item>--None--</item>
+        <item>Website</item>
+        <item>Google Adwords</item>
+        <item>Webinar</item>
+        <item>Advertisement</item>
+        <item>Customer Event</item>
+        <item>Employee Referral</item>
+        <item>Partner</item>
+        <item>Others</item>
+    </array>
+    <array name="opp_type">
+        <item>--None--</item>
+        <item>Testing</item>
+        <item>Reseller</item>
+        <item>Prospect</item>
+        <item>Partner</item>
+        <item>Other</item>
+        <item>Mechanic</item>
+        <item>Investor</item>
+        <item>Integrator</item>
+        <item>Customer</item>
+        <item>Competitor</item>
+        <item>Analyst</item>
+    </array>
+    <array name="camp_access">
+        <item>--None--</item>
+        <item>Public</item>
+        <item>Private</item>
+    </array>
+
+    <array name="opp_type_gl">
+        <item>--None--</item>
+        <item>New Business</item>
+        <item>Existing Business</item>
+    </array>
+    <array name="expense_type">
+        <item>Hotel Stay</item>
+    </array>
+
+    <array name="transaction_mode">
+        <item>Online</item>
+        <item>Bank Transfer</item>
+        <item>Card</item>
+        <item>Cash</item>
+    </array>
+
+
+    <string name="title_activity_base">BaseActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="item_description">Item Description</string>
+    <string name="item_name">Item Name</string>
+    <string name="per_unit">Per unit</string>
+    <string name="order_placed">"Order Placed : "</string>
+    <string name="excpected_delivery">"Expected Delivery : "</string>
+    <string name="ship_to_">Ship to :</string>
+    <string name="invoice_no_">Invoice No :</string>
+    <string name="valid_date">Valid Date :</string>
+    <string name="posting_date_">"Posting Date : "</string>
+
+
+    <array name="shippingType">
+        <item>Motor Express</item>
+        <item>UPS Ground</item>
+        <item>UPS Red</item>
+        <item>Fedex EM</item>
+        <item>Fedex ON</item>
+        <item>Self Dispatch</item>
+        <item>Other Transporter</item>
+    </array>
+
+<!--
+
+    <array name="bpBillingType">
+        <item>Select Billing Type</item>
+        <item>Self Dispatch</item>
+        <item>Other Transporter</item>
+    </array>
+-->
+
+    <array name="bpShippingType">
+        <item>Select Shipping Type</item>
+        <item>Self Dispatch</item>
+        <item>Other Transporter</item>
+    </array>
+
+    <string-array name="communications">
+        <item>Call</item>
+        <item>Whatsapp</item>
+        <item>SMS</item>
+        <item>E-Mail</item>
+        <item>Visit</item>
+
+    </string-array>
+
+
+    <string name="title_activity_maps">Map</string>
+    <string name="normal_map">Normal Map</string>
+    <string name="hybrid_map">Hybrid Map</string>
+    <string name="satellite_map">Satellite Map</string>
+    <string name="terrain_map">Terrain Map</string>
+
+    <string name="plot_no_12_a_sector_7_dwarka">Plot No: 12-A, Sector-7, Dwarka</string>
+    <string name="delhi_india">Delhi, India</string>
+    <string name="happy_home_apartments">Happy Home Apartments</string>
+    <string name="todo">TODO</string>
+    <string name="button">Button</string>
+    <string name="bottom">Bottom</string>
+    <string name="sector_7_plot_no_12_a_dwarka_n_delhi_india">Sector-7, Plot No:12-A, Dwarka, \n Delhi, India</string>
+    <string name="start_now">Start now</string>
+    <string name="abc_private_ltd">ABC Private Ltd.</string>
+
+    <string name="noida_sec_18_near_gip_mall_nsecond_floor_tower_b">Noida Sec-18, Near GIP Mall, Second Floor, Tower-B.</string>
+    <string name="textview">TextView</string>
+    <string name="n_n_n_est_time_n_est_cost"> \n  \n \n Est. Time \n Est. Cost</string>
+    <string name="_1_hr_18_n_rs_120"> 1 hr 18  \n Rs. 120</string>
+    <string name="_1_hr_10_n_rs_100"> 1 hr 10  \n  Rs. 100</string>
+    <string name="_3_hr_10_n_rs_50"> 3 hr 10  \n  Rs. 50</string>
+    <string name="_8_hr_n_rs_0"> 8 hr \n Rs. 0</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rupal_dhruv">Rupal Dhruv</string>
+    <string name="admin_panel">Admin Panel</string>
+    <string name="ex_40_000">Ex. 40,000</string>
+    <string name="meeting">Meeting</string>
+    <string name="meeting_notification">Your meeting is scheduled in 15 mins.</string>
+    <string name="ur_task">Your Task</string>
+    <string name="task_notification">Visit the client side is scheduled in 15 mins.</string>
+    <string name="cinntraInfotch">Cinntra Infotech Solution</string>
+    <string name="markascomplete">Mark as Complete stage</string>
+    <string name="markascurrent">Mark as current stage</string>
+    <string name="complete">Complete</string>
+    <string name="activity">Activity</string>
+    <string name="chat">Chatter</string>
+    <string name="sapsupportforcinntra">SAP support for Cinntra</string>
+    <string name="created_by">Created on</string>
+    <string name="modified_by">Modified on</string>
+    <string name="new_business">New Business</string>
+    <string name="demo">Demo</string>
+    <string name="customer_event">Customer event</string>
+    <string name="comment">Comment</string>
+    <string name="new_stage">New Stage</string>
+    <string name="previous_stage">Previous Stage</string>
+    <string name="add_comment">Add Comment</string>
+    <string name="initial">Initial</string>
+    <string name="products">Products</string>
+    <string name="files">Files</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="related_to">Related to</string>
+    <string name="company_name">Company name</string>
+    <string name="demo_details">Demo Details</string>
+    <string name="noInternet">No Internet Connection</string>
+    <string name="try_again">Try again</string>
+    <string name="share_location">Share Location</string>
+    <string name="share">Share</string>
+    <string name="title_error">Enter title</string>
+    <string name="date_error">Enter date</string>
+    <string name="fromdate_error">Enter from date</string>
+    <string name="todate_error">Enter To date</string>
+    <string name="location_error">Enter location</string>
+    <string name="host_error">Enter host</string>
+    <string name="participant_error">Enter Participant</string>
+    <string name="description_error">Enter Description</string>
+    <string name="related_toerror">Enter related to</string>
+    <string name="time_error">Time Error</string>
+    <string name="send_message">Send Message</string>
+    <string name="gst_no">GST No.</string>
+    <string name="time_val">12:00 AM</string>
+    <string name="check_internet">Check Internet Connection</string>
+    <string name="product_interest">Product Interest <font color='#FF0000'>*</font></string>
+    <string name="source">Source</string>
+    <string name="add_branch">Add Branch</string>
+    <string name="branch_name">Branch Name</string>
+    <string name="branch_name_mand">Branch Name / Site Name <font color='#FF0000'>*</font></string>
+    <string name="address_error">Enter Proper Address</string>
+    <string name="name_error">Enter Branch Name</string>
+    <string name="zip_code_error">Please Enter Zipcode</string>
+    <string name="state_error">Enter State</string>
+    <string name="country_error">Enter Country</string>
+    <string name="select_newAddress">Select new Address</string>
+    <string name="assignedto">Assigned To :</string>
+    <string name="assignedTo">Assigned To </string>
+    <string name="opportunity_name_val">Opportunity Name</string>
+    <string name="bussiness_partner_mand">Business Partner<font color='#FF0000'>*</font></string>
+    <string name="contact_person_mand">Contact Person<font color='#FF0000'>*</font></string>
+    <string name="close_date_mand">Close Date <font color='#FF0000'>*</font></string>
+    <string name="sales_employee_mand">Sales Employee <font color='#FF0000'>*</font></string>
+    <string name="type_mand">Type <font color='#FF0000'>*</font></string>
+    <string name="lead_source_mand">Lead Source <font color='#FF0000'>*</font></string>
+    <string name="company_name_mand">Company Name <font color='#FF0000'>*</font></string>
+    <string name="industry_mand">Lead Type <font color='#FF0000'>*</font></string>
+    <string name="payment_term_mand">Payment Terms <font color='#FF0000'>*</font></string>
+    <string name="contact_owner_mand">Contact Name <font color='#FF0000'>*</font></string>
+    <string name="mobile_mand">Mobile <font color='#FF0000'>*</font></string>
+    <string name="email_mand">E-mail <font color='#FF0000'>*</font></string>
+    <string name="website_mand">Website <font color='#FF0000'>*</font></string>
+    <string name="website_">Website</string>
+    <string name="billing_name_mand">Billing Name<font color='#FF0000'>*</font></string>
+    <string name="zip_code_mand">ZipCode<font color='#FF0000'>*</font></string>
+    <string name="country_mand">Country <font color='#FF0000'>*</font></string>
+    <string name="state_mand">State<font color='#FF0000'>*</font></string>
+    <string name="shipping_type_mand">Shipping Type<font color='#FF0000'>*</font></string>
+    <string name="billing_type_mand">Billing Type<font color='#FF0000'>*</font></string>
+    <string name="billing_address_mand">Billing Address<font color='#FF0000'>*</font></string>
+    <string name="opportunity_nam">Opportunity Name</string>
+    <string name="search_product">Search Product</string>
+    <string name="lead">Lead</string>
+    <string name="designation">Designation</string>
+    <string name="turnover">Turnover</string>
+    <string name="createbp">Create Business Partner</string>
+    <string name="follow_up">Follow Up</string>
+    <string name="name_mand">Name<font color='#FF0000'>*</font></string>
+    <string name="mobile_no_mand">Mobile No.<font color='#FF0000'>*</font></string>
+    <string name="phone_no_mand">Phone <font color='#FF0000'>*</font></string>
+    <string name="phone_no_">Phone</string>
+    <string name="location_mand">Location<font color='#FF0000'>*</font></string>
+    <string name="source_mand">Source<font color='#FF0000'>*</font></string>
+    <string name="comment_mand">Comment<font color='#FF0000'>*</font></string>
+    <string name="select_bp">Select Business Partner</string>
+    <string name="enter_cp">Enter Contact Person</string>
+    <string name="opp_name">Enter Opportunity Name </string>
+    <string name="potential_amnt_error">Enter potential amount</string>
+    <string name="enter_sp">Enter Sales Person</string>
+    <string name="remark_error">Enter Description</string>
+    <string name="quotation_name">Quotation Name</string>
+    <string name="quotation_name_mand">Quotation Name <font color='#FF0000'>*</font></string>
+    <string name="opportunity_nam_mand">Opportunity Name <font color='#FF0000'>*</font></string>
+    <string name="description_mand">Description <font color='#FF0000'>*</font></string>
+    <string name="enter_opp">Enter Opportunity Name</string>
+    <string name="enter_lead_source">Enter Lead Source</string>
+    <string name="enter_tye">Enter Type</string>
+    <string name="company_phone_mand">Company No.<font color='#FF0000'>*</font></string>
+    <string name="company_email">Company Email</string>
+    <string name="company_email_mand">Company Email <font color='#FF0000'>*</font></string>
+    <string name="person_name_mand">Person Name <font color='#FF0000'>*</font></string>
+    <string name="company_phone">Company No.</string>
+    <string name="purposal_shared">Purposal Shared</string>
+    <string name="negotiation">Negotiation</string>
+    <string name="hold">Hold</string>
+    <string name="dead">Dead</string>
+    <string name="hot">Hot</string>
+    <string name="warm">Warm</string>
+    <string name="cold">Cold</string>
+    <string name="lead_type">Lead Priority</string>
+    <string name="call">Call</string>
+    <string name="whatsapp">Whatsapp</string>
+    <string name="sms">SMS</string>
+    <string name="all_leads">All Leads</string>
+    <string name="leads">Leads</string>
+    <string name="communication_mode">Mode of Communication</string>
+    <string name="reminder">Reminder</string>
+    <string name="feedback">Feedback</string>
+    <string name="select_category">Category <font color='#FF0000'>*</font></string>
+    <string name="createorder">Create Order</string>
+    <string name="quotation_ref">Quotation Ref.</string>
+    <string name="update_lead">Update Lead</string>
+    <string name="from_date">From Date</string>
+    <string name="to_date">To Date</string>
+    <string name="select_date">Select Date</string>
+    <string name="newuser">New User</string>
+    <string name="confirm_pass">Confirm Password</string>
+    <string name="entercompany_name">Enter Company Name</string>
+    <string name="enter_firstname">Enter First Name</string>
+    <string name="enter_email">Enter proper email address</string>
+    <string name="pass_notMatch">Password not match</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="entry_deignation">Entry designation</string>
+    <string name="enter_mobileno">Enter mobile no</string>
+    <string name="campaign">Campaign</string>
+    <string name="campaign_access">Campaign Access <font color='#FF0000'>*</font> </string>
+    <string name="campaign_setname">Campaign Set Name <font color='#FF0000'>*</font></string>
+    <string name="lead_underline"><u>Lead</u></string>
+    <string name="opportunity_underline"><u>Opportunity</u></string>
+    <string name="customer_underline"><u>Customer</u></string>
+    <string name="newlead">New</string>
+    <string name="junk">Junk</string>
+    <string name="qualified">Qualified</string>
+    <string name="addexpense">Add Expense</string>
+    <string name="addpaymentdetails">Add Payment Details</string>
+
+
+    <string-array name="stages">
+
+        <item>sos_Sold</item>
+        <item>sos_Won</item>
+
+    </string-array>
+
+
+    <string-array name="subject">
+
+        <item>--None--</item>
+        <item>Call</item>
+        <item>Send Quote</item>
+        <item>Send Letter</item>
+        <item>Other</item>
+
+    </string-array>
+
+    <array name="lead_status">
+        <item>New</item>
+        <item>Follow Up</item>
+
+        <item>Qualified</item>
+        <item>Hold</item>
+    </array>
+
+
+    <array name="lead_type_filter">
+        <item>All</item>
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+
+    </array>
+    <array name="category">
+        <item>End User</item>
+        <item>Architect</item>
+        <item>Builder</item>
+        <item>Interior Designer</item>
+
+    </array>
+
+
+    <array name="Select_Doctor">
+        <item>Dr. Bhoopender Mohan Pal</item>
+        <item>Dr. Yogita Mer</item>
+        <item>Dr. Chanchal Bhasker</item>
+        <item>Dr. Shubham Bhairwa</item>
+        <item>Dr. Ankit Sharma</item>
+        <item>Dr. Abhishek</item>
+        <item>Dr. Ashutosh</item>
+        <item>Dr. Vishal Dubey</item>
+        <item>Dr. Sunil</item>
+        <item>Dr. Rohit Swami</item>
+        <item>Dr. Rahul Akaniya</item>
+
+    </array>
+
+
+    <array name="member_list">
+        <item>Bhoopender Mohan Pal</item>
+        <item>Yogita Mer</item>
+        <item>Chanchal Bhasker</item>
+        <item>Shubham Bhairwa</item>
+        <item>Ankit Sharma</item>
+        <item>Abhishek</item>
+        <item>Ashutosh</item>
+        <item>Vishal Dubey</item>
+        <item>Sunil</item>
+        <item>Rohit Swami</item>
+        <item>Rahul Akaniya</item>
+
+    </array>
+
+    <array name="Select_Chemist">
+        <item>Ankur Medical Store</item>
+        <item>Yogita Mer Medical store</item>
+        <item>Arif Medical Store</item>
+        <item>Shubham Medical store</item>
+        <item>Ankit Medical Store</item>
+        <item>Abhishek Medical Store</item>
+        <item>Ashutosh Medical Store</item>
+        <item>Vishal Medical Store</item>
+        <item>Sunil Medical Store</item>
+        <item>Rohit Medical Store</item>
+
+    </array>
+
+    <array name="product_list">
+        <item>Ankur Gel</item>
+        <item>Yogita Tab</item>
+        <item>AntiCOg 100</item>
+        <item>BarBee 50 tab</item>
+        <item>BePLEX U</item>
+
+
+    </array>
+
+
+    <array name="company_brand_name">
+
+        <item>Sun Pharmaceutical Industries</item>
+        <item>Divs Laboratories</item>
+        <item>Dr. Reddy Laboratories.</item>
+        <item>Cipla Limited.</item>
+        <item>Mankind</item>
+        <item>Emcure Pharmaceuticals.</item>
+        <item>Biocon Limited.</item>
+    </array>
+
+
+    <string name="title_activity_my_map_location">MyMapLocation</string>
+    <string name="app_version">Live Version: - v1.2.0</string>
+    <string name="project_amount">Project Amount</string>
+
+
+<!--    <string name="google_map_api_key">AIzaSyC5NbQ3nHhAoIWYT6bcADWJs1QuCtpxrws</string>--> //todo
+    <string name="google_map_api_key">AIzaSyAM78AABQYPG-dmQ0qTlxSkzwnBALLqOJU</string>
+    <string name="glass_order_date_mand">Glass Order Date  <font color='#FF0000'>*</font></string>
+    <string name="coating_date_mand">Coating Date  <font color='#FF0000'>*</font></string>
+    <string name="delivery_date_mand">Delivery Date  <font color='#FF0000'>*</font></string>
+    <string name="customer_name_mand">Customer Name <font color='#FF0000'>*</font></string>
+    <string name="quote_no_mand">Quote No <font color='#FF0000'>*</font></string>
+    <string name="invoice_no_mand">Invoice No. <font color='#FF0000'>*</font></string>
+    <string name="transaction_mode_mand">Transaction Mode <font color='#FF0000'>*</font></string>
+    <string name="payment_date_mand">Payment Date <font color='#FF0000'>*</font></string>
+    <string name="transaction_id_mand">Transaction ID <font color='#FF0000'>*</font></string>
+    <string name="total_amount_mand">Total Amount <font color='#FF0000'>*</font></string>
+    <string name="received_amount_mand">Received Amount <font color='#FF0000'>*</font></string>
+    <string name="due_amount_mand">Due Amount <font color='#FF0000'>*</font></string>
+
+</resources>

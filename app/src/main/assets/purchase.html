@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>A simple, clean, and responsive HTML invoice template</title>
+
+		<style>
+			.invoice-box {
+				max-width: 800px;
+				margin: auto;
+				/*padding: 30px;*/
+				border: 1px solid #eee;
+				/*box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);*/
+				font-size: 16px;
+				line-height: 24px;
+				font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+				color: #555;
+				border: 2px solid #416364;
+			}
+			.grn{
+				background: #c4d69b;
+				color: #000;
+			}
+
+			.bcg{
+				background: #416364;
+				color: #fff;
+			}
+
+			.invoice-box table {
+				width: 100%;
+				line-height: inherit;
+				text-align: left;
+			}
+
+			.invoice-box table td {
+				padding: 5px;
+				vertical-align: top;
+			}
+
+			.invoice-box table tr td:nth-child(2) {
+				/*text-align: right;*/
+			}
+
+			.invoice-box table tr.top table td {
+				padding-bottom: 20px;
+			}
+
+			.invoice-box table tr.top table td.title {
+				font-size: 45px;
+				line-height: 45px;
+				color: #333;
+			}
+
+			.invoice-box table tr.information table td {
+				padding-bottom: 10px;
+			}
+
+			.invoice-box table tr.heading td {
+				/*background: #eee;*/
+				border-bottom: 1px solid #ddd;
+				font-weight: bold;
+			}
+
+			.invoice-box table tr.details td {
+				padding-bottom: 20px;
+			}
+
+			.invoice-box table tr.item td {
+				/*border-bottom: 1px solid #eee;*/
+			}
+
+			.invoice-box table tr.item.last td {
+				border-bottom: none;
+			}
+
+			.invoice-box table tr.total td:nth-child(2) {
+				/*border-top: 2px solid #eee;*/
+				font-weight: bold;
+			}
+
+			@media only screen and (max-width: 600px) {
+				.invoice-box table tr.top table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
+
+				.invoice-box table tr.information table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
+			}
+
+			/** RTL **/
+			.invoice-box.rtl {
+				direction: rtl;
+				font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+			}
+
+			.invoice-box.rtl table {
+				text-align: right;
+			}
+
+			.invoice-box.rtl table tr td:nth-child(2) {
+				text-align: left;
+			}
+		</style>
+
+		
+	</head>
+
+	<body>
+		<div class="invoice-box">
+			<table cellpadding="0" cellspacing="0">
+				<tr class="top bcg">
+					<td colspan="4">
+						<table>
+							<tr>
+								<td style="text-align: center;font-size: 25px;">PURCHASE ORDER</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr class="information bcg">
+					<td colspan="4">
+						<table>
+							<tr>
+								<td>
+									Cinntra Infotech<br />
+									Noida One<br />
+									Noida Sec-62 India
+								</td>
+
+								<td style="text-align: right;">
+									Acme Corp.<br />
+									John Doe<br />
+									john@example.com
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr class="heading grn">
+					<td colspan="2">Purchase Form :</td>
+
+					<td colspan="2" style="text-align: right;">Ship To :</td>
+				</tr>
+
+				<tr class="details">
+					<td colspan="2">Vendor Name<br>
+						Vendor Street Address<br>
+						City State Zipcode
+
+					</td>
+
+					<td colspan="2" style="text-align: right;">Company Name<br>
+						Company Street Address<br>
+						City State Zipcode
+
+					</td>
+				</tr>
+
+				<tr class="heading grn">
+					<td colspan="2" style="text-align: center;">Shiping Method</td>
+
+					<td style="text-align: center;">Payment Terms</td>
+					<td style="text-align: center;">Reuirid By Date</td>
+				</tr>
+
+				<tr class="heading">
+					<td colspan="2" style="text-align: center;">< UPS ></td>
+					<td style="text-align: center;border-left: 3px solid;">< Next 30 Days ></td>
+					<td style="text-align: center;border-left: 3px solid;">< Date ></td>
+				</tr>
+
+				<tr class="heading grn">
+					<td colspan="2">Item Description</td>
+					<td style="text-align: center;">Quantity</td>
+					<td>
+						<table>
+							<tr>
+								<td style="padding: 0;border: none;text-align: center;">Unit Price</td>
+								<td style="padding: 0;border: none;text-align: center;">Amount</td>
+							</tr>
+						</table>
+
+					</td>
+					
+				</tr>
+			<tbody id="data">
+				
+			</tbody>
+				
+				<tr>
+					<td colspan="4" style="border-top: 3px solid;">&nbsp;</td>
+				</tr>
+
+				
+				<tr class="total">
+					<td colspan="3" style="padding-left: 30px;">
+						<b>Approved By : <br><br>
+						X &nbsp;&nbsp;<input type="text" name="" style="border: none;border-bottom: 2px solid;">
+					</b>
+					</td>
+
+					<td style="text-align: right;font-weight: 200;">
+						<b>Subtotal :</b> Rs 5000 <br>
+						<b>Tax :</b> Rs 5000 <br>
+						<b>Discount :</b> Rs 5000 <br>
+					<b>Order Total :</b> Rs 385.00</td>
+				</tr>
+			</table>
+		</div>
+
+
+<script>  
+fetch("http://103.234.187.86:8000/inventory/getinventory").then(
+  res => {
+    res.json().then(
+      data => {
+        if (data['data'].length > 0) {
+
+          var temp = "";
+          data['data'].forEach((itemData) => {
+            temp += '<tr class="item">';
+            temp += '<td colspan="2" style="text-align: center;">' + itemData.productName + '</td>';
+            temp += '<td style="text-align: center;border-left: 3px solid;">' + itemData.productQuantity + '</td>';
+            temp += '<td style="padding: 0;border-left: 3px solid;">';
+            temp += '<table>';
+            temp += '<tr>';
+            temp += '<td style="padding: 0;border: none;text-align: center;width:50%;">' + itemData.productUnit + '</td>';
+            temp += '<td style="padding: 0;border: none;text-align: center;width:50%;"> Rs ' + itemData.productPrice + '</td>';
+            temp += '</tr>';            
+            temp += '</table>';
+            temp += '</tr>';
+          });
+          document.getElementById('data').innerHTML = temp;
+        }
+      }
+    )
+  }
+)
+		</script>
+		
+					
+					<!-- <td style="padding: 0;border-left: 3px solid;">
+						<table>
+							<tr> -->
+								<!-- <td style="padding: 0;border: none;text-align: center;">80 </td> -->
+								<!-- <td style="padding: 0;border: none;text-align: center;">Rs 1200</td> -->
+							<!-- </tr>
+						</table> -->
+
+					</td>
+				</tr>
+	</body>
+</html>

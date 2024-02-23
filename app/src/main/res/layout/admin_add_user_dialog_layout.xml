@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/white"
+    android:background="@drawable/admin_dialog_bg"
+    android:id="@+id/admin_add_user"
+    android:orientation="vertical">
+
+
+
+
+    <TextView
+        android:id="@+id/add_user_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_45"
+        android:layout_margin="@dimen/size_20"
+        android:layout_weight="0.5"
+        android:fontFamily="@font/roboto_bold"
+        android:paddingTop="10dp"
+        android:text="Add new user"
+        android:textAlignment="center"
+        android:textColor="#4A79E4"
+        android:textSize="@dimen/text_size_18" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="@dimen/size_35"
+        android:layout_marginRight="@dimen/size_35"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/full_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:fontFamily="@font/roboto_medium"
+            android:paddingBottom="5dp"
+            android:text="Full name"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_16" />
+
+        <EditText
+            android:id="@+id/enter_full_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/admin_border"
+            android:ems="10"
+            android:fontFamily="@font/roboto"
+            android:hint="Enter full name"
+            android:inputType="textPersonName"
+            android:textColor="#000000"
+            android:textColorHint="#ABABAB"
+            android:textSize="@dimen/text_size_16" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/level_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="38dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:paddingBottom="5dp"
+                android:text="Level"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/enter_level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="38dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/admin_border"
+                android:ems="10"
+                android:fontFamily="@font/roboto"
+                android:hint="Enter level"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#ABABAB"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/job_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="38dp"
+                android:fontFamily="@font/roboto_medium"
+                android:paddingBottom="5dp"
+                android:text="Job Role"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/enter_role"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="38dp"
+                android:background="@drawable/admin_border"
+                android:ems="10"
+                android:fontFamily="@font/roboto"
+                android:hint="Enter role"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#ABABAB"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/access_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="38dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:paddingBottom="5dp"
+                android:text="Access"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/enter_access"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="38dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/admin_border"
+                android:ems="10"
+                android:fontFamily="@font/roboto"
+                android:hint="Enter access"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#ABABAB"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/join_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="38dp"
+                android:fontFamily="@font/roboto_medium"
+                android:paddingBottom="5dp"
+                android:text="Joined on"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/enter_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="38dp"
+                android:background="@drawable/admin_border"
+                android:ems="10"
+                android:hint="12-04-2021"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#ABABAB"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/report_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="38dp"
+            android:fontFamily="@font/roboto_medium"
+            android:paddingBottom="5dp"
+            android:text="Reporting To"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/enter_supervisor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="38dp"
+            android:background="@drawable/admin_border"
+            android:ems="10"
+            android:fontFamily="@font/roboto"
+            android:hint="Reporting To"
+            android:inputType="textPersonName"
+            android:textColor="#000000"
+            android:textColorHint="#ABABAB"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/email_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="38dp"
+            android:fontFamily="@font/roboto_medium"
+            android:paddingBottom="5dp"
+            android:text="Email"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/enter_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="38dp"
+            android:background="@drawable/admin_border"
+            android:ems="10"
+            android:fontFamily="@font/roboto"
+            android:hint="abc@gmail.com"
+            android:inputType="textPersonName"
+            android:textColor="#000000"
+            android:textColorHint="#ABABAB"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="38dp"
+            android:fontFamily="@font/roboto_medium"
+            android:paddingBottom="5dp"
+            android:text="User name"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/enter_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="38dp"
+            android:background="@drawable/admin_border"
+            android:ems="10"
+            android:fontFamily="@font/roboto"
+            android:hint="Enter User name"
+            android:inputType="textPersonName"
+            android:textColor="#000000"
+            android:textColorHint="#ABABAB"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/password_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="38dp"
+            android:fontFamily="@font/roboto_medium"
+            android:paddingBottom="5dp"
+            android:text="Create password"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/gen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="38dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:text="Automatic generate"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="25dp" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/enter_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="38dp"
+            android:background="@drawable/admin_border"
+            android:ems="10"
+            android:fontFamily="@font/roboto"
+            android:hint="Create new password"
+            android:inputType="textPersonName"
+            android:textColor="#000000"
+            android:textColorHint="#ABABAB"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="135dp"
+        android:layout_height="38dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/admin_button_border"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Add"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:backgroundTint="#4A79E4"
+        app:cornerRadius="32dp" />
+
+</LinearLayout>
+</ScrollView>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    android:id="@+id/tickView">
+
+
+    <ImageView
+        android:id="@+id/tick_green"
+        android:layout_width="@dimen/size_35"
+        android:layout_height="@dimen/size_35"
+        android:background="@drawable/tick_square_grey"
+        android:visibility="visible" />
+
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="@dimen/size_50"
+            android:layout_height="@dimen/text_size_3"
+            android:background="@color/lightGrey"
+            android:layout_toRightOf="@id/tick_green"
+            android:layout_centerVertical="true"/>
+
+</RelativeLayout>
+
+    <TextView
+        android:id="@+id/stage_name"
+        android:layout_width="@dimen/size_80"
+        android:layout_height="wrap_content"
+        android:text="@string/initial"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_13"
+        android:fontFamily="@font/muli_semibold"
+        android:layout_below="@id/tickView"
+        android:layout_marginLeft="@dimen/size_5"/>
+
+
+    <TextView
+        android:id="@+id/date"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stage_name"
+        android:text="@string/date"
+        android:textSize="@dimen/text_size_14"
+        android:textColor="@color/black"/>
+
+
+</RelativeLayout>

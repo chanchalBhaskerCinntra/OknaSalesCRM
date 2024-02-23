@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_login_back"
+    tools:context=".activities.SignUp">
+   <FrameLayout
+     android:layout_marginLeft="@dimen/size_20"
+       android:layout_marginRight="@dimen/size_20"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+      <LinearLayout
+          android:orientation="vertical"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:gravity="bottom|center_horizontal"
+        android:layout_weight="2.5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_login_logo"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+               <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/muli_bold"
+                    android:text="@string/sql_detail"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_5"
+                    android:fontFamily="@font/muli_regular"
+                    android:text="@string/enter_ip"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_14" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_40"
+                    android:background="@drawable/rounded_corner"
+                    android:elevation="@dimen/text_size_2"
+                    android:layout_marginTop="@dimen/text_size_4"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/size_10"
+                        android:background="@drawable/ic_password" />
+
+                    <EditText
+                        android:maxLines="1"
+                        android:inputType="text"
+                        android:id="@+id/sql_ip"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_5"
+                    android:fontFamily="@font/muli_regular"
+                    android:text="@string/user"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_14" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_40"
+                    android:background="@drawable/rounded_corner"
+                    android:elevation="@dimen/text_size_2"
+                    android:layout_marginTop="@dimen/text_size_4"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/size_10"
+                        android:background="@drawable/ic_mobile_no" />
+
+                    <EditText
+                        android:maxLines="1"
+                        android:id="@+id/sql_user"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:inputType="text" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_5"
+                    android:fontFamily="@font/muli_regular"
+                    android:text="@string/sql_pass"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_14" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_40"
+                    android:background="@drawable/rounded_corner"
+                    android:elevation="@dimen/text_size_2"
+                    android:layout_marginTop="@dimen/text_size_4"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/size_10"
+                        android:background="@drawable/ic_mobile_no" />
+
+                    <EditText
+                        android:maxLines="1"
+                        android:id="@+id/sql_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:inputType="text" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_25"
+                    android:background="@drawable/button_rounded_corner"
+                    android:clickable="true"
+                    android:elevation="@dimen/text_size_2"
+                    android:fontFamily="@font/muli_bold"
+                    android:gravity="center"
+                    android:text="@string/submit"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/text_size_16"
+                    app:backgroundTint="@color/colorPrimary" />
+
+
+                    android:textAllCaps="true"
+                    android:layout_marginTop="@dimen/size_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/muli_semibold"
+                    android:text="@string/or"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_12" />
+            </LinearLayout>
+
+
+       </LinearLayout>
+      </LinearLayout>
+       <com.github.ybq.android.spinkit.SpinKitView
+           xmlns:app="http://schemas.android.com/apk/res-auto"
+           android:id="@+id/progressBar2"
+           style="@style/SpinKitView.Large.Circle"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           app:SpinKit_Color="@color/colorPrimary" />
+   </FrameLayout>
+
+</LinearLayout>

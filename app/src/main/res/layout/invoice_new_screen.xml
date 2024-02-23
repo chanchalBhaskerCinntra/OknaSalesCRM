@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/size_5"
+        app:cardUseCompatPadding="true"
+        app:cardPreventCornerOverlap="true"
+        app:cardBackgroundColor="@color/white"
+        android:layout_marginLeft="@dimen/size_5"
+        android:layout_marginRight="@dimen/size_5"
+        app:cardElevation="@dimen/size_5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/size_10"
+            android:layout_height="wrap_content">
+
+<RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ABC Pvt. ltd."
+                android:textSize="@dimen/text_size_16"
+                android:maxLines="1"
+                android:paddingRight="@dimen/size_90"
+                android:ellipsize="end"
+                android:maxWidth="@dimen/size_80"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:fontFamily="@font/muli_bold"/>
+
+    <TextView
+        android:id="@+id/status"
+        android:background="@drawable/saffron_rounded"
+        android:layout_width="90dp"
+        android:layout_height="@dimen/text_size_26"
+        android:text="Unpaid"
+        android:gravity="center"
+        android:clickable="true"
+        android:layout_alignParentRight="true"
+        android:textSize="@dimen/text_size_12"
+        android:textColor="@color/white"
+        android:fontFamily="@font/muli_regular"
+        android:focusable="false" />
+
+</RelativeLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/size_2"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/ship_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/invoice_no_"
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/muli_regular"/>
+
+                <TextView
+                    android:id="@+id/amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5000"
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/muli_regular"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/due"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Due Amount : "
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/muli_regular"/>
+
+            <TextView
+                android:id="@+id/doc_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/due"
+                android:text="@string/date"
+                android:textSize="@dimen/text_size_16"
+                android:textColor="@color/black"
+                android:fontFamily="@font/muli_regular"/>
+
+
+
+                <ImageView
+                    android:id="@+id/preview_file"
+                    android:layout_width="@dimen/size_25"
+                    android:layout_height="@dimen/size_25"
+                    android:background="@drawable/document"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

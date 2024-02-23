@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item
+    android:id="@+id/home"
+    android:title="Rupal Dhruv"
+    android:icon="@drawable/ic_baseline_dehaze_24"
+    ></item>
+    <group
+        android:id="@+id/group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_nav_dashboard"
+            android:icon="@drawable/iconhome"
+            android:title="@string/dashboard" />
+        <item
+            android:id="@+id/menu_nav_user"
+            android:icon="@drawable/personman"
+            android:title="@string/user" />
+        <item
+            android:id="@+id/menu_lead"
+            android:icon="@drawable/personman"
+            android:title="Lead" />
+    </group>
+</menu>

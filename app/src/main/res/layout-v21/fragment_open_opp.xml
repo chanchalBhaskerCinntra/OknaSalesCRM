@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.BlankFragment"
+    android:background="@color/white"
+    android:id="@+id/open_opp_container">
+
+
+
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:refreshColors="@array/scheme_colors"
+        app:refreshType="smartisan">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.baoyz.widget.PullRefreshLayout>
+    <ImageView
+        android:id="@+id/no_datafound"
+        android:layout_width="@dimen/size_120"
+        android:layout_height="@dimen/size_120"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:background="@drawable/nodatafound"/>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+
+        android:id="@+id/loader"
+        android:visibility="visible"
+        style="@style/SpinKitView.Large.Circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/colorPrimary" />
+
+
+
+
+</FrameLayout>

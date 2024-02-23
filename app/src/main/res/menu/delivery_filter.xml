@@ -1,0 +1,35 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.learn2crack.recyclerviewsearch.MainActivity">
+
+
+    <group>
+        <item
+            android:id="@+id/all"
+            android:title="All Delivery" />
+        <item
+            android:id="@+id/my"
+            android:title="Order ID" />
+
+        <item
+            android:id="@+id/newest"
+            android:title="Newest Delivery" />
+
+        <item
+            android:id="@+id/oldest"
+            android:title="Oldest Delivery" />
+        <item
+            android:id="@+id/posting"
+            android:title="Posting Date" />
+        <item
+            android:id="@+id/valid"
+            android:title="Delivery Date" />
+
+    </group>
+
+
+</menu>
+
+
+

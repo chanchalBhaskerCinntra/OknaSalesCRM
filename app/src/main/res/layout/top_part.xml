@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/top_part"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/size_20"
+    android:gravity="start"
+    android:textAlignment="textStart">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/muli"
+            android:gravity="center"
+            android:text="@string/n_n_n_est_time_n_est_cost"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14" />
+
+        <LinearLayout
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:src="@drawable/button_states"
+                android:tint="#7C7C7C"
+                app:srcCompat="@drawable/ic_directions_car_black_36dp" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:textSize="@dimen/size_10"
+                android:gravity="center"
+                android:fontFamily="@font/muli"
+                android:text="@string/_1_hr_18_n_rs_120"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:tint="#7C7C7C"
+                app:srcCompat="@drawable/ic_directions_bike_black_36dp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:textSize="@dimen/size_10"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:fontFamily="@font/muli"
+                android:gravity="center"
+                android:text="@string/_1_hr_10_n_rs_100"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton6"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:background="@color/white"
+                android:tint="#7C7C7C"
+                app:srcCompat="@drawable/ic_directions_bus_black_36dp" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:fontFamily="@font/muli"
+                android:text="@string/_3_hr_10_n_rs_50"
+                android:gravity="center"
+                android:textSize="@dimen/size_10"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton7"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:background="@color/white"
+                android:tint="#7C7C7C"
+                app:srcCompat="@drawable/ic_directions_walk_black_36dp" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:fontFamily="@font/muli"
+                android:text="@string/_8_hr_n_rs_0"
+                android:textSize="@dimen/size_10"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

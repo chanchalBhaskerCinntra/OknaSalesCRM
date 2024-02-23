@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "756957576630",
+    "project_id": "okana-c6fe6",
+    "storage_bucket": "okana-c6fe6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:756957576630:android:880a978002853e429cd517",
+        "android_client_info": {
+          "package_name": "com.cinntra.okana"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwt1XwaR9K3RIeP5pw0Tc9DTDN0xSAB4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:contentDescription=""
+        android:title=""
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/graph"
+        android:icon="@drawable/analytics"
+        android:contentDescription=""
+        android:title=""
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/add_contact"
+        android:contentDescription=""
+        android:title=""
+        app:showAsAction="always"/>
+
+
+    <item
+        android:id="@+id/notification"
+        android:icon="@drawable/ic_calender"
+        android:contentDescription=""
+        android:title=""
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_profile_latest"
+        android:contentDescription=""
+        android:title=""
+        app:showAsAction="always"/>
+
+</menu>

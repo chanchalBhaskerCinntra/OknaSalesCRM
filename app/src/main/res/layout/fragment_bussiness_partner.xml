@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.BlankFragment"
+    android:background="@color/white"
+    android:id="@+id/quatoes_main_container">
+
+    <LinearLayout
+        android:background="@color/overlay_dark_10"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/quotes_header"
+            layout="@layout/quotes_header"/>
+        <include
+            android:id="@+id/tab_four_button"
+            layout="@layout/tab_four_button"/>
+        <LinearLayout
+            android:layout_marginTop="@dimen/text_size_30"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:padding="@dimen/text_size_15"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_width="@dimen/text_60"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_width="@dimen/text_50"
+                        android:layout_height="@dimen/text_50"
+                        android:src="@android:drawable/ic_media_play"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/bussiness_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5990 - Maxi-Teq "
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_18"
+                        android:fontFamily="@font/muli_bold"/>
+                    <TextView
+                        android:id="@+id/bussiness_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" C23543 "
+                        android:textColor="@color/hint_color"
+                        android:textSize="@dimen/text_size_14"
+                        android:fontFamily="@font/muli_regular"/>
+                    <TextView
+                        android:id="@+id/bussiness_owener"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" - No Owener - "
+                        android:textColor="@color/hint_color"
+                        android:textSize="@dimen/text_size_14"
+                        android:fontFamily="@font/muli_regular"/>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_marginTop="@dimen/text_size_12"
+                        android:layout_gravity="right"
+                        android:id="@+id/status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/open"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_18"
+                        android:fontFamily="@font/muli_regular"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:visibility="gone"
+                android:id="@+id/general_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:id="@+id/lay"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/general"
+                            android:paddingLeft="@dimen/text_size_15"
+                            android:background="@color/white"
+                            android:layout_marginTop="@dimen/text_size_30"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/foreign_name"
+                                android:fontFamily="@font/muli_regular"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_12"
+                                android:textColor="@color/hint_color"
+                                android:text="@string/foreign_name">
+
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/foreign_name_value"
+                                android:fontFamily="@font/muli_regular"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_14"
+                                android:textColor="@color/black"
+                                android:text="">
+
+                            </TextView>
+                            <View
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/view_devider"
+                                android:background="@color/hint_color"/>
+
+
+
+                            <TextView
+                                android:id="@+id/account_balance"
+                                android:fontFamily="@font/muli_regular"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_12"
+                                android:textColor="@color/hint_color"
+                                android:text="@string/account_balance">
+
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/account_balance_value"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:fontFamily="@font/muli_regular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_14"
+                                android:textColor="@color/black"
+                                android:text="3453246">
+
+                            </TextView>
+                            <View
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/view_devider"
+                                android:background="@color/hint_color"/>
+
+                            <TextView
+                                android:id="@+id/credit_limit"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:fontFamily="@font/muli_regular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_12"
+                                android:textColor="@color/hint_color"
+                                android:text="@string/credit_limit">
+
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/credit_limit_value"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:fontFamily="@font/muli_regular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_14"
+                                android:textColor="@color/black"
+                                android:text="624.50 $">
+
+                            </TextView>
+                            <View
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/view_devider"
+                                android:background="@color/hint_color"/>
+
+                            <TextView
+                                android:id="@+id/sales_employee"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:fontFamily="@font/muli_regular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_12"
+                                android:textColor="@color/hint_color"
+                                android:text="@string/sales_employee">
+
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/sales_employee_value"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:fontFamily="@font/muli_regular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_14"
+                                android:textColor="@color/black"
+                                android:text="477.56 $">
+
+                            </TextView>
+                            <View
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/view_devider"
+                                android:background="@color/hint_color"/>
+                            <TextView
+                                android:id="@+id/payment_term"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_12"
+                                android:textColor="@color/hint_color"
+                                android:text="@string/payment_term"
+                                android:fontFamily="@font/muli_regular">
+
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/payment_term_value"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_14"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/muli_regular"
+                                android:text="">
+
+                            </TextView>
+                            <View
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/view_devider"
+                                android:background="@color/hint_color"/>
+                            <TextView
+                                android:id="@+id/industry"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_12"
+                                android:fontFamily="@font/muli_regular"
+                                android:textColor="@color/hint_color"
+                                android:text="@string/industry">
+
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/industry_value"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_marginBottom="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_14"
+                                android:fontFamily="@font/muli_regular"
+                                android:textColor="@color/black"
+                                android:text="0.00$">
+
+                            </TextView>
+
+
+                            <View
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/view_devider"
+                                android:background="@color/hint_color"/>
+                            <TextView
+                                android:id="@+id/group"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_12"
+                                android:fontFamily="@font/muli_regular"
+                                android:textColor="@color/hint_color"
+                                android:text="@string/group">
+
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/group_value"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_marginBottom="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_14"
+                                android:fontFamily="@font/muli_regular"
+                                android:textColor="@color/black"
+                                android:text=" High Tech ">
+
+                            </TextView>
+
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:id="@+id/contact_block"
+                            android:paddingLeft="@dimen/text_size_15"
+                            android:background="@color/white"
+                            android:layout_marginTop="@dimen/text_size_30"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/telephone"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_12"
+                                android:fontFamily="@font/muli_regular"
+                                android:textColor="@color/hint_color"
+                                android:text="@string/telephone">
+
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/telephone_value"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_14"
+                                android:fontFamily="@font/muli_regular"
+                                android:textColor="@color/black"
+                                android:text="34-54336">
+
+                            </TextView>
+                            <View
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/view_devider"
+                                android:background="@color/hint_color"/>
+
+
+
+                            <TextView
+                                android:id="@+id/e_mail"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_12"
+                                android:fontFamily="@font/muli_regular"
+                                android:textColor="@color/hint_color"
+                                android:text="@string/email">
+
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/e_mail_value"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_14"
+                                android:fontFamily="@font/muli_regular"
+                                android:textColor="@color/black"
+                                android:text=" Tester@mail.com ">
+
+                            </TextView>
+                            <View
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/view_devider"
+                                android:background="@color/hint_color"/>
+
+                            <TextView
+                                android:id="@+id/website"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_12"
+                                android:fontFamily="@font/muli_regular"
+                                android:textColor="@color/hint_color"
+                                android:text="@string/website">
+
+                            </TextView>
+
+                            <TextView
+                                android:layout_marginBottom="@dimen/text_size_15"
+                                android:id="@+id/website_value"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_14"
+                                android:fontFamily="@font/muli_regular"
+                                android:textColor="@color/black"
+                                android:text="www.demo.com">
+
+                            </TextView>
+
+
+
+
+
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:paddingLeft="@dimen/text_size_15"
+                            android:background="@color/white"
+                            android:layout_marginTop="@dimen/text_size_30"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/remark"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_12"
+                                android:fontFamily="@font/muli_regular"
+                                android:textColor="@color/hint_color"
+                                android:text="@string/customer_ref_no">
+
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/remark_value"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:layout_marginBottom="@dimen/text_size_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_14"
+                                android:fontFamily="@font/muli_regular"
+                                android:textColor="@color/black"
+                                android:text="">
+
+                            </TextView>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </ScrollView>
+            </FrameLayout>
+
+            <FrameLayout
+                android:background="@color/white"
+                android:id="@+id/address_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/con_block"
+                    android:paddingLeft="@dimen/text_size_15"
+                    android:background="@color/white"
+                    android:layout_marginTop="@dimen/text_size_30"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <RelativeLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/bill_to"
+                            android:layout_marginTop="@dimen/text_size_15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_12"
+                            android:fontFamily="@font/muli_regular"
+                            android:textColor="@color/hint_color"
+                            android:text="@string/ship_to">
+
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/bill_to_value"
+                            android:layout_marginRight="@dimen/size_120"
+                            android:layout_below="@+id/bill_to"
+                            android:layout_marginTop="@dimen/text_size_15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="5"
+                            android:inputType="textMultiLine"
+                            android:textSize="@dimen/text_size_14"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/muli_regular"
+                            android:text="1618 James St FairPort NY 14450 USA ">
+
+                        </TextView>
+
+                        <ImageView
+                            android:layout_margin="@dimen/text_size_15"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="@dimen/text_size_24"
+                            android:layout_height="@dimen/text_size_24"
+                            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+                        <View
+                            android:layout_below="@+id/bill_to_value"
+                            android:layout_marginTop="@dimen/text_size_15"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/view_devider"
+                            android:background="@color/hint_color"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/ship_to"
+                            android:layout_marginTop="@dimen/text_size_15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_12"
+                            android:textColor="@color/hint_color"
+                            android:text="@string/ship_to"
+                            android:fontFamily="@font/muli_regular">
+
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/ship_to_value"
+                            android:layout_marginRight="@dimen/size_120"
+                            android:layout_below="@+id/ship_to"
+                            android:layout_marginTop="@dimen/text_size_15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="5"
+                            android:fontFamily="@font/muli_regular"
+                            android:inputType="textMultiLine"
+                            android:textSize="@dimen/text_size_14"
+                            android:textColor="@color/black"
+                            android:text="1618 James St FairPort NY 14450 USA ">
+
+                        </TextView>
+
+                        <ImageView
+                            android:layout_margin="@dimen/text_size_15"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="@dimen/text_size_24"
+                            android:layout_height="@dimen/text_size_24"
+                            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+                        <View
+                            android:layout_below="@+id/ship_to_value"
+                            android:layout_marginTop="@dimen/text_size_15"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/view_devider"
+                            android:background="@color/hint_color"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_70">
+
+
+                        <TextView
+                            android:layout_centerVertical="true"
+                            android:gravity="center_vertical"
+                            android:id="@+id/all_address"
+                            android:layout_marginRight="@dimen/size_120"
+                            android:layout_marginTop="@dimen/text_size_15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="5"
+                            android:inputType="textMultiLine"
+                            android:textSize="@dimen/text_size_14"
+                            android:fontFamily="@font/muli_regular"
+                            android:textColor="@color/black"
+                            android:text="1618 James St FairPort NY 14450 USA ">
+
+                        </TextView>
+
+                        <ImageView
+                            android:layout_margin="@dimen/text_size_15"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_width="@dimen/text_size_24"
+                            android:layout_height="@dimen/text_size_24"
+                            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+                        <View
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginTop="@dimen/text_size_15"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/view_devider"
+                            android:background="@color/hint_color"/>
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/transaction_frame"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/transaction_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:background="@color/white"
+                android:id="@+id/dashboard_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

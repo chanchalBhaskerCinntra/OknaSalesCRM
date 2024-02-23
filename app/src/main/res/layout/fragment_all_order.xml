@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.BlankFragment"
+    android:background="@color/white"
+    android:id="@+id/temp">
+    <include
+        android:id="@+id/loader"
+        layout="@layout/loader"/>
+
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:refreshColors="@array/scheme_colors"
+        app:refreshType="smartisan">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    </com.baoyz.widget.PullRefreshLayout>
+    <ImageView
+        android:id="@+id/no_datafound"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:background="@drawable/nodatafound"/>
+</FrameLayout>

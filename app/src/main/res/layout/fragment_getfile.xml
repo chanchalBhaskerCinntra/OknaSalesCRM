@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:clickable="true"
+    android:id="@+id/customer_lead">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/customer_lead_List"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+        <ImageView
+            android:id="@+id/no_datafound"
+            android:layout_width="@dimen/size_120"
+            android:layout_height="@dimen/size_120"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:background="@drawable/nodatafound"/>
+    <include layout="@layout/loader"/>
+
+
+</FrameLayout>

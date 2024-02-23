@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/size_5"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            app:cardCornerRadius="@dimen/size_5"
+            app:cardElevation="@dimen/size_2"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="@color/white"
+            android:layout_height="wrap_content">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="@dimen/text_size_12">
+
+                    <TextView
+                        android:id="@+id/invoice_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Invoice No: 7654"
+                        android:layout_marginBottom="@dimen/size_2"
+                        android:textSize="@dimen/text_size_14"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/muli_regular"/>
+
+                    <TextView
+                        android:id="@+id/due_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Due Amount : ₹ 4517.20"
+                        android:textSize="@dimen/text_size_14"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/muli_regular"/>
+
+                </LinearLayout>
+
+    <TextView
+        android:id="@+id/qt_status"
+        android:background="@drawable/openroundedgreen"
+        android:layout_width="@dimen/size_80"
+        android:layout_height="@dimen/size_30"
+        android:text="Active"
+        android:gravity="center"
+        android:layout_marginRight="@dimen/size_10"
+        android:clickable="true"
+        android:textSize="@dimen/text_size_12"
+        android:textColor="@color/white"
+        android:fontFamily="@font/muli_bold"
+        android:minHeight="@dimen/size_35"
+        android:focusable="false"
+        android:layout_marginTop="@dimen/size_5"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"/>
+
+
+</RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</RelativeLayout>

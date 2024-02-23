@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainframe"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/taxrate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/size_4"
+        android:text="S No."
+        android:textSize="@dimen/text_size_5"
+        android:layout_marginLeft="@dimen/size_2"
+        android:layout_weight="1"
+        android:textColor="@color/black"
+        />
+
+    <View
+        android:layout_width="@dimen/size_1"
+        android:layout_height="match_parent"
+        android:background="@color/black"/>
+
+    <TextView
+        android:id="@+id/taxsum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/size_4"
+        android:text="Item Code"
+        android:textSize="@dimen/text_size_5"
+        android:layout_marginLeft="@dimen/size_2"
+        android:textColor="@color/black"
+        android:layout_weight="1"
+        />
+    <View
+        android:layout_width="@dimen/size_1"
+        android:layout_height="match_parent"
+        android:background="@color/black"/>
+    <TextView
+        android:id="@+id/cgst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/size_4"
+        android:gravity="center"
+        android:text="Descriptipon"
+        android:textSize="@dimen/text_size_5"
+        android:layout_marginLeft="@dimen/size_2"
+        android:textColor="@color/black"
+        android:layout_weight="1"
+        />
+    <View
+        android:layout_width="@dimen/size_1"
+        android:layout_height="match_parent"
+        android:background="@color/black"/>
+    <TextView
+        android:id="@+id/sgst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/size_4"
+        android:gravity="center"
+        android:text="HSN"
+        android:textSize="@dimen/text_size_5"
+        android:layout_marginLeft="@dimen/size_2"
+        android:textColor="@color/black"
+        android:layout_weight="1"
+        />
+    <View
+        android:layout_width="@dimen/size_1"
+        android:layout_height="match_parent"
+        android:background="@color/black"/>
+    <TextView
+        android:id="@+id/igst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Qty"
+        android:paddingBottom="@dimen/size_4"
+        android:layout_marginLeft="@dimen/size_2"
+        android:textSize="@dimen/text_size_5"
+        android:textColor="@color/black"
+        android:layout_weight="1"
+        />
+
+    <View
+        android:layout_width="@dimen/size_1"
+        android:layout_height="match_parent"
+        android:background="@color/black"/>
+    <TextView
+        android:id="@+id/tax"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Qty"
+        android:paddingBottom="@dimen/size_4"
+        android:layout_marginLeft="@dimen/size_2"
+        android:textSize="@dimen/text_size_5"
+        android:textColor="@color/black"
+        android:layout_weight="1"
+        />
+
+
+
+</LinearLayout>

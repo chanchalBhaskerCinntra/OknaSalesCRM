@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/dialog_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shipped With"
+        android:fontFamily="@font/muli_bold"
+        android:textSize="@dimen/text_size_16"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/size_15"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:background="@drawable/background_yellow_rounded"
+        android:layout_width="@dimen/size_100"
+        android:layout_height="@dimen/size_30"
+        android:text="Go javas"
+        android:gravity="center"
+        android:clickable="true"
+        android:layout_marginRight="@dimen/size_10"
+        android:layout_marginTop="@dimen/size_10"
+        android:textSize="@dimen/text_size_12"
+        android:textColor="@color/white"
+        android:fontFamily="@font/muli_semibold"
+        android:focusable="false" />
+    <TextView
+
+        android:background="@drawable/background_grey_rounded"
+        android:layout_width="@dimen/size_120"
+        android:layout_height="@dimen/size_30"
+        android:text="ECOM Express"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/size_10"
+        android:layout_marginRight="@dimen/size_10"
+        android:clickable="true"
+        android:textSize="@dimen/text_size_12"
+        android:textColor="@color/white"
+        android:fontFamily="@font/muli_semibold"
+        android:focusable="false" />
+    <TextView
+
+        android:background="@drawable/background_grey_rounded"
+        android:layout_width="@dimen/size_100"
+        android:layout_height="@dimen/size_30"
+        android:text="Blue Dart"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/size_10"
+        android:clickable="true"
+        android:textSize="@dimen/text_size_12"
+        android:textColor="@color/white"
+        android:fontFamily="@font/muli_semibold"
+        android:focusable="false" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:background="@drawable/background_grey_rounded"
+            android:layout_width="@dimen/size_80"
+            android:layout_height="@dimen/size_30"
+            android:text="DHL"
+            android:gravity="center"
+            android:clickable="true"
+            android:layout_marginRight="@dimen/size_10"
+            android:layout_marginTop="@dimen/size_10"
+            android:textSize="@dimen/text_size_12"
+            android:textColor="@color/white"
+            android:fontFamily="@font/muli_semibold"
+            android:focusable="false" />
+        <TextView
+
+            android:background="@drawable/background_grey_rounded"
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_30"
+            android:text="India Post"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/size_10"
+            android:layout_marginRight="@dimen/size_10"
+            android:clickable="true"
+            android:textSize="@dimen/text_size_12"
+            android:textColor="@color/white"
+            android:fontFamily="@font/muli_semibold"
+            android:focusable="false" />
+        <TextView
+            android:background="@drawable/background_grey_rounded"
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_30"
+            android:text="Delhivery"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/size_10"
+            android:clickable="true"
+            android:textSize="@dimen/text_size_12"
+            android:textColor="@color/white"
+            android:fontFamily="@font/muli_semibold"
+            android:focusable="false" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/mode1"
+            android:background="@drawable/background_grey_rounded"
+            android:layout_width="@dimen/size_80"
+            android:layout_height="@dimen/size_30"
+            android:text="FedEx"
+            android:gravity="center"
+            android:clickable="true"
+            android:layout_marginRight="@dimen/size_10"
+            android:layout_marginTop="@dimen/size_10"
+            android:textSize="@dimen/text_size_12"
+            android:textColor="@color/white"
+            android:fontFamily="@font/muli_semibold"
+            android:focusable="false" />
+        <TextView
+            android:id="@+id/mode2"
+            android:background="@drawable/background_grey_rounded"
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_30"
+            android:text="Shiprocket"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/size_10"
+            android:layout_marginRight="@dimen/size_10"
+            android:clickable="true"
+            android:textSize="@dimen/text_size_12"
+            android:textColor="@color/white"
+            android:fontFamily="@font/muli_semibold"
+            android:focusable="false" />
+        <TextView
+            android:id="@+id/mode3"
+            android:background="@drawable/background_grey_rounded"
+            android:layout_width="@dimen/size_120"
+            android:layout_height="@dimen/size_30"
+            android:text="First Flight Courier"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/size_10"
+            android:clickable="true"
+            android:layout_marginLeft="@dimen/size_10"
+            android:textSize="@dimen/text_size_12"
+            android:textColor="@color/white"
+            android:fontFamily="@font/muli_semibold"
+            android:focusable="false" />
+    </LinearLayout>
+    <TextView
+        android:background="@drawable/background_grey_rounded"
+        android:layout_width="@dimen/size_80"
+        android:layout_height="@dimen/size_30"
+        android:text="DTDC"
+        android:gravity="center"
+        android:clickable="true"
+        android:layout_marginTop="@dimen/size_10"
+        android:textSize="@dimen/text_size_12"
+        android:textColor="@color/white"
+        android:fontFamily="@font/muli_semibold"
+        android:focusable="false" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_marginTop="@dimen/text_size_20"
+        android:layout_marginBottom="6sp"
+        android:background="@drawable/dialog_border"
+        android:text="@string/done"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        app:backgroundTint="@color/colorPrimary"
+        android:textSize="15sp" />
+
+
+</LinearLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainContainer"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/text_56"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_bottom"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/size_15"
+        android:paddingRight="@dimen/size_15">
+
+        <RelativeLayout
+            android:id="@+id/back_press"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="@dimen/text_size_32"
+                android:layout_height="@dimen/text_size_32"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_back_white_24" />
+
+            <TextView
+                android:id="@+id/head_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/size_15"
+                android:layout_toRightOf="@id/back"
+                android:fontFamily="@font/muli_semibold"
+                android:gravity="center_vertical"
+                android:text="@string/add_opportunity"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_18" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/add"
+            android:layout_width="@dimen/size_30"
+            android:layout_height="@dimen/size_30"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/edit" />
+
+        <ImageView
+            android:id="@+id/ok"
+            android:layout_width="@dimen/size_30"
+            android:layout_height="@dimen/size_30"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_baseline_check_24"
+            android:visibility="gone" />
+    </RelativeLayout>
+</LinearLayout>

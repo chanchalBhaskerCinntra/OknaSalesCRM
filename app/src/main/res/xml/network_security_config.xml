@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+
+
+
+    <base-config cleartextTrafficPermitted="true">
+
+      <!--  <domain includeSubdomains="true">103.118.16.194:50000</domain>-->
+      <!--  <domain includeSubdomains="true">192.168.29.240:50001</domain>-->
+
+        <!--<trust-anchors>
+            <certificates src="@raw/hana_cert"/>
+            <certificates src="system"/>
+        </trust-anchors>-->
+
+    </base-config>
+
+
+
+    <!--<domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">103.118.16.194:50000</domain>
+    </domain-config>-->
+</network-security-config>

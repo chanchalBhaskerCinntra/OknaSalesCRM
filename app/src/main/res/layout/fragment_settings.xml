@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.Dashboard"
+    android:id="@+id/frame">
+   <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+    android:layout_weight="1.50"
+    android:elevation="@dimen/text_size_10"
+    android:background="@drawable/top_back"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+          <ImageView
+              android:id="@+id/profile_pic"
+              android:layout_centerVertical="true"
+              android:layout_centerHorizontal="true"
+              android:layout_width="@dimen/size_90"
+              android:layout_height="@dimen/size_90"
+              android:src="@drawable/ic_pro_place"/>
+          <TextView
+              android:id="@+id/user_name"
+              android:layout_below="@id/profile_pic"
+              android:layout_marginTop="@dimen/text_size_5"
+              android:layout_centerHorizontal="true"
+              android:textSize="@dimen/text_size_16"
+              android:fontFamily="@font/muli_bold"
+              android:textColor="@color/white"
+              android:text="Cinntra Tester"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+          <TextView
+              android:id="@+id/user_mail"
+              android:layout_below="@id/user_name"
+              android:layout_centerHorizontal="true"
+              android:textSize="@dimen/text_size_14"
+              android:fontFamily="@font/muli_regular"
+              android:textStyle="normal"
+              android:textColor="@color/white"
+              android:text="Demo@mail.com"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content">
+
+          </TextView>
+       </RelativeLayout>
+
+       </LinearLayout>
+       <LinearLayout
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+        <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+              <TextView
+                  android:id="@+id/appoinments"
+                  android:layout_marginTop="@dimen/text_size_5"
+                  android:layout_centerHorizontal="true"
+                  android:textSize="@dimen/text_size_16"
+                  android:fontFamily="@font/muli_bold"
+                  android:textColor="@color/black"
+                  android:gravity="center"
+                  android:text="@string/appointment"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"/>
+
+              <LinearLayout
+              android:layout_marginTop="@dimen/text_size_5"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/size_70">
+              <RelativeLayout
+                  android:layout_marginLeft="@dimen/text_40"
+              android:layout_weight="1"
+              android:gravity="center_vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+                  <RelativeLayout
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content">
+
+                      <TextView
+                          android:id="@+id/no_of_posts"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_centerHorizontal="true"
+                          android:fontFamily="@font/muli_regular"
+                          android:gravity="center"
+                          android:text="5"
+                          android:textColor="@color/black"
+                          android:textSize="@dimen/text_size_24"
+                          android:textStyle="bold" />
+
+                  <TextView
+                      android:id="@+id/past"
+                      android:layout_below="@id/no_of_posts"
+                      android:layout_centerHorizontal="true"
+                      android:textSize="@dimen/text_size_18"
+                      android:fontFamily="@font/muli_regular"
+                      android:textStyle="bold"
+                      android:textColor="@color/hint_color"
+                      android:gravity="center"
+                      android:text="@string/past"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"/>
+                  </RelativeLayout>
+              </RelativeLayout>
+               <RelativeLayout
+                android:gravity="center"
+
+                android:layout_width="2dp"
+                android:layout_height="match_parent">
+                <View
+                android:background="@color/hint_color"
+                android:layout_width="@dimen/text_size_1"
+                android:layout_height="@dimen/text_40">
+                </View>
+              </RelativeLayout>
+                  <RelativeLayout
+                      android:layout_weight="1"
+                      android:gravity="center_vertical"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent">
+                     <RelativeLayout
+                         android:layout_marginLeft="@dimen/text_40"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content">
+                      <TextView
+                          android:id="@+id/no_of_upcomings"
+                          android:layout_centerHorizontal="true"
+                          android:textSize="@dimen/text_size_24"
+                          android:fontFamily="@font/muli_bold"
+                          android:textColor="@color/black"
+                          android:gravity="center"
+                          android:text="2"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"/>
+
+                      <TextView
+                          android:id="@+id/upcomings"
+                          android:layout_below="@id/no_of_upcomings"
+                          android:layout_centerHorizontal="true"
+                          android:textSize="@dimen/text_size_18"
+                          android:fontFamily="@font/muli_bold"
+
+                          android:textColor="@color/hint_color"
+                          android:gravity="center_vertical"
+                          android:text="@string/upcoming"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"/>
+                     </RelativeLayout>
+                  </RelativeLayout>
+
+              </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/text_size_5"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/text_40"
+                android:layout_marginRight="@dimen/text_size_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+             <LinearLayout
+                 android:layout_weight="1"
+                 android:orientation="vertical"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
+                 <TextView
+                     android:id="@+id/phone_"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:textSize="@dimen/text_size_14"
+                     android:textColor="@color/hint_color"
+                     android:text="@string/phone_number"
+                     android:fontFamily="@font/muli_regular"
+                     android:layout_gravity="start">
+
+                 </TextView>
+
+                 <TextView
+                     android:id="@+id/phone_number"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:textSize="@dimen/text_size_16"
+                     android:textColor="@color/black"
+                     android:text="6464573573"
+                     android:fontFamily="@font/muli_regular"
+                     android:layout_gravity="start">
+
+                 </TextView>
+                 <View
+                     android:layout_gravity="start"
+                     android:background="@color/hint_color"
+                     android:layout_marginTop="@dimen/text_size_10"
+                     android:layout_width="@dimen/size_120"
+                     android:layout_height="@dimen/view_devider"/>
+
+                 <TextView
+                     android:id="@+id/ct"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:textSize="@dimen/text_size_14"
+                     android:textColor="@color/hint_color"
+                     android:text="@string/city"
+                     android:fontFamily="@font/muli_regular"
+                     android:layout_gravity="start">
+
+                 </TextView>
+
+                 <TextView
+                     android:id="@+id/city"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:textSize="@dimen/text_size_16"
+                     android:textColor="@color/black"
+                     android:text="Coimbatore"
+                     android:fontFamily="@font/muli_regular"
+                     android:layout_gravity="start">
+
+                 </TextView>
+                 <View
+                     android:layout_gravity="start"
+                     android:background="@color/hint_color"
+                     android:layout_marginTop="@dimen/text_size_10"
+                     android:layout_width="@dimen/size_120"
+                     android:layout_height="@dimen/view_devider"/>
+
+                 <TextView
+                     android:id="@+id/reg"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:textSize="@dimen/text_size_14"
+                     android:textColor="@color/hint_color"
+                     android:text="@string/registration_date"
+                     android:fontFamily="@font/muli_regular"
+                     android:layout_gravity="start">
+
+                 </TextView>
+
+                 <TextView
+                     android:id="@+id/reg_date"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:textSize="@dimen/text_size_16"
+                     android:textColor="@color/black"
+                     android:text="14-12-2020"
+                     android:fontFamily="@font/muli_regular"
+                     android:layout_gravity="start">
+
+                 </TextView>
+
+             </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/text_size_30"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/addr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:textColor="@color/hint_color"
+                        android:text="@string/address"
+                        android:fontFamily="@font/muli_regular"
+                        android:layout_gravity="start">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_16"
+                        android:textColor="@color/black"
+                        android:text="Rz-75, Uttam Nagar"
+                        android:maxLines="1"
+                        android:fontFamily="@font/muli_regular"
+                        android:layout_gravity="start">
+
+                    </TextView>
+                    <View
+                        android:layout_gravity="start"
+                        android:background="@color/hint_color"
+                        android:layout_marginTop="@dimen/text_size_10"
+                        android:layout_width="@dimen/size_120"
+                        android:layout_height="@dimen/view_devider"/>
+
+                    <TextView
+                        android:id="@+id/zip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:textColor="@color/hint_color"
+                        android:text="@string/zip_code"
+                        android:fontFamily="@font/muli_regular"
+                        android:layout_gravity="start">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/zip_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_16"
+                        android:textColor="@color/black"
+                        android:text="110023"
+                        android:maxLines="1"
+                        android:fontFamily="@font/muli_regular"
+                        android:layout_gravity="start">
+
+                    </TextView>
+                    <View
+                        android:layout_gravity="start"
+                        android:background="@color/hint_color"
+                        android:layout_marginTop="@dimen/text_size_10"
+                        android:layout_width="@dimen/size_120"
+                        android:layout_height="@dimen/view_devider"/>
+
+                    <TextView
+                        android:id="@+id/status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:textColor="@color/hint_color"
+                        android:text="@string/member_status"
+                        android:fontFamily="@font/muli_regular"
+                        android:layout_gravity="start">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/meb_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_16"
+                        android:textColor="@color/black"
+                        android:text="Active Member"
+                        android:maxLines="1"
+                        android:fontFamily="@font/muli_regular"
+                        android:layout_gravity="start">
+
+                    </TextView>
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+             </LinearLayout>
+          </ScrollView>
+
+       </LinearLayout>
+   </LinearLayout>
+
+</FrameLayout>

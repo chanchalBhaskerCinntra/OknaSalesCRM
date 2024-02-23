@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/size_8"
+        app:cardUseCompatPadding="true"
+        android:layout_margin="@dimen/size_5"
+        android:elevation="@dimen/size_8"
+        app:cardMaxElevation="@dimen/size_8"
+        app:cardElevation="@dimen/size_8"
+        android:background="@color/white"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_margin="@dimen/size_5"
+            android:padding="@dimen/size_5"
+            android:layout_height="wrap_content">
+
+
+
+            <TextView
+                android:id="@+id/name_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mr. Pankaj Sharma"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16"
+                android:fontFamily="@font/muli_bold"
+                android:layout_marginLeft="@dimen/size_10"/>
+
+            <TextView
+                android:id="@+id/address_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Developer"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"
+                android:layout_marginLeft="@dimen/size_10"
+                android:layout_below="@id/name_value"
+                android:fontFamily="@font/muli_regular"
+                />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/size_10"
+                android:id="@+id/edit"
+                android:background="@drawable/edit"
+                android:backgroundTint="@color/black"/>
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

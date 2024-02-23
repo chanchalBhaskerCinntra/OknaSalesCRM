@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="excpected_delivery">"Expected Delivery : "</string>
+    <string name="ship_to_">Ship to :</string>
+</resources>

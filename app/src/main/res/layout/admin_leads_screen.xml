@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Leads"
+            android:id="@+id/toolbar"
+            app:titleTextColor="#4A79E4"
+            android:background="#FFFFFF">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               >
+                <ImageView
+                    android:id="@+id/back_press"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="@color/black"
+                    android:background="@drawable/ic_baseline_keyboard_arrow_left_24"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Leads"
+                   android:layout_centerHorizontal="true"
+                    android:textSize="@dimen/text_size_18"
+                    android:textStyle="bold"
+                    android:textColor="#4A79E4"
+                    android:fontFamily="@font/muli_bold" />
+
+                <TextView
+
+                    android:id="@+id/import_file"
+                    android:layout_width="wrap_content"
+                    android:text="Import"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_16"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/size_20"
+                    />
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/size_15"
+        android:background="@drawable/rectangular_rounded_corner">
+
+        <TextView
+            android:id="@+id/assigned"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Assigned"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@drawable/filled_rounded_border_blue"
+            android:textSize="@dimen/text_size_16"
+            android:fontFamily="@font/muli_semibold"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginRight="@dimen/size_5"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/unassigned"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="Unassigned"
+            android:layout_marginLeft="@dimen/size_5"
+            android:gravity="center"
+            android:focusable="true"
+            android:textSize="@dimen/text_size_16"
+            android:fontFamily="@font/muli_semibold"
+            android:textColor="@color/black"
+            android:clickable="true"/>
+
+    </LinearLayout>
+
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView"/>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:id="@+id/add_lead"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right|end"
+            android:layout_marginBottom="@dimen/size_30"
+            android:layout_marginRight="@dimen/size_20"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_group__2_"/>
+    </FrameLayout>
+
+
+</LinearLayout>

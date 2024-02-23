@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dash"
+            android:icon="@drawable/admin_ic_group__2_"
+            android:title="Dashboard" />
+        <item
+            android:id="@+id/nav_users"
+            android:icon="@drawable/admin_ic_group_326"
+            android:title="Users" />
+    </group>
+</menu>

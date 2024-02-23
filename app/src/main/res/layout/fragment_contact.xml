@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main_edit_qt_frame">
+    <LinearLayout
+        android:background="@color/hint_color"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/header_only_title"/>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+         android:visibility="visible"
+         android:id="@+id/con_block"
+         android:paddingLeft="@dimen/text_size_15"
+         android:paddingBottom="@dimen/text_size_15"
+         android:background="@color/white"
+         android:orientation="vertical"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+         <TextView
+         android:id="@+id/contact_id"
+         android:fontFamily="@font/muli_regular"
+         android:layout_marginTop="@dimen/text_size_15"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="@dimen/text_size_12"
+         android:textColor="@color/hint_color"
+         android:text="@string/contact_id">
+       </TextView>
+
+       <TextView
+         android:id="@+id/series_value"
+         android:layout_marginTop="@dimen/text_size_15"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="@dimen/text_size_14"
+         android:textColor="@color/black"
+           android:fontFamily="@font/muli_regular"
+         android:text=" Anthony ">
+
+       </TextView>
+       <View
+        android:layout_marginTop="@dimen/text_size_15"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_devider"
+        android:background="@color/hint_color"/>
+       <TextView
+        android:id="@+id/first_name"
+        android:layout_marginTop="@dimen/text_size_15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_12"
+           android:fontFamily="@font/muli_regular"
+        android:textColor="@color/hint_color"
+        android:text="@string/first_name">
+       </TextView>
+        <TextView
+        android:id="@+id/first_name_value"
+        android:layout_marginTop="@dimen/text_size_15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_14"
+        android:fontFamily="@font/muli_regular"
+        android:textColor="@color/black"
+        android:text="Mac ">
+       </TextView>
+        <View
+        android:layout_marginTop="@dimen/text_size_15"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_devider"
+        android:background="@color/hint_color"/>
+
+        <TextView
+         android:id="@+id/last_name"
+            android:fontFamily="@font/muli_regular"
+         android:layout_marginTop="@dimen/text_size_15"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="@dimen/text_size_12"
+         android:textColor="@color/hint_color"
+         android:text="@string/last_name">
+        </TextView>
+         <TextView
+         android:id="@+id/last_name_value"
+         android:layout_marginTop="@dimen/text_size_15"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="@dimen/text_size_14"
+         android:fontFamily="@font/muli_regular"
+         android:textColor="@color/black"
+         android:text=" Texture ">
+        </TextView>
+          <View
+          android:layout_marginTop="@dimen/text_size_15"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/view_devider"
+          android:background="@color/hint_color"/>
+         <TextView
+          android:id="@+id/title"
+          android:fontFamily="@font/muli_regular"
+          android:layout_marginTop="@dimen/text_size_15"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textSize="@dimen/text_size_12"
+          android:textColor="@color/hint_color"
+          android:text="@string/title">
+         </TextView>
+          <TextView
+           android:id="@+id/title_value"
+           android:layout_marginTop="@dimen/text_size_15"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/text_size_14"
+           android:fontFamily="@font/muli_regular"
+           android:textColor="@color/black"
+           android:text=" Mr">
+
+            </TextView>
+
+            <View
+            android:layout_marginTop="@dimen/text_size_15"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_devider"
+            android:background="@color/hint_color"/>
+            <TextView
+            android:id="@+id/position"
+            android:fontFamily="@font/muli_regular"
+            android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:textColor="@color/hint_color"
+                android:text="@string/position">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/position_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="5">
+
+            </TextView>
+
+           <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+            <TextView
+                android:id="@+id/mobile_no"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/mobile_no">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/mobile_no_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text=" 63566677 ">
+
+            </TextView>
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+
+
+
+            <TextView
+                android:id="@+id/telephone"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/telephone">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/telephone_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="3535556">
+
+            </TextView>
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+
+            <TextView
+                android:id="@+id/fax"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/fax">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/fax_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text=" Jim Boswick">
+
+            </TextView>
+
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+
+
+
+            <TextView
+                android:id="@+id/e_mail"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/email">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/e_mail_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="">
+
+            </TextView>
+
+
+    </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+    </LinearLayout>
+
+</FrameLayout>

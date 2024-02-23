@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/editQuotation"
+        android:title="Edit Quotation"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/createorder"
+        android:title="@string/createorder"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/outletLayout1"
+        android:title="PDF"
+        android:icon="@drawable/document"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/duplicateQuotation"
+        android:title="Duplicate Quotation"
+        android:visible="false"
+        android:icon="@drawable/ic_baseline_add_24"
+        app:showAsAction="ifRoom" />
+
+
+    <!-- <item
+         android:id="@+id/cancelquo"
+         android:title="@string/cancel_Quotation"/>-->
+
+</menu>

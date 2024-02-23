@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.BlankFragment"
+    android:background="@color/white"
+    android:id="@+id/temp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/quotes_header"
+            layout="@layout/quotes_header" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            app:tabMode="fixed"
+            android:visibility="gone"
+            android:background="@color/dark_gray"
+            app:tabTextAppearance="@style/MyCustomTextAppearance"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabIndicatorHeight="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <include
+        android:id="@+id/loader"
+        layout="@layout/loader"/>
+    <ImageView
+        android:id="@+id/no_datafound"
+        android:layout_width="@dimen/size_120"
+        android:layout_height="@dimen/size_120"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:background="@drawable/nodatafound"/>
+</FrameLayout>

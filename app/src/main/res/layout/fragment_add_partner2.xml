@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/header_bottom_rounded"
+                layout="@layout/header_bottom_rounded" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/header"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_45"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/tab_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:focusable="false"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/general"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/muli_semibold"
+                        android:text="@string/general"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/tab_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/contact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/muli_semibold"
+                        android:text="@string/contact"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:id="@+id/general_frame"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:visibility="visible">
+
+                        <include
+                            android:id="@+id/fragment_addpartnergeneral"
+                            layout="@layout/fragment_addpartnergeneral" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/contact_frame"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:visibility="gone">
+
+                        <include
+                            android:id="@+id/fragment_addpartnercontact"
+                            layout="@layout/fragment_addpartnercontact" />
+
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <include
+        android:id="@+id/loader"
+        layout="@layout/loader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="visible" />
+
+
+</RelativeLayout>

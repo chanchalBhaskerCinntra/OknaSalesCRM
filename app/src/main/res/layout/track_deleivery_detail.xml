@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:id="@+id/main_edit_qt_frame">
+
+    <LinearLayout
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include
+                android:id="@+id/header_bottomround_edit"
+                layout="@layout/header_bottomround_edit"/>
+        </LinearLayout>
+
+    <ScrollView
+        android:layout_below="@id/header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/size_15"
+            android:layout_marginRight="@dimen/size_15"
+            android:layout_marginLeft="@dimen/size_15">
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="See All Updates"
+                android:layout_gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:fontFamily="@font/muli_regular"
+                android:clickable="true"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_10"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Shipping Details"
+                    android:fontFamily="@font/muli_semibold"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16"
+                    android:gravity="left"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="View Order Details"
+                    android:fontFamily="@font/muli_semibold"
+                    android:textColor="@color/colorPrimary"
+                    android:clickable="true"
+                    android:textSize="@dimen/text_size_16"
+                    android:gravity="right"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:clickable="true"
+                android:layout_marginTop="@dimen/size_15"
+                android:layout_marginBottom="@dimen/size_15"
+                android:focusable="false"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="@dimen/size_5"
+                app:cardElevation="@dimen/size_2"
+                app:cardBackgroundColor="@color/white"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/size_10"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/item_subtotal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/shipping_address"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/muli_semibold"
+                            android:textSize="@dimen/text_size_16"/>
+
+                    <ImageView
+                        android:id="@+id/edit_ship"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_blue"
+                        android:layout_alignParentRight="true"/>
+                    </RelativeLayout>
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pankaj Sharma"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/muli_regular"
+                        android:layout_marginTop="@dimen/size_4"
+                        android:textSize="@dimen/text_size_14"/>
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="H. No. - 123"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/muli_regular"
+                        android:layout_marginTop="@dimen/size_4"
+                        android:textSize="@dimen/text_size_14"/>
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Noida-62, Uttar Pradesh 110091"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/muli_regular"
+                        android:layout_marginTop="@dimen/size_4"
+                        android:textSize="@dimen/text_size_14"/>
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/companyNameCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:clickable="true"
+                android:layout_marginBottom="@dimen/size_15"
+                android:focusable="false"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="@dimen/size_5"
+                app:cardElevation="@dimen/size_2"
+                app:cardBackgroundColor="@color/white"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/size_10"
+                    android:orientation="vertical">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+
+                        <TextView
+                            android:id="@+id/tracking_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tracking ID : "
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/muli_semibold"
+                            android:textSize="@dimen/text_size_16"/>
+
+                        <TextView
+                            android:id="@+id/tracking_id_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1234565432"
+                            android:layout_toRightOf="@id/tracking_id"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/muli_regular"
+                            android:textSize="@dimen/text_size_16"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/size_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/shipped_with"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Shipped With : "
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/muli_semibold"
+                            android:textSize="@dimen/text_size_16"/>
+
+                        <TextView
+                            android:id="@+id/shipping_with_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DTDC"
+                            android:layout_toRightOf="@id/shipped_with"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/muli_regular"
+                            android:textSize="@dimen/text_size_16"/>
+
+                        <ImageView
+                            android:id="@+id/ship_mode_edit"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_blue"
+                            android:layout_alignParentRight="true"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/size_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/shipping_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Shipping Type : "
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/muli_semibold"
+                            android:textSize="@dimen/text_size_16"/>
+
+                        <TextView
+                            android:id="@+id/shipping_type_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Express"
+                            android:layout_toRightOf="@id/shipping_type"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/muli_regular"
+                            android:textSize="@dimen/text_size_16"/>
+
+                        <ImageView
+                            android:id="@+id/edit_ship_type"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_blue"
+                            android:layout_alignParentRight="true"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:id="@+id/checkboxManager"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_45"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:buttonTint="@color/colorPrimary"
+                    android:id="@+id/checkbox1"
+                    android:layout_centerVertical="true"
+                    android:layout_width="@dimen/size_30"
+                    android:layout_height="@dimen/size_30" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/size_5"
+                    android:layout_toRightOf="@id/checkbox1"
+                    android:fontFamily="@font/muli_regular"
+                    android:text="Want to make changes to order?"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_14" />
+            </RelativeLayout>
+
+        </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_rounded_corner"
+                android:text="Cancel Order"
+                app:backgroundTint="@color/colorPrimary"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:clickable="true"
+                android:layout_marginBottom="@dimen/size_15"
+                android:focusable="true"
+                android:fontFamily="@font/muli_regular"
+                android:id="@+id/create_button"
+                android:textSize="@dimen/text_size_18"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/size_50"
+                />
+        </LinearLayout>
+    </ScrollView>
+    </LinearLayout>
+</FrameLayout>

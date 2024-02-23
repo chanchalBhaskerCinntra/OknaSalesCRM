@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".fragments.Dashboard">
+
+
+        <LinearLayout
+            android:paddingBottom="@dimen/text_size_10"
+            android:paddingTop="@dimen/text_size_10"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:visibility="gone"
+               android:layout_width="@dimen/text_50"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_marginLeft="@dimen/text_size_5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="@dimen/text_45"
+                    android:layout_height="@dimen/text_45"
+                    android:src="@drawable/ic_baseline_home_24"/>
+            </LinearLayout>
+
+       <LinearLayout
+           android:layout_marginTop="@dimen/text_size_10"
+            android:layout_marginLeft="@dimen/text_size_5"
+           android:layout_weight="1"
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+               <TextView
+                   android:id="@+id/item_name"
+                   android:visibility="visible"
+                   android:layout_centerHorizontal="true"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="@dimen/text_size_16"
+                   android:textColor="@color/black"
+                   android:fontFamily="@font/muli_bold"
+                   android:text="@string/product_name"/>
+           <TextView
+               android:id="@+id/item_code"
+               android:layout_marginTop="@dimen/text_size_2"
+               android:visibility="visible"
+               android:layout_centerHorizontal="true"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="@dimen/text_size_14"
+               android:textColor="@color/hint_color"
+               android:fontFamily="@font/muli_regular"
+               android:text="@string/product_name"/>
+
+
+       </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/text_size_10"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="right"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/unit_price"
+                    android:visibility="visible"
+                    android:gravity="right"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_14"
+                    android:textColor="@color/hint_color"
+                    android:fontFamily="@font/muli_semibold"
+                    android:text="@string/product_name"/>
+                <TextView
+                    android:layout_marginTop="@dimen/text_size_2"
+                    android:id="@+id/total_price"
+                    android:visibility="visible"
+                    android:gravity="right"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_14"
+                    android:textColor="@color/hint_color"
+                    android:fontFamily="@font/muli_semibold"
+                    android:text="@string/product_name"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="@dimen/text_size_28"
+                android:layout_height="match_parent">
+                <ImageView
+
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="@dimen/text_45"
+                    android:layout_height="@dimen/text_45"
+                    android:src="@drawable/ic_arrow_left_24dp"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    <View
+        android:layout_marginLeft="@dimen/text_size_15"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_devider"
+        android:background="@color/hint_color"/>
+
+
+
+
+</LinearLayout>

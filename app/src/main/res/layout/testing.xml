@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main_edit_qt_frame">
+    <LinearLayout
+        android:background="@color/hint_color"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/header_only_title"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:visibility="visible"
+                    android:id="@+id/con_block"
+                    android:paddingLeft="@dimen/text_size_15"
+                    android:paddingBottom="@dimen/text_size_15"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/contact_id"
+                        android:fontFamily="@font/muli_regular"
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_12"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/series">
+                    </TextView>
+
+                    <EditText
+                        android:textColorHint="@color/hint_color"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:background="@android:color/transparent"
+                        android:id="@+id/series_value"
+                        android:layout_marginTop="@dimen/text_size_5"
+                        android:padding="@dimen/text_size_5"
+                        android:layout_width="match_parent"         android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/muli_regular"
+                        android:hint="@string/series">
+
+                    </EditText>
+                    <View
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_devider"
+                        android:background="@color/hint_color"/>
+                    <LinearLayout
+                        android:id="@+id/businessPartners"
+                        android:gravity="right"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_marginLeft="@dimen/text_50"
+                            android:layout_gravity="left"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+
+                            <TextView
+                                android:id="@+id/bussiness_partner"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:fontFamily="@font/muli_regular"
+                                android:text="@string/bussiness_partner"
+                                android:textColor="@color/text_blue"
+                                android:textSize="@dimen/text_size_12">
+
+                            </TextView>
+                            <EditText
+                                android:textColorHint="@color/hint_color"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:background="@android:color/transparent"
+                                android:id="@+id/bussiness_partner_value"
+                                android:layout_marginTop="@dimen/text_size_5"
+                                android:padding="@dimen/text_size_5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_14"
+                                android:fontFamily="@font/muli_regular"
+                                android:textColor="@color/black"
+                                android:hint="@string/bussiness_partner">
+                            </EditText>
+                        </LinearLayout>
+                        <LinearLayout
+
+                            android:gravity="center"
+                            android:layout_gravity="right"
+                            android:layout_width="@dimen/text_50"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_gravity="right|center_vertical"
+                                android:layout_width="@dimen/text_size_24"
+                                android:layout_height="@dimen/text_size_24"
+                                android:src="@drawable/ic_arrow_left_24dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <View
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_devider"
+                        android:background="@color/hint_color"/>
+
+                    <TextView
+                        android:id="@+id/currency_name"
+                        android:fontFamily="@font/muli_regular"
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_12"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/currency">
+                    </TextView>
+                    <EditText
+                        android:textColorHint="@color/hint_color"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:background="@android:color/transparent"
+                        android:id="@+id/currency_value"
+                        android:layout_marginTop="@dimen/text_size_5"
+                        android:padding="@dimen/text_size_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/black"
+                        android:hint="INR">
+                    </EditText>
+
+
+                    <View
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_devider"
+                        android:background="@color/hint_color"/>
+
+                    <LinearLayout
+                        android:id="@+id/itemsView"
+                        android:gravity="right"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_marginLeft="@dimen/text_50"
+                            android:layout_gravity="left"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+
+                            <TextView
+                                android:id="@+id/item_txt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/text_size_15"
+                                android:fontFamily="@font/muli_regular"
+                                android:text="@string/items"
+                                android:textColor="@color/text_blue"
+                                android:textSize="@dimen/text_size_12">
+
+                            </TextView>
+                            <TextView
+                                android:textColorHint="@color/hint_color"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:background="@android:color/transparent"
+                                android:id="@+id/item_Value"
+                                android:layout_marginTop="@dimen/text_size_5"
+                                android:padding="@dimen/text_size_5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_14"
+                                android:fontFamily="@font/muli_regular"
+                                android:textColor="@color/black"
+                                android:text="0">
+                            </TextView>
+                        </LinearLayout>
+                        <LinearLayout
+
+                            android:gravity="center"
+                            android:layout_gravity="right"
+                            android:layout_width="@dimen/text_50"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_gravity="right|center_vertical"
+                                android:layout_width="@dimen/text_size_24"
+                                android:layout_height="@dimen/text_size_24"
+                                android:src="@drawable/ic_arrow_left_24dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <View
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_devider"
+                        android:background="@color/hint_color"/>
+                    <TextView
+                        android:id="@+id/sales_employee"
+                        android:fontFamily="@font/muli_regular"
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:padding="@dimen/text_size_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_12"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/sales_employee">
+                    </TextView>
+                    <EditText
+                        android:textColorHint="@color/hint_color"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:background="@android:color/transparent"
+                        android:id="@+id/sales_employee_value"
+                        android:layout_marginTop="@dimen/text_size_5"
+                        android:padding="@dimen/text_size_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/black"
+                        android:text="@string/sales_employee">
+
+                    </EditText>
+
+                    <View
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_devider"
+                        android:background="@color/hint_color"/>
+                    <TextView
+                        android:id="@+id/posting_date"
+                        android:fontFamily="@font/muli_regular"
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_12"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/posting_date">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/posting_value"
+                        android:layout_marginTop="@dimen/text_size_5"
+                        android:padding="@dimen/text_size_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/black"
+                        android:text="01/05/2021">
+
+                    </TextView>
+
+                    <View
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_devider"
+                        android:background="@color/hint_color"/>
+                    <TextView
+                        android:id="@+id/valid_till"
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_12"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/valid_untill">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/valid_till_value"
+                        android:layout_marginTop="@dimen/text_size_5"
+                        android:padding="@dimen/text_size_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/black"
+                        android:text=" 05/01/2021 ">
+
+                    </TextView>
+                    <View
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_devider"
+                        android:background="@color/hint_color"/>
+
+
+
+                    <TextView
+                        android:id="@+id/document_date"
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_12"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/document_date">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/document_date_value"
+                        android:layout_marginTop="@dimen/text_size_5"
+                        android:padding="@dimen/text_size_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/black"
+                        android:text="05/01/2021">
+
+                    </TextView>
+                    <View
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_devider"
+                        android:background="@color/hint_color"/>
+
+                    <TextView
+                        android:id="@+id/remark"
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_12"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/remarks">
+
+                    </TextView>
+
+                    <EditText
+                        android:textColorHint="@color/hint_color"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:background="@android:color/transparent"
+                        android:id="@+id/remark_value"
+                        android:layout_marginTop="@dimen/text_size_5"
+                        android:padding="@dimen/text_size_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/black"
+                        android:hint="@string/remarks">
+
+                    </EditText>
+
+                    <View
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_devider"
+                        android:background="@color/hint_color"/>
+
+
+
+                    <TextView
+                        android:id="@+id/ship_to"
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_12"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/ship_to">
+
+                    </TextView>
+
+                    <EditText
+                        android:textColorHint="@color/hint_color"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:background="@android:color/transparent"
+                        android:id="@+id/ship_to_value"
+                        android:layout_marginTop="@dimen/text_size_5"
+                        android:padding="@dimen/text_size_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/black"
+                        android:hint="@string/ship_to">
+
+                    </EditText>
+
+
+
+                    <View
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_devider"
+                        android:background="@color/hint_color"/>
+
+
+
+                    <TextView
+                        android:id="@+id/bill_to"
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_12"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/bill_to">
+
+                    </TextView>
+
+                    <EditText
+                        android:textColorHint="@color/hint_color"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:background="@android:color/transparent"
+                        android:id="@+id/bill_to_value"
+                        android:layout_marginTop="@dimen/text_size_5"
+                        android:padding="@dimen/text_size_5"
+                        android:layout_width="match_parent"                android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/black"
+                        android:hint="@string/bill_to">
+
+                    </EditText>
+
+                    <View
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_devider"
+                        android:background="@color/hint_color"/>
+
+
+
+                    <TextView
+                        android:id="@+id/shipping_type"
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_12"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/shipping_type">
+
+                    </TextView>
+
+                    <EditText
+                        android:textColorHint="@color/hint_color"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:background="@android:color/transparent"
+                        android:id="@+id/shipping_type_value"
+                        android:layout_marginTop="@dimen/text_size_5"
+                        android:padding="@dimen/text_size_5"
+                        android:layout_width="match_parent"                android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/black"
+                        android:hint="@string/shipping_type">
+
+                    </EditText>
+
+                    <View
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_devider"
+                        android:background="@color/hint_color"/>
+
+
+
+                    <TextView
+                        android:id="@+id/payment_term"
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_12"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/payment_term">
+
+                    </TextView>
+
+                    <EditText
+                        android:textColorHint="@color/hint_color"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:background="@android:color/transparent"
+                        android:id="@+id/payment_term_value"
+                        android:layout_marginTop="@dimen/text_size_5"
+                        android:padding="@dimen/text_size_5"
+                        android:layout_width="match_parent"                android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/black"
+                        android:hint="@string/payment_term">
+
+                    </EditText>
+                    <View
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_devider"
+                        android:background="@color/hint_color"/>
+
+
+
+                    <TextView
+                        android:id="@+id/payment_method"
+                        android:layout_marginTop="@dimen/text_size_15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_12"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/text_blue"
+                        android:text="@string/payment_method">
+
+                    </TextView>
+
+                    <EditText
+                        android:textColorHint="@color/hint_color"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:background="@android:color/transparent"
+                        android:id="@+id/payment_method_value"
+                        android:layout_marginTop="@dimen/text_size_5"
+                        android:padding="@dimen/text_size_5"
+                        android:layout_width="match_parent"                android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_14"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@color/black"
+                        android:hint="@string/payment_method">
+
+                    </EditText>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_45"
+                        android:layout_gravity="center"
+                        android:textAllCaps="true"
+                        android:layout_marginTop="@dimen/text_size_30"
+                        android:id="@+id/submit"
+                        android:background="@drawable/button_background"
+                        android:text="@string/submit"
+                        android:textSize="@dimen/text_size_14"
+                        android:elevation="@dimen/text_size_2"
+                        android:fontFamily="@font/muli_regular"
+                        android:textColor="@android:color/white" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</FrameLayout>

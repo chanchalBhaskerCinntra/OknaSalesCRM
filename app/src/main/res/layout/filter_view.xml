@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/size_10"
+        android:layout_height="wrap_content">
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:textSize="@dimen/text_size_18"
+        android:textColor="@color/black"/>
+
+
+        <RelativeLayout
+            android:layout_width="@dimen/size_150"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_10"
+            android:paddingRight="@dimen/size_10"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_border_edit">
+            <Spinner
+                android:id="@+id/sales_employee_spinner"
+                android:layout_toLeftOf="@id/drov_arrow"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_45"
+                android:gravity="center_vertical|start"
+                android:dropDownWidth="wrap_content"
+                android:forceHasOverlappingRendering="false"
+                android:spinnerMode="dropdown"
+                android:textSize="@dimen/text_size_14"
+                android:paddingLeft="@dimen/size_5"
+                android:background="@null"
+                android:dropDownVerticalOffset="@dimen/text_45"
+                />
+            <ImageView
+                android:id="@+id/drov_arrow"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_bottom_arrow_black"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/size_10"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/status"
+                android:layout_margin="@dimen/size_10"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/text_size_18"
+                android:textColor="@color/black"/>
+
+
+            <CheckBox
+                android:id="@+id/follow_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/follow_up"/>
+            <CheckBox
+                android:id="@+id/demo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/demo"/>
+            <CheckBox
+                android:id="@+id/purposal_shared"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/purposal_shared"/>
+            <CheckBox
+                android:id="@+id/negotiation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/negotiation"/>
+            <CheckBox
+                android:id="@+id/hold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hold"/>
+            <CheckBox
+                android:id="@+id/dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dead"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lead_type"
+                android:layout_margin="@dimen/size_10"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/text_size_18"
+                android:textColor="@color/black"/>
+
+
+            <CheckBox
+                android:id="@+id/hot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hot"/>
+            <CheckBox
+                android:id="@+id/warm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/warm"/>
+            <CheckBox
+                android:id="@+id/cold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cold"/>
+
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

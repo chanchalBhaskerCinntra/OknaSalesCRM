@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.Dashboard">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardPreventCornerOverlap="false"
+        android:layout_marginTop="@dimen/text_size_5"
+        android:layout_marginLeft="@dimen/text_size_10"
+        app:cardCornerRadius="@dimen/tiles_radius"
+        android:minWidth="@dimen/size_140"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_width="@dimen/size_140"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="@dimen/text_size_2"
+        android:layout_gravity="center"
+        >
+
+        <LinearLayout
+            android:layout_margin="@dimen/size_5"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_90"
+             >
+            <LinearLayout
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/icon"
+                    android:foregroundGravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/inventory">
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/counter"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:fontFamily="@font/muli_bold"
+                    android:text="48"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16" />
+
+
+
+
+
+                <TextView
+                    android:id="@+id/item_name"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:textAllCaps="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_12"
+                    android:fontFamily="@font/muli_bold"
+                    android:textColor="@color/black"
+                    android:text="@string/settings"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

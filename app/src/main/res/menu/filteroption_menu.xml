@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.learn2crack.recyclerviewsearch.MainActivity">
+    <group>
+
+
+        <item
+            android:id="@+id/filter"
+            android:icon="@drawable/ic_filter"
+            android:iconTint="@color/white"
+            android:title="Filter"
+            app:showAsAction="ifRoom|collapseActionView">
+          <!--  <menu>
+                <group>
+                    <item
+                        android:id="@+id/all"
+                        android:title="All Opportunity" />
+
+                    <item
+                        android:id="@+id/my"
+                        android:title="My Opportunity"
+                        android:visible="false"
+                        app:showAsAction="never" />
+                    <item
+                        android:id="@+id/my_team"
+                        android:title="My Favourites"
+                        android:visible="false" />
+
+                    <item
+                        android:id="@+id/source"
+                        android:title="Source" />
+
+                    <item
+                        android:id="@+id/customername"
+                        android:title="Customer Name"
+                        android:visible="false" />
+                    <item
+                        android:id="@+id/opptype"
+                        android:title="Opportunity Type" />
+                    <item
+                        android:id="@+id/newest"
+                        android:title="New Business"
+                        android:visible="false" />
+                    <item
+                        android:id="@+id/oldest"
+                        android:title="Existing business"
+                        android:visible="false" />
+                    <item
+                        android:id="@+id/valid"
+                        android:title="Valid date"
+                        android:visible="false"
+                        app:showAsAction="never" />
+
+                </group>
+
+
+            </menu>-->
+
+        </item>
+
+        <item
+            android:id="@+id/search"
+            android:icon="@drawable/ic_search"
+            android:iconTint="@color/white"
+            android:title="Search"
+            app:actionViewClass="androidx.appcompat.widget.SearchView"
+            app:showAsAction="ifRoom|collapseActionView" />
+        <item
+            android:id="@+id/plus"
+            android:icon="@drawable/ic_baseline_add_24"
+            android:iconTint="@color/white"
+            android:title="Search"
+            app:showAsAction="ifRoom|collapseActionView" />
+    </group>
+</menu>
+
+

@@ -1,0 +1,70 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.learn2crack.recyclerviewsearch.MainActivity">
+    <group
+        android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/filter"
+            android:icon="@drawable/ic_filter"
+            android:title="Search"
+            android:iconTint="@color/white"
+            app:showAsAction="ifRoom|collapseActionView"
+            >
+            <menu >
+                <group
+                    >
+                    <item
+                        android:id="@+id/all"
+                        android:title="All Quotation"/>
+                    <item
+                        android:id="@+id/my"
+                        android:visible="false"
+                        android:title="My Favourite"/>
+
+                    <item
+                        android:id="@+id/newest"
+                        android:visible="false"
+                        android:title="Newest Quotation"/>
+
+                    <item
+                        android:id="@+id/oldest"
+                        app:showAsAction="never"
+                        android:visible="false"
+                        android:title="Oldest Quotation"/>
+                    <item
+                        android:id="@+id/posting"
+                        app:showAsAction="never"
+                        android:visible="false"
+                        android:title="Posting Date"/>
+                    <item
+                        android:id="@+id/valid"
+                        android:title="Customer name"/>
+
+                </group>
+
+
+
+
+            </menu>
+
+        </item>
+
+        <item
+            android:id="@+id/search"
+            android:icon="@drawable/ic_search"
+            android:title="Search"
+            android:iconTint="@color/white"
+            app:showAsAction="ifRoom|collapseActionView"
+            app:actionViewClass="androidx.appcompat.widget.SearchView"/>
+        <item
+            android:id="@+id/plus"
+            android:icon="@drawable/ic_baseline_add_24"
+            android:title="Search"
+            android:iconTint="@color/white"
+            app:showAsAction="ifRoom|collapseActionView"
+            />
+    </group>
+</menu>

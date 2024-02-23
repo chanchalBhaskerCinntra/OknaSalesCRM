@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:id="@+id/mainPdfFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:clickable="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header">
+
+        <include
+            android:id="@+id/header_bottomround_edit"
+            layout="@layout/header_bottomround_edit"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_45"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/tab_1"
+                android:clickable="true"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_weight="0.33"
+                android:gravity="center"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/general"
+                    android:clickable="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/general"
+                    android:textSize="@dimen/text_size_14"
+                    android:fontFamily="@font/muli_semibold"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/tab_2"
+                android:gravity="center"
+                android:layout_weight="0.33"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total"
+                    android:textSize="@dimen/text_size_14"
+                    android:fontFamily="@font/muli_semibold"
+                    android:textColor="@color/black"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tab_3"
+                android:gravity="center"
+                android:layout_weight="0.33"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address"
+                    android:textSize="@dimen/text_size_14"
+                    android:fontFamily="@font/muli_semibold"
+                    android:textColor="@color/black"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/general_frame"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:visibility="visible"
+                android:layout_height="match_parent">
+                <include
+                    android:id="@+id/quotation_general_content"
+                    layout="@layout/quotation_general_content" />
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/total_frame"
+                android:background="@color/white"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include
+                    android:id="@+id/quotation_total_content"
+                    layout="@layout/quotation_total_content"
+                    />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/prepared_frame"
+                android:background="@color/white"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <include
+                    android:id="@+id/address_content"
+                    layout="@layout/address_content" />
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+    </LinearLayout>
+</LinearLayout>
+    <include
+        android:id="@+id/loader"
+        layout="@layout/loader"/>
+    </FrameLayout>

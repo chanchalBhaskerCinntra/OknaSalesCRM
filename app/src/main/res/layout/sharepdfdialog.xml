@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/graph_size_350"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:backgroundTint="@color/veryLightGrey"
+    android:background="@drawable/dialog_bg"
+    android:layout_height="@dimen/size_150">
+
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Are you want to share pdf?"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_18"
+        android:fontFamily="@font/muli_semibold"/>
+
+
+    <TextView
+        android:id="@+id/share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:layout_alignParentRight="true"
+        android:text="@string/share"
+        android:textAllCaps="true"
+        android:layout_marginTop="@dimen/size_20"
+        android:textSize="@dimen/text_size_18"
+        android:textColor="@color/colorPrimary"/>
+
+    <TextView
+        android:id="@+id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:layout_toLeftOf="@id/share"
+        android:text="@string/cancel"
+        android:textAllCaps="true"
+        android:layout_marginTop="@dimen/size_20"
+        android:layout_marginRight="@dimen/size_10"
+        android:textSize="@dimen/text_size_18"
+        android:textColor="@color/colorPrimary"/>
+
+
+</RelativeLayout>

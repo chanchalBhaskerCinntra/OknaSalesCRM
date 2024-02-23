@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/graph_size_350"
+    android:layout_gravity="center"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/new_stage"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16"
+            android:fontFamily="@font/muli_semibold"/>
+
+        <EditText
+            android:id="@+id/new_stage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_50"
+            android:background="@drawable/rounded_border_edit"
+            android:layout_marginTop="@dimen/size_10"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16"
+            android:paddingLeft="@dimen/size_10"
+            android:fontFamily="@font/muli_regular"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/previous_stage"
+            android:layout_marginTop="@dimen/size_20"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16"
+            android:fontFamily="@font/muli_semibold"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10"
+            android:background="@drawable/rounded_border_edit"
+            >
+
+
+        <Spinner
+            android:id="@+id/previous_stage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_50"
+            android:textColor="@color/black"
+            android:overlapAnchor="false"
+            android:spinnerMode="dropdown"
+            android:dropDownWidth="match_parent"
+            android:textSize="@dimen/text_size_16"
+            android:paddingLeft="@dimen/size_10"
+            android:fontFamily="@font/muli_regular"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/date_text"
+            android:layout_marginTop="@dimen/size_20"
+            android:visibility="gone"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16"
+            android:fontFamily="@font/muli_semibold"/>
+
+        <EditText
+            android:id="@+id/date_value"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_50"
+            android:visibility="gone"
+            android:background="@drawable/rounded_border_edit"
+            android:layout_marginTop="@dimen/size_10"
+            android:focusable="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16"
+            android:paddingLeft="@dimen/size_10"
+            android:fontFamily="@font/muli_regular"/>
+
+        <Button
+            android:id="@+id/add"
+            android:layout_width="@dimen/size_120"
+            android:layout_height="wrap_content"
+            android:text="@string/add"
+            android:textSize="@dimen/text_size_16"
+            android:textColor="@color/white"
+            android:fontFamily="@font/muli_semibold"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@drawable/button_rounded_corner"
+            android:layout_marginTop="@dimen/size_20"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

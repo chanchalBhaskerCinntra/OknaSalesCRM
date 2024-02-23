@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainContainer"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/text_56"
+    android:background="@drawable/rounded_bottom"
+    android:clickable="false"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/mainHeaderLay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/size_15"
+        android:paddingRight="@dimen/size_15"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:id="@+id/back_press"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="@dimen/text_size_32"
+                android:layout_height="@dimen/text_size_32"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_back_white_24" />
+
+            <TextView
+                android:id="@+id/head_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/size_5"
+                android:layout_toRightOf="@id/back"
+                android:fontFamily="@font/muli_semibold"
+                android:gravity="center_vertical"
+                android:text="@string/add_opportunity"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_18" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/filterView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/size_10"
+                android:paddingLeft="@dimen/text_size_5"
+                android:paddingRight="@dimen/text_size_5"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/filter"
+                    android:layout_width="@dimen/text_size_20"
+                    android:layout_height="@dimen/text_size_20"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_filter" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/search"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/text_size_3"
+                android:paddingRight="@dimen/text_size_3"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/searchIcon"
+                    android:layout_width="@dimen/text_size_20"
+                    android:layout_height="@dimen/text_size_20"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_search" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/new_quatos"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/size_7"
+                android:paddingRight="@dimen/size_5">
+
+                <ImageView
+                    android:id="@+id/add"
+                    android:layout_width="@dimen/text_size_28"
+                    android:layout_height="@dimen/text_size_28"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_baseline_add_24" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/searchLay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/size_5"
+        android:background="@drawable/searchbar_bg"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@color/transparent"
+            android:iconifiedByDefault="true"
+            android:layoutDirection="rtl"
+            android:queryHint="Search Here"
+            app:queryBackground="@null" />
+    </RelativeLayout>
+</LinearLayout>

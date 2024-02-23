@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<include
+    android:visibility="visible"
+    layout="@layout/admin_navigation_menu"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <SearchView
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_20"
+            android:background="@drawable/admin_border"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search name"
+            android:searchHintIcon="@color/search"
+            android:searchIcon="@drawable/admin_ic_group_1195"
+            android:theme="@style/SearchViewStyle">
+        </SearchView>
+    </LinearLayout>
+    <include
+       android:visibility="gone"
+        layout="@layout/admin_app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView2"
+        android:name="com.cinntra.hana.admin.HomeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/customer_lead"
+    android:layout_height="match_parent">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/header_white_back"
+        layout="@layout/header_white_back"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+   <LinearLayout
+
+       android:orientation="vertical"
+       android:id="@+id/notificationView"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeContainer"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/notificationList"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+   </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/size_100"
+            android:id="@+id/No_notification_view"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_200">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/icon"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_no_notifications">
+                  </ImageView>
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:padding="@dimen/size_5"
+                    android:id="@+id/no_noti"
+                    android:fontFamily="@font/muli_semibold"
+                    android:visibility="visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_20"
+                    android:textColor="@color/black"
+                    android:text="@string/no_notification"/>
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/noti_dis"
+                    android:fontFamily="@font/muli_regular"
+                    android:visibility="visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="@color/hint_color"
+                    android:text="@string/no_notification_here"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+    <com.github.ybq.android.spinkit.SpinKitView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/loader"
+        android:visibility="gone"
+        style="@style/SpinKitView.Large.Circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/colorPrimary" />
+</FrameLayout>

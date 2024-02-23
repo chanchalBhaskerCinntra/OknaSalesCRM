@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60"
+        android:id="@+id/header"
+        android:orientation="vertical">
+        <include layout="@layout/header_bottom_rounded"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_below="@id/header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/size_15"
+            android:layout_marginRight="@dimen/size_15"
+            android:layout_marginLeft="@dimen/size_15">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quote_information"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+
+                android:fontFamily="@font/muli_bold"
+                android:id="@+id/quote_information"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/opportunity_name"
+                android:layout_marginTop="@dimen/size_10"
+                android:id="@+id/opportunity_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_45"
+                android:gravity="center_vertical"
+                android:hint="@string/opportunity_name"
+                android:inputType="text"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:id="@+id/opportunity_name_value"
+                android:textColorHint="@color/light_grey_box"
+                android:textSize="@dimen/text_size_14"
+                android:paddingLeft="@dimen/size_8"
+                android:layout_marginTop="@dimen/size_10"
+                android:background="@drawable/rounded_border"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bussiness_partner"
+                android:id="@+id/business_partner"
+                android:layout_marginTop="@dimen/size_15"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_45"
+                android:gravity="center_vertical"
+                android:hint="@string/bussiness_partner"
+                android:inputType="text"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:id="@+id/business_partner_value"
+                android:textColorHint="@color/light_grey_box"
+                android:textSize="@dimen/text_size_14"
+                android:paddingLeft="@dimen/size_8"
+                android:layout_marginTop="@dimen/size_10"
+                android:background="@drawable/rounded_border"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quote_name"
+                android:id="@+id/quote_name"
+                android:layout_marginTop="@dimen/size_15"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_45"
+                android:gravity="center_vertical"
+                android:hint="@string/bussiness_partner"
+                android:id="@+id/quote_name_value"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColorHint="@color/light_grey_box"
+                android:textSize="@dimen/text_size_14"
+                android:paddingLeft="@dimen/size_8"
+                android:layout_marginTop="@dimen/size_10"
+                android:background="@drawable/rounded_border"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/status"
+                android:id="@+id/status"
+                android:layout_marginTop="@dimen/size_15"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"/>
+
+            <EditText
+                android:id="@+id/status_value"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_45"
+                android:layout_marginTop="@dimen/size_10"
+                android:background="@drawable/rounded_border"
+                android:gravity="center_vertical"
+                android:hint="@string/status"
+                android:inputType="text"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:paddingLeft="@dimen/size_8"
+                android:textColorHint="@color/light_grey_box"
+                android:textSize="@dimen/text_size_14" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/posting_date"
+                android:id="@+id/posting_date"
+                android:layout_marginTop="@dimen/size_15"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"/>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_45"
+                android:layout_marginTop="@dimen/size_10"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="@drawable/rounded_border"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_45"
+                    android:gravity="center_vertical"
+                    android:hint="@string/date"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:layout_weight="0.9"
+                    android:inputType="date"
+                    android:id="@+id/posting_date_value"
+                    android:textColorHint="@color/light_grey_box"
+                    android:textSize="@dimen/text_size_14"
+                    android:paddingLeft="@dimen/size_8"
+                    android:background="@null"/>
+
+                <ImageView
+                    android:layout_width="@dimen/size_30"
+                    android:layout_height="@dimen/size_30"
+                    android:layout_weight="0.1"
+                    android:padding="@dimen/size_5"
+                    android:layout_marginRight="@dimen/size_10"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:src="@drawable/ic_calendar_icon"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/valid_untill"
+                android:id="@+id/valid_untill"
+                android:layout_marginTop="@dimen/size_15"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_45"
+                android:layout_marginTop="@dimen/size_10"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="@drawable/rounded_border"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_45"
+                    android:gravity="center_vertical"
+                    android:hint="@string/date"
+                    android:maxLines="1"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:layout_weight="0.9"
+                    android:inputType="date"
+                    android:imeOptions="actionNext"
+                    android:id="@+id/valid_untill_value"
+                    android:textColorHint="@color/light_grey_box"
+                    android:textSize="@dimen/text_size_14"
+                    android:paddingLeft="@dimen/size_8"
+                    android:background="@null"/>
+
+                <ImageView
+                    android:layout_width="@dimen/size_30"
+                    android:layout_height="@dimen/size_30"
+                    android:padding="@dimen/size_5"
+                    android:layout_weight="0.1"
+                    android:layout_marginRight="@dimen/size_10"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:src="@drawable/ic_calendar_icon"/>
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/document_date"
+                android:id="@+id/document_date"
+                android:layout_marginTop="@dimen/size_15"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_45"
+                android:layout_marginTop="@dimen/size_10"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="@drawable/rounded_border"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_45"
+                    android:gravity="center_vertical"
+                    android:hint="@string/date"
+                    android:maxLines="1"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:layout_weight="0.9"
+                    android:inputType="date"
+                    android:imeOptions="actionNext"
+                    android:id="@+id/document_date_value"
+                    android:textColorHint="@color/light_grey_box"
+                    android:textSize="@dimen/text_size_14"
+                    android:paddingLeft="@dimen/size_8"
+                    android:background="@null"/>
+
+                <ImageView
+                    android:layout_width="@dimen/size_30"
+                    android:layout_marginRight="@dimen/size_10"
+                    android:layout_height="@dimen/size_30"
+                    android:padding="@dimen/size_5"
+                    android:layout_weight="0.1"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:src="@drawable/ic_calendar_icon"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                android:id="@+id/description"
+                android:layout_marginTop="@dimen/size_15"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_90"
+                android:gravity="start"
+                android:hint="@string/description"
+                android:id="@+id/description_value"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
+                android:maxLines="4"
+                android:textColorHint="@color/light_grey_box"
+                android:textSize="@dimen/text_size_14"
+                android:padding="@dimen/size_8"
+                android:layout_marginTop="@dimen/size_10"
+                android:background="@drawable/rounded_border"/>
+
+
+            <Button
+                android:layout_width="@dimen/size_100"
+                android:layout_height="@dimen/text_45"
+                android:text="@string/next"
+                android:layout_gravity="right"
+                android:clickable="true"
+                android:focusable="true"
+                android:id="@+id/next_button"
+                android:layout_marginTop="@dimen/size_30"
+                android:background="@drawable/button_rounded_corner"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:layout_marginBottom="@dimen/size_30"
+                android:textSize="@dimen/text_size_16"
+                android:fontFamily="@font/muli_bold"
+                android:gravity="center_vertical|center_horizontal"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

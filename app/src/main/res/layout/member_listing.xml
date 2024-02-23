@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.BlankFragment"
+    android:background="@color/white"
+    android:id="@+id/temp">
+
+
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/headerLay"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include
+            android:id="@+id/quotes_header"
+            layout="@layout/quotes_header"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+
+
+</FrameLayout>

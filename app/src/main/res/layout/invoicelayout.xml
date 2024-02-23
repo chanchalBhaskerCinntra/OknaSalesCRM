@@ -1,0 +1,871 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    android:id="@+id/framelayout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:background="@drawable/table_background"
+            android:layout_marginLeft="@dimen/size_5"
+            android:layout_marginRight="@dimen/size_5"
+            android:layout_marginTop="@dimen/size_5"
+            android:paddingBottom="@dimen/size_5"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tax Invoice"
+                android:layout_marginTop="@dimen/size_5"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_10"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OEC Computers India"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/size_2"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_10"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/size_5"
+                android:gravity="center"
+                android:maxWidth="@dimen/size_150"
+                android:maxLines="2"
+                android:text="2nd Floor, The Great Eastern Center,No 70, Nehru Place, New Delhi - 110 019, India  "
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_8" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone : +91 11 30907200"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="@dimen/size_8"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GSTIN : 8465458123215"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/size_8"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_10"
+                    android:text="DL No. : +91 11 30907200"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/size_8"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_1"
+                android:layout_marginTop="@dimen/size_5"
+                android:background="@color/black" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Code :"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="@dimen/size_10"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Maxi-Teq"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="@dimen/size_10"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bill To Address :"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="@dimen/size_10"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="The Great Eastern Center,70, The Great Eastern Center, New Delhi - 110019
+Delhi India
+"
+                        android:textSize="10sp"
+                        android:maxWidth="@dimen/size_100"
+                        android:textColor="@color/black"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="@dimen/size_10"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+                        <TextView
+                            android:layout_width="@dimen/size_50"
+                            android:layout_height="wrap_content"
+                            android:text="Phone     :"
+                            android:textSize="10sp"
+                            android:textColor="@color/black"
+                            android:maxWidth="@dimen/size_50"
+                            android:textStyle="bold"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="@dimen/size_10"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="123456789"
+                            android:textSize="10sp"
+                            android:textColor="@color/black"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="@dimen/size_5"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+                        <TextView
+                            android:layout_width="@dimen/size_50"
+                            android:layout_height="wrap_content"
+                            android:text="GST No.  :"
+                            android:textSize="10sp"
+                            android:maxWidth="@dimen/size_50"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="@dimen/size_10"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1qwertyuiopsdgh"
+                            android:textSize="10sp"
+                            android:textColor="@color/black"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="@dimen/size_5"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="@dimen/size_50"
+                            android:layout_height="wrap_content"
+                            android:text="DL No.     :"
+                            android:textSize="10sp"
+                            android:maxWidth="@dimen/size_50"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="@dimen/size_10"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1qwertyui12654"
+                            android:textSize="10sp"
+                            android:textColor="@color/black"
+                            android:layout_marginLeft="@dimen/size_5"
+                            android:layout_gravity="left" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="@dimen/size_50"
+                            android:layout_height="wrap_content"
+                            android:text="PAN No.  :"
+                            android:maxWidth="@dimen/size_50"
+                            android:textSize="10sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="@dimen/size_10"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1qwertyu123456w"
+                            android:textSize="10sp"
+                            android:layout_marginLeft="@dimen/size_5"
+                            android:textColor="@color/black"
+                            android:layout_gravity="left" />
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:layout_width="@dimen/size_60"
+                            android:layout_height="wrap_content"
+                            android:text="Invoice No. :"
+                            android:maxWidth="@dimen/size_60"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_marginLeft="@dimen/size_5"
+                            android:layout_gravity="left"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1"
+                            android:textSize="10sp"
+                            android:textColor="@color/black"
+                            android:layout_marginLeft="@dimen/size_5"
+                            android:layout_gravity="left"
+                            />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:layout_width="@dimen/size_60"
+                            android:layout_height="wrap_content"
+                            android:text="Invoice Dt.  :"
+                            android:maxWidth="@dimen/size_60"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_marginLeft="@dimen/size_5"
+                            android:layout_gravity="left"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="01/11/2021"
+                            android:textSize="10sp"
+                            android:textColor="@color/black"
+                            android:layout_marginLeft="@dimen/size_5"
+                            android:layout_gravity="left"
+                            />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="@dimen/size_60"
+                        android:layout_height="wrap_content"
+                        android:text="Order No.    :"
+                        android:maxWidth="@dimen/size_60"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="@dimen/size_5"
+                        android:layout_gravity="left"
+                        />
+
+                    <TextView
+                        android:layout_width="@dimen/size_60"
+                        android:layout_height="wrap_content"
+                        android:text="Order Dt.     :"
+                        android:maxWidth="@dimen/size_60"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="@dimen/size_5"
+                        android:layout_gravity="left"
+                        />
+                    <TextView
+                        android:layout_width="@dimen/size_60"
+                        android:layout_height="wrap_content"
+                        android:text="LR No.          :"
+                        android:maxWidth="@dimen/size_60"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="@dimen/size_5"
+                        android:layout_gravity="left"
+                        />
+                    <TextView
+                        android:layout_width="@dimen/size_60"
+                        android:layout_height="wrap_content"
+                        android:text="LR Dt.           :"
+                        android:maxWidth="@dimen/size_60"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="@dimen/size_5"
+                        android:layout_gravity="left"
+                        />
+                    <TextView
+                        android:layout_width="@dimen/size_60"
+                        android:layout_height="wrap_content"
+                        android:text="No. of Case :"
+                        android:maxWidth="@dimen/size_60"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="@dimen/size_5"
+                        android:layout_gravity="left"
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/size_5"
+            android:layout_marginRight="@dimen/size_5"
+            android:layout_height="wrap_content">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size_2"
+                android:paddingRight="@dimen/size_2"
+                android:background="@drawable/table_background">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="S No."
+                        android:textSize="@dimen/text_size_8"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Item Code"
+                        android:textSize="@dimen/text_size_8"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Desc of Goods"
+                        android:textSize="@dimen/text_size_8"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HSN"
+                        android:textSize="@dimen/text_size_8"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Qty"
+                        android:textSize="@dimen/text_size_8"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="UoM"
+                        android:textSize="@dimen/text_size_8"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Price"
+                        android:textSize="@dimen/text_size_8"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Taxable Value"
+                        android:textSize="@dimen/text_size_8"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="CGST%"
+                        android:textSize="@dimen/text_size_8"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="CGST Amt"
+                        android:textSize="@dimen/text_size_8"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="SGST%"
+                        android:textSize="@dimen/text_size_8"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="SGST Amt"
+                        android:textSize="@dimen/text_size_8"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="IGST%"
+                        android:textSize="@dimen/text_size_8"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="IGST Amt"
+                        android:textSize="@dimen/text_size_8"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Total"
+                        android:textSize="@dimen/text_size_8"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textStyle="bold"/>
+
+                </TableRow>
+            </TableLayout>
+
+            <ListView
+                android:id="@+id/itemListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:background="@drawable/table_background"
+                android:paddingLeft="@dimen/size_2"
+                android:paddingRight="@dimen/size_2">
+            </ListView>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_10"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/size_2"
+            android:layout_marginLeft="@dimen/size_10"
+            android:text="Tax Details"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_margin="@dimen/size_8"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:background="@drawable/table_background"
+                android:layout_height="wrap_content">
+
+                <TableLayout
+                    android:paddingLeft="@dimen/size_2"
+                    android:paddingRight="@dimen/size_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TaxRate"
+                            android:textSize="@dimen/size_10"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TaxSum"
+                            android:layout_marginLeft="@dimen/size_8"
+                            android:textSize="@dimen/size_10"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CGSTAmt"
+                            android:layout_marginLeft="@dimen/size_8"
+                            android:textSize="@dimen/size_10"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SGSTAmt"
+                            android:textSize="@dimen/size_10"
+                            android:layout_marginLeft="@dimen/size_8"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="IGSTAmt"
+                            android:textSize="@dimen/size_10"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/size_8"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TotalTax"
+                            android:layout_marginLeft="@dimen/size_8"
+                            android:textSize="@dimen/size_10"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
+                    </TableRow>
+                </TableLayout>
+
+                <ListView
+                    android:id="@+id/taxListView"
+                    android:paddingLeft="@dimen/size_2"
+                    android:paddingRight="@dimen/size_2"
+                    android:scrollbars="none"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table_background">
+                </ListView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="2">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/size_2">
+
+                    <TextView
+                        android:layout_width="@dimen/size_50"
+                        android:layout_height="wrap_content"
+                        android:maxWidth="@dimen/size_50"
+                        android:text="Line Total(INR) : "
+                        android:textSize="@dimen/text_size_10"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12542154515"
+                        android:layout_marginLeft="@dimen/size_2"
+                        android:textSize="@dimen/text_size_10"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="@dimen/size_2"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="@dimen/size_50"
+                        android:layout_height="wrap_content"
+                        android:maxWidth="@dimen/size_50"
+                        android:text="Total Tax : "
+                        android:textSize="@dimen/text_size_10"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12542154515"
+                        android:textSize="@dimen/text_size_10"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="@dimen/size_2"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="@dimen/size_50"
+                        android:layout_height="wrap_content"
+                        android:text="Round off : "
+                        android:maxWidth="@dimen/size_50"
+                        android:textSize="@dimen/text_size_10"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12542154515"
+                        android:textSize="@dimen/text_size_10"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="@dimen/size_2"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="@dimen/size_50"
+                        android:layout_height="wrap_content"
+                        android:maxWidth="@dimen/size_50"
+                        android:text="Total Amount (In INR) : "
+                        android:textSize="@dimen/text_size_10"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12542154515"
+                        android:textSize="@dimen/text_size_10"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount in Words:"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_10"
+                android:layout_marginLeft="@dimen/size_10"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="One lakhs Forty-Five Thousand One Hundred Ninety-Three and Seventy-Eight only"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_10"
+                android:layout_marginLeft="@dimen/size_10"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_8">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bank Details :  HDFC"
+                android:textSize="@dimen/size_10"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/size_5"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A/C No. : 243639"
+                android:textSize="@dimen/size_10"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:layout_marginLeft="@dimen/size_5"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="IFSC Code : 25421"
+                android:textSize="@dimen/size_10"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/size_5"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_10"
+            android:layout_marginRight="@dimen/size_10"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@drawable/table_background"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Received the GOODS in Good Condition"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/size_2"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_10"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Reciever's Signature"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/size_2"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_10"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/table_background"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Prepared By"
+                        android:layout_marginBottom="@dimen/size_2"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_8"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Checked By"
+                        android:textColor="@color/black"
+                        android:layout_marginRight="@dimen/size_5"
+                        android:layout_alignParentRight="true"
+                        android:textSize="@dimen/text_size_8"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/table_background"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="For OEC Computers India"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/size_2"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_12"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Authorised Signature"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/size_2"
+                    android:layout_marginTop="@dimen/size_40"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_12"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

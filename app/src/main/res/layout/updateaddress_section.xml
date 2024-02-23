@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tempfinal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".fragments.BlankFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ScrollView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/size_15">
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/muli_bold"
+                    android:text="Bill Address Details"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:id="@+id/billNameAndZipCodeLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/size_7"
+                            android:layout_weight="0.5"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/billing_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_10"
+                                android:fontFamily="@font/muli_regular"
+                                android:text="@string/billing_name_mand"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_size_14" />
+
+                            <EditText
+                                android:id="@+id/billing_name_value"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/text_45"
+                                android:layout_marginTop="@dimen/size_10"
+                                android:background="@drawable/rounded_border"
+                                android:fontFamily="@font/muli_regular"
+                                android:gravity="center_vertical"
+                                android:hint="@string/billing_name"
+                                android:imeOptions="actionNext"
+                                android:inputType="textPostalAddress"
+                                android:maxLines="1"
+                                android:paddingLeft="@dimen/size_10"
+                                android:textColorHint="@color/light_grey_box"
+                                android:textSize="@dimen/text_size_14" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/size_7"
+                            android:layout_weight="0.5"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/zip_code"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_10"
+                                android:fontFamily="@font/muli_regular"
+                                android:text="@string/zip_code_mand"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_size_14" />
+
+                            <EditText
+                                android:id="@+id/zip_code_value"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/text_45"
+                                android:layout_marginTop="@dimen/size_10"
+                                android:background="@drawable/rounded_border"
+                                android:fontFamily="@font/muli_regular"
+                                android:gravity="center_vertical"
+                                android:hint="@string/zip_code"
+                                android:imeOptions="actionNext"
+                                android:inputType="number"
+                                android:maxLength="6"
+                                android:maxLines="1"
+                                android:paddingLeft="@dimen/size_10"
+                                android:textColorHint="@color/light_grey_box"
+                                android:textSize="@dimen/text_size_14" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/countryLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/billNameAndZipCodeLayout"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:fontFamily="@font/muli_regular"
+                            android:text="@string/country_mand"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:gravity="center_horizontal|center_vertical">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Select Country"
+                                app:boxCornerRadiusBottomEnd="10dp"
+                                app:boxCornerRadiusBottomStart="10dp"
+                                app:boxCornerRadiusTopEnd="10dp"
+                                app:boxCornerRadiusTopStart="10dp">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/acCountry"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:inputType="textEmailAddress"
+                                    android:maxLines="1"
+                                    android:textSize="12sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/rlRecyclerViewLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/countryLayout"
+                        android:visibility="visible">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvCountryList"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:orientation="horizontal" />
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/stateLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/countryLayout"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:fontFamily="@font/muli_regular"
+                            android:text="@string/state_mand"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:gravity="center_horizontal|center_vertical">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Choose Select"
+                                app:boxCornerRadiusBottomEnd="10dp"
+                                app:boxCornerRadiusBottomStart="10dp"
+                                app:boxCornerRadiusTopEnd="10dp"
+                                app:boxCornerRadiusTopStart="10dp">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/acBillToState"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:inputType="textEmailAddress"
+                                    android:maxLines="1"
+                                    android:textSize="12sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/cityLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stateLayout"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/city"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:fontFamily="@font/muli_regular"
+                            android:text="@string/city_mand"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <EditText
+                            android:id="@+id/city_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/text_45"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:background="@drawable/rounded_border"
+                            android:fontFamily="@font/muli_regular"
+                            android:gravity="center_vertical"
+                            android:hint="@string/city"
+                            android:imeOptions="actionNext"
+                            android:inputType="textPostalAddress"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/size_10"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/light_grey_box"
+                            android:textSize="@dimen/text_size_14" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/billShippingTypeLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cityLayout"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/total_before_discont"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:fontFamily="@font/muli_regular"
+                            android:text="@string/shipping_type_mand"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/text_45"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:background="@drawable/rounded_border"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:paddingRight="@dimen/size_10">
+
+
+                            <Spinner
+                                android:id="@+id/shipping_spinner"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/text_45"
+                                android:layout_toLeftOf="@id/img11"
+                                android:background="@null"
+                                android:dropDownWidth="wrap_content"
+                                android:dropDownVerticalOffset="@dimen/text_45"
+                                android:entries="@array/bpShippingType"
+                                android:forceHasOverlappingRendering="false"
+                                android:gravity="center_vertical|start"
+                                android:paddingLeft="@dimen/size_5"
+                                android:spinnerMode="dropdown"
+                                android:textSize="@dimen/text_size_14"
+
+                                />
+
+                            <ImageView
+                                android:id="@+id/img11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_bottom_arrow_black" />
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/billAddressLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/billShippingTypeLayout"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/billing_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_15"
+                            android:fontFamily="@font/muli_regular"
+                            android:text="@string/billing_address_mand"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <EditText
+                            android:id="@+id/billing_address_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_70"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:background="@drawable/rounded_border"
+                            android:fontFamily="@font/muli_regular"
+                            android:gravity="start"
+                            android:hint="@string/address"
+                            android:imeOptions="actionDone"
+                            android:inputType="textPostalAddress|textMultiLine"
+                            android:maxLines="2"
+                            android:paddingLeft="@dimen/size_10"
+                            android:paddingTop="@dimen/size_5"
+                            android:textColorHint="@color/light_grey_box"
+                            android:textSize="@dimen/text_size_14" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/muli_bold"
+                    android:text="Ship Address Details"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="20dp"
+                    android:textSize="@dimen/text_size_16" />
+
+
+                <RelativeLayout
+                    android:id="@+id/ship_block"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="15dp"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:id="@+id/shippinNAmeandZipcode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/shipping_block"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/size_7"
+                            android:layout_weight="50"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/shipping_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_10"
+                                android:fontFamily="@font/muli_regular"
+                                android:text="@string/shipping_namemand"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_size_14" />
+
+                            <EditText
+                                android:id="@+id/shipping_name_value"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/text_45"
+                                android:layout_marginTop="@dimen/size_10"
+                                android:background="@drawable/rounded_border"
+                                android:fontFamily="@font/muli_regular"
+                                android:gravity="center_vertical"
+                                android:hint="@string/shipping_name"
+                                android:imeOptions="actionNext"
+                                android:inputType="textPostalAddress"
+                                android:maxLines="1"
+                                android:paddingLeft="@dimen/size_10"
+                                android:textColorHint="@color/light_grey_box"
+                                android:textSize="@dimen/text_size_14" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/shipZipcode"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/size_7"
+                            android:layout_weight="50"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/zipcode2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_10"
+                                android:fontFamily="@font/muli_regular"
+                                android:text="@string/zip_code_mand"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_size_14" />
+
+                            <TextView
+                                android:id="@+id/zipcode3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_10"
+                                android:fontFamily="@font/muli_regular"
+                                android:text="@string/zip_code"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_size_14"
+                                android:visibility="gone" />
+
+                            <EditText
+                                android:id="@+id/zipcode_value2"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/text_45"
+                                android:layout_marginTop="@dimen/size_10"
+                                android:background="@drawable/rounded_border"
+                                android:fontFamily="@font/muli_regular"
+                                android:gravity="center_vertical"
+                                android:hint="@string/zip_code"
+                                android:imeOptions="actionNext"
+                                android:inputType="number"
+                                android:maxLength="6"
+                                android:maxLines="1"
+                                android:paddingLeft="@dimen/size_10"
+                                android:textColorHint="@color/light_grey_box"
+                                android:textSize="@dimen/text_size_14" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/shipCountryLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/shippinNAmeandZipcode"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:fontFamily="@font/muli_regular"
+                            android:text="@string/country_mand"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:gravity="center_horizontal|center_vertical">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Select Country"
+                                app:boxCornerRadiusBottomEnd="10dp"
+                                app:boxCornerRadiusBottomStart="10dp"
+                                app:boxCornerRadiusTopEnd="10dp"
+                                app:boxCornerRadiusTopStart="10dp">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/acShipCountry"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:inputType="textEmailAddress"
+                                    android:maxLines="1"
+                                    android:textSize="12sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/rlShipREcyclerLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/shipCountryLayout"
+                        android:visibility="visible">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvShipCountryList"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:orientation="horizontal" />
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/shipStateLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/shipCountryLayout"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/state2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:fontFamily="@font/muli_regular"
+                            android:text="@string/state_mand"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:paddingRight="@dimen/size_10">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Choose Select"
+                                app:boxCornerRadiusBottomEnd="10dp"
+                                app:boxCornerRadiusBottomStart="10dp"
+                                app:boxCornerRadiusTopEnd="10dp"
+                                app:boxCornerRadiusTopStart="10dp">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/acShipToState"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:inputType="textEmailAddress"
+                                    android:maxLines="1"
+                                    android:textSize="12sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/shipCityLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/shipStateLayout"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/shipcity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:fontFamily="@font/muli_regular"
+                            android:text="@string/city_mand"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <EditText
+                            android:id="@+id/shipcity_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/text_45"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:background="@drawable/rounded_border"
+                            android:fontFamily="@font/muli_regular"
+                            android:gravity="center_vertical"
+                            android:hint="@string/city"
+                            android:imeOptions="actionNext"
+                            android:inputType="textPostalAddress"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/size_10"
+                            android:textColorHint="@color/light_grey_box"
+                            android:textSize="@dimen/text_size_14" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/shipShippingTypeLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_below="@+id/shipCityLayout"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/shiping_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:fontFamily="@font/muli_regular"
+                            android:text="@string/shipping_type_mand"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/text_45"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:background="@drawable/rounded_border"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:paddingLeft="@dimen/size_10"
+                            android:paddingRight="@dimen/size_10">
+
+
+                            <Spinner
+                                android:id="@+id/shipping_spinner2"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/text_45"
+                                android:layout_toLeftOf="@id/img9"
+                                android:background="@null"
+                                android:dropDownWidth="wrap_content"
+                                android:dropDownVerticalOffset="@dimen/text_45"
+                                android:entries="@array/bpShippingType"
+                                android:forceHasOverlappingRendering="false"
+                                android:gravity="center_vertical|start"
+                                android:paddingLeft="@dimen/size_5"
+                                android:spinnerMode="dropdown"
+                                android:textSize="@dimen/text_size_12" />
+
+                            <ImageView
+                                android:id="@+id/img9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_bottom_arrow_black" />
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/shipAddressLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/shipShippingTypeLayout"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/shipping_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_15"
+                            android:fontFamily="@font/muli_regular"
+                            android:text="@string/shipping_addressmand"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <EditText
+                            android:id="@+id/shipping_address_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_70"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:background="@drawable/rounded_border"
+                            android:fontFamily="@font/muli_regular"
+                            android:gravity="start"
+                            android:hint="@string/address"
+                            android:imeOptions="actionDone"
+                            android:inputType="textPostalAddress|textMultiLine"
+                            android:maxLines="2"
+                            android:paddingLeft="@dimen/size_10"
+                            android:paddingTop="@dimen/size_5"
+                            android:textColorHint="@color/light_grey_box"
+                            android:textSize="@dimen/text_size_14" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+</FrameLayout>

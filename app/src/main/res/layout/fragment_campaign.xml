@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/customer_lead"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+
+            <TextView
+                android:id="@+id/dateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/size_10"
+                android:text="234567"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_15"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/all_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/size_10"
+                android:text="All"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size_16" />
+
+            <ImageView
+                android:id="@+id/calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_10"
+                android:layout_toLeftOf="@id/all_list"
+                android:background="@drawable/ic_calendar_icon"
+                android:padding="@dimen/size_10" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="@dimen/size_10"
+                android:layout_toLeftOf="@id/calendar"
+                android:background="@drawable/rounded_border_edit">
+
+
+                <ImageView
+                    android:id="@+id/dotcolor"
+                    android:layout_width="@dimen/text_size_22"
+                    android:layout_height="@dimen/text_size_22"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/size_5"
+                    android:background="@drawable/red_dot" />
+
+
+                <Spinner
+                    android:id="@+id/lead_typeSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_30"
+                    android:background="@null"
+                    android:dropDownWidth="wrap_content"
+                    android:dropDownVerticalOffset="@dimen/text_45"
+                    android:entries="@array/lead_type_filter"
+                    android:forceHasOverlappingRendering="false"
+                    android:gravity="center_vertical|start"
+                    android:paddingLeft="@dimen/size_5"
+                    android:spinnerMode="dropdown"
+                    android:textSize="@dimen/text_size_14" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <com.baoyz.widget.PullRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:refreshColors="@array/scheme_colors"
+            app:refreshType="smartisan">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/customer_lead_List"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.baoyz.widget.PullRefreshLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/no_datafound"
+        android:layout_width="@dimen/size_120"
+        android:layout_height="@dimen/size_120"
+        android:layout_gravity="center"
+        android:background="@drawable/nodatafound"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/loader"
+        layout="@layout/loader" />
+
+
+</FrameLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#64000000"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/reminder"
+            style="@style/BottomDiaologTitleStyle"
+            android:text="@string/reminder" />
+
+
+        <View style="@style/BottomDialogButtonsSeparator" />
+
+        <TextView
+            android:id="@+id/feedback"
+            style="@style/ButtonDialogButtonText"
+            android:background="@drawable/bottom_corner_button_end"
+            android:fontFamily="@font/muli_bold"
+            android:padding="@dimen/text_size_20"
+            android:text="@string/feedback"
+            android:textColor="@color/text" />
+
+        <TextView
+            android:id="@+id/btnCancelDialog"
+            style="@style/ButtonDialogButtonText"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bottom_button_very_last"
+            android:text="@string/cancel"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

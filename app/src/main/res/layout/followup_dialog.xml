@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/graph_size_350"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/dialog_bg">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_20"
+            android:fontFamily="@font/muli_semibold"
+            android:gravity="center"
+            android:text="Follow Up"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size_20" />
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10"
+            android:fontFamily="@font/muli_semibold"
+            android:text="@string/date_text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <RelativeLayout
+            android:id="@+id/viewDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10"
+            android:background="@drawable/rounded_border_edit">
+
+
+            <EditText
+                android:id="@+id/date_value"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_50"
+                android:background="@null"
+                android:focusable="false"
+                android:fontFamily="@font/muli_regular"
+                android:hint="DD-MM-YYYY"
+                android:paddingLeft="@dimen/size_10"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <ImageView
+                android:layout_width="@dimen/size_25"
+                android:layout_height="@dimen/size_25"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/size_10"
+                android:background="@drawable/date_icon" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txtTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_20"
+            android:fontFamily="@font/muli_semibold"
+            android:text="@string/time"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+
+        <RelativeLayout
+            android:id="@+id/viewTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10"
+            android:background="@drawable/rounded_border_edit">
+
+
+            <EditText
+                android:id="@+id/time_value"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_50"
+                android:background="@null"
+                android:focusable="false"
+                android:fontFamily="@font/muli_regular"
+                android:hint="@string/time_val"
+                android:paddingLeft="@dimen/size_10"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <ImageView
+                android:layout_width="@dimen/size_25"
+                android:layout_height="@dimen/size_25"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/size_10"
+                android:background="@drawable/time" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/communication_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_20"
+            android:layout_marginBottom="@dimen/size_10"
+            android:text="@string/communication_mode"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16"
+            android:visibility="gone" />
+
+        <Spinner
+            android:id="@+id/communication_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45"
+            android:layout_marginTop="@dimen/size_2"
+            android:entries="@array/communications"
+            android:overlapAnchor="false"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_20"
+            android:fontFamily="@font/muli_semibold"
+            android:text="@string/comment"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/comment_value"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_100"
+            android:layout_marginTop="@dimen/size_10"
+            android:background="@drawable/rounded_border_edit"
+            android:fontFamily="@font/muli_regular"
+            android:gravity="start"
+            android:paddingLeft="@dimen/size_5"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16"
+            android:visibility="visible" />
+
+
+        <Button
+            android:id="@+id/add"
+            android:layout_width="@dimen/size_120"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/size_20"
+            android:background="@drawable/button_rounded_corner"
+            android:fontFamily="@font/muli_semibold"
+            android:gravity="center"
+            android:text="@string/add"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_16" />
+
+    </LinearLayout>
+
+</ScrollView>

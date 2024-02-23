@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/size_90">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_80">
+
+        <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:layout_width="@dimen/size_70"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/cus_image"
+                android:layout_width="@dimen/text_50"
+                android:layout_height="@dimen/text_50"
+                android:src="@drawable/ic_profile_latest"/>
+
+
+        </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+         android:id="@+id/customerName"
+         android:gravity="start"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:textColor="@color/black"
+         android:textSize="@dimen/text_size_16"
+         android:fontFamily="@font/muli_semibold"
+         android:maxLines="1"
+         android:text=" GTM- Cinntra Training for s3 teaching "/>
+        <TextView
+            android:id="@+id/cardNumber"
+            android:gravity="start"
+            android:layout_marginTop="@dimen/text_size_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/hint_color"
+            android:textSize="@dimen/text_size_16"
+            android:fontFamily="@font/muli_regular"
+            android:maxLines="1"
+            android:text=" Uttam Nagar , New Delhi "/>
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="@dimen/text_size_5"
+        android:layout_marginLeft="@dimen/text_size_15"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_devider_thin"
+        android:background="@android:color/darker_gray"/>
+
+</LinearLayout>

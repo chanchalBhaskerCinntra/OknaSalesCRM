@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/size_5"
+        app:cardUseCompatPadding="true"
+        app:cardPreventCornerOverlap="true"
+        app:cardBackgroundColor="@color/white"
+        android:layout_marginLeft="@dimen/size_5"
+        android:layout_marginRight="@dimen/size_5"
+        app:cardElevation="@dimen/size_5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+
+            <RelativeLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/size_15"
+                android:layout_marginRight="@dimen/size_15"
+                android:layout_marginTop="@dimen/size_15"
+                android:layout_marginBottom="@dimen/size_5">
+
+                <TextView
+                    android:id="@+id/customerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ABC Pvt. ltd."
+                    android:layout_marginBottom="@dimen/size_2"
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/muli_bold"/>
+
+                <LinearLayout
+                    android:id="@+id/threeDotsLayout"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="end"
+                    android:paddingEnd="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/threedots" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/cardNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/customerName"
+                    android:layout_marginBottom="@dimen/size_2"
+                    android:fontFamily="@font/muli_regular"
+                    android:text="Pankaj"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_12" />
+                <TextView
+                    android:id="@+id/product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_below="@id/cardNumber"
+                    android:layout_marginBottom="@dimen/size_2"
+                    android:textSize="@dimen/text_size_10"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/muli_regular"/>
+
+                <TextView
+                    android:id="@+id/account_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/date"
+                    android:layout_marginBottom="@dimen/size_2"
+                    android:fontFamily="@font/muli_regular"
+                    android:text="Business Type : "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_12" />
+
+                <TextView
+                    android:id="@+id/amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/date"
+                    android:layout_marginBottom="@dimen/size_2"
+                    android:layout_toLeftOf="@id/credit_limit"
+                    android:layout_toRightOf="@id/account_balance"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/muli_regular"
+                    android:maxLines="1"
+                    android:text=" Rs. 0"
+                    android:textColor="@color/safron_barChart"
+                    android:textSize="@dimen/text_size_12" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20/10/2020"
+                    android:layout_below="@id/cardNumber"
+                    android:layout_marginBottom="@dimen/size_2"
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/muli_regular"/>
+
+                <TextView
+                    android:id="@+id/credit_limit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cardNumber"
+                    android:layout_marginBottom="@dimen/size_2"
+                    android:layout_toLeftOf="@id/tvPhoneno"
+                    android:fontFamily="@font/muli_regular"
+                    android:text="Phone No : "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_12"
+                    android:visibility="visible" />
+
+
+                <TextView
+                    android:id="@+id/tvPhoneno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cardNumber"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="@dimen/size_2"
+                    android:fontFamily="@font/muli_regular"
+                    android:gravity="right"
+                    android:text="N/A"
+                    android:textColor="@color/safron_barChart"
+                    android:textSize="@dimen/text_size_12"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/credit_limit_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="N/A"
+                    android:layout_below="@id/product"
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:layout_marginBottom="@dimen/size_2"
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="@color/safron_barChart"
+                    android:fontFamily="@font/muli_regular"/>
+
+                <ImageView
+                    android:id="@+id/map_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="-13dp"
+                    android:visibility="gone"
+                    android:background="@drawable/ic_group_1226"/>
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/gps_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/ic_group_1227" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:layout_marginBottom="@dimen/size_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/paymentview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:elevation="@dimen/size_5"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/size_15"
+                    android:background="@drawable/button_rounded_corner">
+
+                    <TextView
+                        android:id="@+id/payment_collection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="   Payment  Collection  ₹  "
+                        android:layout_margin="@dimen/size_5"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_10"
+                        android:fontFamily="@font/muli_regular"
+                        />
+                </LinearLayout>
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    android:visibility="gone"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:isIndicator="false"
+                    android:layout_marginRight="-20dp"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7"
+                    android:layout_alignParentRight="true"
+                    android:progressTint="@color/safron_barChart"
+                    android:numStars="5" />
+
+                <ImageView
+                    android:layout_width="@dimen/text_size_12"
+                    android:layout_height="@dimen/text_size_12"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/size_10"
+                    android:background="@drawable/ic_green_dot"
+                    android:layout_toLeftOf="@id/status"/>
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/size_20"
+                    android:text="Active"
+                    android:textColor="@color/green"
+                    android:textSize="@dimen/text_size_14" />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

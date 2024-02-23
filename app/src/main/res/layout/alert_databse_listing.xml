@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginRight="@dimen/size_15"
+    android:layout_marginLeft="@dimen/size_15"
+    style="@style/CustomShapeAppearanceBottomSheetDialog"
+    tools:context=".fragments.BlankFragment"
+    android:background="@drawable/rounded_bottombar"
+    >
+   <LinearLayout
+
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+      <RelativeLayout
+
+          android:orientation="horizontal"
+          android:gravity="center"
+          android:layout_margin="@dimen/size_15"
+          android:padding="@dimen/size_15"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@drawable/rounded_corner"
+          android:backgroundTint="@color/colorPrimary">
+         <TextView
+             android:layout_width="wrap_content"
+             android:id="@+id/select_dialog"
+             android:clickable="true"
+             android:layout_height="wrap_content"
+             android:layout_margin="@dimen/text_size_2"
+              android:gravity="center_vertical"
+             android:text="@string/select"
+             android:textColor="@color/white"
+             android:elevation="@dimen/size_5"
+
+             android:fontFamily="@font/muli_semibold"
+             android:textSize="@dimen/text_size_16"
+            />
+         <ImageView
+             android:layout_alignParentRight="true"
+             android:id="@+id/cross"
+             android:layout_marginRight="@dimen/size_15"
+             android:layout_gravity="center_vertical"
+             android:layout_width="@dimen/size_25"
+             android:clickable="true"
+             android:layout_height="@dimen/size_25"
+            android:src="@drawable/ic_cross"/>
+      </RelativeLayout>
+
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/database_listing"
+       android:layout_marginLeft="@dimen/size_15"
+       android:layout_marginRight="@dimen/size_15"
+       android:paddingBottom="@dimen/size_30"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
+   </LinearLayout>
+</FrameLayout>

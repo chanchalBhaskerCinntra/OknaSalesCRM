@@ -1,0 +1,1046 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_edit_qt_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/header"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_15"
+                android:layout_marginRight="@dimen/size_15"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/size_15">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/companyNameCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/size_15"
+                    android:background="@color/white"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/size_5"
+                    app:cardElevation="@dimen/size_2"
+                    app:cardUseCompatPadding="true">
+
+
+                    <RelativeLayout
+                        android:id="@+id/company_frame"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_60"
+                        android:layout_margin="@dimen/size_10"
+                        android:gravity="center">
+
+
+                        <TextView
+                            android:id="@+id/company_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/qt_status"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/muli_bold"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:paddingRight="@dimen/size_90"
+                            android:text="(18)"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_16"
+                            app:layout_constrainedWidth="true" />
+
+
+                        <TextView
+                            android:id="@+id/qt_status"
+                            android:layout_width="@dimen/size_70"
+                            android:layout_height="@dimen/size_35"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="@dimen/size_5"
+                            android:layout_marginRight="@dimen/size_5"
+                            android:background="@drawable/openroundedgreen"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:fontFamily="@font/muli_bold"
+                            android:gravity="center"
+                            android:minHeight="@dimen/size_35"
+                            android:text="Open"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <TextView
+                            android:id="@+id/valid_untill_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/company_name"
+                            android:layout_marginTop="@dimen/size_5"
+                            android:fontFamily="@font/muli_regular"
+                            android:text="@string/valid_untill"
+                            android:textColor="@color/light_grey_box"
+                            android:textSize="@dimen/text_size_14" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+
+                    android:id="@+id/quote_information"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/muli_bold"
+                    android:text="@string/quote_information"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_18" />
+
+                <LinearLayout
+                    android:id="@+id/QtView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <TextView
+                        android:id="@+id/select_Qt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:fontFamily="@font/muli_regular"
+                        android:text="@string/quotation_ref"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/Qt_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_45"
+                        android:layout_marginTop="@dimen/size_10"
+                        android:background="@drawable/rounded_border_edit"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/size_10"
+                        android:paddingRight="@dimen/size_10">
+
+                        <EditText
+                            android:id="@+id/Qt_refValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:background="@null"
+                            android:clickable="false"
+                            android:duplicateParentState="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/muli_regular"
+                            android:gravity="start|center_vertical"
+                            android:hint="@string/quotation_ref"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/size_5"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/light_grey_box"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <ImageView
+                            android:id="@+id/img_qt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:paddingTop="@dimen/size_5"
+                            android:src="@drawable/ic_forword_arrow_black" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/quotationView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/quotationName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:fontFamily="@font/muli_regular"
+                        android:text="@string/quotation_name_mand"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/quo_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_45"
+                        android:layout_marginTop="@dimen/size_10"
+                        android:background="@drawable/rounded_border_edit"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/size_10"
+                        android:paddingRight="@dimen/size_10">
+
+                        <EditText
+                            android:id="@+id/quo_namevalue"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:background="@null"
+                            android:duplicateParentState="false"
+                            android:fontFamily="@font/muli_regular"
+                            android:gravity="start|center_vertical"
+                            android:hint="@string/quotation_name"
+                            android:imeOptions="actionNext"
+                            android:inputType="textCapSentences"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/size_5"
+                            android:textColorHint="@color/light_grey_box"
+                            android:textSize="@dimen/text_size_14" />
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/ppiView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <TextView
+                        android:id="@+id/performa_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:fontFamily="@font/muli_regular"
+                        android:text="Quotation"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/ppi_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_45"
+                        android:layout_marginTop="@dimen/size_10"
+                        android:background="@drawable/rounded_border_edit"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/size_10"
+                        android:paddingRight="@dimen/size_10">
+
+                        <EditText
+                            android:id="@+id/ed_parent_proforma_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:background="@null"
+                            android:clickable="false"
+                            android:duplicateParentState="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/muli_regular"
+                            android:gravity="start|center_vertical"
+                            android:hint="Select Quotation"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/size_5"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/light_grey_box"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <ImageView
+                            android:id="@+id/img15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:paddingTop="@dimen/size_5"
+                            android:src="@drawable/ic_forword_arrow_black" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/quotationNumLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:fontFamily="@font/muli_regular"
+                        android:text="@string/quote_no_mand"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_45"
+                        android:layout_marginTop="@dimen/size_10"
+                        android:background="@drawable/rounded_border_edit"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/size_10"
+                        android:paddingRight="@dimen/size_10">
+
+                        <EditText
+                            android:id="@+id/edQuoteNo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:background="@null"
+                            android:duplicateParentState="false"
+                            android:fontFamily="@font/muli_regular"
+                            android:gravity="start|center_vertical"
+                            android:hint="Quote No"
+                            android:imeOptions="actionNext"
+                            android:inputType="textCapSentences"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/size_5"
+                            android:textColorHint="@color/light_grey_box"
+                            android:textSize="@dimen/text_size_14" />
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/oppView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/opportunity_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:fontFamily="@font/muli_regular"
+                        android:text="@string/opportunity_name"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/opp_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_45"
+                        android:layout_marginTop="@dimen/size_10"
+                        android:background="@drawable/rounded_border_edit"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/size_10"
+                        android:paddingRight="@dimen/size_10">
+
+                        <EditText
+                            android:id="@+id/opportunity_name_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:background="@null"
+                            android:clickable="false"
+                            android:duplicateParentState="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/muli_regular"
+                            android:gravity="start|center_vertical"
+                            android:hint="@string/opportunity_nam"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/size_5"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/light_grey_box"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <ImageView
+                            android:id="@+id/img0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:paddingTop="@dimen/size_5"
+                            android:src="@drawable/ic_forword_arrow_black" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/bpView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:fontFamily="@font/muli_regular"
+                        android:text="@string/bussiness_partner_mand"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/bussinessPartner"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_45"
+                        android:layout_marginTop="@dimen/size_10"
+                        android:background="@drawable/rounded_border_edit"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/size_10"
+                        android:paddingRight="@dimen/size_10">
+
+                        <EditText
+                            android:id="@+id/business_partner_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/text_45"
+                            android:layout_toLeftOf="@id/img"
+                            android:background="@color/transparent"
+                            android:duplicateParentState="false"
+                            android:focusable="false"
+                            android:fontFamily="@font/muli_regular"
+                            android:gravity="start|center_vertical"
+                            android:hint="@string/bussiness_partner"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/size_5"
+                            android:paddingRight="@dimen/size_5"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/light_grey_box"
+                            android:textSize="@dimen/text_size_14"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:paddingTop="@dimen/size_5"
+                            android:src="@drawable/ic_forword_arrow_black" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/contact_person"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_15"
+                    android:fontFamily="@font/muli_regular"
+                    android:text="@string/contact_person_mand"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_14" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_10">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Select Contact Person"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/acContactPerson"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:maxLines="1"
+                            android:textSize="12sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_15"
+                    android:fontFamily="@font/muli_regular"
+                    android:text="@string/sales_employee_mand"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_14"
+                    android:visibility="visible" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_10">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Select Sales Employee"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/acSalesEmployee"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:editable="false"
+                            android:maxLines="1"
+                            android:textSize="12sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <!-- <Spinner
+                         android:id="@+id/sales_employee_spinner"
+                         android:layout_width="match_parent"
+                         android:layout_height="@dimen/text_45"
+                         android:layout_toLeftOf="@id/drov_arrow"
+                         android:background="@null"
+                         android:dropDownWidth="wrap_content"
+                         android:dropDownVerticalOffset="@dimen/text_45"
+                         android:forceHasOverlappingRendering="false"
+                         android:gravity="center_vertical|start"
+                         android:paddingLeft="@dimen/size_5"
+                         android:spinnerMode="dropdown"
+                         android:textSize="@dimen/text_size_14" />
+
+                     <ImageView
+                         android:id="@+id/drov_arrow"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_alignParentRight="true"
+                         android:layout_centerVertical="true"
+                         android:src="@drawable/ic_bottom_arrow_black" />-->
+
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/posting_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_15"
+                    android:fontFamily="@font/muli_regular"
+                    android:text="@string/ceated_datemand"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_14" />
+
+
+                <LinearLayout
+                    android:id="@+id/postingDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_45"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:background="@drawable/rounded_border"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/edCreatedDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_45"
+                        android:layout_weight="0.9"
+                        android:background="@null"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:fontFamily="@font/muli_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Created Date"
+                        android:imeOptions="actionNext"
+                        android:inputType="date"
+                        android:maxLines="1"
+                        android:paddingLeft="@dimen/size_15"
+                        android:textColorHint="@color/light_grey_box"
+                        android:textSize="@dimen/text_size_14" />
+
+                    <ImageView
+                        android:id="@+id/postCal"
+                        android:layout_width="@dimen/size_30"
+                        android:layout_height="@dimen/size_30"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_marginRight="@dimen/size_10"
+                        android:layout_weight="0.1"
+                        android:padding="@dimen/size_2"
+                        android:src="@drawable/ic_calendar_icon" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/glassAndCoatingDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/glass_till"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:fontFamily="@font/muli_regular"
+                        android:text="@string/glass_order_date_mand"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+                    <LinearLayout
+                        android:id="@+id/glassOrderDateLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_45"
+                        android:layout_marginTop="@dimen/size_10"
+                        android:background="@drawable/rounded_border"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/edGlassOrderDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/text_45"
+                            android:layout_weight="0.9"
+                            android:background="@null"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:fontFamily="@font/muli_regular"
+                            android:gravity="center_vertical"
+                            android:hint="Glass Order Date"
+                            android:imeOptions="actionNext"
+                            android:inputType="date"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/size_15"
+                            android:textColorHint="@color/light_grey_box"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <ImageView
+                            android:id="@+id/glassCal"
+                            android:layout_width="@dimen/size_30"
+                            android:layout_height="@dimen/size_30"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_marginRight="@dimen/size_10"
+                            android:layout_weight="0.1"
+                            android:padding="@dimen/size_2"
+                            android:src="@drawable/ic_calendar_icon" />
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:fontFamily="@font/muli_regular"
+                        android:text="@string/coating_date_mand"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+                    <LinearLayout
+                        android:id="@+id/coatingDateLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_45"
+                        android:layout_marginTop="@dimen/size_10"
+                        android:background="@drawable/rounded_border"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/edCoatingDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/text_45"
+                            android:layout_weight="0.9"
+                            android:background="@null"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:fontFamily="@font/muli_regular"
+                            android:gravity="center_vertical"
+                            android:hint="Coating Date"
+                            android:imeOptions="actionNext"
+                            android:inputType="date"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/size_15"
+                            android:textColorHint="@color/light_grey_box"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <ImageView
+                            android:id="@+id/coatingCall"
+                            android:layout_width="@dimen/size_30"
+                            android:layout_height="@dimen/size_30"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_marginRight="@dimen/size_10"
+                            android:layout_weight="0.1"
+                            android:padding="@dimen/size_2"
+                            android:src="@drawable/ic_calendar_icon" />
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:fontFamily="@font/muli_regular"
+                        android:text="@string/delivery_date_mand"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+                    <LinearLayout
+                        android:id="@+id/deliveryDateLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_45"
+                        android:layout_marginTop="@dimen/size_10"
+                        android:background="@drawable/rounded_border"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/edDeliveryDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/text_45"
+                            android:layout_weight="0.9"
+                            android:background="@null"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:fontFamily="@font/muli_regular"
+                            android:gravity="center_vertical"
+                            android:hint="Delivery Date"
+                            android:imeOptions="actionNext"
+                            android:inputType="date"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/size_15"
+                            android:textColorHint="@color/light_grey_box"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <ImageView
+                            android:id="@+id/deliveryCall"
+                            android:layout_width="@dimen/size_30"
+                            android:layout_height="@dimen/size_30"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_marginRight="@dimen/size_10"
+                            android:layout_weight="0.1"
+                            android:padding="@dimen/size_2"
+                            android:src="@drawable/ic_calendar_icon" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/validAndDocDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/valid_till"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:fontFamily="@font/muli_regular"
+                        android:text="@string/valid_untill_mand"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+                    <LinearLayout
+                        android:id="@+id/validDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_45"
+                        android:layout_marginTop="@dimen/size_10"
+                        android:background="@drawable/rounded_border"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/valid_till_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/text_45"
+                            android:layout_weight="0.9"
+                            android:background="@null"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:fontFamily="@font/muli_regular"
+                            android:gravity="center_vertical"
+                            android:hint="@string/valid_date"
+                            android:imeOptions="actionNext"
+                            android:inputType="date"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/size_15"
+                            android:textColorHint="@color/light_grey_box"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <ImageView
+                            android:id="@+id/validCal"
+                            android:layout_width="@dimen/size_30"
+                            android:layout_height="@dimen/size_30"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_marginRight="@dimen/size_10"
+                            android:layout_weight="0.1"
+                            android:padding="@dimen/size_2"
+                            android:src="@drawable/ic_calendar_icon" />
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/document_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:fontFamily="@font/muli_regular"
+                        android:text="@string/document_date_mand"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+                    <LinearLayout
+                        android:id="@+id/documentDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_45"
+                        android:layout_marginTop="@dimen/size_10"
+                        android:background="@drawable/rounded_border"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/document_date_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/text_45"
+                            android:layout_weight="0.9"
+                            android:background="@null"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:fontFamily="@font/muli_regular"
+                            android:gravity="center_vertical"
+                            android:hint="@string/document_date"
+                            android:imeOptions="actionNext"
+                            android:inputType="date"
+                            android:maxLines="1"
+                            android:paddingLeft="@dimen/size_15"
+                            android:textColorHint="@color/light_grey_box"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <ImageView
+                            android:id="@+id/docCal"
+                            android:layout_width="@dimen/size_30"
+                            android:layout_height="@dimen/size_30"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_marginRight="@dimen/size_10"
+                            android:layout_weight="0.1"
+                            android:padding="@dimen/size_2"
+                            android:src="@drawable/ic_calendar_icon" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_15"
+                    android:fontFamily="@font/muli_regular"
+                    android:text="@string/description"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_14" />
+
+                <EditText
+                    android:id="@+id/remark_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_90"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:layout_marginBottom="@dimen/size_10"
+                    android:background="@drawable/rounded_border"
+                    android:fontFamily="@font/muli_regular"
+                    android:gravity="start"
+                    android:hint="@string/description"
+                    android:imeOptions="actionDone"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:maxLength="250"
+                    android:maxLines="4"
+                    android:padding="@dimen/size_15"
+                    android:scrollHorizontally="false"
+                    android:textColorHint="@color/light_grey_box"
+                    android:textSize="@dimen/text_size_14" />
+
+
+                <LinearLayout
+                    android:id="@+id/quotationAttachmentLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_15"
+                            android:fontFamily="@font/muli_regular"
+                            android:text="Attachment Caption"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_14" />
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/text_45"
+                            android:layout_marginTop="@dimen/size_10"
+                            android:background="@drawable/rounded_border_edit"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="@dimen/size_10"
+                            android:paddingRight="@dimen/size_10">
+
+                            <EditText
+                                android:id="@+id/edAttachmentCaption"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerVertical="true"
+                                android:background="@null"
+                                android:duplicateParentState="false"
+                                android:fontFamily="@font/muli_regular"
+                                android:gravity="start|center_vertical"
+                                android:hint="Caption"
+                                android:imeOptions="actionNext"
+                                android:inputType="textCapSentences"
+                                android:maxLines="1"
+                                android:paddingLeft="@dimen/size_5"
+                                android:textColorHint="@color/light_grey_box"
+                                android:textSize="@dimen/text_size_14" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_45"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/muli_bold"
+                            android:gravity="center_vertical"
+                            android:text="Attachments  "
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_16" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/quotAttachment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:text="Add Attachment"
+                            android:textAllCaps="false"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:visibility="visible"
+                            app:cornerRadius="10dp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvAttachments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_5"
+                        android:fontFamily="@font/muli_regular"
+                        android:text="No Data Found"
+                        android:visibility="visible"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/attachmentRecyclerList"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:id="@+id/ivQuotationImageSelected"
+                        android:layout_width="@dimen/size_60"
+                        android:visibility="gone"
+                        android:layout_height="@dimen/size_60" />
+
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/submit"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/text_45"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="@dimen/size_30"
+                    android:layout_marginBottom="@dimen/size_30"
+                    android:background="@drawable/button_rounded_corner"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/muli_bold"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/next"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_16" />
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+</FrameLayout>

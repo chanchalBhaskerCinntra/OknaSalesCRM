@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main_edit_qt_frame">
+    <LinearLayout
+        android:background="@color/hint_color"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/add_new_header"/>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:visibility="visible"
+         android:id="@+id/block_c"
+         android:paddingLeft="@dimen/text_size_15"
+         android:background="@color/white"
+         android:orientation="vertical"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+         <TextView
+         android:id="@+id/series_code_txt"
+         android:layout_marginTop="@dimen/text_size_15"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="@dimen/text_size_12"
+             android:fontFamily="@font/muli_regular"
+         android:textColor="@color/hint_color"
+         android:text="@string/series">
+       </TextView>
+
+       <TextView
+         android:id="@+id/series_value"
+         android:layout_marginTop="@dimen/text_size_15"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="@dimen/text_size_14"
+           android:fontFamily="@font/muli_regular"
+         android:textColor="@color/black"
+         android:text="Hardware">
+
+       </TextView>
+       <View
+        android:layout_marginTop="@dimen/text_size_15"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_devider"
+        android:background="@color/hint_color"/>
+       <TextView
+        android:id="@+id/code"
+        android:layout_marginTop="@dimen/text_size_15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_12"
+           android:fontFamily="@font/muli_regular"
+        android:textColor="@color/hint_color"
+        android:text="@string/code">
+       </TextView>
+        <TextView
+        android:id="@+id/code_value"
+        android:layout_marginTop="@dimen/text_size_15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_14"
+            android:fontFamily="@font/muli_regular"
+        android:textColor="@color/black"
+        android:text="AD21 ">
+       </TextView>
+        <View
+        android:layout_marginTop="@dimen/text_size_15"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_devider"
+        android:background="@color/hint_color"/>
+
+        <TextView
+         android:id="@+id/name"
+         android:layout_marginTop="@dimen/text_size_15"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="@dimen/text_size_12"
+            android:fontFamily="@font/muli_regular"
+         android:textColor="@color/hint_color"
+         android:text="@string/name">
+        </TextView>
+         <TextView
+         android:id="@+id/name_value"
+         android:layout_marginTop="@dimen/text_size_15"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="@dimen/text_size_14"
+             android:fontFamily="@font/muli_regular"
+         android:textColor="@color/black"
+         android:text=" Texture ">
+        </TextView>
+          <View
+          android:layout_marginTop="@dimen/text_size_15"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/view_devider"
+          android:background="@color/hint_color"/>
+         <TextView
+          android:id="@+id/foreign_name"
+          android:layout_marginTop="@dimen/text_size_15"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textSize="@dimen/text_size_12"
+             android:fontFamily="@font/muli_regular"
+          android:textColor="@color/hint_color"
+          android:text="@string/foreign_name">
+         </TextView>
+          <TextView
+           android:id="@+id/foreign_name_value"
+           android:layout_marginTop="@dimen/text_size_15"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/text_size_14"
+              android:fontFamily="@font/muli_regular"
+           android:textColor="@color/black"
+           android:text=" qwrqwr">
+
+            </TextView>
+
+            <View
+            android:layout_marginTop="@dimen/text_size_15"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_devider"
+            android:background="@color/hint_color"/>
+            <TextView
+            android:id="@+id/bp_type"
+            android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/bp_type">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/bp_type_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="5">
+
+            </TextView>
+
+           <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+            <TextView
+                android:id="@+id/owener"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/owner">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/owener_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text=" No Owner ">
+
+            </TextView>
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+
+
+
+            <TextView
+                android:id="@+id/main_contact"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:textColor="@color/hint_color"
+                android:fontFamily="@font/muli_regular"
+                android:text="@string/main_contact">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/main_contact_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="Anthony">
+
+            </TextView>
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+
+            <TextView
+                android:id="@+id/sales_employee"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/sales_employee">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/sales_employee_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text=" Jim Boswick">
+
+            </TextView>
+
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+
+
+
+            <TextView
+                android:id="@+id/industry"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/industry">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/industry_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="">
+
+            </TextView>
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+            <TextView
+                android:id="@+id/group"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/group">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/group_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_marginBottom="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text=" Distribution "/>
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/log_block"
+            android:paddingLeft="@dimen/text_size_15"
+            android:paddingBottom="@dimen/text_size_15"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/text_size_30"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/telephone"
+                android:fontFamily="@font/muli_regular"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:textColor="@color/hint_color"
+                android:text="@string/telephone">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/telephone_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:fontFamily="@font/muli_regular"
+                android:inputType="textMultiLine"
+                android:textSize="@dimen/text_size_14"
+                android:textColor="@color/black"
+                android:text="3453-2354 ">
+
+            </TextView>
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+
+
+
+            <TextView
+                android:id="@+id/e_mail"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/email">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/e_mail_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:textColor="@color/black"
+                android:maxLines="1"
+                android:fontFamily="@font/muli_regular"
+                android:inputType="text"
+                android:text="inf@cinntra.com">
+
+            </TextView>
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+
+            <TextView
+                android:id="@+id/website"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/website">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/website_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="www.cinntra.com">
+
+            </TextView>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/add_block"
+            android:paddingLeft="@dimen/text_size_15"
+            android:paddingBottom="@dimen/text_size_15" android:background="@color/white"
+            android:layout_marginTop="@dimen/text_size_30"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/bill_to"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/bill_to">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/bill_to_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:inputType="textMultiLine"
+                android:textSize="@dimen/text_size_14"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/black"
+                android:text="1618 James St FairPort NY 14450 USA ">
+
+            </TextView>
+            <View
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_devider"
+                android:background="@color/hint_color"/>
+
+
+
+            <TextView
+                android:id="@+id/ship_to"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/bill_to">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/ship_to_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:textColor="@color/black"
+                android:maxLines="1"
+                android:fontFamily="@font/muli_regular"
+                android:inputType="text"
+                android:text="4962 Rosewood St Suite 100 Bronx NY 10467 USA">
+
+            </TextView>
+
+           </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/rem_block"
+            android:paddingLeft="@dimen/text_size_15"
+
+            android:paddingBottom="@dimen/text_size_15" android:background="@color/white"
+            android:layout_marginTop="@dimen/text_size_30"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/remark"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:fontFamily="@font/muli_regular"
+                android:textColor="@color/hint_color"
+                android:text="@string/remarks">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/remark_value"
+                android:layout_marginTop="@dimen/text_size_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:fontFamily="@font/muli_regular"
+                android:inputType="textMultiLine"
+                android:textSize="@dimen/text_size_14"
+                android:textColor="@color/black"
+                android:text=" ">
+
+            </TextView>
+
+     </LinearLayout>
+   </LinearLayout>
+       </ScrollView>
+    </LinearLayout>
+
+</FrameLayout>
