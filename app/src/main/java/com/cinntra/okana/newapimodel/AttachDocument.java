@@ -11,6 +11,8 @@ import java.io.Serializable;
 
 public class AttachDocument implements Serializable, Parcelable {
 
+    private String Size;
+
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -41,6 +43,7 @@ public class AttachDocument implements Serializable, Parcelable {
     @SerializedName("FileName")
     @Expose
     private String fileName;
+    private String FileExtension;
     private final static long serialVersionUID = 4506091094702080866L;
 
     /**
@@ -107,6 +110,22 @@ public class AttachDocument implements Serializable, Parcelable {
             return new AttachDocument[size];
         }
     };
+
+    public String getFileExtension() {
+        return FileExtension;
+    }
+
+    public void setFileExtension(String fileExtension) {
+        FileExtension = fileExtension;
+    }
+
+    public String getSize() {
+        return Size;
+    }
+
+    public void setSize(String size) {
+        Size = size;
+    }
 
     public Integer getId() {
         return id;

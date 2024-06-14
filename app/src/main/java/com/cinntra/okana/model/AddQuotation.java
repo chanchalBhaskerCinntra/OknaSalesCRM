@@ -74,17 +74,56 @@ public class AddQuotation implements Parcelable {
     String U_QUOTNM;
     float NetTotal;
     String QuoteNo;
+    String MatirialType = "";
     @SerializedName("DiscountPercent")
     @Expose
     float DiscountPercent;
+
+    public String SiteNumber;
 
     @SerializedName("AddressExtension")
     @Expose
     private AddressExtensions addressExtension;
 
-    @SerializedName("DocumentLines")
+   /* @SerializedName("DocumentLines")
     @Expose
-    private ArrayList<DocumentLines> DocumentLines;
+    private ArrayList<DocumentLines> DocumentLines;*/
+
+    private String DocumentLines;
+    private String CreatedBy;
+
+
+    public String getDocumentLines() {
+        return DocumentLines;
+    }
+
+    public String getCreatedBy() {
+        return CreatedBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        CreatedBy = createdBy;
+    }
+
+    public String getSiteNumber() {
+        return SiteNumber;
+    }
+
+    public void setSiteNumber(String siteNumber) {
+        SiteNumber = siteNumber;
+    }
+
+    public String getMatirialType() {
+        return MatirialType;
+    }
+
+    public void setMatirialType(String matirialType) {
+        MatirialType = matirialType;
+    }
+
+    public void setDocumentLines(String documentLines) {
+        DocumentLines = documentLines;
+    }
 
     public String getGlassDate() {
         return GlassDate;
@@ -118,9 +157,7 @@ public class AddQuotation implements Parcelable {
         CardCode = cardCode;
     }
 
-    public ArrayList<com.cinntra.okana.model.DocumentLines> getDocumentLines() {
-        return DocumentLines;
-    }
+
 
     public String getQuoteNo() {
         return QuoteNo;
@@ -130,9 +167,15 @@ public class AddQuotation implements Parcelable {
         QuoteNo = quoteNo;
     }
 
+/*
     public void setDocumentLines(ArrayList<com.cinntra.okana.model.DocumentLines> documentLines) {
         DocumentLines = documentLines;
     }
+
+    public ArrayList<com.cinntra.okana.model.DocumentLines> getDocumentLines() {
+        return DocumentLines;
+    }
+*/
 
     public AddQuotation() {
     }
@@ -157,7 +200,7 @@ public class AddQuotation implements Parcelable {
         this.BPLName = ((String) in.readValue((String.class.getClassLoader())));
         this.DiscountPercent = ((Float) in.readValue((String.class.getClassLoader())));
         this.addressExtension = ((AddressExtensions) in.readValue((String.class.getClassLoader())));
-        this.DocumentLines = ((ArrayList) in.readValue((ArrayList.class.getClassLoader())));
+        this.DocumentLines = ((String) in.readValue((String.class.getClassLoader())));
         this.U_OPPID = ((String) in.readValue((String.class.getClassLoader())));
         this.CreateDate = ((String) in.readValue((String.class.getClassLoader())));
         this.CreateTime = ((String) in.readValue((String.class.getClassLoader())));

@@ -6,12 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+
 import com.cinntra.okana.R;
 import com.cinntra.okana.databinding.FragmentOpportunityDetailBinding;
 import com.cinntra.okana.globals.Globals;
 import com.cinntra.okana.model.OpportunityModels.OpportunityItem;
-
-
 
 
 public class Opportunity_Detail_Fragment extends Fragment implements View.OnClickListener {
@@ -75,41 +74,41 @@ public class Opportunity_Detail_Fragment extends Fragment implements View.OnClic
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            Bundle b      = getArguments();
-            opportunityItem =(OpportunityItem) b.getSerializable(Globals.OpportunityItem);
+            Bundle b = getArguments();
+            opportunityItem = (OpportunityItem) b.getSerializable(Globals.OpportunityItem);
         }
     }
 
 
     FragmentOpportunityDetailBinding binding;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragmentget
-        binding=FragmentOpportunityDetailBinding.inflate(getLayoutInflater());
-        View v=inflater.inflate(R.layout.fragment_opportunity_detail, container, false);
-      //  ButterKnife.bind(this,v);
+        binding = FragmentOpportunityDetailBinding.inflate(getLayoutInflater());
+        View v = inflater.inflate(R.layout.fragment_opportunity_detail, container, false);
+        //  ButterKnife.bind(this,v);
         setDefaults();
         setData();
         return binding.getRoot();
     }
 
-    private void setData()
-      {
-    binding.opportunityNoValue.setText(opportunityItem.getSequentialNo());
-          binding.opportunityNameValue.setText(opportunityItem.getOpportunityName());
-          binding.bussinessPartnerValue.setText(opportunityItem.getBPChanelName());
-          binding.contactValue.setText(opportunityItem.getContactPerson());
-          binding.predictedClosingValue.setText(opportunityItem.getPredictedClosingDate());
-          binding.salesEmployeeValue.setText(opportunityItem.getSalesPerson());
-          binding.remarkValue.setText(opportunityItem.getRemarks());
-          binding.stageValue.setText(opportunityItem.getCurrentStageNo());
-          binding.potentialValue.setText(opportunityItem.getTotalAmountLocal());
-          binding.closingRateValue.setText(opportunityItem.getClosingPercentage() +"%");
-          binding.stageStartDateValue.setText(opportunityItem.getStartDate());
-          binding.stageEndDateValue.setText(opportunityItem.getClosingDate());
+    private void setData() {
+        binding.opportunityNoValue.setText(opportunityItem.getSequentialNo());
+        binding.opportunityNameValue.setText(opportunityItem.getOpportunityName());
+        binding.bussinessPartnerValue.setText(opportunityItem.getBPChanelName());
+        binding.contactValue.setText(opportunityItem.getContactPerson());
+        binding.predictedClosingValue.setText(opportunityItem.getPredictedClosingDate());
+        binding.salesEmployeeValue.setText(opportunityItem.getSalesPerson());
+        binding.remarkValue.setText(opportunityItem.getRemarks());
+        binding.stageValue.setText(opportunityItem.getCurrentStageNo());
+        binding.potentialValue.setText(opportunityItem.getTotalAmountLocal());
+        binding.closingRateValue.setText(opportunityItem.getClosingPercentage() + "%");
+        binding.stageStartDateValue.setText(opportunityItem.getStartDate());
+        binding.stageEndDateValue.setText(opportunityItem.getClosingDate());
 
-       }
+    }
 
     private void setDefaults() {
         binding.headerOneButtonTitle.save.setVisibility(View.GONE);
@@ -119,7 +118,7 @@ public class Opportunity_Detail_Fragment extends Fragment implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.back_press:
                 getActivity().onBackPressed();
                 break;

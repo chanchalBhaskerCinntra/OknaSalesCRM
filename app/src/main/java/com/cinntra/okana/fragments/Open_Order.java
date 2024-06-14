@@ -499,7 +499,9 @@ public class Open_Order extends Fragment implements CommentStage, FragmentRefres
             @Override
             public boolean onQueryTextChange(String newText) {
                 if (adapter != null) {
-                    adapter.filter(newText);
+//                    adapter.filter(newText);
+                    searchTextValue = newText;
+                    callApi(binding.loader.loader, maxItem, page, "", "", "");
                 }
                 return false;
             }

@@ -1,16 +1,30 @@
 package com.cinntra.okana.activities;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -18,11 +32,14 @@ import com.cinntra.okana.R;
 import com.cinntra.okana.adapters.SalesEmployeeAutoAdapter;
 import com.cinntra.okana.adapters.bpAdapters.ContactPersonAutoAdapter;
 import com.cinntra.okana.databinding.AddQuotationBinding;
+import com.cinntra.okana.fragments.AddOrderForm_Fianl_Fragment;
 import com.cinntra.okana.fragments.AddOrderForm_One_Fragment;
+import com.cinntra.okana.globals.FileUtilsPdf;
 import com.cinntra.okana.globals.Globals;
 import com.cinntra.okana.globals.MainBaseActivity;
 import com.cinntra.okana.interfaces.SubmitQuotation;
 import com.cinntra.okana.model.AddQuotation;
+import com.cinntra.okana.model.AttachmentResponseModel;
 import com.cinntra.okana.model.BPModel.BusinessPartnerAllResponse;
 import com.cinntra.okana.model.ContactPerson;
 import com.cinntra.okana.model.ContactPersonData;
@@ -34,6 +51,7 @@ import com.cinntra.okana.model.QuotationResponse;
 import com.cinntra.okana.model.SaleEmployeeResponse;
 import com.cinntra.okana.model.SalesEmployeeItem;
 import com.cinntra.okana.model.orderModels.CreateOrderRequestModel;
+import com.cinntra.okana.newapimodel.LeadResponse;
 import com.cinntra.okana.newapimodel.LeadValue;
 import com.cinntra.okana.newapimodel.NewOpportunityRespose;
 import com.cinntra.okana.newapimodel.OpportunityValue;
@@ -43,12 +61,17 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.pixplicity.easyprefs.library.Prefs;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
 import es.dmoral.toasty.Toasty;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -62,6 +85,12 @@ public class AddOrderAct extends MainBaseActivity implements View.OnClickListene
     public static int LeadCode = 101;
     public static int PARENT_PROFORMA_INVOICE = 1002;
     public static int OPPCODE = 1001;
+
+    private static final int RESULT_LOAD_IMAGE = 123;
+    private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 7;
+    File file;
+    String picturePath = "";
+    Uri fileUri;
 
     AppCompatActivity act;
     public static String salesEmployeeCode = "";
@@ -93,6 +122,7 @@ public class AddOrderAct extends MainBaseActivity implements View.OnClickListene
 
     AddQuotationBinding binding;
     String  BPCardCode = "";
+    String  materialTypeVal = "";
 
     public static CreateOrderRequestModel createOrderRequestModel;
     ArrayList<ContactPersonResponseModel.Datum> contactPersonListgl = new ArrayList<>();
@@ -117,6 +147,7 @@ public class AddOrderAct extends MainBaseActivity implements View.OnClickListene
         salesEmployeeCode = Prefs.getString(Globals.SalesEmployeeCode, "");
 
         binding.quotationGeneralContent.quotationView.setVisibility(View.GONE);
+        binding.quotationGeneralContent.siteNoLayout.setVisibility(View.VISIBLE);
         binding.quotationGeneralContent.ppiView.setVisibility(View.VISIBLE);
         binding.quotationGeneralContent.glassAndCoatingDate.setVisibility(View.VISIBLE);
         binding.quotationGeneralContent.validAndDocDate.setVisibility(View.VISIBLE);
@@ -125,7 +156,9 @@ public class AddOrderAct extends MainBaseActivity implements View.OnClickListene
         binding.quotationGeneralContent.QtView.setVisibility(View.GONE);
         binding.quotationGeneralContent.bpView.setVisibility(View.VISIBLE);
         binding.quotationGeneralContent.quotationNumLayout.setVisibility(View.GONE);
-        binding.quotationGeneralContent.quotationAttachmentLayout.setVisibility(View.GONE);
+        binding.quotationGeneralContent.quotationAttachmentLayout.setVisibility(View.VISIBLE);
+        binding.quotationGeneralContent.attachmentCaptionLayout.setVisibility(View.GONE);
+        binding.quotationGeneralContent.materialTypeLayout.setVisibility(View.VISIBLE);
 
 
         //todo create quotation of particular opportunity if quotation not created of that opportunity.
@@ -140,7 +173,6 @@ public class AddOrderAct extends MainBaseActivity implements View.OnClickListene
 
 
         if (Globals.checkInternet(this)){
-
             try {
                 if (!BPCardCode.isEmpty()) {
                     callBPOneAPi(BPCardCode, "");
@@ -191,7 +223,123 @@ public class AddOrderAct extends MainBaseActivity implements View.OnClickListene
 
         callSalessApi();*/
 
+
+        //todo click on attachment
+        binding.quotationGeneralContent.quotAttachment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                intentDispatcher();
+                openAttachmentDialog();
+            }
+        });
+
+
+        List<String> materialTypeList_gl = Arrays.asList(Globals.material_type_list_gl);
+        //todo bind material type adapter ..
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(AddOrderAct.this, R.layout.drop_down_textview, materialTypeList_gl);
+        binding.quotationGeneralContent.acMaterialType.setAdapter(arrayAdapter);
+
+        //todo material type item click..
+        binding.quotationGeneralContent.acMaterialType.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (materialTypeList_gl.size() > 0) {
+                    materialTypeVal = materialTypeList_gl.get(position);
+                    binding.quotationGeneralContent.acMaterialType.setText(materialTypeList_gl.get(position));
+                }
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(AddOrderAct.this, R.layout.drop_down_textview, materialTypeList_gl);
+                binding.quotationGeneralContent.acMaterialType.setAdapter(arrayAdapter);
+            }
+        });
+
+
     }
+
+
+    private static final int RESULT_LOAD_PDF = 2;
+
+    private void openAttachmentDialog() {
+        final Dialog dialog = new Dialog(this);
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.picturedialog);
+        dialog.getWindow().getAttributes().width = ActionBar.LayoutParams.FILL_PARENT;
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+        TextView cancel = dialog.findViewById(R.id.canceldialog);
+        ImageView gallery = dialog.findViewById(R.id.gallerySelect);
+        ImageView camera = dialog.findViewById(R.id.cameraSelect);
+
+        gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                intentDispatcher();
+                dialog.dismiss();
+
+
+            }
+        });
+
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                intent.setType("application/pdf");
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                startActivityForResult(intent, RESULT_LOAD_PDF);
+
+                dialog.dismiss();
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+
+    //todo select attachment ---
+    private void intentDispatcher() {
+        checkAndRequestPermissions();
+
+        Intent takePictureIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        takePictureIntent.setType("image/*");
+        startActivityForResult(takePictureIntent, RESULT_LOAD_IMAGE);
+    }
+
+    private boolean checkAndRequestPermissions() {
+        int camera = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        int write = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int read = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+
+        List<String> listPermissionsNeeded = new ArrayList<>();
+
+        if (write != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if (camera != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.CAMERA);
+        }
+        if (read != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[0]), REQUEST_ID_MULTIPLE_PERMISSIONS);
+            return false;
+        }
+
+        return true;
+    }
+
 
 
     NewOpportunityRespose oppItemLine = new NewOpportunityRespose();
@@ -430,7 +578,7 @@ public class AddOrderAct extends MainBaseActivity implements View.OnClickListene
                 String coatingDate = binding.quotationGeneralContent.edCoatingDate.getText().toString().trim();
                 String deliveryDate = binding.quotationGeneralContent.edDeliveryDate.getText().toString().trim();
                 String remark = binding.quotationGeneralContent.remarkValue.getText().toString().trim();
-                if (valiadtion(binding.quotationGeneralContent.businessPartnerValue.getText().toString(), salesEmployeeCode, poDate, vDate, docDate, ContactPersonCode, glassDate, coatingDate, deliveryDate)) {
+                if (valiadtion(binding.quotationGeneralContent.businessPartnerValue.getText().toString(), salesEmployeeCode, poDate, ContactPersonCode)) {
 
                     addQuotationObj.setU_QUOTNM(QuotName);
                     addQuotationObj.setU_QUOTID(QuotID);
@@ -444,6 +592,7 @@ public class AddOrderAct extends MainBaseActivity implements View.OnClickListene
                     addQuotationObj.setCoatingDate(Globals.convert_dd_MM_yyyy_to_yyyy_MM_dd(coatingDate));//docDate
                     addQuotationObj.setDeliveryDate(Globals.convert_dd_MM_yyyy_to_yyyy_MM_dd(deliveryDate));//docDate
                     addQuotationObj.setSalesPerson(ContactPersonCode);
+                    addQuotationObj.setSiteNumber(binding.quotationGeneralContent.edSiteNo.getText().toString());
 //                    createOrderRequestModel.setContactPersonCode(salePCode);
 
                     addQuotationObj.setRemarks(remark);
@@ -460,7 +609,12 @@ public class AddOrderAct extends MainBaseActivity implements View.OnClickListene
                     addQuotationObj.setCreateTime(Globals.getTCurrentTime());
                     addQuotationObj.setCreateDate(Globals.getTodaysDatervrsfrmt());
 
-                    AddOrderForm_One_Fragment addQuotationForm_one_fragment = new AddOrderForm_One_Fragment(quotationItem1, CardCode, opportunityItemValue);
+                    addQuotationObj.setDocumentLines("");
+                    addQuotationObj.setMatirialType(materialTypeVal);
+                    addQuotationObj.setCreatedBy(Prefs.getString(Globals.SalesEmployeeCode, ""));
+
+//                    AddOrderForm_One_Fragment addQuotationForm_one_fragment = new AddOrderForm_One_Fragment(quotationItem1, CardCode, opportunityItemValue);
+                    AddOrderForm_Fianl_Fragment addQuotationForm_one_fragment = new AddOrderForm_Fianl_Fragment(quotationItem1, opportunityItemValue, CardCode);
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.add(R.id.main_edit_qt_frame, addQuotationForm_one_fragment).addToBackStack(null);
@@ -497,6 +651,8 @@ public class AddOrderAct extends MainBaseActivity implements View.OnClickListene
         startActivityForResult(i, QUOTCODE);
     }
 
+    boolean isPDF = true;
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -524,6 +680,87 @@ public class AddOrderAct extends MainBaseActivity implements View.OnClickListene
 //            lead_value.setText(leadValue.getCompanyName());
             LeadID = leadValue.getId().toString();
             LeadName = leadValue.getCompanyName();
+        }
+        //todo for attachment selected---
+
+        else if (requestCode == RESULT_LOAD_IMAGE) {
+            if (resultCode == RESULT_OK && data != null) {
+                Bundle extras = data.getExtras();
+                Uri selectedImage = data.getData();
+
+                isPDF = false;
+
+                if (!isPDF){
+                    binding.quotationGeneralContent.tvPdf.setVisibility(View.GONE);
+                }
+
+                binding.quotationGeneralContent.ivQuotationImageSelected.setVisibility(View.VISIBLE);
+
+                if (selectedImage != null){
+                    binding.quotationGeneralContent.tvAttachments.setVisibility(View.GONE);
+                }else {
+                    binding.quotationGeneralContent.tvAttachments.setVisibility(View.VISIBLE);
+                }
+
+
+                binding.quotationGeneralContent.ivQuotationImageSelected.setImageURI(selectedImage);
+
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                Cursor cursor = this.getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+
+                if (cursor != null) {
+                    cursor.moveToFirst();
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    picturePath = cursor.getString(columnIndex);
+                    cursor.close();
+
+                    Log.e("picturePath", picturePath);
+                    file = new File(picturePath);
+                    Log.e("FILE>>>>", "onActivityResult: " + file.getName());
+                    FileExtension = "image";
+                }
+            }
+        }
+
+
+        /** PDF Load ***/
+        else if (requestCode == RESULT_LOAD_PDF && resultCode == RESULT_OK) {
+            if (data != null) {
+                Uri pdfUri = data.getData();
+
+                isPDF = true;
+                if (isPDF){
+                    binding.quotationGeneralContent.ivQuotationImageSelected.setVisibility(View.GONE);
+                }
+
+
+                binding.quotationGeneralContent.ivQuotationImageSelected.setImageURI(pdfUri);
+
+                String filePath = FileUtilsPdf.getPathFromUri(this,pdfUri);
+                if (filePath != null) {
+                    // Now you have the file path
+                    Log.e("File Path", filePath);
+
+                    picturePath = filePath;
+                    Log.e("picturePath", picturePath);
+                    file = new File(picturePath);
+                    Log.e("FILE>>>>", "onActivityResult: " + file.getName());
+
+                    FileExtension = "pdf";
+
+                    if (pdfUri != null){
+                        binding.quotationGeneralContent.tvPdf.setVisibility(View.VISIBLE);
+                        binding.quotationGeneralContent.tvPdf.setText(file.getName());
+                        binding.quotationGeneralContent.tvAttachments.setVisibility(View.GONE);
+                    }else {
+                        binding.quotationGeneralContent.tvPdf.setVisibility(View.GONE);
+                        binding.quotationGeneralContent.tvAttachments.setVisibility(View.VISIBLE);
+                    }
+
+
+                }
+
+            }
         }
 
     }
@@ -849,6 +1086,72 @@ public class AddOrderAct extends MainBaseActivity implements View.OnClickListene
 
     }
 
+    private String FileExtension = "";
+
+    //todo quotation Attachment api calling---
+    private void callQuotationAttachmentApi(String qt_id) {
+        MultipartBody.Builder builder = new MultipartBody.Builder();
+        builder.setType(MultipartBody.FORM);
+
+        //todo get model data in multipart body request..
+
+        builder.addFormDataPart("Caption", "");
+        builder.addFormDataPart("id", qt_id.trim());
+        builder.addFormDataPart("FileExtension", FileExtension);
+        builder.addFormDataPart("CreateDate", Globals.getTodaysDatervrsfrmt());
+        builder.addFormDataPart("CreateTime", Globals.getTCurrentTime());
+        builder.addFormDataPart("UpdateDate", Globals.getTodaysDatervrsfrmt());
+        builder.addFormDataPart("UpdateTime", Globals.getTCurrentTime());
+        builder.addFormDataPart("LinkType", "Order");
+        builder.addFormDataPart("LinkID", qt_id.trim());
+
+        try {
+            if (picturePath.isEmpty()) {
+                builder.addFormDataPart("File", "");
+            } else {
+                builder.addFormDataPart("File", picturePath, RequestBody.create(MediaType.parse("multipart/form-data"), file));
+            }
+        } catch (Exception e) {
+            Log.d("TAG===>", "AddQuotationApi: ");
+        }
+
+        MultipartBody requestBody = builder.build();
+
+        Call<AttachmentResponseModel> call = NewApiClient.getInstance().getApiService().attachmentCreated(requestBody);
+        call.enqueue(new Callback<AttachmentResponseModel>() {
+            @Override
+            public void onResponse(Call<AttachmentResponseModel> call, Response<AttachmentResponseModel> response) {
+
+                if (response.code() == 200) {
+                    if (response.body().getStatus() == 200) {
+                        Log.d("AttachmentResponse =>", "onResponse: Successful");
+                    }else {
+                        Log.d("AttachmentNot200Status", "onResponse: QuotAttachmentNot200Status");
+                    }
+
+                } else {
+                    Gson gson = new GsonBuilder().create();
+                    LeadResponse mError = new LeadResponse();
+                    try {
+                        String s = response.errorBody().string();
+                        mError = gson.fromJson(s, LeadResponse.class);
+                        Toast.makeText(AddOrderAct.this, mError.getMessage(), Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        //handle failure to read error
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AttachmentResponseModel> call, Throwable t) {
+                Log.e("TAG_Attachment_Api", "onFailure: AttachmentAPi" );
+                Toast.makeText(AddOrderAct.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
     //todo hitting create order api here...
     private void createOrder(AddQuotation in, ProgressBar loader) {
         Gson gson = new Gson();
@@ -864,6 +1167,8 @@ public class AddOrderAct extends MainBaseActivity implements View.OnClickListene
                         Globals.SelectedItems.clear();
                         Toasty.success(AddOrderAct.this, "Add Successfully", Toast.LENGTH_LONG).show();
                         finish();
+
+                        callQuotationAttachmentApi(response.body().getValue().get(0).getQt_Id());
                     } else {
                         Toasty.warning(AddOrderAct.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
 
@@ -891,8 +1196,7 @@ public class AddOrderAct extends MainBaseActivity implements View.OnClickListene
         });
     }
 
-    private boolean valiadtion(String businessPartnerValue, String salesEmployeeCode, String poDate, String vDate, String docDate, String contactPersonCode,
-                               String glassDate, String coatingDate, String deliveryDate) {
+    private boolean valiadtion(String businessPartnerValue, String salesEmployeeCode, String poDate,String contactPersonCode) {
         if (businessPartnerValue.isEmpty()) {
 //            binding.quotationGeneralContent.businessPartnerValue.requestFocus();
 //            binding.quotationGeneralContent.businessPartnerValue.setError("Select Business Partner");
@@ -901,25 +1205,25 @@ public class AddOrderAct extends MainBaseActivity implements View.OnClickListene
         } else if (salesEmployeeCode.isEmpty()) {
             Globals.showMessage(act, "Select Sales Representative is Required ! ");
             return false;
-        } else if (vDate.isEmpty()) {
-            Globals.showMessage(act, "Enter Valid date");
+        }/* else if (vDate.isEmpty()) {
+            Globals.showMessage(act, "Enter Order Delivery date");
             return false;
         } else if (docDate.isEmpty()) {
             Globals.showMessage(act, "Enter Document date");
             return false;
-        } else if (poDate.isEmpty()) {
+        }*/ else if (poDate.isEmpty()) {
             Globals.showMessage(act, "Enter Posting date");
             return false;
-        } else if (glassDate.isEmpty()) {
+        }/* else if (glassDate.isEmpty()) {
             Globals.showMessage(act, "Enter Glass Order date");
             return false;
         } else if (coatingDate.isEmpty()) {
             Globals.showMessage(act, "Enter Coating date");
             return false;
         }else if (deliveryDate.isEmpty()) {
-            Globals.showMessage(act, "Enter Delivery date");
+            Globals.showMessage(act, "Enter Glass Delivery date");
             return false;
-        } else if (contactPersonCode.isEmpty()) {
+        }*/ else if (contactPersonCode.isEmpty()) {
             Globals.showMessage(act, "Select Contact Person");
             return false;
         }

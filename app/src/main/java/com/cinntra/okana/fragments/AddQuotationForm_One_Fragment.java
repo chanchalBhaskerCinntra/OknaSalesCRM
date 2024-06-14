@@ -150,7 +150,6 @@ public class AddQuotationForm_One_Fragment extends Fragment implements View.OnCl
     private void calculateAndDisplaySum(double total) {
         double num1 = parseEditTextValue(binding.discontValue);
 
-
         double sum = total - (total * num1) / 100;
 
         binding.totalBeforeDiscontValue.setText(String.valueOf(sum));
@@ -237,7 +236,8 @@ public class AddQuotationForm_One_Fragment extends Fragment implements View.OnCl
                         }
                     }
 
-                    AddQuotationAct.addQuotationObj.setDocumentLines(documentLineArrayList);
+                    //todo comment bcz not required--
+//                    AddQuotationAct.addQuotationObj.setDocumentLines(documentLineArrayList);
 
                     AddQuotationForm_Fianl_Fragment fragment = new AddQuotationForm_Fianl_Fragment(oppItemLines, mCardCode);
                     FragmentManager fragmentManager = getChildFragmentManager();

@@ -171,7 +171,7 @@ public class GoogleService extends Service implements LocationListener {
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    getmyCurrentLocation(Settings.locationtype);
+//                    getmyCurrentLocation(Settings.locationtype);
 
                 }
             });
@@ -233,14 +233,10 @@ public class GoogleService extends Service implements LocationListener {
                                 Log.e("afterlatlong", String.valueOf(location.getLatitude()) + "==>" + location.getLongitude());
                                 Log.e("prelatlong", String.valueOf(Prefs.getDouble(Globals.Lattitude, 0.0)) + "==>" + Prefs.getDouble(Globals.Longitude, 0.0));
                                 if (Prefs.getDouble(Globals.Lattitude, 0.0) == 0.0) {
-                                    callApi(location
-                                            .getLatitude(), location
-                                            .getLongitude(), type, address);
+//                                    callApi(location.getLatitude(), location.getLongitude(), type, address);
                                 } else if (distance > 500) {
 
-                                    callApi(location
-                                            .getLatitude(), location
-                                            .getLongitude(), type, address);
+//                                    callApi(location.getLatitude(), location.getLongitude(), type, address);
                                 } else {
                                 }
                             } else {
@@ -295,15 +291,11 @@ public class GoogleService extends Service implements LocationListener {
                                         Log.e("afterlatlong", String.valueOf(location1.getLatitude()) + "==>" + location1.getLongitude());
                                         Log.e("prelatlong", String.valueOf(Prefs.getDouble(Globals.Lattitude, 0.0)) + "==>" + Prefs.getDouble(Globals.Longitude, 0.0));
                                         if (Prefs.getDouble(Globals.Lattitude, 0.0) == 0.0) {
-                                            callApi(location1
-                                                    .getLatitude(), location1
-                                                    .getLongitude(), type, address);
+//                                            callApi(location1.getLatitude(), location1.getLongitude(), type, address);
                                         } else if (distance > 500) {
                                             Log.e("distance", String.valueOf(distance));
 
-                                            callApi(location1
-                                                    .getLatitude(), location1
-                                                    .getLongitude(), type, address);
+//                                            callApi(location1.getLatitude(), location1.getLongitude(), type, address);
                                         } else {
                                             Log.e("distance", String.valueOf(distance));
                                         }

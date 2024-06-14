@@ -438,7 +438,11 @@ public class Quotation_Update_Fragment extends Fragment implements View.OnClickL
                         updateProformaInvoiceRequestModel.setUpdateTime(Globals.getTCurrentTime());
 
                         /***** Total items calculations *****/
-                        updateProformaInvoiceRequestModel.setNetTotal(Float.parseFloat(binding.quotationTotalContent.totalBeforeDiscontValue.getText().toString()));
+                        if (binding.quotationTotalContent.totalBeforeDiscontValue.getText().toString().isEmpty()){
+                            updateProformaInvoiceRequestModel.setNetTotal(0.0f);
+                        }else {
+                            updateProformaInvoiceRequestModel.setNetTotal(Float.parseFloat(binding.quotationTotalContent.totalBeforeDiscontValue.getText().toString()));
+                        }
 
                         if (!discount.isEmpty())
                             updateProformaInvoiceRequestModel.setDiscountPercent(Float.parseFloat(discount));
@@ -449,7 +453,7 @@ public class Quotation_Update_Fragment extends Fragment implements View.OnClickL
                         //todo add items lines.
                         ArrayList<DocumentLines> documentLineArrayList = new ArrayList<>();
 
-                        if (oppItemTempList_gl.size() > 0) {
+                    /*    if (oppItemTempList_gl.size() > 0) {
                             for (int j = 0; j < oppItemTempList_gl.size(); j++) {
                                 DocumentLines documentLines = new DocumentLines();
                                 documentLines.setQuantity(oppItemTempList_gl.get(j).getQuantity());
@@ -457,18 +461,6 @@ public class Quotation_Update_Fragment extends Fragment implements View.OnClickL
                                 documentLines.setUnitPrice(oppItemTempList_gl.get(j).getUnitPrice());
                                 documentLines.setItemCode(oppItemTempList_gl.get(j).getItemCode());
                                 documentLines.setQuotationID(oppItemTempList_gl.get(j).getQuotationID());
-                             /*   if (oppItemTempList_gl.get(j).getItemName() != "") {
-                                    documentLines.setItemDescription(oppItemTempList_gl.get(j).getItemName());
-
-                                    documentLines.setTaxCode(oppItemTempList_gl.get(j).getTaxCode());
-                                    documentLines.setTax(oppItemTempList_gl.get(j).getTax());
-                                } else {
-                                    documentLines.setQuotationID(oppItemTempList_gl.get(j).getQuotationID());
-                                    documentLines.setItemDescription(quotationItem.getDocumentLines().get(j).getItemDescription());
-                                    documentLines.setId(oppItemTempList_gl.get(j).getId());
-                                    documentLines.setTaxCode(oppItemTempList_gl.get(j).getTaxCode());
-                                    documentLines.setTax(oppItemTempList_gl.get(j).getTax());//oppItemTempList_gl.get(j).getTax()
-                                }*/
 
                                 documentLines.setItemDescription(oppItemTempList_gl.get(j).getItemDescription());
                                 documentLines.setId(oppItemTempList_gl.get(j).getId());
@@ -495,7 +487,10 @@ public class Quotation_Update_Fragment extends Fragment implements View.OnClickL
                             }
                         }
 
-                        updateProformaInvoiceRequestModel.setDocumentLines(documentLineArrayList);
+                        updateProformaInvoiceRequestModel.setDocumentLines(documentLineArrayList);*///todo comment due to no requirement---
+
+
+                        updateProformaInvoiceRequestModel.setDocumentLines(new ArrayList<>());
 
 
                         /***** Add Address payload *****/
@@ -583,8 +578,11 @@ public class Quotation_Update_Fragment extends Fragment implements View.OnClickL
                 break;
             case R.id.submit:
                 String opp_name = binding.quotationGeneralContent.opportunityNameValue.getText().toString().trim();
+//                frameManager(binding.totalFrame, binding.generalFrame, binding.preparedFrame, binding.total, binding.general, binding.address);//todo comment for no required--
+
+                frameManager(binding.preparedFrame, binding.generalFrame, binding.totalFrame, binding.address, binding.general, binding.total);
+
 //                if (validation(opp_name, remark_value.getText().toString().trim(), ContactPersonCode)) {
-                frameManager(binding.totalFrame, binding.generalFrame, binding.preparedFrame, binding.total, binding.general, binding.address);
 //                }
                 break;
             case R.id.next_button:
@@ -1082,7 +1080,7 @@ public class Quotation_Update_Fragment extends Fragment implements View.OnClickL
 
 
         //todo set document items line..
-        Globals.SelectedItems.clear();
+ /*       Globals.SelectedItems.clear();
 
         Globals.SelectedItems.addAll(quotationItem.getDocumentLines());
 
@@ -1114,7 +1112,7 @@ public class Quotation_Update_Fragment extends Fragment implements View.OnClickL
         enableTextWatcher();
 
         // Set the default value without triggering the TextWatcher
-        setDefaultValue(discount);
+        setDefaultValue(discount);*/ //todo comment for now due to no required --
 
         //todo set bill to address data--
         if (quotationItem.getAddressExtension() != null) {
@@ -1242,6 +1240,7 @@ public class Quotation_Update_Fragment extends Fragment implements View.OnClickL
                 if (ship_shiptype != null)
                     binding.quotationAddressContent.addressSection.shippingSpinner2.setSelection(Globals.getShipTypePo(shippinngType, ship_shiptype));
             }
+
         });
 
 
@@ -1591,8 +1590,7 @@ public class Quotation_Update_Fragment extends Fragment implements View.OnClickL
 
     private boolean valiadtion(String businessPartnerValue, String salesPersonCode, ArrayList<DocumentLines> oppItemTempList_gl, int size, String quotationName, String contactPersonCode, String poDate, EditText edQuoteNo) {
         if (businessPartnerValue.isEmpty()) {
-//            binding.quotationGeneralContent.businessPartnerValue.requestFocus();
-//            binding.quotationGeneralContent.businessPartnerValue.setError("Select Business Partner");
+
             Globals.showMessage(act, "Select Business Partner");
             return false;
         }
@@ -1614,10 +1612,10 @@ public class Quotation_Update_Fragment extends Fragment implements View.OnClickL
             Globals.showMessage(act, "Select Contact Person ! ");
             return false;
         }
-        if (size <= 0 && oppItemTempList_gl.size() <= 0) {
+        /*if (size <= 0 && oppItemTempList_gl.size() <= 0) {
             Globals.showMessage(getActivity(), "Select atleast 1 item");
             return false;
-        } /*else if (billtoStateCode.isEmpty()) {
+        }*/ /*else if (billtoStateCode.isEmpty()) {
             Globals.showMessage(getActivity(), "State is Required !");
             return false;
         } else if (shiptoStateCode.isEmpty()) {
@@ -1638,17 +1636,7 @@ public class Quotation_Update_Fragment extends Fragment implements View.OnClickL
             binding.quotationGeneralContent.edCreatedDate.setError("Created Date is Required !");
             Globals.showMessage(act, "Created Date is Required !");
             return false;
-        } /*else if (vDate.isEmpty()) {
-            binding.quotationGeneralContent.validTillValue.requestFocus();
-            binding.quotationGeneralContent.validTillValue.setError("Valid Date is Required !");
-            Globals.showMessage(act, "Valid Date is Required !");
-            return false;
-        } else if (docDate.isEmpty()) {
-            binding.quotationGeneralContent.documentDateValue.requestFocus();
-            binding.quotationGeneralContent.documentDateValue.setError("Document Date is Required !");
-            Globals.showMessage(act, "Document Date is Required !");
-            return false;
-        }*/
+        }
         return true;
     }
 

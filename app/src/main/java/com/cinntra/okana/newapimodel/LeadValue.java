@@ -6,56 +6,55 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LeadValue implements Parcelable
-{
+public class LeadValue implements Parcelable {
 
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private Integer id = 0;
     @SerializedName("date")
     @Expose
-    private String date;
+    private String date = "";
     @SerializedName("location")
     @Expose
-    private String location;
-    private String Country;
-    private String State;
+    private String location = "";
+    private String Country = "";
+    private String State = "";
     @SerializedName("companyName")
     @Expose
-    private String companyName;
+    private String companyName = "";
     @SerializedName("numOfEmployee")
     @Expose
     private Integer numOfEmployee;
     @SerializedName("turnover")
     @Expose
-    private String turnover;
+    private String turnover = "";
     @SerializedName("source")
     @Expose
-    private String source;
+    private String source = "";
     @SerializedName("contactPerson")
     @Expose
-    private String contactPerson;
+    private String contactPerson = "";
     @SerializedName("designation")
     @Expose
-    private String designation;
+    private String designation = "";
     @SerializedName("phoneNumber")
     @Expose
-    private String phoneNumber;
+    private String phoneNumber = "";
     @SerializedName("message")
     @Expose
-    private String message;
+    private String message = "";
     @SerializedName("email")
     @Expose
-    private String email;
+    private String email = "";
     @SerializedName("productInterest")
     @Expose
-    private String productInterest;
+    private String productInterest = "";
     @SerializedName("assignedTo")
     @Expose
     private AssignedTo assignedTo;
     @SerializedName("timestamp")
     @Expose
-    private String timestamp;
+    private String timestamp = "";
     @SerializedName("employeeId")
     @Expose
     private EmployeeId employeeId;
@@ -63,18 +62,18 @@ public class LeadValue implements Parcelable
 
     @SerializedName("ProjectAmount")
     @Expose
-    private String ProjectAmount;
+    private String ProjectAmount = "";
     @SerializedName("status")
     @Expose
-    private String status;
+    private String status = "";
     @SerializedName("leadType")
     @Expose
-    private String leadType;
+    private String leadType = "";
     @SerializedName("Caption")
     @Expose
-    private String Caption;
-    private String CustomerName;
-    private String productDetail;
+    private String Caption = "";
+    private String CustomerName = "";
+    private String productDetail = "";
     @SerializedName("junk")
     @Expose
     private Integer junk;
@@ -115,7 +114,6 @@ public class LeadValue implements Parcelable
     public final static Creator<LeadValue> CREATOR = new Creator<LeadValue>() {
 
 
-
         @SuppressWarnings({
                 "unchecked"
         })
@@ -127,8 +125,7 @@ public class LeadValue implements Parcelable
             return (new LeadValue[size]);
         }
 
-    }
-            ;
+    };
 
     protected LeadValue(android.os.Parcel in) {
         this.id = ((Integer) in.readValue((Integer.class.getClassLoader())));
@@ -154,13 +151,11 @@ public class LeadValue implements Parcelable
 
     /**
      * No args constructor for use in serialization
-     *
      */
     public LeadValue() {
     }
 
     /**
-     *
      * @param date
      * @param numOfEmployee
      * @param productInterest

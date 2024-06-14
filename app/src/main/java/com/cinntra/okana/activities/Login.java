@@ -99,7 +99,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Da
         });
 
 
-        binding.progressBar1.setVisibility(View.GONE);
+        binding.loadingback.setVisibility(View.GONE);
         // signin =findViewById(R.id.login_button);
         binding.loginButton.setOnClickListener(this);
         binding.gotoReg.setOnClickListener(this);
@@ -162,7 +162,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Da
     }
 
     private void sessionloginApi() {
-        binding.progressBar1.setVisibility(View.VISIBLE);
         HashMap<String, String> session = new HashMap<>();
         session.put("username", "root");
         session.put("password", "Sunil@123");
@@ -184,13 +183,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Da
 
             @Override
             public void onFailure(Call<NewLogINResponse> call, Throwable t) {
-                binding.progressBar1.setVisibility(View.GONE);
 
             }
         });
     }
 
     private void callLogInApi(String username, String password) {
+
+        binding.loadingback.setVisibility(View.VISIBLE);
 
         LogInDetail logInDetail = new LogInDetail();
         logInDetail.setUserName(username);
@@ -204,6 +204,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Da
             public void onResponse(Call<NewLogINResponse> call, Response<NewLogINResponse> response) {
 
                 if (response.body().getStatus() == 200) {
+                    binding.loadingback.setVisibility(View.GONE);
+
                     Gson gson = new Gson();
                     String json = gson.toJson(response.body().getLogInDetail());
                     Prefs.putString(Globals.AppUserDetails, json);
@@ -224,6 +226,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Da
                     Prefs.putString(Globals.Position, String.valueOf(response.body().getLogInDetail().getPosition()));
 
                     Prefs.putBoolean(Globals.Location_FirstTime,true);
+                    Prefs.putBoolean(Globals.LocationRestart,false);
 
                     long session = Long.parseLong("30");
                     session = session * 60 * 1000;
@@ -239,7 +242,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Da
 
 
                 } else {
-                    binding.progressBar1.setVisibility(View.GONE);
+                    binding.loadingback.setVisibility(View.GONE);
                     Toast.makeText(Login.this, "Check Login Credentials.", Toast.LENGTH_SHORT).show();
 
                 }
@@ -247,7 +250,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Da
 
             @Override
             public void onFailure(Call<NewLogINResponse> call, Throwable t) {
-                binding.progressBar1.setVisibility(View.GONE);
+                binding.loadingback.setVisibility(View.GONE);
                 Toast.makeText(Login.this, "Check Login Credentials.", Toast.LENGTH_SHORT).show();
 
             }
@@ -261,7 +264,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Da
         call.enqueue(new Callback<LogInResponse>() {
             @Override
             public void onResponse(Call<LogInResponse> call, Response<LogInResponse> response) {
-                binding.progressBar1.setVisibility(View.GONE);
+                binding.loadingback.setVisibility(View.GONE);
                 if (response.code() == 200) {
                     Prefs.putString(Globals.USER_TYPE, "manager");
                     Prefs.putString(Globals.SessionID, response.body().getSessionId());
@@ -289,7 +292,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Da
 
             @Override
             public void onFailure(Call<LogInResponse> call, Throwable t) {
-                binding.progressBar1.setVisibility(View.GONE);
+                binding.loadingback.setVisibility(View.GONE);
                 Toast.makeText(Login.this, t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }

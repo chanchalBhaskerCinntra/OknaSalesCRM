@@ -638,6 +638,10 @@ public interface ApiServices {
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     Call<LeadDocumentResponse> deleteQuotAttachment(@Body JsonObject leadValue);
 
+    @POST("opportunity/opp_attachment_delete")
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    Call<LeadDocumentResponse> deleteOppAttachment(@Body JsonObject leadValue);
+
 
     @POST("order/ord_attachment_delete")
     @Headers({"Content-Type: application/json;charset=UTF-8"})
@@ -909,6 +913,9 @@ public interface ApiServices {
 
     @POST("quotation/quot_attachment_create")
     Call<AttachmentResponseModel> postAttachmentUploadApi(@Body MultipartBody requestBody );
+
+    @POST("opportunity/opp_attachment_create")
+    Call<AttachmentResponseModel> postOppAttachmentUploadApi(@Body MultipartBody requestBody );
 
     @POST("attachment/create")
     Call<AttachmentResponseModel> attachmentCreated(@Body MultipartBody requestBody );

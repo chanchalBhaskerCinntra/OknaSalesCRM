@@ -8,15 +8,21 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -26,8 +32,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.cinntra.okana.R;
 import com.cinntra.okana.activities.bpActivity.AddBPCustomer;
 import com.cinntra.okana.activities.FileUtils;
-import com.cinntra.okana.adapters.PreviousImageViewAdapter;
+import com.cinntra.okana.adapters.leadAdapter.LeadAttachemntViewAdapter;
 import com.cinntra.okana.databinding.LeadInfoBinding;
+import com.cinntra.okana.globals.FileUtilsPdf;
 import com.cinntra.okana.globals.Globals;
 import com.cinntra.okana.model.LeadTypeData;
 import com.cinntra.okana.newapimodel.AttachDocument;
@@ -63,7 +70,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LeadInformation extends Fragment implements View.OnClickListener, PreviousImageViewAdapter.DeleteItemClickListener {
+public class LeadInformation extends Fragment implements View.OnClickListener, LeadAttachemntViewAdapter.DeleteItemClickListener {
 
     private final int REQUEST_CODE_CHOOSE = 1000;
 
@@ -163,7 +170,7 @@ public class LeadInformation extends Fragment implements View.OnClickListener, P
     }
 
     private void setAttachData(List<AttachDocument> data) {
-        PreviousImageViewAdapter adapter = new PreviousImageViewAdapter(getContext(), data, "LeadDetail");
+        LeadAttachemntViewAdapter adapter = new LeadAttachemntViewAdapter(getContext(), data, "LeadDetail");
         binding.prevattachment.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false));
         binding.prevattachment.setAdapter(adapter);
         adapter.setOnDeleteItemClick(this);
@@ -347,11 +354,66 @@ public class LeadInformation extends Fragment implements View.OnClickListener, P
                 chattransaction.commit();
                 break;
             case R.id.attachment:
+
                 openimageuploader();
+//                openAttachmentDialog();
+
+
                 break;
 
         }
     }
+
+
+    private static final int RESULT_LOAD_PDF = 2;
+
+    private void openAttachmentDialog() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.picturedialog);
+        dialog.getWindow().getAttributes().width = ActionBar.LayoutParams.FILL_PARENT;
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+        TextView cancel = dialog.findViewById(R.id.canceldialog);
+        ImageView gallery = dialog.findViewById(R.id.gallerySelect);
+        ImageView camera = dialog.findViewById(R.id.cameraSelect);
+
+        gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                openimageuploader();
+                dialog.dismiss();
+
+
+            }
+        });
+
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                intent.setType("application/pdf");
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                startActivityForResult(intent, RESULT_LOAD_PDF);
+
+                dialog.dismiss();
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+
 
     private void openimageuploader() {
         Dexter.withActivity(getActivity())
@@ -395,6 +457,9 @@ public class LeadInformation extends Fragment implements View.OnClickListener, P
     List<Uri> mSelected = new ArrayList<>();
     List<String> path = new ArrayList<>();
 
+    String picturePath = "";
+    File file;
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -411,7 +476,32 @@ public class LeadInformation extends Fragment implements View.OnClickListener, P
             updateattachment();
 
             // Get the Image from data
-        } else {
+        }
+        else if (requestCode == RESULT_LOAD_PDF && resultCode == RESULT_OK) {
+            if (data != null) {
+                Uri pdfUri = data.getData();
+
+                String filePath = FileUtilsPdf.getPathFromUri(getActivity(),pdfUri);
+                if (filePath != null) {
+                    // Now you have the file path
+                    Log.e("File Path", filePath);
+
+                    picturePath = filePath;
+                    Log.e("picturePath", picturePath);
+                    file = new File(picturePath);
+                    Log.e("FILE>>>>", "onActivityResult: " + file.getName());
+
+                    binding.loader.setVisibility(View.VISIBLE);
+
+                    updateattachment();
+
+                }
+
+
+            }
+        }
+
+        else {
             // show this if no image is selected
             Toast.makeText(getContext(), "You haven't picked Image", Toast.LENGTH_LONG).show();
         }
@@ -428,10 +518,25 @@ public class LeadInformation extends Fragment implements View.OnClickListener, P
         builder.addFormDataPart("CreateDate", Globals.getTodaysDatervrsfrmt());
         builder.addFormDataPart("CreateTime", Globals.getTCurrentTime());
 
-        for (int i = 0; i < mSelected.size(); i++) {
+        try {
+            if (picturePath.isEmpty()) {
+                for (int i = 0; i < mSelected.size(); i++) {
+                    File file = new File(path.get(i));
+                    builder.addFormDataPart("Attach", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
+                }
+
+            } else {
+                builder.addFormDataPart("Attach", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
+            }
+        } catch (Exception e) {
+            Log.d("TAG===>", "AddQuotationApi: ");
+        }
+
+
+   /*     for (int i = 0; i < mSelected.size(); i++) {
             File file = new File(path.get(i));
             builder.addFormDataPart("Attach", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
-        }
+        }*/
 
         MultipartBody requestBody = builder.build();
 

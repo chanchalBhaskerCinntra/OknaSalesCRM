@@ -103,7 +103,7 @@ public class Globals {
 
 
     /************Development*******************/
-  /*  public static   String NewBaseUrl  =  "http://103.234.187.197:8019/";
+ /*   public static   String NewBaseUrl  =  "http://103.234.187.197:8019/";
     public static String ImageURl = "http://103.234.187.197:8019";
     public static String PDFURL = "http://103.234.187.197:4250/assets/html/";*/
 
@@ -165,6 +165,7 @@ public class Globals {
     public static String getUserLogin = get_access + "/General/Login.xsjs?User=";
 
     public static String[] lead_status_list = {"New", "Follow Up", "Qualified", "Hold"};
+    public static String[] material_type_list_gl = {"Aluminium", "UPVC", "Aluminium+UPVC"};
 
     public static String LeadDetails = "_LeadDetails";
     public static String SelectedDatabase = "_Selected_Database";
@@ -212,6 +213,8 @@ public class Globals {
     public static String ItemType = "Paid";
 
     public static final String Location_FirstTime = "_Location_FirstTime";
+
+    public static final String LocationRestart = "_LocationRestart";
 
     public static String channelId = "distance_channel_id";
 
@@ -373,6 +376,12 @@ public class Globals {
 
     public static String getCurrentTimeIn_hh_mm_ss_aa() {
         String currentTime = new SimpleDateFormat("HH:mm:ss aa", Locale.getDefault()).format(new Date());
+        return currentTime;
+    }
+
+
+    public static String getCurrentTimeIn_hh_mm_ss() {
+        String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
         return currentTime;
     }
 

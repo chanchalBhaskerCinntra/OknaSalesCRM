@@ -96,14 +96,25 @@ public class WorkManagerApplication extends JobService {
                         Geocoder geocoder;
                         List<Address> addresses = new ArrayList<>();
                         geocoder = new Geocoder(WorkManagerApplication.this, Locale.getDefault());
+
                         try {
-                            addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                            String address = addresses.get(0).getAddressLine(0);
+                            addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+                            String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+
                             Log.e("manager_current_lat", String.valueOf(location.getLatitude()));
                             Log.e("manager_current_long", String.valueOf(location.getLongitude()));
                             Log.e("address", address);
+                            Log.e("TAG", "onComplete: Call Api" );
 //                            if (Prefs.getBoolean(Globals.Location_Boolean_MInutes, false) && Prefs.getBoolean(Globals.checkIn, true))
-                                bindLocationApi(location.getLatitude(), location.getLongitude(), address);//address
+                            bindLocationApi(location.getLatitude(), location.getLongitude(), address);//address
+                        } catch (IOException e) {
+
+                            e.printStackTrace();
+                        }
+
+                        try {
+                            addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -184,7 +195,7 @@ public class WorkManagerApplication extends JobService {
         jsonObject.addProperty("Emp_Id", Prefs.getString(Globals.SalesEmployeeCode, "")); //Prefs.getString(Globals.SalesEmployeeCode, "")
         jsonObject.addProperty("Emp_Name", Prefs.getString(Globals.SalesEmployeeName, "")); //Prefs.getString(Globals.Employee_Name, "")
         jsonObject.addProperty("UpdateDate", Globals.getTodaysDatervrsfrmt());
-        jsonObject.addProperty("UpdateTime", Globals.getCurrentTimeIn_hh_mm_ss_aa()); //getTCurrentTime
+        jsonObject.addProperty("UpdateTime", Globals.getCurrentTimeIn_hh_mm_ss()); //getTCurrentTime
         jsonObject.addProperty("type", "");
         jsonObject.addProperty("shape", "location");//meeting
         jsonObject.addProperty("remark", "Battery Percentage " + batteryPercentage);

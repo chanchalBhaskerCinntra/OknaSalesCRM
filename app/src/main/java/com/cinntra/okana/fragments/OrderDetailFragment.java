@@ -7,6 +7,8 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -14,21 +16,24 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 
 import com.cinntra.okana.R;
 import com.cinntra.okana.adapters.PreviousImageViewAdapter;
-import com.cinntra.okana.adapters.SaleOrderLinesAdapter;
 import com.cinntra.okana.databinding.FragmentOrderDetailBinding;
+import com.cinntra.okana.globals.FileUtilsPdf;
 import com.cinntra.okana.globals.Globals;
 import com.cinntra.okana.model.AttachmentResponseModel;
 import com.cinntra.okana.model.PerformaInvoiceModel.QuotationOneAPiModel;
@@ -117,7 +122,7 @@ public class OrderDetailFragment extends Fragment implements PreviousImageViewAd
         binding.quotAttachment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentDispatcher();
+                openAttachmentDialog();
             }
         });
 
@@ -126,8 +131,9 @@ public class OrderDetailFragment extends Fragment implements PreviousImageViewAd
     }
 
 
+
     //todo calling quotation one api here for show particular details..
-    OrderDetailResponseModel.Data quotationItem = null;
+    OrderDetailResponseModel.Data orderItem = null;
 
     private void callOrderOneApi() {
         binding.loaderLayout.loader.setVisibility(View.VISIBLE);
@@ -144,7 +150,7 @@ public class OrderDetailFragment extends Fragment implements PreviousImageViewAd
                         if (response.code() == 200) {
                             if (response.body().getStatus() == 200) {
 
-                                quotationItem = response.body().getData().get(0);
+                                orderItem = response.body().getData().get(0);
                                 setDefaultData();
                             }
 
@@ -199,93 +205,111 @@ public class OrderDetailFragment extends Fragment implements PreviousImageViewAd
 
     //todo set default data---
     private void setDefaultData() {
-        if (!quotationItem.getU_OPPRNM().isEmpty()) {
-            binding.tvOpportunity.setText(quotationItem.getU_OPPRNM());
+        if (!orderItem.getU_OPPRNM().isEmpty()) {
+            binding.tvOpportunity.setText(orderItem.getU_OPPRNM());
         } else {
             binding.tvOpportunity.setText("NA");
         }
-        if (!quotationItem.getU_QUOTNM().isEmpty()) {
-            binding.tvQuotation.setText(quotationItem.getU_QUOTNM());
+        if (!orderItem.getU_QUOTNM().isEmpty()) {
+            binding.tvQuotation.setText(orderItem.getU_QUOTNM());
         } else {
             binding.tvQuotation.setText("NA");
         }
-        if (!quotationItem.getCardName().isEmpty()) {
-            binding.tvCustomer.setText(quotationItem.getCardName());
+        if (!orderItem.getCardName().isEmpty()) {
+            binding.tvCustomer.setText(orderItem.getCardName());
         } else {
             binding.tvCustomer.setText("NA");
         }
-        if (!quotationItem.getContactPersonCode().isEmpty()) {
-            binding.tvContactPerson.setText(quotationItem.getContactPersonCode().get(0).getFirstName());
+
+        if (!orderItem.getSiteNumber().isEmpty()) {
+            binding.tvSiteNumber.setText(orderItem.getSiteNumber());
+        } else {
+            binding.tvSiteNumber.setText("NA");
+        }
+        if (!orderItem.getContactPersonCode().isEmpty()) {
+            binding.tvContactPerson.setText(orderItem.getContactPersonCode().get(0).getFirstName());
         } else {
             binding.tvContactPerson.setText("NA");
         }
-        if (!quotationItem.getSalesPersonCode().isEmpty()) {
-            binding.tvSalesEmployee.setText(quotationItem.getSalesPersonCode().get(0).getSalesEmployeeName());
+        if (!orderItem.getSalesPersonCode().isEmpty()) {
+            binding.tvSalesEmployee.setText(orderItem.getSalesPersonCode().get(0).getSalesEmployeeName());
         } else {
             binding.tvSalesEmployee.setText("NA");
         }
-        if (!quotationItem.getTaxDate().isEmpty()) {
-            binding.tvPostingDate.setText(Globals.convert_yyyy_mm_dd_to_dd_mm_yyyy(quotationItem.getTaxDate()));
+        if (!orderItem.getTaxDate().isEmpty()) {
+            binding.tvPostingDate.setText(Globals.convert_yyyy_mm_dd_to_dd_mm_yyyy(orderItem.getTaxDate()));
         } else {
             binding.tvPostingDate.setText("NA");
         }
-        if (!quotationItem.getDocDueDate().isEmpty()) {
-            binding.tvValidDate.setText(Globals.convert_yyyy_mm_dd_to_dd_mm_yyyy(quotationItem.getDocDueDate()));
+        if (!orderItem.getDocDueDate().isEmpty()) {
+            binding.tvValidDate.setText(Globals.convert_yyyy_mm_dd_to_dd_mm_yyyy(orderItem.getDocDueDate()));
         } else {
             binding.tvValidDate.setText("NA");
         }
-        if (!quotationItem.getDocDate().isEmpty()) {
-            binding.tvDocumentDate.setText(Globals.convert_yyyy_mm_dd_to_dd_mm_yyyy(quotationItem.getDocDate()));
+        if (!orderItem.getDocDate().isEmpty()) {
+            binding.tvDocumentDate.setText(Globals.convert_yyyy_mm_dd_to_dd_mm_yyyy(orderItem.getDocDate()));
         } else {
             binding.tvDocumentDate.setText("NA");
         }
 
-        if (!quotationItem.getGlassDate().isEmpty()) {
-            binding.tvGlassOrderDate.setText(Globals.convert_yyyy_mm_dd_to_dd_mm_yyyy(quotationItem.getGlassDate()));
+        if (!orderItem.getGlassDate().isEmpty()) {
+            binding.tvGlassOrderDate.setText(Globals.convert_yyyy_mm_dd_to_dd_mm_yyyy(orderItem.getGlassDate()));
         } else {
             binding.tvGlassOrderDate.setText("NA");
         }
 
-        if (!quotationItem.getCoatingDate().isEmpty()) {
-            binding.tvCoatingDate.setText(Globals.convert_yyyy_mm_dd_to_dd_mm_yyyy(quotationItem.getCoatingDate()));
+        if (!orderItem.getCoatingDate().isEmpty()) {
+            binding.tvCoatingDate.setText(Globals.convert_yyyy_mm_dd_to_dd_mm_yyyy(orderItem.getCoatingDate()));
         } else {
             binding.tvCoatingDate.setText("NA");
         }
 
-        if (!quotationItem.getDeliveryDate().isEmpty()) {
-            binding.tvDeliveryDate.setText(Globals.convert_yyyy_mm_dd_to_dd_mm_yyyy(quotationItem.getDeliveryDate()));
+        if (!orderItem.getDeliveryDate().isEmpty()) {
+            binding.tvDeliveryDate.setText(Globals.convert_yyyy_mm_dd_to_dd_mm_yyyy(orderItem.getDeliveryDate()));
         } else {
             binding.tvDeliveryDate.setText("NA");
         }
 
-        if (!quotationItem.getComments().isEmpty()) {
-            binding.tvRemarks.setText(quotationItem.getComments());
+        if (!orderItem.getComments().isEmpty()) {
+            binding.tvRemarks.setText(orderItem.getComments());
         } else {
             binding.tvRemarks.setText("NA");
         }
 
+        if (!orderItem.getOrderID().isEmpty()) {
+            binding.tvOrderID.setText(orderItem.getOrderID());
+        } else {
+            binding.tvOrderID.setText("NA");
+        }
 
-        //todo set addresss data--
-        if (quotationItem.getAddressExtension() != null) {
-            binding.tvBillBuildingAddress.setText(quotationItem.getAddressExtension().getBillToBuilding());
-            binding.tvBillZipCode.setText(quotationItem.getAddressExtension().getBillToZipCode());
-            binding.tvBillCountry.setText(quotationItem.getAddressExtension().getBillToCountry());
-            binding.tvBillState.setText(quotationItem.getAddressExtension().getBillToState());
+        if (!orderItem.getMatirialType().isEmpty()) {
+            binding.tvMaterialType.setText(orderItem.getMatirialType());
+        } else {
+            binding.tvMaterialType.setText("NA");
+        }
 
-            if (!quotationItem.getAddressExtension().getBillToStreet().equalsIgnoreCase("")) {
-                binding.tvBillingAddress.setText(quotationItem.getAddressExtension().getBillToStreet());
+
+        //todo set address data--
+        if (orderItem.getAddressExtension() != null) {
+            binding.tvBillBuildingAddress.setText(orderItem.getAddressExtension().getBillToBuilding());
+            binding.tvBillZipCode.setText(orderItem.getAddressExtension().getBillToZipCode());
+            binding.tvBillCountry.setText(orderItem.getAddressExtension().getBillToCountry());
+            binding.tvBillState.setText(orderItem.getAddressExtension().getBillToState());
+
+            if (!orderItem.getAddressExtension().getBillToStreet().equalsIgnoreCase("")) {
+                binding.tvBillingAddress.setText(orderItem.getAddressExtension().getBillToStreet());
             } else {
                 binding.tvBillingAddress.setText("NA");
             }
 
-            if (!quotationItem.getAddressExtension().getU_SHPTYPB().equalsIgnoreCase("")) {
-                binding.tvBillShippingType.setText(quotationItem.getAddressExtension().getU_SHPTYPB());
+            if (!orderItem.getAddressExtension().getU_SHPTYPB().equalsIgnoreCase("")) {
+                binding.tvBillShippingType.setText(orderItem.getAddressExtension().getU_SHPTYPB());
             } else {
                 binding.tvBillShippingType.setText("NA");
             }
 
-            if (!quotationItem.getAddressExtension().getBillToCity().equalsIgnoreCase("")) {
-                binding.tvBillCity.setText(quotationItem.getAddressExtension().getBillToCity());
+            if (!orderItem.getAddressExtension().getBillToCity().equalsIgnoreCase("")) {
+                binding.tvBillCity.setText(orderItem.getAddressExtension().getBillToCity());
             } else {
                 binding.tvBillCity.setText("NA");
             }
@@ -293,25 +317,25 @@ public class OrderDetailFragment extends Fragment implements PreviousImageViewAd
 
             //todo ship to address---
 
-            binding.tvShipBuildingAddress.setText(quotationItem.getAddressExtension().getShipToBuilding());
+            binding.tvShipBuildingAddress.setText(orderItem.getAddressExtension().getShipToBuilding());
 
-            binding.tvShipZipCode.setText(quotationItem.getAddressExtension().getShipToZipCode());
-            binding.tvShipCountry.setText(quotationItem.getAddressExtension().getShipToCountry());
-            binding.tvShipState.setText(quotationItem.getAddressExtension().getShipToState());
+            binding.tvShipZipCode.setText(orderItem.getAddressExtension().getShipToZipCode());
+            binding.tvShipCountry.setText(orderItem.getAddressExtension().getShipToCountry());
+            binding.tvShipState.setText(orderItem.getAddressExtension().getShipToState());
 
-            if (!quotationItem.getAddressExtension().getShipToCity().equalsIgnoreCase("")) {
-                binding.tvShipCity.setText(quotationItem.getAddressExtension().getShipToCity());
+            if (!orderItem.getAddressExtension().getShipToCity().equalsIgnoreCase("")) {
+                binding.tvShipCity.setText(orderItem.getAddressExtension().getShipToCity());
             } else {
                 binding.tvShipCity.setText("NA");
             }
-            if (!quotationItem.getAddressExtension().getShipToStreet().equalsIgnoreCase("")) {
-                binding.tvShipToShippingAddress.setText(quotationItem.getAddressExtension().getShipToStreet());
+            if (!orderItem.getAddressExtension().getShipToStreet().equalsIgnoreCase("")) {
+                binding.tvShipToShippingAddress.setText(orderItem.getAddressExtension().getShipToStreet());
             } else {
                 binding.tvShipToShippingAddress.setText("NA");
             }
 
-            if (!quotationItem.getAddressExtension().getU_SHPTYPS().equalsIgnoreCase("")) {
-                binding.tvShipShippingType.setText(quotationItem.getAddressExtension().getU_SHPTYPS());
+            if (!orderItem.getAddressExtension().getU_SHPTYPS().equalsIgnoreCase("")) {
+                binding.tvShipShippingType.setText(orderItem.getAddressExtension().getU_SHPTYPS());
             } else {
                 binding.tvShipShippingType.setText("NA");
             }
@@ -320,7 +344,7 @@ public class OrderDetailFragment extends Fragment implements PreviousImageViewAd
         }
 
 
-        //todo set document items line..
+      /*  //todo set document items line..
         Globals.SelectedItems.clear();
 
         Globals.SelectedItems.addAll(quotationItem.getDocumentLines());
@@ -348,16 +372,16 @@ public class OrderDetailFragment extends Fragment implements PreviousImageViewAd
         } else {
             binding.rvDocumentLines.setVisibility(View.GONE);
             binding.tvLineNoDataFound.setVisibility(View.VISIBLE);
-        }
+        }*///todo comment for now due to no require---
 
 
         //todo set attachment data---
-        if (quotationItem.getAttach().size() > 0) {
+        if (orderItem.getAttach().size() > 0) {
             binding.tvAttachments.setVisibility(View.GONE);
-            setAttachData(quotationItem.getAttach());
+            setAttachData(orderItem.getAttach());
 
         }else {
-            setAttachData(quotationItem.getAttach());
+            setAttachData(orderItem.getAttach());
 
             binding.tvAttachments.setVisibility(View.VISIBLE);
         }
@@ -385,7 +409,7 @@ public class OrderDetailFragment extends Fragment implements PreviousImageViewAd
 
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("id", attachId);
-        jsonObject.addProperty("ordId", quotationItem.getId());
+        jsonObject.addProperty("ordId", orderItem.getId());
 
         Call<LeadDocumentResponse> call = NewApiClient.getInstance().getApiService().deleteOrderAttachment(jsonObject);
         call.enqueue(new Callback<LeadDocumentResponse>() {
@@ -424,6 +448,58 @@ public class OrderDetailFragment extends Fragment implements PreviousImageViewAd
     }
 
 
+    private static final int RESULT_LOAD_PDF = 2;
+
+    private void openAttachmentDialog() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.picturedialog);
+        dialog.getWindow().getAttributes().width = ActionBar.LayoutParams.FILL_PARENT;
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+        TextView cancel = dialog.findViewById(R.id.canceldialog);
+        ImageView gallery = dialog.findViewById(R.id.gallerySelect);
+        ImageView camera = dialog.findViewById(R.id.cameraSelect);
+
+        gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              /*  Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                i.setType("image/*");
+                startActivityForResult(i, RESULT_LOAD_IMAGE);*/
+
+                intentDispatcher();
+                dialog.dismiss();
+
+
+            }
+        });
+
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                intent.setType("application/pdf");
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                startActivityForResult(intent, RESULT_LOAD_PDF);
+
+                dialog.dismiss();
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+
     private static final int RESULT_LOAD_IMAGE = 101;
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 7;
 
@@ -432,6 +508,7 @@ public class OrderDetailFragment extends Fragment implements PreviousImageViewAd
         checkAndRequestPermissions();
 
         Intent takePictureIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        takePictureIntent.setType("image/*");
         startActivityForResult(takePictureIntent, RESULT_LOAD_IMAGE);
     }
 
@@ -475,9 +552,21 @@ public class OrderDetailFragment extends Fragment implements PreviousImageViewAd
                 binding.ivQuotationImageSelected.setVisibility(View.VISIBLE);
                 binding.tvAttachments.setVisibility(View.GONE);
 
+                picturePath= FileUtilsPdf.getPathFromUri(getContext(),selectedImage);
+
+                Log.e("picturePath", picturePath);
+                file = new File(picturePath);
+                Log.e("FILE>>>>", "onActivityResult: " + file.getName());
+
+                binding.loaderLayout.loader.setVisibility(View.VISIBLE);
+
+                FileExtension = "image";
+
+                callOrderAttachmentApi(String.valueOf(orderItem.getId()));
+
 //                binding.ivQuotationImageSelected.setImageURI(selectedImage);
 
-                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+               /* String[] filePathColumn = {MediaStore.Images.Media.DATA};
                 Cursor cursor = act.getContentResolver().query(selectedImage, filePathColumn, null, null, null);
 
                 if (cursor != null) {
@@ -492,14 +581,45 @@ public class OrderDetailFragment extends Fragment implements PreviousImageViewAd
 
                     binding.loaderLayout.loader.setVisibility(View.VISIBLE);
 
-                    callOrderAttachmentApi(String.valueOf(quotationItem.getId()));
+                    FileExtension = "image";
+
+                    callOrderAttachmentApi(String.valueOf(orderItem.getId()));
+                }*/
+
+
+            }
+        }
+
+        else if (requestCode == RESULT_LOAD_PDF && resultCode == RESULT_OK) {
+            if (data != null) {
+                Uri pdfUri = data.getData();
+
+
+                String filePath = FileUtilsPdf.getPathFromUri(getActivity(),pdfUri);
+                if (filePath != null) {
+                    // Now you have the file path
+                    Log.e("File Path", filePath);
+
+                    picturePath = filePath;
+                    Log.e("picturePath", picturePath);
+                    file = new File(picturePath);
+                    Log.e("FILE>>>>", "onActivityResult: " + file.getName());
+
+                    binding.loaderLayout.loader.setVisibility(View.VISIBLE);
+
+                    FileExtension = "pdf";
+                    callOrderAttachmentApi(String.valueOf(orderItem.getId()));
+
                 }
+
+
             }
         }
 
     }
 
 
+    private String FileExtension = "";
 
     //todo quotation Attachment api calling---
     private void callOrderAttachmentApi(String qt_id) {
@@ -508,6 +628,7 @@ public class OrderDetailFragment extends Fragment implements PreviousImageViewAd
 
         //todo get model data in multipart body request..
         builder.addFormDataPart("orderId", qt_id.trim());
+        builder.addFormDataPart("FileExtension", FileExtension);
         builder.addFormDataPart("CreateDate", Globals.getTodaysDatervrsfrmt());
         builder.addFormDataPart("CreateTime", Globals.getTCurrentTime());
         try {

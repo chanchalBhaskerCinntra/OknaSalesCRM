@@ -599,7 +599,7 @@
                                             android:layout_marginTop="@dimen/size_5"
                                             android:fontFamily="@font/muli_bold"
                                             android:textColor="@color/black"
-                                            android:text="@string/opportunity"/>
+                                            android:text="@string/u_opportunity"/>
 
                                     </LinearLayout>
                                 </LinearLayout>
@@ -671,7 +671,7 @@
                                             android:textSize="@dimen/text_size_12"
                                             android:fontFamily="@font/muli_bold"
                                             android:textColor="@color/black"
-                                            android:text="@string/quotations"/>
+                                            android:text="@string/u_quotations"/>
 
                                     </LinearLayout>
                                 </LinearLayout>
@@ -832,7 +832,7 @@
                                             android:layout_marginTop="@dimen/size_5"
                                             android:fontFamily="@font/muli_bold"
                                             android:textColor="@color/black"
-                                            android:text="@string/orders"/>
+                                            android:text="@string/u_orders"/>
 
                                     </LinearLayout>
                                 </LinearLayout>

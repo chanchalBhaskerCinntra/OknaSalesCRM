@@ -37,14 +37,12 @@ import com.cinntra.okana.activities.OwnerList;
 import com.cinntra.okana.activities.SelectedItems;
 import com.cinntra.okana.adapters.BPTypeSpinnerAdapter;
 import com.cinntra.okana.adapters.CategoryAdapter;
-import com.cinntra.okana.adapters.ContactPersonAdapter;
 import com.cinntra.okana.adapters.LeadTypeAdapter;
 import com.cinntra.okana.adapters.SalesEmployeeAdapter;
 import com.cinntra.okana.adapters.SalesEmployeeAutoAdapter;
 import com.cinntra.okana.adapters.bpAdapters.ContactPersonAutoAdapter;
 import com.cinntra.okana.databinding.UpdateOpportunityBinding;
 import com.cinntra.okana.globals.Globals;
-import com.cinntra.okana.interfaces.ChangeTeam;
 import com.cinntra.okana.interfaces.DatabaseClick;
 import com.cinntra.okana.model.BPModel.BusinessPartnerAllResponse;
 import com.cinntra.okana.model.ContactPerson;
@@ -517,7 +515,7 @@ public class Opportunity_Update_Fragment extends Fragment implements View.OnClic
                 int valueOfProbability = Integer.parseInt(stringWithoutPercent);
                 System.out.println("Value at 0 index: " + valueOfProbability);
 
-                if (validation(cardValue, salesEmployeeCode,  TYPE, LEAD_SOURCE, ContactPerson, binding.closeDateValue)) {
+                if (validation(cardValue, salesEmployeeCode,  TYPE, LEAD_SOURCE, ContactPerson, binding.closeDateValue, binding.opportunityNameValue)) {
                     SalesOpportunitiesLines dc = new SalesOpportunitiesLines();
                     dc.setSalesPerson(salesEmployeeCode);
                     dc.setDocumentType("bodt_MinusOne");
@@ -566,9 +564,6 @@ public class Opportunity_Update_Fragment extends Fragment implements View.OnClic
                     obj.setU_LEADNM(binding.leadValue.getText().toString());
                     obj.setCurrentStageName(binding.leadValue.getText().toString());
                     obj.setCurrentStageNumber(binding.leadValue.getText().toString());
-
-
-                    obj.setSalesOpportunitiesLines(jsonlist);
 
                     //todo opp items adding...
                     ArrayList<DocumentLines> oppItemsArrayList = new ArrayList<>();
@@ -619,7 +614,12 @@ public class Opportunity_Update_Fragment extends Fragment implements View.OnClic
                     }
 
 
-                    obj.setOppItem(oppItemsArrayList);
+                    //todo comment due to not required now--
+                  /*  obj.setSalesOpportunitiesLines(jsonlist);
+                    obj.setOppItem(oppItemsArrayList);*/
+
+                    obj.setSalesOpportunitiesLines("");
+                    obj.setOppItem("");
 //                    obj.setOppItem(Globals.SelectedItems);
 
                     if (Globals.checkInternet(getActivity())) {
@@ -795,6 +795,19 @@ public class Opportunity_Update_Fragment extends Fragment implements View.OnClic
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (utypelist.size() > 0)
                     TYPE = utypelist.get(position).getId().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+
+        binding.leadSourceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (sourceData.size() > 0)
+                    LEAD_SOURCE = sourceData.get(position).getName().toString();
             }
 
             @Override
@@ -1110,22 +1123,19 @@ public class Opportunity_Update_Fragment extends Fragment implements View.OnClic
     }
 
 
-    private boolean validation(String cardCode, int salesEmployeeCode, String potentialAmount, String remark, String contactPerson, EditText closeDateValue) {
-        if (Globals.SelectedItems.size() == 0){
+    private boolean validation(String cardCode, int salesEmployeeCode, String potentialAmount, String remark, String contactPerson,
+                               EditText closeDateValue, EditText opportunityNameValue) {
+        /*if (Globals.SelectedItems.size() == 0){
             Globals.showMessage(act, "Select Atleast One Item");
             return false;
-        }
-        else if (cardCode.isEmpty()) {
+        }*/
+        if (cardCode.isEmpty()) {
             Globals.showMessage(act, getString(R.string.select_bp));
             return false;
         } else if (ContactPersonCode.equalsIgnoreCase("-1")) {
             Globals.showMessage(act, getString(R.string.enter_cp));
             return false;
-        }
-       /* else if (potentialAmount.isEmpty()) {
-            Globals.showMessage(act, getString(R.string.potential_amnt_error));
-            return false;
-        }*/ else if (binding.opportunityNameValue.getText().toString().trim().length() == 0) {
+        } else if (opportunityNameValue.getText().toString().trim().length() == 0) {
             binding.opportunityNameValue.requestFocus();
             binding.opportunityNameValue.setError(getString(R.string.enter_opp));
             Globals.showMessage(act, getString(R.string.enter_opp));
@@ -1142,12 +1152,7 @@ public class Opportunity_Update_Fragment extends Fragment implements View.OnClic
         } else if (salesEmployeeCode == 0) {
             Globals.showMessage(act, getString(R.string.enter_sp));
             return false;
-        } /*else if (remark.isEmpty()) {
-            binding.descriptionValue.requestFocus();
-            binding.descriptionValue.setError(getString(R.string.remark_error));
-            Globals.showMessage(act, getString(R.string.remark_error));
-            return false;
-        }*/
+        }
 
         return true;
     }

@@ -59,7 +59,7 @@ public class Open_Order_Adapter extends RecyclerView.Adapter<Open_Order_Adapter.
         OrderListModel.Data obj = getItem(position);
         holder.title.setText(obj.getCardName());
 
-        holder.order_docNum.setText(obj.getId());
+        holder.order_docNum.setText(obj.getOrderID());
         if (obj.getTaxDate().isEmpty()){
             holder.tvPostingDate.setText("");
         }else {

@@ -30,9 +30,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.cinntra.okana.R;
 import com.cinntra.okana.activities.FileUtils;
 import com.cinntra.okana.activities.MainActivity;
-import com.cinntra.okana.adapters.ImageViewAdapter;
-import com.cinntra.okana.adapters.PaymentFetchImageAdapter;
-import com.cinntra.okana.adapters.PreviousImageViewAdapter;
+import com.cinntra.okana.adapters.leadAdapter.LeadAttachemntViewAdapter;
 import com.cinntra.okana.databinding.AddPaymentDetailsBinding;
 import com.cinntra.okana.globals.Globals;
 import com.cinntra.okana.model.BPModel.BusinessPartnerData;
@@ -74,7 +72,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PaymentDetailFragment extends Fragment implements View.OnClickListener, PreviousImageViewAdapter.DeleteItemClickListener {
+public class PaymentDetailFragment extends Fragment implements View.OnClickListener, LeadAttachemntViewAdapter.DeleteItemClickListener {
 
 
     PaymentDetailsModel expenseDataModel;
@@ -266,7 +264,7 @@ public class PaymentDetailFragment extends Fragment implements View.OnClickListe
 
         Log.e("mSelected Data == >", "bindAdapter: " + mSelected.size());
 
-        PreviousImageViewAdapter adapter = new PreviousImageViewAdapter(getContext(), expenseDataModel.getAttach(), "");
+        LeadAttachemntViewAdapter adapter = new LeadAttachemntViewAdapter(getContext(), expenseDataModel.getAttach(), "");
         binding.prevattachment.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false));
         binding.prevattachment.setAdapter(adapter);
         adapter.notifyDataSetChanged();

@@ -15,9 +15,23 @@ import com.cinntra.okana.model.UTypeData;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class NewOpportunityRespose implements Parcelable, Serializable
-{
+public class NewOpportunityRespose implements Parcelable, Serializable {
 
+    public final static Creator<NewOpportunityRespose> CREATOR = new Creator<NewOpportunityRespose>() {
+
+
+        @SuppressWarnings({
+                "unchecked"
+        })
+        public NewOpportunityRespose createFromParcel(Parcel in) {
+            return new NewOpportunityRespose(in);
+        }
+
+        public NewOpportunityRespose[] newArray(int size) {
+            return (new NewOpportunityRespose[size]);
+        }
+
+    };
     @SerializedName("StatusRemarks")
     @Expose
     private String statusRemarks;
@@ -138,29 +152,61 @@ public class NewOpportunityRespose implements Parcelable, Serializable
     @SerializedName("U_LEADNM")
     @Expose
     private String U_LEADNM;
+    private String Opp_Id;
     @SerializedName("OppItem")
     @Expose
     private ArrayList<DocumentLines> OppItem = new ArrayList<>();
 
+    private List<AttachDocument> Attach;
 
-    public final static Creator<NewOpportunityRespose> CREATOR = new Creator<NewOpportunityRespose>() {
 
-
-        @SuppressWarnings({
-                "unchecked"
-        })
-        public NewOpportunityRespose createFromParcel(Parcel in) {
-            return new NewOpportunityRespose(in);
-        }
-
-        public NewOpportunityRespose[] newArray(int size) {
-            return (new NewOpportunityRespose[size]);
-        }
-
+    public List<AttachDocument> getAttach() {
+        return Attach;
     }
-            ;
 
+    public void setAttach(List<AttachDocument> attach) {
+        Attach = attach;
+    }
 
+    public String getuLsource() {
+        return uLsource;
+    }
+
+    public void setuLsource(String uLsource) {
+        this.uLsource = uLsource;
+    }
+
+    public String getuFav() {
+        return uFav;
+    }
+
+    public void setuFav(String uFav) {
+        this.uFav = uFav;
+    }
+
+    public List<UTypeData> getuType() {
+        return uType;
+    }
+
+    public void setuType(List<UTypeData> uType) {
+        this.uType = uType;
+    }
+
+    public String getuProblty() {
+        return uProblty;
+    }
+
+    public void setuProblty(String uProblty) {
+        this.uProblty = uProblty;
+    }
+
+    public String getOpp_Id() {
+        return Opp_Id;
+    }
+
+    public void setOpp_Id(String opp_Id) {
+        Opp_Id = opp_Id;
+    }
 
     public NewOpportunityRespose(Parcel in) {
         this.statusRemarks = in.readString();
@@ -190,7 +236,7 @@ public class NewOpportunityRespose implements Parcelable, Serializable
         this.updateTime = in.readString();
         this.uFav = in.readString();
         this.remarks = in.readString();
-        in.readList(this.uType,(UTypeData.class.getClassLoader()));
+        in.readList(this.uType, (UTypeData.class.getClassLoader()));
         this.source = in.readString();
         this.linkedDocumentType = in.readString();
         this.uProblty = in.readString();
@@ -200,18 +246,16 @@ public class NewOpportunityRespose implements Parcelable, Serializable
         this.DataOwnershipName = in.readString();
         this.CurrentStageName = in.readString();
         this.U_LEADID = in.readString();
-        in.readList(this.OppItem,(DocumentLines.class.getClassLoader()));
+        in.readList(this.OppItem, (DocumentLines.class.getClassLoader()));
     }
 
     /**
      * No args constructor for use in serialization
-     *
      */
     public NewOpportunityRespose() {
     }
 
     /**
-     *
      * @param uLsource
      * @param updateDate
      * @param currentStageNo
@@ -653,7 +697,6 @@ public class NewOpportunityRespose implements Parcelable, Serializable
         dest.writeString(U_LEADNM);
         dest.writeList(OppItem);
     }
-
 
 
     public int describeContents() {

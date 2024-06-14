@@ -33,6 +33,8 @@ public class PreviousImageViewAdapter extends RecyclerView.Adapter<PreviousImage
     Context context;
     ArrayList<AttachDocument> UriList;
     String Flag = "";
+//    String ImageUrl = "";
+
     private DeleteItemClickListener mListener;
 
     public interface DeleteItemClickListener {
@@ -61,28 +63,87 @@ public class PreviousImageViewAdapter extends RecyclerView.Adapter<PreviousImage
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
 
         // String ext = Globals.getFileExtension(UriList.get(position).getFileName());
-        RequestOptions options = new RequestOptions()
-                .centerCrop()
-                .placeholder(R.drawable.icon)
-                .error(R.drawable.ic_invoice);
-        String ImageUrl = Globals.ImageURl + UriList.get(position).getFile();
 
-        Glide.with(context).load(ImageUrl).apply(options).into(holder.loadimage);
+        if (UriList.get(position).getFileExtension().equalsIgnoreCase("image")){
+            RequestOptions options = new RequestOptions()
+                    .centerCrop()
+                    .placeholder(R.mipmap.ic_launcher_okna)
+                    .error(R.mipmap.ic_launcher_okna);
 
-        holder.loadimage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              /*  if(ext.equalsIgnoreCase("jpg")||ext.equalsIgnoreCase("jpeg")||ext.equalsIgnoreCase("png")||ext.equalsIgnoreCase("svg")){
+            String ImageUrl = Globals.ImageURl + UriList.get(position).getFile();
 
-                }else{
+            Glide.with(context).load(ImageUrl).placeholder(R.mipmap.ic_launcher_okna).into(holder.loadimage); //apply(options).
+
+            holder.loadimage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ImageUrl));
+                    context.startActivity(browserIntent);
+                }
+            });
+
+        }else if (UriList.get(position).getFileExtension().equalsIgnoreCase("pdf")){
+            RequestOptions options = new RequestOptions()
+                    .centerCrop()
+                    .placeholder(R.drawable.pdf_icon)
+                    .error(R.drawable.pdf_icon);
+
+            String ImageUrl = Globals.ImageURl + UriList.get(position).getFile();
+
+            Glide.with(context).load(R.drawable.pdf_icon).into(holder.loadimage); //.apply(options).into(holder.loadimage);
+
+            holder.loadimage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ImageUrl));
+                    context.startActivity(browserIntent);
+                }
+            });
+        }
+        else if (UriList.get(position).getFileExtension().equalsIgnoreCase("doc")){
+            RequestOptions options = new RequestOptions()
+                    .centerCrop()
+                    .placeholder(R.drawable.document)
+                    .error(R.drawable.document);
+
+            String ImageUrl = Globals.ImageURl + UriList.get(position).getFile();
+
+            Glide.with(context).load(R.drawable.document).into(holder.loadimage); //.apply(options).into(holder.loadimage);
+
+            holder.loadimage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ImageUrl));
+                    context.startActivity(browserIntent);
+                }
+            });
+        }else {
+            RequestOptions options = new RequestOptions()
+                    .centerCrop()
+                    .placeholder(R.mipmap.ic_launcher_okna)
+                    .error(R.mipmap.ic_launcher_okna);
+
+            String ImageUrl = Globals.ImageURl + UriList.get(position).getFile();
+
+            Glide.with(context).load(ImageUrl).placeholder(R.mipmap.ic_launcher_okna).into(holder.loadimage);
+
+            holder.loadimage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ImageUrl));
                     context.startActivity(browserIntent);
-                }*/
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ImageUrl));
-                context.startActivity(browserIntent);
-            }
-        });
+                }
+            });
+        }
+       /* RequestOptions options = new RequestOptions()
+                .centerCrop()
+                .placeholder(R.mipmap.ic_launcher_okna)
+                .error(R.drawable.pdf_icon);
+
+        String ImageUrl = Globals.ImageURl + UriList.get(position).getFile();
+
+        Glide.with(context).load(ImageUrl).apply(options).into(holder.loadimage);*/
 
 
         if (Flag == "LeadDetail" || Flag == "Quotation_Detail" || Flag == "Order_Detail" || Flag == "Payment_Detail"){

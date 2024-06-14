@@ -425,7 +425,7 @@ public class LeadDetail extends Fragment implements View.OnClickListener {
         binding.update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validation(binding.personName, StateName, binding.contactNo, binding.location, binding.email, sourcetype, ProductInterestName, selectedCategory, status, binding.fullName)) {
+                if (validation(binding.personName, StateName, binding.contactNo, binding.location, binding.email, sourcetype, ProductInterestName, selectedCategory, status, binding.companyname)) {
 
 
                     UpdateLeadModel lv = new UpdateLeadModel();
@@ -536,7 +536,7 @@ public class LeadDetail extends Fragment implements View.OnClickListener {
     }
 
     private boolean validation(EditText personName, String StateName, EditText contact_no, EditText location, EditText email, String sourcetype,
-                               String productInterestName, String selectedCategory, String status, EditText fullName) {
+                               String productInterestName, String selectedCategory, String status, EditText companyname) {
 
         if (personName.getText().toString().isEmpty()) {
             personName.requestFocus();
@@ -545,10 +545,10 @@ public class LeadDetail extends Fragment implements View.OnClickListener {
             return false;
         }
 
-        else if (fullName.getText().toString().isEmpty()) {
-            fullName.requestFocus();
-            fullName.setError("Enter Customer Name");
-            Toasty.warning(getActivity(), "Enter Person Name", Toast.LENGTH_SHORT).show();
+        else if (companyname.getText().toString().isEmpty()) {
+            companyname.requestFocus();
+            companyname.setError("Enter Company Name");
+            Toasty.warning(getActivity(), "Enter Company Name", Toast.LENGTH_SHORT).show();
             return false;
         } else if (StateName.isEmpty()) {
             Toasty.warning(getActivity(), "Select State Name", Toast.LENGTH_SHORT).show();

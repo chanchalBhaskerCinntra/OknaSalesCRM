@@ -3,6 +3,7 @@ package com.cinntra.okana.fragments;
 import static android.app.Activity.RESULT_OK;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,6 +13,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,8 +23,10 @@ import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -34,9 +38,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.cinntra.okana.R;
+import com.cinntra.okana.activities.FileUtils;
 import com.cinntra.okana.adapters.PreviousImageViewAdapter;
 import com.cinntra.okana.adapters.SaleOrderLinesAdapter;
 import com.cinntra.okana.databinding.FragmentQuotationDetailBinding;
+import com.cinntra.okana.globals.FileUtilsPdf;
 import com.cinntra.okana.globals.Globals;
 import com.cinntra.okana.model.AttachmentResponseModel;
 import com.cinntra.okana.model.PerformaInvoiceModel.QuotationOneAPiModel;
@@ -169,25 +175,67 @@ public class QuotationDetailFragment extends Fragment implements PreviousImageVi
             @Override
             public void onClick(View v) {
                 fileName = edtFileName.getText().toString();
-                intentDispatcher();
+                openAttachmentDialog();
                 dialog.dismiss();
             }
         });
 
 
+        dialog.show();
+    }
 
-      /*  saveBtn.setOnClickListener(new View.OnClickListener() {
+
+    private static final int RESULT_LOAD_PDF = 2;
+
+    private void openAttachmentDialog() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.picturedialog);
+        dialog.getWindow().getAttributes().width = ActionBar.LayoutParams.FILL_PARENT;
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+        TextView cancel = dialog.findViewById(R.id.canceldialog);
+        ImageView gallery = dialog.findViewById(R.id.gallerySelect);
+        ImageView camera = dialog.findViewById(R.id.cameraSelect);
+
+        gallery.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                String fileName = edtFileName.getText().toString();
+            public void onClick(View view) {
+              /*  Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                i.setType("image/*");
+                startActivityForResult(i, RESULT_LOAD_IMAGE);*/
 
+                intentDispatcher();
+                dialog.dismiss();
+
+
+            }
+        });
+
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                intent.setType("application/pdf");
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                startActivityForResult(intent, RESULT_LOAD_PDF);
 
                 dialog.dismiss();
             }
-        });*/
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
 
         dialog.show();
     }
+
 
 
     //todo calling quotation one api here for show particular details..
@@ -366,8 +414,8 @@ public class QuotationDetailFragment extends Fragment implements PreviousImageVi
         }
 
 
-        //todo set document items line..
-        Globals.SelectedItems.clear();
+        //todo set document items line.. todo comment for now not required--
+        /*Globals.SelectedItems.clear();
 
         Globals.SelectedItems.addAll(quotationItem.getDocumentLines());
 
@@ -379,13 +427,13 @@ public class QuotationDetailFragment extends Fragment implements PreviousImageVi
 
         String grandTotal = String.valueOf(Globals.calculateTotalOfItemAfterHeaderDis(Globals.SelectedItems, Double.parseDouble(quotationItem.getDiscountPercent())));
 
-        binding.tvGrandTotal.setText(String.valueOf(Globals.foo(Double.parseDouble(grandTotal))));
+        binding.tvGrandTotal.setText(String.valueOf(Globals.foo(Double.parseDouble(grandTotal))));*/
 
         //todo reminder for grand total calculations--
 
 
         //todo set selected items here---
-        if (quotationItem.getDocumentLines().size() > 0) {
+     /*   if (quotationItem.getDocumentLines().size() > 0) {
             binding.tvLineNoDataFound.setVisibility(View.GONE);
             SaleOrderLinesAdapter adapter = new SaleOrderLinesAdapter(act, quotationItem.getDocumentLines());
             binding.rvDocumentLines.setLayoutManager(new LinearLayoutManager(act, LinearLayoutManager.VERTICAL, false));
@@ -394,7 +442,7 @@ public class QuotationDetailFragment extends Fragment implements PreviousImageVi
         } else {
             binding.rvDocumentLines.setVisibility(View.GONE);
             binding.tvLineNoDataFound.setVisibility(View.VISIBLE);
-        }
+        }*///todo comment bcz now document
 
 
         //todo set attachment data---
@@ -403,7 +451,6 @@ public class QuotationDetailFragment extends Fragment implements PreviousImageVi
 
             setAttachData(quotationItem.getAttach());
 
-            adapter.notifyDataSetChanged();
         }else {
             setAttachData(quotationItem.getAttach());
 
@@ -477,17 +524,18 @@ public class QuotationDetailFragment extends Fragment implements PreviousImageVi
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 7;
 
     //todo select attachment ---
-    private void    intentDispatcher() {
+    private void intentDispatcher() {
         checkAndRequestPermissions();
 
         Intent takePictureIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        takePictureIntent.setType("image/*");
         startActivityForResult(takePictureIntent, RESULT_LOAD_IMAGE);
     }
 
     private boolean checkAndRequestPermissions() {
-        int camera = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA);
-        int write = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        int read = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE);
+        int camera = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA);
+        int write = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int read = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE);
 
         List<String> listPermissionsNeeded = new ArrayList<>();
 
@@ -509,6 +557,7 @@ public class QuotationDetailFragment extends Fragment implements PreviousImageVi
         return true;
     }
 
+
     File file;
     String picturePath = "";
 
@@ -521,11 +570,24 @@ public class QuotationDetailFragment extends Fragment implements PreviousImageVi
             if (resultCode == RESULT_OK && data != null) {
                 Bundle extras = data.getExtras();
                 Uri selectedImage = data.getData();
+
+                picturePath= FileUtilsPdf.getPathFromUri(getContext(),selectedImage);
+
+                //todo check uri
+              // picturePath= FileUtils.getPath(getContext(),selectedImage);
+                Log.e("picturePath", picturePath);
+                file = new File(picturePath);
+                Log.e("FILE>>>>", "onActivityResult: " + file.getName());
+
+                binding.loaderLayout.loader.setVisibility(View.VISIBLE);
+
+                FileExtension = "image";
+                callQuotationAttachmentApi(quotationItem.getId());
+
+
                 binding.ivQuotationImageSelected.setVisibility(View.GONE);
                 binding.tvAttachments.setVisibility(View.GONE);
-
-//                binding.ivQuotationImageSelected.setImageURI(selectedImage);
-
+/*
                 String[] filePathColumn = {MediaStore.Images.Media.DATA};
                 Cursor cursor = act.getContentResolver().query(selectedImage, filePathColumn, null, null, null);
 
@@ -541,22 +603,53 @@ public class QuotationDetailFragment extends Fragment implements PreviousImageVi
 
                     binding.loaderLayout.loader.setVisibility(View.VISIBLE);
 
+                    FileExtension = "image";
                     callQuotationAttachmentApi(quotationItem.getId());
+                }*/
+            }
+        }
+
+        /*** PDF Load**/
+        else if (requestCode == RESULT_LOAD_PDF && resultCode == RESULT_OK) {
+            if (data != null) {
+                Uri pdfUri = data.getData();
+
+
+                String filePath = FileUtilsPdf.getPathFromUri(getActivity(),pdfUri);
+                if (filePath != null) {
+                    // Now you have the file path
+                    Log.e("File Path", filePath);
+
+                    picturePath = filePath;
+                    Log.e("picturePath", picturePath);
+                    file = new File(picturePath);
+                    Log.e("FILE>>>>", "onActivityResult: " + file.getName());
+
+                    binding.loaderLayout.loader.setVisibility(View.VISIBLE);
+
+                    FileExtension = "pdf";
+                    callQuotationAttachmentApi(quotationItem.getId());
+
                 }
+
+
             }
         }
 
     }
 
 
+    private String FileExtension = "";
 
     //todo quotation Attachment api calling---
     private void callQuotationAttachmentApi(String qt_id) {
+        binding.loaderLayout.loader.setVisibility(View.VISIBLE);
         MultipartBody.Builder builder = new MultipartBody.Builder();
         builder.setType(MultipartBody.FORM);
 
         //todo get model data in multipart body request..
         builder.addFormDataPart("Caption", fileName);
+        builder.addFormDataPart("FileExtension", FileExtension);
         builder.addFormDataPart("quotId", qt_id.trim());
         builder.addFormDataPart("CreateDate", Globals.getTodaysDatervrsfrmt());
         builder.addFormDataPart("CreateTime", Globals.getTCurrentTime());
@@ -569,6 +662,10 @@ public class QuotationDetailFragment extends Fragment implements PreviousImageVi
         } catch (Exception e) {
             Log.d("TAG===>", "AddQuotationApi: ");
         }
+
+        Gson gson = new Gson();
+        String jsonTut = gson.toJson(builder);
+        Log.e("data", jsonTut);
 
         MultipartBody requestBody = builder.build();
 

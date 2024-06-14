@@ -442,7 +442,7 @@ public class AddLead extends MainBaseActivity {
     }
 
     private void addcreatelead() {
-        if (validation(binding.personName, StateName, binding.contactNo, binding.location, binding.email, sourcetype, ProductInterestName, selectedCategory, status, binding.fullName, binding.contactNo)) {
+        if (validation(binding.personName, StateName, binding.contactNo, binding.location, binding.email, sourcetype, ProductInterestName, selectedCategory, status, binding.companyname, binding.contactNo)) {
 
 
             CreateLead lv = new CreateLead();
@@ -537,17 +537,17 @@ public class AddLead extends MainBaseActivity {
     }
 
     private boolean validation(EditText personName, String StateName, EditText contact_no, EditText location, EditText email, String sourcetype,
-                               String productInterestName, String selectedCategory, String status, EditText fullName, EditText contactNo) {
+                               String productInterestName, String selectedCategory, String status, EditText companyname, EditText contactNo) {
 
         if (personName.getText().toString().isEmpty()) {
             personName.requestFocus();
             personName.setError("Enter Person Name");
             Toasty.warning(this, "Enter Person Name", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (fullName.getText().toString().isEmpty()) {
-            fullName.requestFocus();
-            fullName.setError("Enter Customer Name");
-            Toasty.warning(this, "Select Customer Name", Toast.LENGTH_SHORT).show();
+        } else if (companyname.getText().toString().isEmpty()) {
+            companyname.requestFocus();
+            companyname.setError("Enter Company Name");
+            Toasty.warning(this, "Enter Company Name", Toast.LENGTH_SHORT).show();
             return false;
         }
         else if (contactNo.getText().toString().isEmpty()) {

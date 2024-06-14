@@ -605,6 +605,33 @@
                     </RelativeLayout>
 
 
+                    <TextView
+                        android:id="@+id/remarks"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:fontFamily="@font/muli_regular"
+                        android:text="Notes"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+                    <EditText
+                        android:id="@+id/remarks_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_100"
+                        android:layout_marginTop="@dimen/size_10"
+                        android:background="@drawable/rounded_border"
+                        android:gravity="start"
+                        android:hint="Notes"
+                        android:imeOptions="actionDone"
+                        android:inputType="textMultiLine"
+                        android:maxLength="200"
+                        android:maxLines="5"
+                        android:padding="@dimen/size_15"
+                        android:textColorHint="@color/light_grey_box"
+                        android:textSize="@dimen/text_size_14" />
+
+
                 </LinearLayout>
 
 
@@ -612,32 +639,6 @@
                     android:id="@+id/addressSectionLayout"
                     layout="@layout/updateaddress_section" />
 
-
-                <TextView
-                    android:id="@+id/remarks"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/size_15"
-                    android:fontFamily="@font/muli_regular"
-                    android:text="Notes"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_14" />
-
-                <EditText
-                    android:id="@+id/remarks_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_100"
-                    android:layout_marginTop="@dimen/size_10"
-                    android:background="@drawable/rounded_border"
-                    android:gravity="start"
-                    android:hint="Notes"
-                    android:imeOptions="actionDone"
-                    android:inputType="textMultiLine"
-                    android:maxLength="200"
-                    android:maxLines="5"
-                    android:padding="@dimen/size_15"
-                    android:textColorHint="@color/light_grey_box"
-                    android:textSize="@dimen/text_size_14" />
 
 
                 <Button

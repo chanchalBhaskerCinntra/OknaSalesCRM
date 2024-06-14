@@ -141,6 +141,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:gravity="end"
+                    android:visibility="gone"
                     android:layout_toRightOf="@+id/tvDocDate">
 
                     <TextView

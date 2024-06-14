@@ -36,7 +36,7 @@ public class CustomersAdapter extends RecyclerView.Adapter<CustomersAdapter.View
         this.context = context;
         this.customerList = customerList;
         this.tempList = new ArrayList<BusinessPartnerAllResponse.Datum>();
-        this.tempList.addAll(customerList);
+//        this.tempList.addAll(customerList);
     }
 
     @NonNull
@@ -157,8 +157,8 @@ public class CustomersAdapter extends RecyclerView.Adapter<CustomersAdapter.View
     }
 */
     public void AllData(List<BusinessPartnerAllResponse.Datum> tmp) {
-        customerList.clear();
-        customerList.addAll(tmp);
+        tempList.clear();
+        tempList.addAll(tmp);
         notifyDataSetChanged();
     }
 

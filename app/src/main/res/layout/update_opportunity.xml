@@ -31,86 +31,92 @@
                 android:orientation="vertical"
                 android:paddingTop="@dimen/size_10">
 
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_70"
-                    android:background="@color/white"
-                    android:clickable="true"
-                    android:focusable="false"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="@dimen/size_2"
-                    app:cardElevation="@dimen/size_2"
-                    app:cardUseCompatPadding="true">
-
-
-                    <RelativeLayout
-                        android:id="@+id/item_frame"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/size_60"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="@dimen/size_5">
-
-                        <TextView
-                            android:id="@+id/itemCount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/muli_bold"
-                            android:text="@string/items"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_16" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="@dimen/size_5"
-                            android:src="@drawable/ic_arrow_left_24dp" />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/itemCount"
-                            android:layout_marginTop="@dimen/size_5"
-                            android:fontFamily="@font/muli_regular"
-                            android:text="@string/view_all_iem"
-                            android:textColor="@color/light_grey_box"
-                            android:textSize="@dimen/text_size_14" />
-
-                    </RelativeLayout>
-
-                </androidx.cardview.widget.CardView>
-
-
-                <TextView
-                    android:id="@+id/total_before_discont"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/size_10"
-                    android:fontFamily="@font/muli_regular"
-                    android:text="Total Amount"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_14" />
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_70"
+                        android:background="@color/white"
+                        android:clickable="true"
+                        android:focusable="false"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/size_2"
+                        app:cardElevation="@dimen/size_2"
+                        app:cardUseCompatPadding="true">
 
 
-                <EditText
-                    android:id="@+id/total_before_discont_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/text_45"
-                    android:layout_marginTop="@dimen/size_10"
-                    android:background="@drawable/rounded_border"
-                    android:editable="false"
-                    android:fontFamily="@font/muli_regular"
-                    android:gravity="center_vertical"
-                    android:hint="@string/ex_10"
-                    android:imeOptions="actionNext"
-                    android:inputType="numberDecimal"
-                    android:maxLines="1"
-                    android:paddingLeft="@dimen/size_15"
-                    android:textColorHint="@color/light_grey_box"
-                    android:textSize="@dimen/text_size_14" />
+                        <RelativeLayout
+                            android:id="@+id/item_frame"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_60"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="@dimen/size_5">
 
+                            <TextView
+                                android:id="@+id/itemCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/muli_bold"
+                                android:text="@string/items"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_size_16" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="@dimen/size_5"
+                                android:src="@drawable/ic_arrow_left_24dp" />
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/itemCount"
+                                android:layout_marginTop="@dimen/size_5"
+                                android:fontFamily="@font/muli_regular"
+                                android:text="@string/view_all_iem"
+                                android:textColor="@color/light_grey_box"
+                                android:textSize="@dimen/text_size_14" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <TextView
+                        android:id="@+id/total_before_discont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_10"
+                        android:fontFamily="@font/muli_regular"
+                        android:text="Total Amount"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+
+                    <EditText
+                        android:id="@+id/total_before_discont_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_45"
+                        android:layout_marginTop="@dimen/size_10"
+                        android:background="@drawable/rounded_border"
+                        android:editable="false"
+                        android:fontFamily="@font/muli_regular"
+                        android:gravity="center_vertical"
+                        android:hint="@string/ex_10"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLines="1"
+                        android:paddingLeft="@dimen/size_15"
+                        android:textColorHint="@color/light_grey_box"
+                        android:textSize="@dimen/text_size_14" />
+
+                </LinearLayout>
 
 
                 <TextView
@@ -119,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_15"
                     android:fontFamily="@font/muli_regular"
-                    android:text="@string/opportunity_name"
+                    android:text="@string/opportunity_nam_mand"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_14" />
 
@@ -586,7 +592,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_15"
                     android:fontFamily="@font/muli_regular"
-                    android:text="@string/description_mand"
+                    android:text="@string/description"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_14" />
 

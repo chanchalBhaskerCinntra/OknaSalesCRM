@@ -15,7 +15,9 @@ public class OrderDetailResponseModel {
 
     public static class Data{
         public String id;
-        
+        public String OrderID;
+        public String MatirialType;
+
         public String TaxDate;
         
         public String DocDueDate;
@@ -136,7 +138,8 @@ public class OrderDetailResponseModel {
         public String PayToCode;
         
         public String ShipToCode;
-        
+        public String SiteNumber = "";
+
         public Object OrdLevel1;
         
         public Object OrdLevel2;
@@ -146,6 +149,30 @@ public class OrderDetailResponseModel {
         public AddressExtensions AddressExtension;
         
         public ArrayList<com.cinntra.okana.model.DocumentLines> DocumentLines;
+
+        public String getOrderID() {
+            return OrderID;
+        }
+
+        public String getSiteNumber() {
+            return SiteNumber;
+        }
+
+        public void setSiteNumber(String siteNumber) {
+            SiteNumber = siteNumber;
+        }
+
+        public void setOrderID(String orderID) {
+            OrderID = orderID;
+        }
+
+        public String getMatirialType() {
+            return MatirialType;
+        }
+
+        public void setMatirialType(String matirialType) {
+            MatirialType = matirialType;
+        }
 
         public String getDocNum() {
             return DocNum;

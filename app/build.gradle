@@ -14,7 +14,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 3
-        versionName "1.2.0"
+        versionName "1.2.1"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -64,6 +64,7 @@ dependencies {
     def room_version = "2.2.6"
     def multidex_version = "2.0.1"
 
+    implementation "com.github.skydoves:powermenu:2.2.4"
 
     implementation 'com.google.firebase:firebase-crashlytics'
     implementation 'com.google.firebase:firebase-analytics'

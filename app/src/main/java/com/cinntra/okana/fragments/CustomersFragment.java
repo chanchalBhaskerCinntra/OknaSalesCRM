@@ -58,6 +58,7 @@ import com.cinntra.okana.model.SalesEmployeeItem;
 import com.cinntra.okana.model.StateData;
 import com.cinntra.okana.model.StateRespose;
 import com.cinntra.okana.model.UTypeData;
+import com.cinntra.okana.newapimodel.LeadValue;
 import com.cinntra.okana.webservices.NewApiClient;
 import com.google.android.material.button.MaterialButton;
 import com.google.gson.Gson;
@@ -151,7 +152,7 @@ public class CustomersFragment extends Fragment implements CommentStage {
                 if (isScrollingpage && lastCompletelyVisibleItemPosition == businessPartnerList_gl.size() - 2  && apicall) {
                     page++;
                     Log.e("page--->", String.valueOf(page));
-                    callApi(binding.loaderLayout.loader, maxItem, page, "", "");
+                    callAllPageApi(binding.loaderLayout.loader, maxItem, page, "", "");
                     isScrollingpage = false;
                 } else {
                     recyclerView.setPadding(0, 0, 0, 0);
@@ -211,33 +212,37 @@ public class CustomersFragment extends Fragment implements CommentStage {
                     try {
                         if (response.isSuccessful()) {
                             if (response.body().getStatus() == 200) {
-                                if (response.body().getData() != null && response.body().getData().size() > 0) {
-                                    loader.setVisibility(View.GONE);
+                                loader.setVisibility(View.GONE);
 
-                                    List<demoListModel.Datum> itemsList = response.body().getData();
+                                if (response.body().getData().size() == 0) {
+                                    businessPartnerList_gl.clear();
+                                    businessPartnerList_gl.addAll(response.body().getData());
+                                    apicall = false;
+                                    dadapter.notifyDataSetChanged();
+                                    binding.noDatafound.setVisibility(View.VISIBLE);
 
-                                    binding.noDatafound.setVisibility(View.GONE);
+                                }
+
+                                else if (response.body().getData().size() > 0 && response.body().getData() != null) {
+                                    List<demoListModel.Datum> valueList = response.body().getData();
                                     if (page == 1) {
                                         businessPartnerList_gl.clear();
-                                        businessPartnerList_gl.addAll(itemsList);
-                                        dadapter.AllData(itemsList);
+                                        businessPartnerList_gl.addAll(valueList);
+                                        dadapter.AllData(valueList);
                                     } else {
-                                        businessPartnerList_gl.addAll(itemsList);
-                                        dadapter.AllData(itemsList);
+                                        businessPartnerList_gl.addAll(valueList);
+                                        dadapter.AllData(valueList);
                                     }
-
                                     binding.swipeRefreshLayout.setRefreshing(false);
+
                                     dadapter.notifyDataSetChanged();
 
-                                    if (itemsList.size() < 10)
-                                        apicall = false;
+                                    binding.noDatafound.setVisibility(View.GONE);
 
-                                } else {
-                                    binding.customerLeadList.setAdapter(null);
-                                    loader.setVisibility(View.GONE);
-                                    binding.noDatafound.setVisibility(View.VISIBLE);
-                                    Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                    if (valueList.size() < 10)
+                                        apicall = false;
                                 }
+
                             } else {
                                 binding.noDatafound.setVisibility(View.VISIBLE);
                                 loader.setVisibility(View.GONE);
@@ -280,26 +285,38 @@ public class CustomersFragment extends Fragment implements CommentStage {
                     try {
                         if (response.isSuccessful()) {
                             if (response.body().getStatus() == 200) {
-                                if (response.body().getData() != null && response.body().getData().size() > 0) {
-                                    loader.setVisibility(View.GONE);
-                                    List<BusinessPartnerAllResponse.Datum> itemsList = response.body().getData();
-                                    binding.noDatafound.setVisibility(View.GONE);
+
+                                loader.setVisibility(View.GONE);
+                                if (response.body().getData().size() == 0) {
+                                    allBpList_gl.clear();
+                                    allBpList_gl.addAll(response.body().getData());
+                                    apicall = false;
+                                    adapter.notifyDataSetChanged();
+                                    binding.noDatafound.setVisibility(View.VISIBLE);
+
+                                }
+
+                                else if (response.body().getData().size() > 0 && response.body().getData() != null) {
+                                    List<BusinessPartnerAllResponse.Datum> valueList = response.body().getData();
                                     if (page == 1) {
                                         allBpList_gl.clear();
-                                        allBpList_gl.addAll(itemsList);
-                                        adapter.AllData(itemsList);
+                                        allBpList_gl.addAll(valueList);
+                                        adapter.AllData(valueList);
                                     } else {
-                                        allBpList_gl.addAll(itemsList);
-                                        adapter.AllData(itemsList);
+                                        allBpList_gl.addAll(valueList);
+                                        adapter.AllData(valueList);
                                     }
-
                                     binding.swipeRefreshLayout.setRefreshing(false);
+
                                     adapter.notifyDataSetChanged();
 
-                                    if (itemsList.size() < 10)
-                                        apicall = false;
+                                    binding.noDatafound.setVisibility(View.GONE);
 
-                                } else {
+                                    if (valueList.size() < 10)
+                                        apicall = false;
+                                }
+
+                                else {
                                     binding.customerLeadList.setAdapter(null);
                                     loader.setVisibility(View.GONE);
                                     binding.noDatafound.setVisibility(View.VISIBLE);
@@ -340,6 +357,7 @@ public class CustomersFragment extends Fragment implements CommentStage {
 
     }
 
+
     private void setAdapter() {
         layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
         binding.customerLeadList.setLayoutManager(layoutManager);
@@ -352,6 +370,165 @@ public class CustomersFragment extends Fragment implements CommentStage {
             binding.customerLeadList.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         } //todo comment by me
+
+    }
+
+
+    private void callAllPageApi(ProgressBar loader, int maxItem, int page, String industryCode, String salesEmployeeCode) {
+        loader.setVisibility(View.VISIBLE);
+        if (Prefs.getString(Globals.BussinessPageType, "").equalsIgnoreCase("DashBoard")) {
+            BPAllFilterRequestModel requestModel = new BPAllFilterRequestModel();
+            requestModel.setSalesPersonCode(Prefs.getString(Globals.SalesEmployeeCode, ""));
+            requestModel.setPageNo(page);
+            requestModel.setMaxItem(maxItem);
+            requestModel.setSearchText(searchTextValue);
+            BPAllFilterRequestModel.Field field = new BPAllFilterRequestModel.Field();
+            field.setCardType("");
+            field.setIndustry(industryCode);
+            field.setSalesPersonPerson(salesEmployeeCode);//solIdName
+            requestModel.setField(field);
+
+            Call<demoListModel> call = NewApiClient.getInstance().getApiService().getBPAllPageList(requestModel);
+            call.enqueue(new Callback<demoListModel>() {
+                @Override
+                public void onResponse(Call<demoListModel> call, Response<demoListModel> response) {
+                    try {
+                        if (response.isSuccessful()) {
+                            if (response.body().getStatus() == 200) {
+                                loader.setVisibility(View.GONE);
+                                if (response.body().getData().size() == 0) {
+                                    businessPartnerList_gl.addAll(response.body().getData());
+                                    apicall = false;
+                                    dadapter.notifyDataSetChanged();
+                                    loader.setVisibility(View.GONE);
+
+                                }
+                                else if (response.body().getData().size() > 0 && response.body().getData() != null) {
+                                    List<demoListModel.Datum> valueList = response.body().getData();
+                                    if (page == 1) {
+                                        businessPartnerList_gl.addAll(valueList);
+                                        dadapter.AllData(valueList);
+                                    } else {
+                                        businessPartnerList_gl.addAll(valueList);
+                                        dadapter.AllData(valueList);
+                                    }
+                                    binding.swipeRefreshLayout.setRefreshing(false);
+
+                                    dadapter.notifyDataSetChanged();
+
+                                    binding.noDatafound.setVisibility(View.GONE);
+
+                                    if (valueList.size() < 10)
+                                        apicall = false;
+
+                                }
+                                else {
+                                    binding.customerLeadList.setAdapter(null);
+                                    loader.setVisibility(View.GONE);
+                                    Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+
+                            } else {
+
+                                loader.setVisibility(View.GONE);
+                                Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            loader.setVisibility(View.GONE);
+                            Gson gson = new GsonBuilder().create();
+                            QuotationResponse mError = new QuotationResponse();
+                            try {
+                                String s = response.errorBody().string();
+                                mError = gson.fromJson(s, QuotationResponse.class);
+                                Toast.makeText(requireContext(), mError.getError().getMessage().getValue(), Toast.LENGTH_LONG).show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    } catch (Exception e) {
+                        loader.setVisibility(View.GONE);
+                        e.printStackTrace();
+                    }
+                }
+                @Override
+                public void onFailure(Call<demoListModel> call, Throwable t) {
+                    loader.setVisibility(View.GONE);
+                    Log.e(t.getMessage(), "onFailure: " + t.getMessage());
+                    Toast.makeText(loader.getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+        else {
+            Call<BusinessPartnerAllResponse> call = NewApiClient.getInstance().getApiService().getAllParentAccBP();
+            call.enqueue(new Callback<BusinessPartnerAllResponse>() {
+                @Override
+                public void onResponse(Call<BusinessPartnerAllResponse> call, Response<BusinessPartnerAllResponse> response) {
+                    try {
+                        if (response.isSuccessful()) {
+                            if (response.body().getStatus() == 200) {
+                                loader.setVisibility(View.GONE);
+
+                                if (response.body().getData().size() == 0) {
+                                    allBpList_gl.addAll(response.body().getData());
+                                    apicall = false;
+                                    adapter.notifyDataSetChanged();
+
+                                }
+                                else if (response.body().getData().size() > 0 && response.body().getData() != null) {
+                                    List<BusinessPartnerAllResponse.Datum> valueList = response.body().getData();
+                                    if (page == 1) {
+                                        allBpList_gl.addAll(valueList);
+                                        adapter.AllData(valueList);
+                                    } else {
+                                        allBpList_gl.addAll(valueList);
+                                        adapter.AllData(valueList);
+                                    }
+                                    binding.swipeRefreshLayout.setRefreshing(false);
+
+                                    adapter.notifyDataSetChanged();
+
+                                    binding.noDatafound.setVisibility(View.GONE);
+
+                                    if (valueList.size() < 10)
+                                        apicall = false;
+
+                                }
+
+                                else {
+                                    binding.customerLeadList.setAdapter(null);
+                                    binding.noDatafound.setVisibility(View.VISIBLE);
+                                    Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                binding.noDatafound.setVisibility(View.VISIBLE);
+                                loader.setVisibility(View.GONE);
+                                Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            loader.setVisibility(View.GONE);
+                            Gson gson = new GsonBuilder().create();
+                            QuotationResponse mError = new QuotationResponse();
+                            try {
+                                String s = response.errorBody().string();
+                                mError = gson.fromJson(s, QuotationResponse.class);
+                                Toast.makeText(requireContext(), mError.getError().getMessage().getValue(), Toast.LENGTH_LONG).show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    } catch (Exception e) {
+                        loader.setVisibility(View.GONE);
+                        e.printStackTrace();
+                    }
+                }
+                @Override
+                public void onFailure(Call<BusinessPartnerAllResponse> call, Throwable t) {
+                    loader.setVisibility(View.GONE);
+                    Toast.makeText(loader.getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
 
@@ -360,12 +537,11 @@ public class CustomersFragment extends Fragment implements CommentStage {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
-
     }
+
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
 
         //menu.clear();
         inflater.inflate(R.menu.bussiness_filter, menu);
@@ -390,19 +566,20 @@ public class CustomersFragment extends Fragment implements CommentStage {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if (Prefs.getString(Globals.BussinessPageType, "").equalsIgnoreCase("DashBoard")) {
+                /*if (Prefs.getString(Globals.BussinessPageType, "").equalsIgnoreCase("DashBoard")) {
                     if (dadapter != null)
                         dadapter.filter(newText);
 
                 } else {
                     if (adapter != null)
                         adapter.filter(newText);
-                }
+                }*/
                 return false;
             }
         });
 
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -415,6 +592,7 @@ public class CustomersFragment extends Fragment implements CommentStage {
             case R.id.filter:
                 showAllFilterDialog();
                 break;
+
            /* case R.id.all:
                 item.setChecked(!item.isChecked());
                 if (dadapter != null)
@@ -422,6 +600,7 @@ public class CustomersFragment extends Fragment implements CommentStage {
                 if (adapter != null)
                     adapter.AllData();
                 break;*/
+
             case R.id.my:
                 item.setChecked(!item.isChecked());
                 opentypedialog();
@@ -525,7 +704,6 @@ public class CustomersFragment extends Fragment implements CommentStage {
     }
 
 
-
     List<IndustryItem> industryList_gl = new ArrayList<>();
 
     //todo industry api ..
@@ -625,7 +803,6 @@ public class CustomersFragment extends Fragment implements CommentStage {
         }
         return tempList;
     }
-
 
 
 

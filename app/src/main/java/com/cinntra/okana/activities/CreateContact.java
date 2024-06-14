@@ -84,7 +84,7 @@ public class CreateContact extends MainBaseActivity implements View.OnClickListe
                 if (postJson(Globals.SelectedItems) != null) {
                     AddQuotation obj = new AddQuotation();
                     obj.setCardCode(CardValue);
-                    obj.setDocumentLines(postJson(Globals.SelectedItems));
+//                    obj.setDocumentLines(postJson(Globals.SelectedItems));//todo comment for now
                     addQuotation(obj);
                 } else {
                     Toast.makeText(CreateContact.this, getString(R.string.something_wron_msz), Toast.LENGTH_SHORT).show();

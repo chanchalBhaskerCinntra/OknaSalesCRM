@@ -117,9 +117,9 @@ public class NewApiClient {
             });
 
             httpClient.addInterceptor(interceptor);
-            httpClient.readTimeout(60, TimeUnit.SECONDS);
-            httpClient.connectTimeout(60, TimeUnit.SECONDS);
-            httpClient.writeTimeout(60, TimeUnit.SECONDS);
+            httpClient.readTimeout(300, TimeUnit.SECONDS);
+            httpClient.connectTimeout(300, TimeUnit.SECONDS);
+            httpClient.writeTimeout(300, TimeUnit.SECONDS);
             if (SHOW_LOGS)
                 httpClient.addInterceptor(new LoggingInterceptor());
 

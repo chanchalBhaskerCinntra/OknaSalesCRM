@@ -2,21 +2,27 @@ package com.cinntra.okana.activities;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -29,7 +35,9 @@ import com.cinntra.okana.R;
 import com.cinntra.okana.adapters.SalesEmployeeAutoAdapter;
 import com.cinntra.okana.adapters.bpAdapters.ContactPersonAutoAdapter;
 import com.cinntra.okana.databinding.AddQuotationBinding;
+import com.cinntra.okana.fragments.AddQuotationForm_Fianl_Fragment;
 import com.cinntra.okana.fragments.AddQuotationForm_One_Fragment;
+import com.cinntra.okana.globals.FileUtilsPdf;
 import com.cinntra.okana.globals.Globals;
 import com.cinntra.okana.globals.MainBaseActivity;
 import com.cinntra.okana.interfaces.SubmitQuotation;
@@ -159,7 +167,8 @@ public class AddQuotationAct extends MainBaseActivity implements View.OnClickLis
         binding.quotationGeneralContent.quotAttachment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentDispatcher();
+                openAttachmentDialog();
+//                intentDispatcher();
             }
         });
 
@@ -402,9 +411,10 @@ public class AddQuotationAct extends MainBaseActivity implements View.OnClickLis
                     addQuotationObj.setUpdateTime(Globals.getTCurrentTime());
                     addQuotationObj.setCreateTime(Globals.getTCurrentTime());
                     addQuotationObj.setCreateDate(Globals.getTodaysDatervrsfrmt());
+                    addQuotationObj.setDocumentLines("");
 
-
-                    AddQuotationForm_One_Fragment addQuotationForm_one_fragment = new AddQuotationForm_One_Fragment(oppItemLine, CardCode);
+//                    AddQuotationForm_One_Fragment addQuotationForm_one_fragment = new AddQuotationForm_One_Fragment(oppItemLine, CardCode);
+                    AddQuotationForm_Fianl_Fragment addQuotationForm_one_fragment = new AddQuotationForm_Fianl_Fragment(oppItemLine, CardCode);
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.add(R.id.main_edit_qt_frame, addQuotationForm_one_fragment).addToBackStack(null);
@@ -445,12 +455,64 @@ public class AddQuotationAct extends MainBaseActivity implements View.OnClickLis
     }
 
 
+    private static final int RESULT_LOAD_PDF = 2;
+
+    private void openAttachmentDialog() {
+        final Dialog dialog = new Dialog(this);
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.picturedialog);
+        dialog.getWindow().getAttributes().width = ActionBar.LayoutParams.FILL_PARENT;
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+        TextView cancel = dialog.findViewById(R.id.canceldialog);
+        ImageView gallery = dialog.findViewById(R.id.gallerySelect);
+        ImageView camera = dialog.findViewById(R.id.cameraSelect);
+
+        gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              /*  Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                i.setType("image/*");
+                startActivityForResult(i, RESULT_LOAD_IMAGE);*/
+
+                intentDispatcher();
+                dialog.dismiss();
+
+
+            }
+        });
+
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                intent.setType("application/pdf");
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                startActivityForResult(intent, RESULT_LOAD_PDF);
+
+                dialog.dismiss();
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
 
     //todo select attachment ---
     private void intentDispatcher() {
         checkAndRequestPermissions();
 
         Intent takePictureIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        takePictureIntent.setType("image/*");
         startActivityForResult(takePictureIntent, RESULT_LOAD_IMAGE);
     }
 
@@ -479,6 +541,8 @@ public class AddQuotationAct extends MainBaseActivity implements View.OnClickLis
         return true;
     }
 
+
+    boolean isPDF = true;
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -514,6 +578,13 @@ public class AddQuotationAct extends MainBaseActivity implements View.OnClickLis
             if (resultCode == RESULT_OK && data != null) {
                 Bundle extras = data.getExtras();
                 Uri selectedImage = data.getData();
+
+                isPDF = false;
+
+                if (!isPDF){
+                    binding.quotationGeneralContent.tvPdf.setVisibility(View.GONE);
+                }
+
                 binding.quotationGeneralContent.ivQuotationImageSelected.setVisibility(View.VISIBLE);
 
                 if (selectedImage != null){
@@ -537,9 +608,50 @@ public class AddQuotationAct extends MainBaseActivity implements View.OnClickLis
                     Log.e("picturePath", picturePath);
                     file = new File(picturePath);
                     Log.e("FILE>>>>", "onActivityResult: " + file.getName());
+
+                    FileExtension = "image";
                 }
             }
         }
+
+        /*** PDF Load**/
+        else if (requestCode == RESULT_LOAD_PDF && resultCode == RESULT_OK) {
+            if (data != null) {
+                Uri pdfUri = data.getData();
+
+                isPDF = true;
+                if (isPDF){
+                    binding.quotationGeneralContent.ivQuotationImageSelected.setVisibility(View.GONE);
+                }
+
+
+                String filePath = FileUtilsPdf.getPathFromUri(this,pdfUri);
+                if (filePath != null) {
+                    // Now you have the file path
+                    Log.e("File Path", filePath);
+
+                    picturePath = filePath;
+                    Log.e("picturePath", picturePath);
+                    file = new File(picturePath);
+                    Log.e("FILE>>>>", "onActivityResult: " + file.getName());
+
+                    FileExtension = "pdf";
+
+                    if (pdfUri != null){
+                        binding.quotationGeneralContent.tvPdf.setVisibility(View.VISIBLE);
+                        binding.quotationGeneralContent.tvPdf.setText(file.getName());
+                        binding.quotationGeneralContent.tvAttachments.setVisibility(View.GONE);
+                    }else {
+                        binding.quotationGeneralContent.tvPdf.setVisibility(View.GONE);
+                        binding.quotationGeneralContent.tvAttachments.setVisibility(View.VISIBLE);
+                    }
+
+                }
+
+
+            }
+        }
+
 
     }
 
@@ -714,6 +826,8 @@ public class AddQuotationAct extends MainBaseActivity implements View.OnClickLis
     }
 
 
+    private String FileExtension = "";
+
     //todo quotation Attachment api calling---
     private void callQuotationAttachmentApi(String qt_id) {
         MultipartBody.Builder builder = new MultipartBody.Builder();
@@ -722,6 +836,7 @@ public class AddQuotationAct extends MainBaseActivity implements View.OnClickLis
         //todo get model data in multipart body request..
 
         builder.addFormDataPart("Caption", binding.quotationGeneralContent.edAttachmentCaption.getText().toString().trim());
+        builder.addFormDataPart("FileExtension", FileExtension);
         builder.addFormDataPart("id", qt_id.trim());
         builder.addFormDataPart("CreateDate", Globals.getTodaysDatervrsfrmt());
         builder.addFormDataPart("CreateTime", Globals.getTCurrentTime());
@@ -734,7 +849,7 @@ public class AddQuotationAct extends MainBaseActivity implements View.OnClickLis
             if (picturePath.isEmpty()) {
                 builder.addFormDataPart("File", "");
             } else {
-                builder.addFormDataPart("File", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
+                builder.addFormDataPart("File", picturePath, RequestBody.create(MediaType.parse("multipart/form-data"), file));
             }
         } catch (Exception e) {
             Log.d("TAG===>", "AddQuotationApi: ");

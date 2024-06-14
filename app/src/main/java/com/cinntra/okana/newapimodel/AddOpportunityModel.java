@@ -61,9 +61,7 @@ public class AddOpportunityModel implements Parcelable, Serializable {
     @SerializedName("U_LSOURCE")
     @Expose
     private String uLsource;
-    @SerializedName("SalesOpportunitiesLines")
-    @Expose
-    private List<SalesOpportunitiesLines> salesOpportunitiesLines;
+
     @SerializedName("StartDate")
     @Expose
     private String startDate;
@@ -136,7 +134,7 @@ public class AddOpportunityModel implements Parcelable, Serializable {
     @SerializedName("U_LEADNM")
     @Expose
     private String U_LEADNM;
-    @SerializedName("OppItem")
+   /* @SerializedName("OppItem")
     @Expose
     private List<DocumentLines> OppItem = new ArrayList<>();
 
@@ -144,6 +142,63 @@ public class AddOpportunityModel implements Parcelable, Serializable {
     @Expose
     private List<DocumentLines> documentLines = new ArrayList<>();
 
+    @SerializedName("SalesOpportunitiesLines")
+    @Expose
+    private List<SalesOpportunitiesLines> salesOpportunitiesLines;
+*/
+
+    private String OppItem;
+    private String DocumentLines;
+    private String SalesOpportunitiesLines;
+
+    public String getOppItem() {
+        return OppItem;
+    }
+
+    public void setOppItem(String oppItem) {
+        OppItem = oppItem;
+    }
+
+    public String getDocumentLines() {
+        return DocumentLines;
+    }
+
+    public void setDocumentLines(String documentLines) {
+        DocumentLines = documentLines;
+    }
+
+    public String getSalesOpportunitiesLines() {
+        return SalesOpportunitiesLines;
+    }
+
+    public void setSalesOpportunitiesLines(String salesOpportunitiesLines) {
+        SalesOpportunitiesLines = salesOpportunitiesLines;
+    }
+
+    /*    public List<DocumentLines> getOppItem() {
+        return OppItem;
+    }
+
+    public void setOppItem(List<DocumentLines> oppItem) {
+        OppItem = oppItem;
+    }
+
+    public List<DocumentLines> getDocumentLines() {
+        return documentLines;
+    }
+
+    public void setDocumentLines(List<DocumentLines> documentLines) {
+        this.documentLines = documentLines;
+    }
+
+
+    public List<SalesOpportunitiesLines> getSalesOpportunitiesLines() {
+        return salesOpportunitiesLines;
+    }
+
+    public void setSalesOpportunitiesLines(List<SalesOpportunitiesLines> salesOpportunitiesLines) {
+        this.salesOpportunitiesLines = salesOpportunitiesLines;
+    }*/
 
     public String getuLsource() {
         return uLsource;
@@ -177,13 +232,7 @@ public class AddOpportunityModel implements Parcelable, Serializable {
         this.uProblty = uProblty;
     }
 
-    public List<DocumentLines> getDocumentLines() {
-        return documentLines;
-    }
 
-    public void setDocumentLines(List<DocumentLines> documentLines) {
-        this.documentLines = documentLines;
-    }
 
     public final static Creator<NewOpportunityRespose> CREATOR = new Creator<NewOpportunityRespose>() {
 
@@ -202,88 +251,13 @@ public class AddOpportunityModel implements Parcelable, Serializable {
     };
 
 
-    public AddOpportunityModel(Parcel in) {
-        this.statusRemarks = in.readString();
-        this.id = in.readString();
-        this.customerName = in.readString();
-        this.salesPerson = in.readString();
-        this.industry = in.readString();
-        this.opportunityType = in.readString();
-        this.closingType = in.readString();
-        this.predictedClosingDate = in.readString();
-        this.status = in.readString();
-        this.updateDate = in.readString();
-        this.opportunityName = in.readString();
-        this.totalAmountLocal = in.readString();
-        this.reasonForClosing = in.readString();
-        this.maxSystemTotal = in.readString();
-        this.uLsource = in.readString();
-        in.readList(this.salesOpportunitiesLines, (SalesOpportunitiesLines.class.getClassLoader()));
-        this.startDate = in.readString();
-        this.closingDate = in.readString();
-        this.contactPerson = in.readString();
-        this.currentStageNo = in.readString();
-        this.cardCode = in.readString();
-        this.maxLocalTotal = in.readString();
-        this.dataOwnershipfield = in.readString();
-        this.projectCode = in.readString();
-        this.updateTime = in.readString();
-        this.uFav = in.readString();
-        this.remarks = in.readString();
-        this.uType = in.readString();
-        this.source = in.readString();
-        this.linkedDocumentType = in.readString();
-        this.uProblty = in.readString();
-        this.totalAmounSystem = in.readString();
-        this.SalesPersonName = in.readString();
-        this.ContactPersonName = in.readString();
-        this.DataOwnershipName = in.readString();
-        this.CurrentStageName = in.readString();
-        this.U_LEADID = in.readString();
-        in.readList(this.OppItem, (DocumentLines.class.getClassLoader()));
-
-    }
-
     /**
      * No args constructor for use in serialization
      */
     public AddOpportunityModel() {
     }
 
-    /**
-     * @param uLsource
-     * @param updateDate
-     * @param currentStageNo
-     * @param contactPerson
-     * @param industry
-     * @param salesOpportunitiesLines
-     * @param source
-     * @param reasonForClosing
-     * @param totalAmountLocal
-     * @param uFav
-     * @param projectCode
-     * @param uType
-     * @param predictedClosingDate
-     * @param statusRemarks
-     * @param opportunityName
-     * @param cardCode
-     * @param uProblty
-     * @param maxLocalTotal
-     * @param updateTime
-     * @param totalAmounSystem
-     * @param linkedDocumentType
-     * @param closingDate
-     * @param customerName
-     * @param opportunityType
-     * @param dataOwnershipfield
-     * @param maxSystemTotal
-     * @param closingType
-     * @param salesPerson
-     * @param startDate
-     * @param remarks
-     * @param status
-     */
-    public AddOpportunityModel(String statusRemarks, String customerName, String salesPerson, String industry, String opportunityType, String closingType, String predictedClosingDate, String status, String updateDate, String opportunityName, String totalAmountLocal, String reasonForClosing, String maxSystemTotal, String uLsource, List<SalesOpportunitiesLines> salesOpportunitiesLines, String startDate, String closingDate, String contactPerson, String currentStageNo, String cardCode, String maxLocalTotal, String dataOwnershipfield, String projectCode, String updateTime, String uFav, String remarks, String uType, String source, String linkedDocumentType, String uProblty, String totalAmounSystem, String U_LEADID, String U_LEADNM) {
+    public AddOpportunityModel(String statusRemarks, String customerName, String salesPerson, String industry, String opportunityType, String closingType, String predictedClosingDate, String status, String updateDate, String opportunityName, String totalAmountLocal, String reasonForClosing, String maxSystemTotal, String uLsource, String salesOpportunitiesLines, String startDate, String closingDate, String contactPerson, String currentStageNo, String cardCode, String maxLocalTotal, String dataOwnershipfield, String projectCode, String updateTime, String uFav, String remarks, String uType, String source, String linkedDocumentType, String uProblty, String totalAmounSystem, String U_LEADID, String U_LEADNM) {
         super();
         this.statusRemarks = statusRemarks;
         this.customerName = customerName;
@@ -299,7 +273,7 @@ public class AddOpportunityModel implements Parcelable, Serializable {
         this.reasonForClosing = reasonForClosing;
         this.maxSystemTotal = maxSystemTotal;
         this.uLsource = uLsource;
-        this.salesOpportunitiesLines = salesOpportunitiesLines;
+        this.SalesOpportunitiesLines = salesOpportunitiesLines;
         this.startDate = startDate;
         this.closingDate = closingDate;
         this.contactPerson = contactPerson;
@@ -432,13 +406,6 @@ public class AddOpportunityModel implements Parcelable, Serializable {
         this.uLsource = uLsource;
     }
 
-    public List<SalesOpportunitiesLines> getSalesOpportunitiesLines() {
-        return salesOpportunitiesLines;
-    }
-
-    public void setSalesOpportunitiesLines(List<SalesOpportunitiesLines> salesOpportunitiesLines) {
-        this.salesOpportunitiesLines = salesOpportunitiesLines;
-    }
 
     public String getStartDate() {
         return startDate;
@@ -641,13 +608,7 @@ public class AddOpportunityModel implements Parcelable, Serializable {
         U_LEADNM = u_LEADNM;
     }
 
-    public List<DocumentLines> getOppItem() {
-        return OppItem;
-    }
 
-    public void setOppItem(List<DocumentLines> oppItem) {
-        OppItem = oppItem;
-    }
 
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(statusRemarks);
@@ -665,7 +626,7 @@ public class AddOpportunityModel implements Parcelable, Serializable {
         dest.writeString(reasonForClosing);
         dest.writeString(maxSystemTotal);
         dest.writeString(uLsource);
-        dest.writeList(salesOpportunitiesLines);
+        dest.writeString(SalesOpportunitiesLines);
         dest.writeString(startDate);
         dest.writeString(closingDate);
         dest.writeString(contactPerson);
@@ -690,7 +651,7 @@ public class AddOpportunityModel implements Parcelable, Serializable {
         dest.writeString(CurrentStageName);
         dest.writeString(U_LEADID);
         dest.writeString(U_LEADNM);
-        dest.writeList(OppItem);
+        dest.writeString(OppItem);
     }
 
 

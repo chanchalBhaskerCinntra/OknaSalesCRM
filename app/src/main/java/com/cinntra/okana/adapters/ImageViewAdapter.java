@@ -79,8 +79,6 @@ public class ImageViewAdapter extends RecyclerView.Adapter <ImageViewAdapter.Con
             super(itemView);
             loadimage = itemView.findViewById(R.id.loadimage);
             cross= itemView.findViewById(R.id.cross);
-
-
         }
     }
 }

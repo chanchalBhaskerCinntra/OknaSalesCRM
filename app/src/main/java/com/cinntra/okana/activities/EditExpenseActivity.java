@@ -17,8 +17,8 @@ import android.widget.Toast;
 
 import com.cinntra.okana.R;
 import com.cinntra.okana.adapters.ImageViewAdapter;
-import com.cinntra.okana.adapters.PreviousImageViewAdapter;
 import com.cinntra.okana.adapters.SalesEmployeeAutoAdapter;
+import com.cinntra.okana.adapters.leadAdapter.LeadAttachemntViewAdapter;
 import com.cinntra.okana.databinding.ActivityEditExpenseBinding;
 import com.cinntra.okana.globals.Globals;
 import com.cinntra.okana.model.EmployeeValue;
@@ -27,6 +27,7 @@ import com.cinntra.okana.model.SalesEmployeeItem;
 import com.cinntra.okana.model.TokenExpireModel;
 import com.cinntra.okana.model.expenseModels.ExpenseOneDataResponseModel;
 import com.cinntra.okana.model.expenseModels.ExpenseResponse;
+import com.cinntra.okana.newapimodel.AttachDocument;
 import com.cinntra.okana.webservices.NewApiClient;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,6 +46,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
@@ -87,6 +89,8 @@ public class EditExpenseActivity extends AppCompatActivity implements View.OnCli
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.drop_down_textview, expenseModeList);
         binding.acExpenseMode.setAdapter(arrayAdapter);
+
+
     }
 
 
@@ -226,12 +230,27 @@ public class EditExpenseActivity extends AppCompatActivity implements View.OnCli
         });
     }
 
+
+    ArrayList<AttachDocument> attachmentTempList = new ArrayList<>();
+
+    ArrayList<String> ddp = new ArrayList<>();
+
     private void setDefaultData(ExpenseOneDataResponseModel.Data data) {
         binding.tripname.setText(data.getTrip_name());
         binding.amount.setText(data.getTotalAmount());
 
+        if (data.getAttach().isEmpty()){
+            attachmentTempList.addAll(new ArrayList<>());
+        }else {
+            attachmentTempList.addAll(data.getAttach());
+        }
 
-        PreviousImageViewAdapter adapter = new PreviousImageViewAdapter(this, data.getAttach(), "");
+        for (int i = 0; i < data.getAttach().size(); i++){
+            ddp.addAll(Collections.singleton(data.getAttach().get(i).getFile()));
+        }
+
+
+        LeadAttachemntViewAdapter adapter = new LeadAttachemntViewAdapter(this, data.getAttach(), "");
         binding.prevattachment.setLayoutManager(new GridLayoutManager(this, 1, GridLayoutManager.HORIZONTAL, false));
         binding.prevattachment.setAdapter(adapter);
         adapter.notifyDataSetChanged();
@@ -396,6 +415,7 @@ public class EditExpenseActivity extends AppCompatActivity implements View.OnCli
                                     .imageEngine(new GlideEngine())
                                     .showPreview(false) // Default is `true`
                                     .forResult(REQUEST_CODE_CHOOSE);
+
                            /* Intent intent = new Intent();
 
                             // setting type to select to be image
@@ -405,6 +425,7 @@ public class EditExpenseActivity extends AppCompatActivity implements View.OnCli
                             intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                             intent.setAction(Intent.ACTION_GET_CONTENT);
                             startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_CODE_CHOOSE);*/
+
                         } else {
                             Toast.makeText(EditExpenseActivity.this, "Please enable permission", Toast.LENGTH_SHORT).show();
                         }
@@ -424,13 +445,15 @@ public class EditExpenseActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK && null != data) {
 
             //mSelected.add(data.getData());
+            mArrayList.clear();
             mArrayList = Matisse.obtainResult(data);
             mSelected.addAll(mArrayList);
+
             for (int i = 0; i < mSelected.size(); i++) {
                 path.add(FileUtils.getPath(EditExpenseActivity.this, mSelected.get(i)));
             }

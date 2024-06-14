@@ -100,7 +100,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/size_15"
                         android:layout_marginBottom="@dimen/size_10"
-                        android:text="@string/company_name"
+                        android:text="@string/company_name_mand"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_16"
                         android:visibility="visible" />
@@ -127,6 +127,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
+                    android:visibility="gone"
                     android:orientation="vertical">
 
                     <TextView
@@ -194,7 +195,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/size_10"
-                        android:text="@string/designation"
+                        android:text="Person Designation"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_16" />
 

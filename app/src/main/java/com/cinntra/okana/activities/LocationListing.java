@@ -3,7 +3,10 @@ package com.cinntra.okana.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,6 +34,9 @@ import com.cinntra.okana.model.MapResponse;
 import com.cinntra.okana.model.SalesEmployeeItem;
 import com.cinntra.okana.webservices.NewApiClient;
 import com.pixplicity.easyprefs.library.Prefs;
+import com.skydoves.powermenu.MenuAnimation;
+import com.skydoves.powermenu.PowerMenu;
+import com.skydoves.powermenu.PowerMenuItem;
 
 import java.io.Serializable;
 import java.text.ParseException;
@@ -85,7 +92,7 @@ public class LocationListing extends MainBaseActivity {
         //todo call map listing and set emp id_----
         employeeid = Prefs.getString(Globals.SalesEmployeeCode, "");
 
-        callgetlocationApi(Globals.getTodaysDatervrsfrmt());
+        callgetlocationApi(Globals.getTodaysDatervrsfrmt(), "meeting");
 
 
         binding.empSpinner.setAdapter(new EmployeeHeirarchiDropdownAdapter(LocationListing.this, Dashboard.salesAllList_Hearchi));
@@ -113,7 +120,7 @@ public class LocationListing extends MainBaseActivity {
                                 try {
                                     Date strDate = dateFormatter.parse(s);
                                     binding.dateText.setText(dateFormatter.format(strDate));
-                                    callgetlocationApi(binding.dateText.getText().toString());
+                                    callgetlocationApi(binding.dateText.getText().toString(), ShapeType);
                                 } catch (ParseException e) {
                                     e.printStackTrace();
                                 }
@@ -152,7 +159,7 @@ public class LocationListing extends MainBaseActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 employeeid = Dashboard.salesAllList_Hearchi.get(i).getSalesEmployeeCode();
-                callgetlocationApi(binding.dateText.getText().toString());
+                callgetlocationApi(binding.dateText.getText().toString(), ShapeType);
             }
 
             @Override
@@ -196,12 +203,13 @@ public class LocationListing extends MainBaseActivity {
 
     List<MapData> mdplist = new ArrayList<>();
 
-    private void callgetlocationApi(String date) {
+    private void callgetlocationApi(String date, String shape) {
+        binding.loaderLayout.loader.setVisibility(View.VISIBLE);
         HashMap<String, String> mapData = new HashMap<>();
 
         mapData.put("Emp_Id", employeeid);
         mapData.put("UpdateDate", date);
-        mapData.put("shape", "meeting");
+        mapData.put("shape", shape);
 
 
         Call<MapResponse> call = NewApiClient.getInstance().getApiService().getmaplocation(mapData);
@@ -209,6 +217,7 @@ public class LocationListing extends MainBaseActivity {
             @Override
             public void onResponse(Call<MapResponse> call, Response<MapResponse> response) {
                 if (response != null) {
+                    binding.loaderLayout.loader.setVisibility(View.GONE);
                     mdplist.clear();
                     mdplist.addAll(response.body().getValue());
                     expenseAdapter = new LocationListingAdapter(LocationListing.this, mdplist);
@@ -217,6 +226,7 @@ public class LocationListing extends MainBaseActivity {
                     expenseAdapter.notifyDataSetChanged();
                     nodatafoundimage();
                 }else {
+                    binding.loaderLayout.loader.setVisibility(View.GONE);
                     mdplist.addAll(response.body().getValue());
                     expenseAdapter = new LocationListingAdapter(LocationListing.this, mdplist);
                     binding.customerLeadList.setLayoutManager(new LinearLayoutManager(LocationListing.this, RecyclerView.VERTICAL, false));
@@ -227,7 +237,7 @@ public class LocationListing extends MainBaseActivity {
 
             @Override
             public void onFailure(Call<MapResponse> call, Throwable t) {
-
+                binding.loaderLayout.loader.setVisibility(View.GONE);
             }
         });
 
@@ -253,6 +263,7 @@ public class LocationListing extends MainBaseActivity {
         SearchView searchView = new SearchView((this).getSupportActionBar().getThemedContext());
         menu.findItem(R.id.search).setVisible(false);
         menu.findItem(R.id.plus).setVisible(false);
+        menu.findItem(R.id.item_filter).setVisible(true);
         item.setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItem.SHOW_AS_ACTION_IF_ROOM);
         item.setActionView(searchView);
         searchView.setQueryHint("Search Expense");
@@ -278,6 +289,8 @@ public class LocationListing extends MainBaseActivity {
     }
 
 
+    String ShapeType = "";
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -288,6 +301,16 @@ public class LocationListing extends MainBaseActivity {
                 startActivity(new Intent(this, AddExpense.class));
                 break;
 
+            case R.id.iten_meeting:
+                ShapeType = "meeting";
+                callgetlocationApi("", "meeting");
+                // Do something when "Meeting" item is clicked
+                return true;
+            case R.id.location:
+                ShapeType= "location";
+                callgetlocationApi("", "location");
+                // Do something when "Location" item is clicked
+                return true;
 
             case android.R.id.home:
                 this.finish();
@@ -295,4 +318,7 @@ public class LocationListing extends MainBaseActivity {
         }
         return true;
     }
+
+
+
 }

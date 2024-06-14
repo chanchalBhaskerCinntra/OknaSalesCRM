@@ -287,7 +287,8 @@ public class AddOrderForm_One_Fragment extends Fragment implements View.OnClickL
 
                     }
 
-                    AddOrderAct.addQuotationObj.setDocumentLines(documentLineArrayList);
+//                    AddOrderAct.addQuotationObj.setDocumentLines(documentLineArrayList);
+                    AddOrderAct.addQuotationObj.setDocumentLines("");
 
                     AddOrderForm_Fianl_Fragment fragment = new AddOrderForm_Fianl_Fragment(quotationItem, mOpportunityItemValue, mCardCode);
                     FragmentManager fragmentManager = getChildFragmentManager();

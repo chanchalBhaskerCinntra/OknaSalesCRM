@@ -1,8 +1,19 @@
 package com.cinntra.okana.fragments;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -13,17 +24,23 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,32 +48,54 @@ import com.cinntra.okana.R;
 import com.cinntra.okana.activities.AddOrderAct;
 import com.cinntra.okana.activities.AddQuotationAct;
 import com.cinntra.okana.activities.QuotationActivity;
+import com.cinntra.okana.adapters.PreviousImageViewAdapter;
 import com.cinntra.okana.databinding.OpportunityDetailNewscreenBinding;
+import com.cinntra.okana.globals.FileUtilsPdf;
 import com.cinntra.okana.globals.Globals;
 import com.cinntra.okana.interfaces.CommentStage;
 import com.cinntra.okana.interfaces.FragmentRefresher;
+import com.cinntra.okana.model.AttachmentResponseModel;
 import com.cinntra.okana.model.CompleteStageResponse;
 import com.cinntra.okana.model.ContactPersonData;
 import com.cinntra.okana.model.NewOppResponse;
 import com.cinntra.okana.model.OpportunityModels.OpportunityItem;
 import com.cinntra.okana.model.OpportunityModels.OpportunityStageResponse;
 import com.cinntra.okana.model.StagesValue;
+import com.cinntra.okana.newapimodel.AttachDocument;
+import com.cinntra.okana.newapimodel.LeadDocumentResponse;
+import com.cinntra.okana.newapimodel.LeadResponse;
 import com.cinntra.okana.newapimodel.NewOpportunityRespose;
 import com.cinntra.okana.newapimodel.OpportunityValue;
 import com.cinntra.okana.viewModel.ItemViewModel;
 import com.cinntra.okana.webservices.NewApiClient;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import com.pixplicity.easyprefs.library.Prefs;
 
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Opportunity_Detail_NewFragment extends Fragment implements View.OnClickListener, FragmentRefresher, CommentStage {
+public class Opportunity_Detail_NewFragment extends Fragment implements View.OnClickListener, FragmentRefresher, CommentStage, PreviousImageViewAdapter.DeleteItemClickListener {
 
 
     boolean bottomView = false;
@@ -70,6 +109,12 @@ public class Opportunity_Detail_NewFragment extends Fragment implements View.OnC
     String pos;
 
     OpportunityDetailNewscreenBinding binding;
+
+    File file;
+    String picturePath = "";
+
+    private static final int RESULT_LOAD_IMAGE = 101;
+    private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 7;
 
     public Opportunity_Detail_NewFragment() {
         // Required empty public constructor
@@ -102,8 +147,76 @@ public class Opportunity_Detail_NewFragment extends Fragment implements View.OnC
         }
 
         manageclickevent();
+
+        //todo click on attachment
+        binding.quotAttachment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                openAttachmentDialog();
+
+
+            }
+        });
+
+
         return binding.getRoot();
     }
+
+
+    private static final int RESULT_LOAD_PDF = 2;
+
+    private void openAttachmentDialog() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.picturedialog);
+        dialog.getWindow().getAttributes().width = ActionBar.LayoutParams.FILL_PARENT;
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+        TextView cancel = dialog.findViewById(R.id.canceldialog);
+        ImageView gallery = dialog.findViewById(R.id.gallerySelect);
+        ImageView camera = dialog.findViewById(R.id.cameraSelect);
+
+        gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              /*  Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                i.setType("image/*");
+                startActivityForResult(i, RESULT_LOAD_IMAGE);*/
+
+                intentDispatcher();
+                dialog.dismiss();
+
+
+            }
+        });
+
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                intent.setType("application/pdf");
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                startActivityForResult(intent, RESULT_LOAD_PDF);
+
+                dialog.dismiss();
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+
+
 
     private void callApi(String sequentialNo) {
         OpportunityValue opportunityValue = new OpportunityValue();
@@ -128,6 +241,236 @@ public class Opportunity_Detail_NewFragment extends Fragment implements View.OnC
 //        callContactApi(opportunityItem.getCardCode());
 
     }
+
+    //todo select attachment ---
+    private void intentDispatcher() {
+        checkAndRequestPermissions();
+
+        Intent takePictureIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        takePictureIntent.setType("image/*");
+        startActivityForResult(takePictureIntent, RESULT_LOAD_IMAGE);
+
+
+    }
+
+    private boolean checkAndRequestPermissions() {
+        int camera = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA);
+        int write = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int read = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE);
+
+        List<String> listPermissionsNeeded = new ArrayList<>();
+
+        if (write != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if (camera != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.CAMERA);
+        }
+        if (read != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(getActivity(), listPermissionsNeeded.toArray(new String[0]), REQUEST_ID_MULTIPLE_PERMISSIONS);
+            return false;
+        }
+
+        return true;
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        //todo for attachment selected---
+        if (requestCode == RESULT_LOAD_IMAGE) {
+            if (resultCode == RESULT_OK && data != null) {
+                Bundle extras = data.getExtras();
+                Uri selectedImage = data.getData();
+                binding.ivQuotationImageSelected.setVisibility(View.GONE);
+                binding.tvAttachments.setVisibility(View.GONE);
+
+
+                picturePath= FileUtilsPdf.getPathFromUri(getContext(),selectedImage);
+
+                Log.e("picturePath", picturePath);
+                file = new File(picturePath);
+                Log.e("FILE>>>>", "onActivityResult: " + file.getName());
+
+                binding.loader.setVisibility(View.VISIBLE);
+
+                FileExtension = "image";
+                callOppAttachmentApi(opportunityItem.getId());
+
+
+//                binding.ivQuotationImageSelected.setImageURI(selectedImage);
+
+               /* String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                Cursor cursor = getActivity().getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+
+                if (cursor != null) {
+                    cursor.moveToFirst();
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    picturePath = cursor.getString(columnIndex);
+                    cursor.close();
+
+                    Log.e("picturePath", picturePath);
+                    file = new File(picturePath);
+                    Log.e("FILE>>>>", "onActivityResult: " + file.getName());
+
+                    binding.loader.setVisibility(View.VISIBLE);
+
+                    FileExtension = "image";
+                    callOppAttachmentApi(opportunityItem.getId());
+
+                }*/
+
+
+            }
+        }
+
+        /*** PDF Load**/
+        else if (requestCode == RESULT_LOAD_PDF && resultCode == RESULT_OK) {
+            if (data != null) {
+                Uri pdfUri = data.getData();
+
+
+                String filePath = FileUtilsPdf.getPathFromUri(getActivity(),pdfUri);
+                if (filePath != null) {
+                    // Now you have the file path
+                    Log.e("File Path", filePath);
+
+                    picturePath = filePath;
+                    Log.e("picturePath", picturePath);
+                    file = new File(picturePath);
+                    Log.e("FILE>>>>", "onActivityResult: " + file.getName());
+
+                    binding.loader.setVisibility(View.VISIBLE);
+
+                    FileExtension = "pdf";
+                    callOppAttachmentApi(opportunityItem.getId());
+                }
+
+
+            }
+        }
+
+    }
+
+
+    private String FileExtension = "";
+
+
+    //todo quotation Attachment api calling---
+    private void callOppAttachmentApi(String qt_id) {
+        MultipartBody.Builder builder = new MultipartBody.Builder();
+        builder.setType(MultipartBody.FORM);
+
+        //todo get model data in multipart body request..
+        builder.addFormDataPart("oppId", qt_id.trim());
+        builder.addFormDataPart("CreateDate", Globals.getTodaysDatervrsfrmt());
+        builder.addFormDataPart("CreateTime", Globals.getTCurrentTime());
+        builder.addFormDataPart("FileExtension", FileExtension);
+        try {
+            if (picturePath.isEmpty()) {
+                builder.addFormDataPart("Attach", "");
+            } else {
+                builder.addFormDataPart("Attach", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
+            }
+        } catch (Exception e) {
+            Log.d("TAG===>", "AddQuotationApi: ");
+        }
+
+        MultipartBody requestBody = builder.build();
+
+        Call<AttachmentResponseModel> call = NewApiClient.getInstance().getApiService().postOppAttachmentUploadApi(requestBody);
+        call.enqueue(new Callback<AttachmentResponseModel>() {
+            @Override
+            public void onResponse(Call<AttachmentResponseModel> call, Response<AttachmentResponseModel> response) {
+                binding.loader.setVisibility(View.GONE);
+
+                if (response.code() == 200) {
+                    if (response.body().getStatus() == 200) {
+                        callApi(opportunityItem.getId());
+                        Log.d("AttachmentResponse =>", "onResponse: Successful");
+                    }else {
+                        Log.d("AttachmentNot200Status", "onResponse: QuotAttachmentNot200Status");
+                    }
+
+                } else {
+                    Gson gson = new GsonBuilder().create();
+                    LeadResponse mError = new LeadResponse();
+                    try {
+                        String s = response.errorBody().string();
+                        mError = gson.fromJson(s, LeadResponse.class);
+                        Toast.makeText(getContext(), mError.getMessage(), Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        //handle failure to read error
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AttachmentResponseModel> call, Throwable t) {
+                binding.loader.setVisibility(View.GONE);
+                Log.e("TAG_Attachment_Api", "onFailure: AttachmentAPi" );
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+    //todo call delete over ride function---
+    @Override
+    public void onDeleteItemClick(int attachId, Dialog dialog) {
+        callAttachmentDeleteApi(attachId, dialog);
+    }
+
+
+    //todo call delete attachment api here---
+    private void callAttachmentDeleteApi(int attachId, Dialog dialog) {
+
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("id", attachId);
+        jsonObject.addProperty("oppId", opportunityItem.getId());
+
+        Call<LeadDocumentResponse> call = NewApiClient.getInstance().getApiService().deleteOppAttachment(jsonObject);
+        call.enqueue(new Callback<LeadDocumentResponse>() {
+            @Override
+            public void onResponse(Call<LeadDocumentResponse> call, Response<LeadDocumentResponse> response) {
+
+                if (response.code() == 200) {
+                    if (response.body().getStatus() == 200) {
+                        callApi(opportunityItem.getId());
+
+                        dialog.dismiss();
+                        Log.d("DeleteAttachResponse =>", "onResponse: Successful");
+                    } else {
+                        Log.d("DeleteAttachNot200St", "onResponse: QuotAttachmentNot200Status");
+                    }
+
+                } else {
+                    Gson gson = new GsonBuilder().create();
+                    LeadResponse mError = new LeadResponse();
+                    try {
+                        String s = response.errorBody().string();
+                        mError = gson.fromJson(s, LeadResponse.class);
+                        Toast.makeText(getActivity(), mError.getMessage(), Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        //handle failure to read error
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LeadDocumentResponse> call, Throwable t) {
+                Log.e("TAG_Attachment_Api", "onFailure: AttachmentAPi");
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
     private void callStagesApi(String opp_id) {
         OpportunityItem oppitem = new OpportunityItem();
@@ -217,8 +560,29 @@ public class Opportunity_Detail_NewFragment extends Fragment implements View.OnC
 
         callStagesApi(opportunityItem.getId());
 
+        //todo set attachment data---
+        if (particularoppdata.getAttach().size() > 0) {
+            binding.tvAttachments.setVisibility(View.GONE);
+
+            setAttachData(particularoppdata.getAttach());
+
+//            adapter.notifyDataSetChanged();
+        }else {
+            setAttachData(particularoppdata.getAttach());
+
+            binding.tvAttachments.setVisibility(View.VISIBLE);
+        }
+
     }
 
+
+    private void setAttachData(List<AttachDocument> data) {
+        PreviousImageViewAdapter adapter = new PreviousImageViewAdapter(getContext(), data, "Quotation_Detail");
+        binding.attachmentRecyclerList.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false));
+        binding.attachmentRecyclerList.setAdapter(adapter);
+        adapter.setOnDeleteItemClick(this);
+        adapter.notifyDataSetChanged();
+    }
 
 
     @Override

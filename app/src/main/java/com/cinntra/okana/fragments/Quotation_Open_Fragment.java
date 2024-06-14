@@ -145,27 +145,6 @@ public class Quotation_Open_Fragment extends Fragment implements View.OnClickLis
         });
 
 
-//        binding.swipeRefreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                CardName = "";
-//                solIdName = "";
-//                fromDate = "";
-//                toDate = "";
-//                searchTextValue = "";
-//                filterTextValue = "";
-//                if (Globals.checkInternet(getActivity())) {
-//                    page = 1;
-//                    apicall = true;
-//                    callApi(binding.loaderLayout.loader, maxItem, page, "", "", "", "");
-//                } else{
-//                    Toast.makeText(mContext, "No Internet", Toast.LENGTH_SHORT).show();
-//                //    binding.swipeRefreshLayout.setRefreshing(false);
-//                }
-//
-//            }
-//        });
-
 
         return binding.getRoot();
     }
@@ -629,7 +608,7 @@ public class Quotation_Open_Fragment extends Fragment implements View.OnClickLis
                 showAllFilterDialog();
                 break;
 
-            case R.id.newest:
+           /* case R.id.newest:
                 LocalDate date = LocalDate.parse(Globals.curntDate);
                 LocalDate dateafter = date.minusDays(8);
                 adapter.PostingDate(dateafter, date);
@@ -637,7 +616,7 @@ public class Quotation_Open_Fragment extends Fragment implements View.OnClickLis
             case R.id.my:
                 if (adapter != null)
                     adapter.Favfilter("Y");
-                break;
+                break;*/
         }
         return true;
     }

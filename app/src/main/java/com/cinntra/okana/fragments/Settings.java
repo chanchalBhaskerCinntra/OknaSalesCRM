@@ -49,7 +49,6 @@ import com.cinntra.okana.activities.Login;
 import com.cinntra.okana.activities.MyMapLocation;
 import com.cinntra.okana.databinding.FragmentProfileBinding;
 import com.cinntra.okana.globals.Globals;
-import com.cinntra.okana.globals.MainBaseActivity;
 import com.cinntra.okana.model.BPTypeResponse;
 import com.cinntra.okana.model.BPModel.BusinessPartnerData;
 import com.cinntra.okana.model.CountryData;
@@ -86,9 +85,9 @@ import com.cinntra.okana.room.PaymentTermDatabase;
 import com.cinntra.okana.room.ProductDatabase;
 import com.cinntra.okana.room.RoleDatabase;
 import com.cinntra.okana.room.TaxItemDatabase;
-import com.cinntra.okana.services.GoogleService;
 import com.cinntra.okana.viewModel.ItemViewModel;
 import com.cinntra.okana.webservices.NewApiClient;
+import com.cinntra.okana.workManager.ApiSchedular;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -98,6 +97,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
 
+import com.google.protobuf.Api;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -252,7 +252,16 @@ public class Settings extends Fragment implements View.OnClickListener {
 
 //                    Prefs.putBoolean(Globals.Location_Boolean_MInutes, true);
 
-                    givepermission();
+                    givepermission(null);
+
+                    //todo calling job schedular for current location in every 15 minutes.
+                    if (Prefs.getBoolean(Globals.Location_FirstTime, false) ) {//&& Prefs.getBoolean(Globals.LocationRestart, false) == false
+                        ApiSchedular.schedularCall(getActivity());
+                    }else {
+                        ApiSchedular.schedularCall(getActivity());
+//                        ApiSchedular.restartScheduledJob(getActivity());
+                    }
+
 
                  /*   if (MainBaseActivity.boolean_permission) {
                         Log.e("start", "start");
@@ -263,7 +272,7 @@ public class Settings extends Fragment implements View.OnClickListener {
                         GlobalStatus = "Toggle_CheckIn";
                         givepermission();
 //                        showStatusChangePopup(locationtype);
-                    }*///todo comment by chanchal
+                    }*/  //todo comment by chanchal
 
                 } else {
                     locationtype = "Stop";
@@ -272,7 +281,9 @@ public class Settings extends Fragment implements View.OnClickListener {
 
                     binding.checkin.setText("Check In");
                     GlobalStatus = "Toggle_CheckOut";
-                    givepermission();
+                    givepermission(null);
+
+                    ApiSchedular.cancelScheduledJob(getActivity());
 
                   /*  if (MainBaseActivity.boolean_permission) {
                         Log.e("Stop", "Stop");
@@ -284,12 +295,12 @@ public class Settings extends Fragment implements View.OnClickListener {
 //                        givepermission(locationtype, "");
 //                        showStatusChangePopup(locationtype);
                         givepermission();
-                    }*///todo comment by chanchal
+                    }*/   //todo comment by chanchal
 
                   /*  Prefs.putString(Globals.locationcondition, "Off");
                     locationtype = "Stop";
                     Intent intent = new Intent(getContext(), GoogleService.class);
-                    getContext().stopService(intent);*/ //todo comment by me
+                    getContext().stopService(intent);*/   //todo comment by me
 
 
                 }
@@ -898,6 +909,7 @@ public class Settings extends Fragment implements View.OnClickListener {
 
 
     private void callgetlocationApi() {
+        binding.loadingback.setVisibility(View.VISIBLE);
         HashMap<String, String> mapData = new HashMap<>();
         mapData.put("Emp_Id", Prefs.getString(Globals.SalesEmployeeCode, ""));
         mapData.put("UpdateDate", Globals.getTodaysDatervrsfrmt());
@@ -908,6 +920,7 @@ public class Settings extends Fragment implements View.OnClickListener {
             @Override
             public void onResponse(Call<MapResponse> call, Response<MapResponse> response) {
                 if (response != null) {
+                    binding.loadingback.setVisibility(View.GONE);
                     mdplist.clear();
                     mdplist.addAll(response.body().getValue());
                     Log.e("success", "success");
@@ -918,16 +931,16 @@ public class Settings extends Fragment implements View.OnClickListener {
 
             @Override
             public void onFailure(Call<MapResponse> call, Throwable t) {
-
+                binding.loadingback.setVisibility(View.GONE);
+                Log.e(TAG, "onFailure: "+t.getMessage() );
             }
         });
 
     }
 
-    private void givepermission() {
+    private void givepermission(SweetAlertDialog sDialog) {
         Dexter.withActivity(getActivity())
-                .withPermissions(
-                        Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CALL_PHONE)
+                .withPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CALL_PHONE)
                 .withListener(new MultiplePermissionsListener() {
                     @Override
                     public void onPermissionsChecked(MultiplePermissionsReport report) {
@@ -936,7 +949,7 @@ public class Settings extends Fragment implements View.OnClickListener {
                             // do you work now
 
                             Log.e(TAG, "onComplete: " + "givepermission");
-                            getmyCurrentLocation(locationtype);
+                            getmyCurrentLocation(locationtype, sDialog);
                         }
 
                         // check for permanent denial of any permission
@@ -1057,7 +1070,7 @@ public class Settings extends Fragment implements View.OnClickListener {
             // When permission is granted
             // Call method
             Log.e(TAG, "onComplete: " + "checkpermission");
-            getmyCurrentLocation(type);
+            getmyCurrentLocation(type, null);
         } else {
             // When permission is not granted
             // Call method
@@ -1073,7 +1086,7 @@ public class Settings extends Fragment implements View.OnClickListener {
     }
 
     @SuppressLint("MissingPermission")
-    private void getmyCurrentLocation(String type) {
+    private void getmyCurrentLocation(String type, SweetAlertDialog sDialog) {
         // Initialize Location manager
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         // Check condition
@@ -1104,7 +1117,8 @@ public class Settings extends Fragment implements View.OnClickListener {
                                     String country = addresses.get(0).getCountryName();
                                     String postalCode = addresses.get(0).getPostalCode();
                                     String knownName = addresses.get(0).getFeatureName();
-                                    callApi(location.getLatitude(), location.getLongitude(), type, address);
+                                    Log.e(TAG, "onComplete: Call Api" );
+                                    callApi(location.getLatitude(), location.getLongitude(), type, address, sDialog);
                                 } catch (IOException e) {
 
                                     e.printStackTrace();
@@ -1157,7 +1171,7 @@ public class Settings extends Fragment implements View.OnClickListener {
                                         String knownName = addresses.get(0).getFeatureName();
                                         callApi(location1
                                                 .getLatitude(), location1
-                                                .getLongitude(), type, address);
+                                                .getLongitude(), type, address, sDialog);
                                     }
                                 };
 
@@ -1179,14 +1193,15 @@ public class Settings extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void callApi(double latitude, double longitude, String type, String address) {
+    private void callApi(double latitude, double longitude, String type, String address, SweetAlertDialog sDialog) {
+        binding.loadingback.setVisibility(View.VISIBLE);
         MapData mapData = new MapData();
         mapData.setEmp_Id(Prefs.getString(Globals.SalesEmployeeCode, ""));//Globals.MYEmployeeID
         mapData.setEmp_Name(Prefs.getString(Globals.SalesEmployeeName, "")); //Employee_Name
         mapData.setLat(String.valueOf(latitude));
         mapData.setLong(String.valueOf(longitude));
         mapData.setUpdateDate(Globals.getTodaysDatervrsfrmt());
-        mapData.setUpdateTime(Globals.getCurrentTimeIn_hh_mm_ss_aa());
+        mapData.setUpdateTime(Globals.getCurrentTimeIn_hh_mm_ss());
         mapData.setAddress(address);
         mapData.setShape("meeting");
         mapData.setType(type);
@@ -1196,18 +1211,36 @@ public class Settings extends Fragment implements View.OnClickListener {
             @Override
             public void onResponse(Call<MapResponse> call, Response<MapResponse> response) {
                 try {
-                    if (response.isSuccessful()) {
+                    if (response.body().getStatus() == 200) {
+                        binding.loadingback.setVisibility(View.GONE);
                         Log.e("success", "success_checkIN/Out");
+
+
+                        if (logout == true){
+
+                            ApiSchedular.cancelScheduledJob(getActivity());
+
+                            sDialog.dismissWithAnimation();
+                            Prefs.clear();
+                            Intent intent = new Intent(getActivity(), Login.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                        }
+                    }else {
+                        binding.loadingback.setVisibility(View.GONE);
+                        Log.e(TAG, "onResponse: Error"+response.body().getMessage() );
                     }
 
                 } catch (Exception e) {
+                    binding.loadingback.setVisibility(View.GONE);
                     e.printStackTrace();
                 }
             }
 
             @Override
             public void onFailure(Call<MapResponse> call, Throwable t) {
-
+                binding.loadingback.setVisibility(View.GONE);
+                Log.e(TAG, "onFailure: "+t.getMessage() );
             }
         });
     }
@@ -1226,7 +1259,7 @@ public class Settings extends Fragment implements View.OnClickListener {
             // When permission are granted
             // Call  method
             Log.e(TAG, "onComplete: " + "onRequestPermissionsResult");
-            getmyCurrentLocation(locationtype);
+            getmyCurrentLocation(locationtype, null);
         } else {
             // When permission are denied
             // Display toast
@@ -1238,6 +1271,9 @@ public class Settings extends Fragment implements View.OnClickListener {
         }
     }
 
+    private boolean logout = false;
+
+    SweetAlertDialog swDialog ;
     private void openConfirmDialog() {
 
         new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
@@ -1247,11 +1283,29 @@ public class Settings extends Fragment implements View.OnClickListener {
                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
-                        sDialog.dismissWithAnimation();
+
+//                        swDialog = new SweetAlertDialog(getContext());
+
+                        if (Prefs.getString(Globals.locationcondition, "Off").equalsIgnoreCase("On")) {
+                            logout = true;
+                            locationtype = "Stop";
+                            givepermission(sDialog);
+
+                        }else {
+                            sDialog.dismissWithAnimation();
+                            Prefs.clear();
+                            Intent intent = new Intent(getActivity(), Login.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                        }
+
+
+                       /* sDialog.dismissWithAnimation();
                         Prefs.clear();
                         Intent intent = new Intent(getActivity(), Login.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
+                        startActivity(intent);*/
+
 
                     }
                 })

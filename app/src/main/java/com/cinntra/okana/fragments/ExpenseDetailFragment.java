@@ -13,20 +13,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.cinntra.okana.R;
 import com.cinntra.okana.activities.EditExpenseActivity;
-import com.cinntra.okana.adapters.PreviousImageViewAdapter;
-import com.cinntra.okana.adapters.SalesEmployeeAdapter;
-import com.cinntra.okana.databinding.AddExpenseBinding;
+import com.cinntra.okana.adapters.leadAdapter.LeadAttachemntViewAdapter;
 import com.cinntra.okana.databinding.ExpenseDetailLayoutBinding;
 import com.cinntra.okana.globals.Globals;
 import com.cinntra.okana.model.ExpenseDataModel;
-import com.cinntra.okana.model.ExpenseResponse;
-import com.cinntra.okana.model.SalesEmployeeItem;
 import com.cinntra.okana.model.TokenExpireModel;
 import com.cinntra.okana.model.expenseModels.ExpenseOneDataResponseModel;
 import com.cinntra.okana.viewModel.ItemViewModel;
@@ -182,7 +176,7 @@ public class ExpenseDetailFragment extends Fragment{
             binding.tvRemarrks.setText(modelData.getRemarks());
         }
 
-        PreviousImageViewAdapter adapter = new PreviousImageViewAdapter(getContext(), modelData.getAttach(), "");
+        LeadAttachemntViewAdapter adapter = new LeadAttachemntViewAdapter(getContext(), modelData.getAttach(), "");
         binding.prevattachment.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false));
         binding.prevattachment.setAdapter(adapter);
         adapter.notifyDataSetChanged();

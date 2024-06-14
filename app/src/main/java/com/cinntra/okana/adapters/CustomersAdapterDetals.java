@@ -37,14 +37,16 @@ import java.util.Locale;
 public class CustomersAdapterDetals extends RecyclerView.Adapter<CustomersAdapterDetals.ViewHolder> {
     Context context;
     List<demoListModel.Datum> customerList;
-//    List<BusinessPartnerData> customerList;
+    //    List<BusinessPartnerData> customerList;
+    List<demoListModel.Datum> tempList ;
+
 
     public CustomersAdapterDetals(Context context, List<demoListModel.Datum> customerList) {
 
         this.context = context;
         this.customerList = customerList;
         this.tempList = new ArrayList<demoListModel.Datum>();
-        this.tempList.addAll(customerList);
+//        this.tempList.addAll(customerList);
 
     }
 
@@ -208,7 +210,6 @@ public class CustomersAdapterDetals extends RecyclerView.Adapter<CustomersAdapte
         popupMenu.show();
     }
 
-    List<demoListModel.Datum> tempList = null;
 
     public void filter(String charText) {
         customerList.clear();
@@ -270,8 +271,8 @@ public class CustomersAdapterDetals extends RecyclerView.Adapter<CustomersAdapte
     }*/
 
     public void AllData(List<demoListModel.Datum> tmp) {
-        customerList.clear();
-        customerList.addAll(tmp);
+        tempList.clear();
+        tempList.addAll(tmp);
         notifyDataSetChanged();
     }
 

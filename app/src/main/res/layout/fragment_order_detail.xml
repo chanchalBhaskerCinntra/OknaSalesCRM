@@ -153,6 +153,67 @@
                                     android:layout_height="@dimen/size_45"
                                     android:layout_weight="1"
                                     android:gravity="center_vertical"
+                                    android:text="Order ID"
+                                    android:textColor="@color/grey"
+                                    android:textSize="@dimen/text_size_14" />
+
+
+                                <TextView
+                                    android:id="@+id/tvOrderID"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/size_45"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/text_size_14" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_10"
+                                android:layout_marginRight="@dimen/size_10"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/size_45"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="Accountant Approval"
+                                    android:textColor="@color/grey"
+                                    android:textSize="@dimen/text_size_14" />
+
+
+                                <TextView
+                                    android:id="@+id/tvAccountantApproval"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/size_45"
+                                    android:layout_weight="1"
+                                    android:text="NA"
+                                    android:gravity="center_vertical"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/text_size_14" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_10"
+                                android:layout_marginRight="@dimen/size_10"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/size_45"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
                                     android:text="Customer"
                                     android:textColor="@color/grey"
                                     android:textSize="@dimen/text_size_14" />
@@ -229,6 +290,37 @@
 
                             </LinearLayout>
 
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_10"
+                                android:layout_marginRight="@dimen/size_10"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/size_45"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="Site No"
+                                    android:textColor="@color/grey"
+                                    android:textSize="@dimen/text_size_14" />
+
+
+                                <TextView
+                                    android:id="@+id/tvSiteNumber"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/size_45"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/text_size_14" />
+
+
+                            </LinearLayout>
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -258,65 +350,6 @@
 
                             </LinearLayout>
 
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/size_10"
-                                android:layout_marginRight="@dimen/size_10"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/size_45"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical"
-                                    android:text="Valid Date"
-                                    android:textColor="@color/grey"
-                                    android:textSize="@dimen/text_size_14" />
-
-                                <TextView
-                                    android:id="@+id/tvValidDate"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/size_45"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical"
-                                    android:text=""
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/text_size_14" />
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/size_10"
-                                android:layout_marginRight="@dimen/size_10"
-                                android:gravity="center_vertical"
-                                android:minHeight="@dimen/size_45"
-                                android:orientation="horizontal"
-                                android:visibility="visible">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="Document Date"
-                                    android:textColor="@color/grey"
-                                    android:textSize="@dimen/text_size_14" />
-
-                                <TextView
-                                    android:id="@+id/tvDocumentDate"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:maxLines="4"
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/text_size_14" />
-
-
-                            </LinearLayout>
 
 
                             <LinearLayout
@@ -364,7 +397,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Delivery Date"
+                                    android:text="Glass Delivery Date"
                                     android:textColor="@color/grey"
                                     android:textSize="@dimen/text_size_14" />
 
@@ -411,6 +444,68 @@
 
                             </LinearLayout>
 
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_10"
+                                android:layout_marginRight="@dimen/size_10"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/size_45"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="Order Delivery Date"
+                                    android:textColor="@color/grey"
+                                    android:textSize="@dimen/text_size_14" />
+
+                                <TextView
+                                    android:id="@+id/tvValidDate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/size_45"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/text_size_14" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_10"
+                                android:layout_marginRight="@dimen/size_10"
+                                android:gravity="center_vertical"
+                                android:minHeight="@dimen/size_45"
+                                android:orientation="horizontal"
+                                android:visibility="visible">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Document Date"
+                                    android:textColor="@color/grey"
+                                    android:textSize="@dimen/text_size_14" />
+
+                                <TextView
+                                    android:id="@+id/tvDocumentDate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:maxLines="4"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/text_size_14" />
+
+
+                            </LinearLayout>
+
+
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -430,6 +525,36 @@
 
                                 <TextView
                                     android:id="@+id/tvRemarks"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/size_45"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/text_size_14" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_10"
+                                android:layout_marginRight="@dimen/size_10"
+                                android:orientation="horizontal"
+                                android:visibility="visible">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/size_45"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="Material Type"
+                                    android:textColor="@color/grey"
+                                    android:textSize="@dimen/text_size_14" />
+
+                                <TextView
+                                    android:id="@+id/tvMaterialType"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/size_45"
                                     android:layout_weight="1"
@@ -962,7 +1087,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="10dp"
-                        android:visibility="visible"
+                        android:visibility="gone"
                         app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="@dimen/size_8"
                         app:cardElevation="@dimen/size_4"
@@ -1096,7 +1221,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
-                        android:visibility="visible"
+                        android:visibility="gone"
                         app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="@dimen/size_8"
                         app:cardElevation="@dimen/size_4"

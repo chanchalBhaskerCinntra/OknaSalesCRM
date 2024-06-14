@@ -170,10 +170,6 @@ public class Dashboard extends Fragment implements View.OnClickListener, ChangeT
 
         Prefs.putBoolean(Globals.Location_Boolean_MInutes, false);
 
-        //todo calling job schedular for current location in every 15 minutes.
-        if (Prefs.getBoolean(Globals.Location_FirstTime, false)) {
-            ApiSchedular.schedularCall(getActivity());
-        }
 
         //todo
         Intent intent = new Intent(getActivity(), BackgroundLocationService.class);

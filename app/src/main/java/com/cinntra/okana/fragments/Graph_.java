@@ -117,21 +117,20 @@ public class Graph_ extends Fragment implements View.OnClickListener {
     GraphBinding binding;
 
 
-    public Graph_()
-      {}
+    public Graph_() {
+    }
 
 
     // TODO: Rename and change types and number of parameters
-    public static Graph_ newInstance(String param1, String param2)
-      {
-    Graph_ fragment = new Graph_();
-    Bundle args = new Bundle();
-    fragment.setArguments(args);
-    return fragment;
-         }
-     @Override
-    public void onCreate(Bundle savedInstanceState)
-      {
+    public static Graph_ newInstance(String param1, String param2) {
+        Graph_ fragment = new Graph_();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
 
@@ -141,13 +140,12 @@ public class Graph_ extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-    Bundle savedInstanceState)
-      {
-          binding=GraphBinding.inflate(inflater,container,false);
+                             Bundle savedInstanceState) {
+        binding = GraphBinding.inflate(inflater, container, false);
         // Inflate the layout for this fragment
-        View v  = inflater.inflate(R.layout.graph, container, false);
-      //  ButterKnife.bind(this,v);
-          Globals.CURRENT_CLASS = getClass().getName();
+        View v = inflater.inflate(R.layout.graph, container, false);
+        //  ButterKnife.bind(this,v);
+        Globals.CURRENT_CLASS = getClass().getName();
 
 
         setDefaults();
@@ -160,71 +158,62 @@ public class Graph_ extends Fragment implements View.OnClickListener {
         return binding.getRoot();
     }
 
-    private void setDefaults()
-      {
+    private void setDefaults() {
 
-          binding.month1.setOnClickListener(this);
-          binding.month3.setOnClickListener(this);
-          binding.month6.setOnClickListener(this);
-          binding.year.setOnClickListener(this);
-
+        binding.month1.setOnClickListener(this);
+        binding.month3.setOnClickListener(this);
+        binding.month6.setOnClickListener(this);
+        binding.year.setOnClickListener(this);
 
 
-           }
+    }
 
 
+    /************* Inventory PieChart ****************/
+    public static final int[] COLORS = {
+            rgb("#FFA63D"), rgb("#4A79E4"), rgb("#95B5FF"), rgb("#3498db")
+    };
+
+    float time[] = {Float.parseFloat("" + ((double) Dashboard.mediumInventoryList.size() / Dashboard.allInventoryList.size()) * 100), Float.parseFloat("" + ((double) Dashboard.fastInventoryList.size() / Dashboard.allInventoryList.size()) * 100), Float.parseFloat("" + ((double) Dashboard.nonInventoryList.size() / Dashboard.allInventoryList.size()) * 100)};
+    String activity[] = {"Slow Moving", "Fast Moving", "Non Moving"};
+
+    // CircularProgressIndicator circularProgress;
+    private void setupPieChart() {
+
+        //pupulating list of PieEntires
+        List<PieEntry> pieEntires = new ArrayList<>();
+        for (int i = 0; i < time.length; i++) {
+            pieEntires.add(new PieEntry(time[i], activity[i]));
+        }
+        PieDataSet dataSet = new PieDataSet(pieEntires, "");
+        dataSet.setColors(COLORS);
+        PieData data = new PieData(dataSet);
+        //Get the chart
+        binding.inventoryPieChart.setData(data);
+        binding.inventoryPieChart.invalidate();
+        binding.inventoryPieChart.setCenterText("100% \n ");
+        binding.inventoryPieChart.setDrawEntryLabels(false);
+        binding.inventoryPieChart.setContentDescription("");
+        //pieChart.setDrawMarkers(true);
+        //pieChart.setMaxHighlightDistance(34);
+        binding.inventoryPieChart.setEntryLabelTextSize(12);
+        //pieChart.setHoleRadius(75);
+
+        //legend attributes
+        Legend legend = binding.inventoryPieChart.getLegend();
+        //legend.setForm(Legend.LegendForm.CIRCLE);
+        legend.setTextSize(12);
+        legend.setFormSize(20);
 
 
+    }
 
 
-         /************* Inventory PieChart ****************/
-         public static final int[] COLORS = {
-        rgb("#FFA63D"), rgb("#4A79E4"), rgb("#95B5FF"), rgb("#3498db")
-         };
+    private float[] yData = {Float.parseFloat("" + ((double) Dashboard.mediumInventoryList.size() / Dashboard.allInventoryList.size()) * 100), Float.parseFloat("" + ((double) Dashboard.fastInventoryList.size() / Dashboard.allInventoryList.size()) * 100), Float.parseFloat("" + ((double) Dashboard.nonInventoryList.size() / Dashboard.allInventoryList.size()) * 100)};
 
-         float time[] = {Float.parseFloat(""+((double)Dashboard.mediumInventoryList.size()/Dashboard.allInventoryList.size())*100), Float.parseFloat(""+((double)Dashboard.fastInventoryList.size()/Dashboard.allInventoryList.size())*100),Float.parseFloat(""+((double)Dashboard.nonInventoryList.size()/Dashboard.allInventoryList.size())*100)};
-    String activity[] ={"Slow Moving","Fast Moving","Non Moving"};
+    private String[] xData = {"Slow Moving", "Fast Moving", "Non Moving"};
 
-   // CircularProgressIndicator circularProgress;
-         private void setupPieChart()
-                {
-
-             //pupulating list of PieEntires
-             List<PieEntry> pieEntires = new ArrayList<>();
-             for( int i = 0 ; i<time.length;i++){
-                 pieEntires.add(new PieEntry(time[i],activity[i]));
-             }
-             PieDataSet dataSet = new PieDataSet(pieEntires,"");
-             dataSet.setColors(COLORS);
-             PieData data = new PieData(dataSet);
-             //Get the chart
-             binding.inventoryPieChart.setData(data);
-             binding.inventoryPieChart.invalidate();
-             binding.inventoryPieChart.setCenterText("100% \n ");
-             binding.inventoryPieChart.setDrawEntryLabels(false);
-             binding.inventoryPieChart.setContentDescription("");
-             //pieChart.setDrawMarkers(true);
-             //pieChart.setMaxHighlightDistance(34);
-             binding.inventoryPieChart.setEntryLabelTextSize(12);
-             //pieChart.setHoleRadius(75);
-
-             //legend attributes
-             Legend legend = binding.inventoryPieChart.getLegend();
-             //legend.setForm(Legend.LegendForm.CIRCLE);
-             legend.setTextSize(12);
-             legend.setFormSize(20);
-
-
-
-         }
-
-
-    private float[]  yData ={Float.parseFloat(""+((double)Dashboard.mediumInventoryList.size()/Dashboard.allInventoryList.size())*100), Float.parseFloat(""+((double)Dashboard.fastInventoryList.size()/Dashboard.allInventoryList.size())*100),Float.parseFloat(""+((double)Dashboard.nonInventoryList.size()/Dashboard.allInventoryList.size())*100)};
-
-    private String[] xData = {"Slow Moving","Fast Moving","Non Moving"};
-
-    private void addData()
-            {
+    private void addData() {
         ArrayList<PieEntry> yVals1 = new ArrayList<PieEntry>();
 
         for (int i = 0; i < yData.length; i++)
@@ -278,251 +267,248 @@ public class Graph_ extends Fragment implements View.OnClickListener {
     }
 
 
-
     /***************** To 5 Item data *******************************/
 
     public static ArrayList<Top5Item> topItem_5 = new ArrayList<>();
 
-    private void loadTop5Item()
-    {
-        HashMap<String,String> hd = new HashMap<>();
-        hd.put("SalesPersonCode",Prefs.getString(Globals.SalesEmployeeCode,""));
+    private void loadTop5Item() {
+        HashMap<String, String> hd = new HashMap<>();
+        hd.put("SalesPersonCode", Prefs.getString(Globals.SalesEmployeeCode, ""));
 
         Call<Top5ItemResponse> call = NewApiClient.getInstance().getApiService().getTop5Items(hd);
         call.enqueue(new Callback<Top5ItemResponse>() {
             @Override
             public void onResponse(Call<Top5ItemResponse> call, Response<Top5ItemResponse> response) {
-                if(response !=null)
-                {
+                if (response != null) {
                     if (response.body().getValue().size() > 0) {
                         topItem_5.clear();
                         topItem_5.addAll(response.body().getValue());
                         ItemChart();
 
-                    }else {
-                        Toast.makeText(getContext(),"No data Found",Toast.LENGTH_SHORT).show();
+                    } else {
+                        try {
+                            Toast.makeText(getContext(), "No data Found", Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
 
-                }else {
-                    Toast.makeText(getContext(),response.message(),Toast.LENGTH_SHORT).show();
+                } else {
+                    try {
+                        Toast.makeText(getContext(), response.message(), Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
                 }
             }
+
             @Override
             public void onFailure(Call<Top5ItemResponse> call, Throwable t) {
-                Toast.makeText(getContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
+                try {
+                    Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
         });
     }
 
-    private void ItemChart()
-          {
-              float setItemData[];
+    private void ItemChart() {
+        float setItemData[];
 
-              String sellItems[];
+        String sellItems[];
 
-              sellItems = new String[topItem_5.size()];
-              setItemData   = new float[topItem_5.size()];
-              ArrayList<BarEntry> entries = new ArrayList<>();
-              for(int i=0;i<topItem_5.size();i++)
-              {
-                  sellItems[i] = topItem_5.get(i).getItemCode();
+        sellItems = new String[topItem_5.size()];
+        setItemData = new float[topItem_5.size()];
+        ArrayList<BarEntry> entries = new ArrayList<>();
+        for (int i = 0; i < topItem_5.size(); i++) {
+            sellItems[i] = topItem_5.get(i).getItemCode();
 
-                  setItemData[i]   = Float.valueOf(topItem_5.get(i).getTotal());
-                  entries.add(new BarEntry((float)i,    setItemData[i] ));
-                  if(i==0)
-                      binding.seller1.setText(sellItems[0]);
-                  else  if(i==1)
-                      binding.seller2.setText(sellItems[1]);
-                  else if(i==2)
-                      binding.seller3.setText(sellItems[2]);
-                  else if(i==3)
-                      binding.seller4.setText(sellItems[3]);
-                  else if(i==4)
-                      binding.seller5.setText(sellItems[4]);
-
-              }
-              RoundedBarChart roundedBarChartRenderer= new RoundedBarChart(binding.sellingBarChart,binding.sellingBarChart.getAnimator(),binding.sellingBarChart.getViewPortHandler());
-              roundedBarChartRenderer.setmRadius(20f);
-              binding.sellingBarChart.setRenderer(roundedBarChartRenderer);
-
-              binding.sellingBarChart.setDrawBarShadow(false);
-              binding.sellingBarChart.setDrawValueAboveBar(false);
-              binding.sellingBarChart.getDescription().setEnabled(false);
-              binding.sellingBarChart.setDrawGridBackground(false);
-
-
-
-
-              binding.sellingBarChart.getAxisRight().setEnabled(false);
-              Legend legend = binding.sellingBarChart.getLegend();
-              legend.setEnabled(false);
-
-
-              List<IBarDataSet> dataSets = new ArrayList<>();
-              BarDataSet barDataSet = new BarDataSet(entries, " ");
-              barDataSet.setColor(R.color.graphBarColor);
-              barDataSet.setDrawValues(false);
-              dataSets.add(barDataSet);
-
-
-              BarData data = new BarData(dataSets);
-              data.setBarWidth(0.25f);
-              data.setValueTextColor(Color.BLACK);
-              binding.sellingBarChart.setData(data);
-              binding.sellingBarChart.setFitBars(false);
-              binding.sellingBarChart.invalidate();
-
-
-              XAxis xaxis = binding.sellingBarChart.getXAxis();
-              xaxis.setDrawGridLines(false);
-              xaxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-              xaxis.setGranularity(0.5f);
-              xaxis.setGranularityEnabled(true);
-              xaxis.setDrawLabels(false);    // make changes bottom txt
-              xaxis.setDrawAxisLine(false);
-
-              binding.sellingBarChart.setTouchEnabled(false);
-              binding.sellingBarChart.setDrawBarShadow(false);
-
-
-
-
-              //hide grid lines
-              binding.sellingBarChart.getAxisLeft().setDrawGridLines(false);
-
-
-              //remove right y-axis
-              binding.sellingBarChart.getAxisRight().setEnabled(false);
-
-              //remove legend
-
-
-
-              //remove description label
-              binding.sellingBarChart.getDescription().setEnabled(false);
-
-              //add animation
-              binding.sellingBarChart.animateY(3000);
-
-
-              //draw chart
-              binding.sellingBarChart.invalidate();
+            setItemData[i] = Float.valueOf(topItem_5.get(i).getTotal());
+            entries.add(new BarEntry((float) i, setItemData[i]));
+            if (i == 0)
+                binding.seller1.setText(sellItems[0]);
+            else if (i == 1)
+                binding.seller2.setText(sellItems[1]);
+            else if (i == 2)
+                binding.seller3.setText(sellItems[2]);
+            else if (i == 3)
+                binding.seller4.setText(sellItems[3]);
+            else if (i == 4)
+                binding.seller5.setText(sellItems[4]);
 
         }
+        RoundedBarChart roundedBarChartRenderer = new RoundedBarChart(binding.sellingBarChart, binding.sellingBarChart.getAnimator(), binding.sellingBarChart.getViewPortHandler());
+        roundedBarChartRenderer.setmRadius(20f);
+        binding.sellingBarChart.setRenderer(roundedBarChartRenderer);
+
+        binding.sellingBarChart.setDrawBarShadow(false);
+        binding.sellingBarChart.setDrawValueAboveBar(false);
+        binding.sellingBarChart.getDescription().setEnabled(false);
+        binding.sellingBarChart.setDrawGridBackground(false);
 
 
+        binding.sellingBarChart.getAxisRight().setEnabled(false);
+        Legend legend = binding.sellingBarChart.getLegend();
+        legend.setEnabled(false);
 
-        /**   Top  5 customer **/
+
+        List<IBarDataSet> dataSets = new ArrayList<>();
+        BarDataSet barDataSet = new BarDataSet(entries, " ");
+        barDataSet.setColor(R.color.graphBarColor);
+        barDataSet.setDrawValues(false);
+        dataSets.add(barDataSet);
+
+
+        BarData data = new BarData(dataSets);
+        data.setBarWidth(0.25f);
+        data.setValueTextColor(Color.BLACK);
+        binding.sellingBarChart.setData(data);
+        binding.sellingBarChart.setFitBars(false);
+        binding.sellingBarChart.invalidate();
+
+
+        XAxis xaxis = binding.sellingBarChart.getXAxis();
+        xaxis.setDrawGridLines(false);
+        xaxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xaxis.setGranularity(0.5f);
+        xaxis.setGranularityEnabled(true);
+        xaxis.setDrawLabels(false);    // make changes bottom txt
+        xaxis.setDrawAxisLine(false);
+
+        binding.sellingBarChart.setTouchEnabled(false);
+        binding.sellingBarChart.setDrawBarShadow(false);
+
+
+        //hide grid lines
+        binding.sellingBarChart.getAxisLeft().setDrawGridLines(false);
+
+
+        //remove right y-axis
+        binding.sellingBarChart.getAxisRight().setEnabled(false);
+
+        //remove legend
+
+
+        //remove description label
+        binding.sellingBarChart.getDescription().setEnabled(false);
+
+        //add animation
+        binding.sellingBarChart.animateY(3000);
+
+
+        //draw chart
+        binding.sellingBarChart.invalidate();
+
+    }
+
+
+    /**
+     * Top  5 customer
+     **/
 
     public static ArrayList<Team> topSeller_5 = new ArrayList<>();
-    private void loadTop5Customer()
-        {
-            HashMap<String,String> hd = new HashMap<>();
-            hd.put("SalesPersonCode",Prefs.getString(Globals.SalesEmployeeCode,""));
 
-            Call<Top5CustomerResponse> call = NewApiClient.getInstance().getApiService().getTop5Customer(hd);
+    private void loadTop5Customer() {
+        HashMap<String, String> hd = new HashMap<>();
+        hd.put("SalesPersonCode", Prefs.getString(Globals.SalesEmployeeCode, ""));
+
+        Call<Top5CustomerResponse> call = NewApiClient.getInstance().getApiService().getTop5Customer(hd);
         call.enqueue(new Callback<Top5CustomerResponse>() {
-         @Override
-        public void onResponse(Call<Top5CustomerResponse> call, Response<Top5CustomerResponse> response) {
-                if(response.code()==200)
-                 {
+            @Override
+            public void onResponse(Call<Top5CustomerResponse> call, Response<Top5CustomerResponse> response) {
+                if (response.code() == 200) {
                     if (response.body().getValue().size() > 0) {
                         topSeller_5.clear();
                         topSeller_5.addAll(response.body().getValue());
                         setCustomergraph();
 
-                    }else{
-                        Toast.makeText(getContext(),"No data Found",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(), "No data Found", Toast.LENGTH_SHORT).show();
                     }
 
 
-
-                }
-                else{
-                    Toast.makeText(getContext(),response.message(),Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), response.message(), Toast.LENGTH_SHORT).show();
                 }
 
-         }
+            }
+
             @Override
             public void onFailure(Call<Top5CustomerResponse> call, Throwable t) {
-                Toast.makeText(getContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
-            loadTop5Item();
+        loadTop5Item();
     }
 
     private void setCustomergraph() {
         String customers[];
-        float setData[] ;
+        float setData[];
         customers = new String[topSeller_5.size()];
-        setData   = new float[topSeller_5.size()];
+        setData = new float[topSeller_5.size()];
         ArrayList<BarEntry> entries = new ArrayList<>();
-        for(int i=0;i<topSeller_5.size();i++)
-        {
+        for (int i = 0; i < topSeller_5.size(); i++) {
             customers[i] = topSeller_5.get(i).getEmpName();
 
-            setData[i]   = Float.valueOf(topSeller_5.get(i).getId());
-            entries.add(new BarEntry((float)i,    setData[i] ));
+            setData[i] = Float.valueOf(topSeller_5.get(i).getId());
+            entries.add(new BarEntry((float) i, setData[i]));
 
-            if(i==0)
+            if (i == 0)
                 binding.cus1.setText(customers[0]);
-            else  if(i==1)
+            else if (i == 1)
                 binding.cus2.setText(customers[1]);
-            else if(i==2)
+            else if (i == 2)
                 binding.cus3.setText(customers[2]);
-            else if(i==3)
+            else if (i == 3)
                 binding.cus4.setText(customers[3]);
-            else if(i==4)
+            else if (i == 4)
                 binding.cus5.setText(customers[4]);
         }
 
-        RoundedBarChart roundedBarChartRenderer= new RoundedBarChart(binding.customerBarChart, binding.customerBarChart.getAnimator(),binding.customerBarChart.getViewPortHandler());
-     roundedBarChartRenderer.setmRadius(20f);
-     binding.customerBarChart.setRenderer(roundedBarChartRenderer);
+        RoundedBarChart roundedBarChartRenderer = new RoundedBarChart(binding.customerBarChart, binding.customerBarChart.getAnimator(), binding.customerBarChart.getViewPortHandler());
+        roundedBarChartRenderer.setmRadius(20f);
+        binding.customerBarChart.setRenderer(roundedBarChartRenderer);
 
-     binding.customerBarChart.setDrawBarShadow(false);
-     binding.customerBarChart.setDrawValueAboveBar(false);
-     binding.customerBarChart.getDescription().setEnabled(false);
-     binding.customerBarChart.setDrawGridBackground(false);
-
-
+        binding.customerBarChart.setDrawBarShadow(false);
+        binding.customerBarChart.setDrawValueAboveBar(false);
+        binding.customerBarChart.getDescription().setEnabled(false);
+        binding.customerBarChart.setDrawGridBackground(false);
 
 
-     binding.customerBarChart.getAxisRight().setEnabled(false);
-     Legend legend = binding.customerBarChart.getLegend();
-     legend.setEnabled(false);
+        binding.customerBarChart.getAxisRight().setEnabled(false);
+        Legend legend = binding.customerBarChart.getLegend();
+        legend.setEnabled(false);
 
 
-            List<IBarDataSet> dataSets = new ArrayList<>();
-            BarDataSet barDataSet = new BarDataSet(entries, " ");
-            barDataSet.setColor(R.color.graphBarColor);
-            barDataSet.setDrawValues(false);
-            dataSets.add(barDataSet);
+        List<IBarDataSet> dataSets = new ArrayList<>();
+        BarDataSet barDataSet = new BarDataSet(entries, " ");
+        barDataSet.setColor(R.color.graphBarColor);
+        barDataSet.setDrawValues(false);
+        dataSets.add(barDataSet);
 
 
-            BarData data = new BarData(dataSets);
-            data.setBarWidth(0.25f);
-            data.setValueTextColor(Color.BLACK);
-            binding.customerBarChart.setData(data);
-            binding.customerBarChart.setFitBars(false);
-            binding.customerBarChart.invalidate();
+        BarData data = new BarData(dataSets);
+        data.setBarWidth(0.25f);
+        data.setValueTextColor(Color.BLACK);
+        binding.customerBarChart.setData(data);
+        binding.customerBarChart.setFitBars(false);
+        binding.customerBarChart.invalidate();
 
 
-            XAxis xaxis = binding.customerBarChart.getXAxis();
-            xaxis.setDrawGridLines(false);
-            xaxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-            xaxis.setGranularity(0.5f);
-            xaxis.setGranularityEnabled(true);
-            xaxis.setDrawLabels(false);    // make changes bottom txt
-            xaxis.setDrawAxisLine(false);
+        XAxis xaxis = binding.customerBarChart.getXAxis();
+        xaxis.setDrawGridLines(false);
+        xaxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xaxis.setGranularity(0.5f);
+        xaxis.setGranularityEnabled(true);
+        xaxis.setDrawLabels(false);    // make changes bottom txt
+        xaxis.setDrawAxisLine(false);
 
-            binding.customerBarChart.setTouchEnabled(false);
-            binding.customerBarChart.setDrawBarShadow(false);
-
-
+        binding.customerBarChart.setTouchEnabled(false);
+        binding.customerBarChart.setDrawBarShadow(false);
 
 
         //hide grid lines
@@ -533,7 +519,6 @@ public class Graph_ extends Fragment implements View.OnClickListener {
         binding.customerBarChart.getAxisRight().setEnabled(false);
 
         //remove legend
-
 
 
         //remove description label
@@ -547,100 +532,86 @@ public class Graph_ extends Fragment implements View.OnClickListener {
         binding.customerBarChart.invalidate();
 
 
-
-
-
-
-
     }
 
 
-
-
-
-
-         /**         Three rounded projection data **/
+    /**
+     * Three rounded projection data
+     **/
 
 
     String initialProj;
     String actualColl;
     String currenProj;
-     private void setProjectionData(String month)
-       {
+
+    private void setProjectionData(String month) {
 
 
+        SalesEmployeeItem salesEmployeeItem = new SalesEmployeeItem();
+        salesEmployeeItem.setSalesEmployeeCode(Prefs.getString(Globals.SalesEmployeeCode, ""));
+        salesEmployeeItem.setMonth(month);
+        Call<CounterResponse> call = NewApiClient.getInstance().getApiService().projectiondata(salesEmployeeItem);
+        call.enqueue(new Callback<CounterResponse>() {
+            @Override
+            public void onResponse(Call<CounterResponse> call, Response<CounterResponse> response) {
+                if (response != null) {
+                    initialProj = response.body().getValue().get(0).getAmount();
+                    currenProj = response.body().getValue().get(0).getSale();
+                    binding.initialProjectionValue.setText(initialProj);
+                    binding.currentProjectionValue.setText(currenProj);
+                    setProjectionGraph(initialProj, currenProj);
 
-           SalesEmployeeItem salesEmployeeItem = new SalesEmployeeItem();
-           salesEmployeeItem.setSalesEmployeeCode(Prefs.getString(Globals.SalesEmployeeCode,""));
-           salesEmployeeItem.setMonth(month);
-           Call<CounterResponse> call = NewApiClient.getInstance().getApiService().projectiondata(salesEmployeeItem);
-           call.enqueue(new Callback<CounterResponse>() {
-               @Override
-               public void onResponse(Call<CounterResponse> call, Response<CounterResponse> response) {
-                   if (response != null)
-                   {
-                       initialProj = response.body().getValue().get(0).getAmount();
-                       currenProj =  response.body().getValue().get(0).getSale();
-                       binding.initialProjectionValue.setText(initialProj);
-                       binding.currentProjectionValue.setText(currenProj);
-                        setProjectionGraph(initialProj,currenProj);
+                }
+            }
 
-                   }
-               }
-               @Override
-               public void onFailure(Call<CounterResponse> call, Throwable t) {
+            @Override
+            public void onFailure(Call<CounterResponse> call, Throwable t) {
 
-               }
-           });
-
+            }
+        });
 
 
-
-
-
-
-        }
+    }
 
 
     private void setProjectionGraph(String initialProj, String currenProj) {
-        Calendar cal     = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();
         int monthMaxDays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd");
         int currentDays = Integer.parseInt(dateFormat.format(cal.getTime()));
-        if(currentDays>1)
-            currentDays = currentDays-1;
+        if (currentDays > 1)
+            currentDays = currentDays - 1;
 
-        actualColl = String.valueOf(Float.parseFloat(currenProj)/currentDays*monthMaxDays);
+        actualColl = String.valueOf(Float.parseFloat(currenProj) / currentDays * monthMaxDays);
 
         binding.actualProjectionValue.setText(actualColl);
 
 
-        float actPer  = Float.parseFloat(actualColl) / Float.parseFloat(initialProj);
-        actPer        = actPer*100;
-        float initPer     =  Float.parseFloat(initialProj)/ Float.parseFloat(String.valueOf(currentDays))*100;
-            
+        float actPer = Float.parseFloat(actualColl) / Float.parseFloat(initialProj);
+        actPer = actPer * 100;
+        float initPer = Float.parseFloat(initialProj) / Float.parseFloat(String.valueOf(currentDays)) * 100;
+
 
         binding.actualProgressBar.setProgress((int) actPer);
-        binding.actualProgressValue.setText(""+(int) actPer+"%");
+        binding.actualProgressValue.setText("" + (int) actPer + "%");
 
         binding.initialProgressBar.setProgress((int) initPer);
-        binding.initialProgressValue.setText(""+(int)initPer+"%");
+        binding.initialProgressValue.setText("" + (int) initPer + "%");
 
-        if( Float.parseFloat(currenProj)> Float.parseFloat(initialProj)){
+        if (Float.parseFloat(currenProj) > Float.parseFloat(initialProj)) {
             float per = Float.parseFloat(currenProj) - Float.parseFloat(initialProj);
-            per = per/Float.parseFloat(initialProj);
-            per = per*100;
+            per = per / Float.parseFloat(initialProj);
+            per = per * 100;
             binding.currentProgressBar.setProgress((int) per);
-            binding.currentProgressValue.setText(""+(int) per+"%");
+            binding.currentProgressValue.setText("" + (int) per + "%");
             binding.currentProgressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
 
-        }
-        else{
-            float per =  Float.parseFloat(initialProj) -  Float.parseFloat(currenProj);
-            per = per/ Float.parseFloat(initialProj);
-            per = per*100;
+        } else {
+            float per = Float.parseFloat(initialProj) - Float.parseFloat(currenProj);
+            per = per / Float.parseFloat(initialProj);
+            per = per * 100;
             binding.currentProgressBar.setProgress((int) per);
-            binding.currentProgressValue.setText(""+(int) per+"%");
+            binding.currentProgressValue.setText("" + (int) per + "%");
             binding.currentProgressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));
 
         }
@@ -648,46 +619,40 @@ public class Graph_ extends Fragment implements View.OnClickListener {
     }
 
 
-
-
-
-
-
-
-
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.month_1:
 
-                setSelectedBackground(binding.month1,binding.month3,binding.month6,binding.year);
+                setSelectedBackground(binding.month1, binding.month3, binding.month6, binding.year);
                 setProjectionData("1");
                 break;
             case R.id.month_3:
 
-                setSelectedBackground(binding.month3,binding.month1,binding.month6,binding.year);
+                setSelectedBackground(binding.month3, binding.month1, binding.month6, binding.year);
                 setProjectionData("3");
                 break;
             case R.id.month_6:
 
-                setSelectedBackground(binding.month6,binding.month3,binding.month1,binding.year);
+                setSelectedBackground(binding.month6, binding.month3, binding.month1, binding.year);
                 setProjectionData("6");
                 break;
             case R.id.year:
 
-                setSelectedBackground(binding.year,binding.month3,binding.month6,binding.month1);
+                setSelectedBackground(binding.year, binding.month3, binding.month6, binding.month1);
                 setProjectionData("12");
                 break;
         }
     }
 
     private void setSelectedBackground(TextView month_1, TextView month_3, TextView month_6, TextView year) {
-    month_1.setBackground(getResources().getDrawable(R.drawable.text_selected_rounded_back));
-    month_1.setTextColor(getResources().getColor(R.color.white));
-    month_3.setBackground(getResources().getDrawable(R.drawable.text_rounded_back));
+        month_1.setBackground(getResources().getDrawable(R.drawable.text_selected_rounded_back));
+        month_1.setTextColor(getResources().getColor(R.color.white));
+        month_3.setBackground(getResources().getDrawable(R.drawable.text_rounded_back));
         month_3.setTextColor(getResources().getColor(R.color.black));
-    month_6.setBackground(getResources().getDrawable(R.drawable.text_rounded_back));
+        month_6.setBackground(getResources().getDrawable(R.drawable.text_rounded_back));
         month_6.setTextColor(getResources().getColor(R.color.black));
         year.setBackground(getResources().getDrawable(R.drawable.text_rounded_back));
-        year.setTextColor(getResources().getColor(R.color.black));    }
+        year.setTextColor(getResources().getColor(R.color.black));
+    }
 }

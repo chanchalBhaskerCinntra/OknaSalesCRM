@@ -1,24 +1,34 @@
 package com.cinntra.okana.activities;
 
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,10 +42,12 @@ import com.cinntra.okana.adapters.SalesEmployeeAutoAdapter;
 import com.cinntra.okana.adapters.bpAdapters.ContactPersonAutoAdapter;
 import com.cinntra.okana.databinding.AddOpportunityBinding;
 import com.cinntra.okana.databinding.TaxesAlertBinding;
+import com.cinntra.okana.globals.FileUtilsPdf;
 import com.cinntra.okana.globals.Globals;
 import com.cinntra.okana.globals.MainBaseActivity;
 import com.cinntra.okana.interfaces.DatabaseClick;
 import com.cinntra.okana.interfaces.FragmentRefresher;
+import com.cinntra.okana.model.AttachmentResponseModel;
 import com.cinntra.okana.model.BPModel.BusinessPartnerAllResponse;
 import com.cinntra.okana.model.BPTypeResponse;
 import com.cinntra.okana.model.ContactPerson;
@@ -64,12 +76,16 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.pixplicity.easyprefs.library.Prefs;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -97,6 +113,11 @@ public class AddOpportunityActivity extends MainBaseActivity implements View.OnC
     String CardName = "";
     AddOpportunityBinding binding;
     String  BPCardCode = "";
+    private static final int RESULT_LOAD_IMAGE = 123;
+    private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 7;
+    File file;
+    String picturePath = "";
+    Uri fileUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,6 +181,105 @@ public class AddOpportunityActivity extends MainBaseActivity implements View.OnC
         });
 
 
+        //todo click on attachment
+        binding.addOppAttachment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                openAttachmentDialog();
+
+//                intentDispatcher();
+            }
+        });
+
+    }
+
+
+    private static final int RESULT_LOAD_PDF = 2;
+
+    private void openAttachmentDialog() {
+        final Dialog dialog = new Dialog(this);
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.picturedialog);
+        dialog.getWindow().getAttributes().width = ActionBar.LayoutParams.FILL_PARENT;
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+        TextView cancel = dialog.findViewById(R.id.canceldialog);
+        ImageView gallery = dialog.findViewById(R.id.gallerySelect);
+        ImageView camera = dialog.findViewById(R.id.cameraSelect);
+
+        gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              /*  Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                i.setType("image/*");
+                startActivityForResult(i, RESULT_LOAD_IMAGE);*/
+
+                intentDispatcher();
+                dialog.dismiss();
+
+
+            }
+        });
+
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                intent.setType("application/pdf");
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                startActivityForResult(intent, RESULT_LOAD_PDF);
+
+                dialog.dismiss();
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+
+
+    //todo select attachment ---
+    private void intentDispatcher() {
+        checkAndRequestPermissions();
+
+        Intent takePictureIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        takePictureIntent.setType("image/*");
+        startActivityForResult(takePictureIntent, RESULT_LOAD_IMAGE);
+    }
+
+    private boolean checkAndRequestPermissions() {
+        int camera = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        int write = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int read = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+
+        List<String> listPermissionsNeeded = new ArrayList<>();
+
+        if (write != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if (camera != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.CAMERA);
+        }
+        if (read != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[0]), REQUEST_ID_MULTIPLE_PERMISSIONS);
+            return false;
+        }
+
+        return true;
     }
 
 
@@ -334,6 +454,9 @@ public class AddOpportunityActivity extends MainBaseActivity implements View.OnC
 
     }
 
+
+    boolean isPDF = true;
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -351,9 +474,10 @@ public class AddOpportunityActivity extends MainBaseActivity implements View.OnC
             DataOwnershipfield = ownerItem.getEmployeeID();
         } else if (requestCode == LeadCode && resultCode == RESULT_OK) {
             LeadValue leadValue = data.getParcelableExtra(Globals.Lead_Data);
+            LeadID = leadValue.getId().toString();
             binding.leadValue.setText(leadValue.getCompanyName());
             binding.opportunityNameValue.setText(leadValue.getCompanyName());
-            LeadID = leadValue.getId().toString();
+
         }
         else if (resultCode == RESULT_OK && requestCode == ITEMSVIEWCODE) {
             binding.itemCount.setText("Item (" + Globals.SelectedItems.size() + ")");
@@ -362,11 +486,155 @@ public class AddOpportunityActivity extends MainBaseActivity implements View.OnC
             binding.totalBeforeDiscontValue.setText(sum);
 //            getQuotationDocLin();
         }
+        //todo for attachment selected---
+
+        else if (requestCode == RESULT_LOAD_IMAGE) {
+            if (resultCode == RESULT_OK && data != null) {
+                Bundle extras = data.getExtras();
+                Uri selectedImage = data.getData();
+
+                isPDF = false;
+
+                if (!isPDF){
+                    binding.tvPdf.setVisibility(View.GONE);
+                }
+                binding.ivQuotationImageSelected.setVisibility(View.VISIBLE);
+
+                if (selectedImage != null){
+                    binding.tvAttachments.setVisibility(View.GONE);
+                }else {
+                    binding.tvAttachments.setVisibility(View.VISIBLE);
+                }
+
+                binding.ivQuotationImageSelected.setImageURI(selectedImage);
+
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                Cursor cursor = this.getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+
+                if (cursor != null) {
+                    cursor.moveToFirst();
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    picturePath = cursor.getString(columnIndex);
+                    cursor.close();
+
+                    Log.e("picturePath", picturePath);
+                    file = new File(picturePath);
+                    FileExtension = "image";
+                    Log.e("FILE>>>>", "onActivityResult: " + file.getName());
+                }
+
+
+            }
+        }
+
+        /*** PDF Load**/
+        else if (requestCode == RESULT_LOAD_PDF && resultCode == RESULT_OK) {
+            if (data != null) {
+                Uri pdfUri = data.getData();
+
+                isPDF = true;
+                if (isPDF){
+                    binding.ivQuotationImageSelected.setVisibility(View.GONE);
+                }
+//                binding.ivQuotationImageSelected.setVisibility(View.VISIBLE);
+
+                String filePath = FileUtilsPdf.getPathFromUri(this,pdfUri);
+                if (filePath != null) {
+                    // Now you have the file path
+                    Log.e("File Path", filePath);
+
+                    picturePath = filePath;
+                    Log.e("picturePath", picturePath);
+                    file = new File(picturePath);
+                    Log.e("FILE>>>>", "onActivityResult: " + file.getName());
+
+                    FileExtension = "pdf";
+
+                    if (pdfUri != null){
+                        binding.tvPdf.setVisibility(View.VISIBLE);
+                        binding.tvPdf.setText(file.getName());
+                        binding.tvAttachments.setVisibility(View.GONE);
+                    }else {
+                        binding.tvPdf.setVisibility(View.GONE);
+                        binding.tvAttachments.setVisibility(View.VISIBLE);
+                    }
+
+                    binding.ivQuotationImageSelected.setImageURI(pdfUri);
+
+                }
+
+
+            }
+        }
 
 
     }
 
 
+    private String FileExtension = "";
+
+    //todo quotation Attachment api calling---
+    private void callOpportunityAttachmentApi(String qt_id) {
+        MultipartBody.Builder builder = new MultipartBody.Builder();
+        builder.setType(MultipartBody.FORM);
+
+        //todo get model data in multipart body request..
+
+        builder.addFormDataPart("Caption", "");
+        builder.addFormDataPart("FileExtension", FileExtension);
+        builder.addFormDataPart("id", qt_id.trim());
+        builder.addFormDataPart("CreateDate", Globals.getTodaysDatervrsfrmt());
+        builder.addFormDataPart("CreateTime", Globals.getTCurrentTime());
+        builder.addFormDataPart("UpdateDate", Globals.getTodaysDatervrsfrmt());
+        builder.addFormDataPart("UpdateTime", Globals.getTCurrentTime());
+        builder.addFormDataPart("LinkType", "Opportunity");
+        builder.addFormDataPart("LinkID", qt_id.trim());
+
+
+        try {
+            if (picturePath.isEmpty()) {
+                builder.addFormDataPart("File", "");
+            } else {
+                builder.addFormDataPart("File", picturePath, RequestBody.create(MediaType.parse("multipart/form-data"), file));
+            }
+        } catch (Exception e) {
+            Log.d("TAG===>", "AddOpportunityApi: ");
+        }
+
+        MultipartBody requestBody = builder.build();
+
+        Call<AttachmentResponseModel> call = NewApiClient.getInstance().getApiService().attachmentCreated(requestBody);
+        call.enqueue(new Callback<AttachmentResponseModel>() {
+            @Override
+            public void onResponse(Call<AttachmentResponseModel> call, Response<AttachmentResponseModel> response) {
+
+                if (response.code() == 200) {
+                    if (response.body().getStatus() == 200) {
+                        Log.d("AttachmentResponse =>", "onResponse: Successful");
+                    }else {
+                        Log.d("AttachmentNot200Status", "onResponse: OppAttachmentNot200Status");
+                    }
+
+                } else {
+                    Gson gson = new GsonBuilder().create();
+                    LeadResponse mError = new LeadResponse();
+                    try {
+                        String s = response.errorBody().string();
+                        mError = gson.fromJson(s, LeadResponse.class);
+                        Toast.makeText(AddOpportunityActivity.this, mError.getMessage(), Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        //handle failure to read error
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AttachmentResponseModel> call, Throwable t) {
+                Log.e("TAG_Attachment_Api", "onFailure: AttachmentAPi" );
+                Toast.makeText(AddOpportunityActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 
     @Override
@@ -429,7 +697,11 @@ public class AddOpportunityActivity extends MainBaseActivity implements View.OnC
                     SalesOpportunitiesLines dc = new SalesOpportunitiesLines();
                     dc.setSalesPerson(salesEmployeeCode);
                     dc.setDocumentType("bodt_MinusOne");
-                    dc.setMaxLocalTotal(Float.valueOf(binding.potentialAmountValue.getText().toString().trim()));
+                    if (binding.potentialAmountValue.getText().toString().trim().isEmpty()){
+                        dc.setMaxLocalTotal(0.0f);
+                    }else {
+                        dc.setMaxLocalTotal(Float.valueOf(binding.potentialAmountValue.getText().toString().trim()));
+                    }
                     dc.setStageKey("2");
                     jsonlist.add(dc);
 
@@ -443,7 +715,7 @@ public class AddOpportunityActivity extends MainBaseActivity implements View.OnC
                     obj.setULsource(LEAD_SOURCE);
                     obj.setUProblty(String.valueOf(valueOfProbability));
                     // obj.setDataOwnershipfield(DataOwnershipfield);
-                    obj.setCardCode(cardValue); //cardcode
+                    obj.setCardCode(CardCode); //cardcode
                     obj.setSalesPerson(String.valueOf(salesEmployeeCode));
                     obj.setContactPerson(ContactPersonCode);
                     obj.setContactPersonName(ContactPersonName);
@@ -466,7 +738,6 @@ public class AddOpportunityActivity extends MainBaseActivity implements View.OnC
                     obj.setOpportunityType("boOpSales");
                     obj.setUpdateDate(Globals.getTodaysDatervrsfrmt());
                     obj.setUpdateTime(Globals.getTCurrentTime());
-                    obj.setSalesOpportunitiesLines(jsonlist);
                     obj.setSource("None");
                     obj.setDataOwnershipfield(String.valueOf(salesEmployeeCode));
                     obj.setSalesPersonName(salesEmployeename);
@@ -475,9 +746,18 @@ public class AddOpportunityActivity extends MainBaseActivity implements View.OnC
                     obj.setU_LEADID(LeadID);
                     obj.setU_LEADNM(binding.leadValue.getText().toString());
 
+                    obj.setSalesOpportunitiesLines("");
+
+                    obj.setOppItem("");
+
+                    obj.setDocumentLines("");
+
+                    //todo comment opp items , document and sales opportunity need to remove--
+                   /* obj.setSalesOpportunitiesLines(jsonlist);
+
                     obj.setOppItem(Globals.SelectedItems);
 
-                    obj.setDocumentLines(Globals.SelectedItems);
+                    obj.setDocumentLines(Globals.SelectedItems);*/
 
 
                     if (Globals.checkInternet(getApplicationContext()))
@@ -489,6 +769,7 @@ public class AddOpportunityActivity extends MainBaseActivity implements View.OnC
 
         }
     }
+
 
     private void startDate() {
         Globals.selectDate(AddOpportunityActivity.this, binding.startDateValue);
@@ -517,19 +798,7 @@ public class AddOpportunityActivity extends MainBaseActivity implements View.OnC
     private ContactPersonAutoAdapter contactPersonAdapter;
     String CardCode = "";
 
-   /* private void setData(BusinessPartnerAllResponse.Datum customerItem) {
 
-        ContactEmployeesList = new ArrayList<>();
-        CardName = customerItem.getCardName();
-        callContactEmployeeApi(customerItem.getCardCode());
-
-
-        binding.businessPartnerValue.setText(customerItem.getCardCode());
-
-        if (ContactEmployeesList.size() > 0)
-            ContactPersonCode = ContactEmployeesList.get(0).getInternalCode();
-
-    }*/
 
     BusinessPartnerAllResponse.Datum customerItem = null;
 
@@ -835,6 +1104,8 @@ public class AddOpportunityActivity extends MainBaseActivity implements View.OnC
                         Toasty.success(AddOpportunityActivity.this, "Add Successfully", Toast.LENGTH_LONG).show();
                         Globals.SelectedItems.clear();
                         onBackPressed();
+
+                        callOpportunityAttachmentApi(response.body().getData().get(0).getOpp_Id());
                     } else {
                         Toasty.warning(AddOpportunityActivity.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
 
@@ -864,22 +1135,23 @@ public class AddOpportunityActivity extends MainBaseActivity implements View.OnC
         });
     }
 
-    private boolean validation(String cardCode, int salesEmployeeCode, String potentialAmount, String remark, String contactPerson, EditText closeDateValue) {
-        if (Globals.SelectedItems.size() == 0){
+    private boolean validation(String cardCode, int salesEmployeeCode, String opportunityType, String remark, String contactPerson, EditText closeDateValue) {
+       /* if (Globals.SelectedItems.size() == 0){
             Globals.showMessage(act, "Select Atleast One Item");
             return false;
-        }
-        else if (cardCode.isEmpty()) {
+        }*/
+        if (cardCode.isEmpty()) {
             Globals.showMessage(act, getString(R.string.select_bp));
             return false;
         } else if (ContactPersonCode.equalsIgnoreCase("-1")) {
             Globals.showMessage(act, getString(R.string.enter_cp));
             return false;
         }
-       /* else if (potentialAmount.isEmpty()) {
-            Globals.showMessage(act, getString(R.string.potential_amnt_error));
+        else if (opportunityType.isEmpty()) {
+            Globals.showMessage(act, getString(R.string.opp_type));
             return false;
-        }*/ else if (binding.opportunityNameValue.getText().toString().trim().length() == 0) {
+        }
+        else if (binding.opportunityNameValue.getText().toString().trim().length() == 0) {
             binding.opportunityNameValue.requestFocus();
             binding.opportunityNameValue.setError(getString(R.string.enter_opp));
             Globals.showMessage(act, getString(R.string.enter_opp));

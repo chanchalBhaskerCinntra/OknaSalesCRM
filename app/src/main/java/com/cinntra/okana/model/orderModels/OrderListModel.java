@@ -172,6 +172,7 @@ public class OrderListModel implements Serializable {
         @SerializedName("id")
         @Expose
         String id;
+        String OrderID;
 
         @SerializedName("U_QUOTNM")
         @Expose
@@ -297,6 +298,14 @@ public class OrderListModel implements Serializable {
 
         public ArrayList<QuotAttachment> QuotAttachments;
 
+
+        public String getOrderID() {
+            return OrderID;
+        }
+
+        public void setOrderID(String orderID) {
+            OrderID = orderID;
+        }
 
         public String getNetTotal() {
             return NetTotal;
