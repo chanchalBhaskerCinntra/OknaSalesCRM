@@ -172,11 +172,11 @@ public class Dashboard extends Fragment implements View.OnClickListener, ChangeT
 
 
         //todo
-        Intent intent = new Intent(getActivity(), BackgroundLocationService.class);
+       /* Intent intent = new Intent(getActivity(), BackgroundLocationService.class);
         getActivity().bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 
         startStopService();
-        Globals.LocationShared = true;
+        Globals.LocationShared = true;*/
 
         enableMyLocation();
 

@@ -1,104 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context=".fragments.Calender"
-    android:id="@+id/frame">
+    tools:context=".fragments.Calender">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
 
         <include
             android:id="@+id/header_frame"
-            android:visibility="gone"
-            layout="@layout/header_bottom_rounded"/>
+            layout="@layout/header_bottom_rounded"
+            android:visibility="gone" />
+
         <LinearLayout
-            android:background="@drawable/top_back"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/top_back"
+            android:orientation="vertical">
 
 
             <TextView
-                android:visibility="gone"
-                android:layout_margin="@dimen/text_size_10"
                 android:id="@+id/text"
-                android:fontFamily="@font/muli_regular"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/text_size_10"
+                android:fontFamily="@font/muli_regular"
+                android:text="@string/calender"
                 android:textAllCaps="true"
-                android:textSize="@dimen/text_size_32"
                 android:textColor="@color/purple_700"
-                android:text="@string/calender"/>
+                android:textSize="@dimen/text_size_32"
+                android:visibility="gone" />
 
 
             <com.cinntra.okana.calender.HorizontalPicker
                 android:id="@+id/datePicker"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <LinearLayout
-                android:layout_marginLeft="@dimen/text_size_15"
-                android:layout_marginRight="@dimen/size_15"
-                android:layout_marginTop="@dimen/size_5"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_size_15"
+                android:layout_marginTop="@dimen/size_5"
+                android:layout_marginRight="@dimen/size_15"
+                android:orientation="horizontal">
+
                 <LinearLayout
-                    android:layout_weight="1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/tab_layout"
-                        app:tabMode="scrollable"
-                        app:tabTextAppearance="@style/MyCustomTextAppearance"
-                        app:tabSelectedTextColor="@color/colorPrimary"
-                        app:tabIndicatorHeight="0dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        app:tabIndicatorHeight="0dp"
+                        app:tabMode="scrollable"
+                        app:tabSelectedTextColor="@color/colorPrimary"
+                        app:tabTextAppearance="@style/MyCustomTextAppearance" />
                 </LinearLayout>
+
+
                 <LinearLayout
-                    android:visibility="gone"
-                    android:layout_gravity="right"
-                    android:orientation="vertical"
                     android:id="@+id/add_new"
                     android:layout_width="@dimen/size_30"
                     android:layout_height="@dimen/size_30"
-                    >
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/ic_baseline_add_circle_24"/>
+                        android:visibility="visible"
+                        android:src="@drawable/ic_baseline_add_circle_24" />
 
                 </LinearLayout>
 
+
             </LinearLayout>
+
+
 
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/size_70"
-               />
+                android:layout_marginBottom="@dimen/size_70" />
 
 
         </LinearLayout>
-
-
-
 
 
     </LinearLayout>

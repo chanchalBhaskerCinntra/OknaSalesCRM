@@ -1205,7 +1205,7 @@ public class Settings extends Fragment implements View.OnClickListener {
         mapData.setAddress(address);
         mapData.setShape("meeting");
         mapData.setType(type);
-        mapData.setRemark("");
+        mapData.setRemark("Meeting");
         Call<MapResponse> call = NewApiClient.getInstance().getApiService().sendMaplatlong(mapData);
         call.enqueue(new Callback<MapResponse>() {
             @Override

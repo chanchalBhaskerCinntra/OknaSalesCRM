@@ -53,10 +53,13 @@ public class Splash extends AppCompatActivity {
             public void onAnimationEnd(Animation animation) {
                 if (!isFirstAnimation) {
                     imageView.clearAnimation();
+
+                    login();
+
                     //    openfingerprintbox();
-                    Intent intent = new Intent(Splash.this, Login.class);
+                  /*  Intent intent = new Intent(Splash.this, Login.class);
                     startActivity(intent);
-                    finish();
+                    finish();*/
 
                 }
 
@@ -91,6 +94,34 @@ public class Splash extends AppCompatActivity {
 
 
     }
+
+
+    private void login() {
+        if (Prefs.getBoolean(Globals.AutoLogIn, false)) {
+            Globals.APILog = "Not";
+            Prefs.putString(Globals.SalesEmployeeCode, Prefs.getString(Globals.SalesEmployeeCode, ""));
+            Globals.TeamSalesEmployeCode = Prefs.getString(Globals.Employee_Code, "");
+            Globals.TeamRole = Prefs.getString(Globals.Role, "");
+            Globals.TeamEmployeeID = Prefs.getString(Globals.EmployeeID, "");
+            Globals.SelectedDB = Prefs.getString(Globals.SelectedDB, "");
+            long session = Long.parseLong("30");
+            session = session * 60 * 1000;
+
+            Prefs.putLong(Globals.SESSION_TIMEOUT, session);
+            Prefs.putLong(Globals.SESSION_REMAIN_TIME, 0);
+
+
+            Intent i = new Intent(Splash.this, MainActivity.class);
+
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
+
+        } else {
+            Intent intent = new Intent(Splash.this, Login.class);
+            startActivity(intent);
+        }
+    }
+
 
     private void openfingerprintbox() {
         BiometricManager biometricManager = androidx.biometric.BiometricManager.from(this);

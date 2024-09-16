@@ -597,7 +597,7 @@ public class Open_Order extends Fragment implements CommentStage, FragmentRefres
         dialog.setContentView(custom_dialog);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
 
         AutoCompleteTextView acCustomer = dialog.findViewById(R.id.acCustomer);
         TextInputEditText edtFromDate = dialog.findViewById(R.id.edtFromDate);

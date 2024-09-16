@@ -591,7 +591,7 @@ public class LeadsActivity extends MainBaseActivity implements View.OnClickListe
         dialog.setContentView(custom_dialog);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
 
         AutoCompleteTextView acSource = dialog.findViewById(R.id.acSource);
         AutoCompleteTextView acStatus = dialog.findViewById(R.id.acStatus);

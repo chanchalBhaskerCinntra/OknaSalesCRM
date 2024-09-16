@@ -709,6 +709,8 @@
                         android:textSize="@dimen/text_size_16">
 
                     </TextView>
+
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -720,7 +722,6 @@
                     android:orientation="horizontal">
 
                     <Button
-
                         android:id="@+id/reset"
                         android:layout_width="@dimen/size_150"
                         android:layout_height="@dimen/size_40"
@@ -731,6 +732,7 @@
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_14" />
+
                 </LinearLayout>
 
             </LinearLayout>

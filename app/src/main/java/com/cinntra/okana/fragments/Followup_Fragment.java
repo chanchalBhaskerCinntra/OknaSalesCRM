@@ -45,13 +45,14 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class Followup_Fragment extends Fragment {
 
-//     @BindView(R.id.eventList)
+    //     @BindView(R.id.eventList)
 //     RecyclerView eventList;
 //     @BindView(R.id.loader)
 //     SpinKitView loader;
 //    @BindView(R.id.no_datafound)
 //    ImageView no_datafound;
     private ArrayList<EventValue> TaskEventList;
+
     public Followup_Fragment() {
         // Required empty public constructor
     }
@@ -76,23 +77,30 @@ public class Followup_Fragment extends Fragment {
 
 
     FragmentEventsBinding binding;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding=FragmentEventsBinding.inflate(inflater,container,false);
-        View v=inflater.inflate(R.layout.fragment_events, container, false);
-       // ButterKnife.bind(this,v);
-      //  loadData();
+        binding = FragmentEventsBinding.inflate(inflater, container, false);
+        View v = inflater.inflate(R.layout.fragment_events, container, false);
+        // ButterKnife.bind(this,v);
+        //  loadData();
         callApi();
+
+        binding.adNewLayout.setVisibility(View.GONE);
+
         return binding.getRoot();
+
     }
+
+
     private void callApi() {
-        TaskEventList= new ArrayList<>();
+        TaskEventList = new ArrayList<>();
         binding.loader.setVisibility(View.VISIBLE);
 
         SalesEmployeeItem eventValue = new SalesEmployeeItem();
-        eventValue.setEmp(Prefs.getString(Globals.EmployeeID,""));
+        eventValue.setEmp(Prefs.getString(Globals.EmployeeID, ""));
         eventValue.setDate(Globals.CurrentSelectedDate);
 
 
@@ -105,39 +113,37 @@ public class Followup_Fragment extends Fragment {
             @Override
             public void onResponse(Call<EventResponse> call, Response<EventResponse> response) {
 
-                if(response.code()==200&&response.body()!=null)
-                {
-                    if(response.body().getData().size()>0){
+                if (response.code() == 200 && response.body() != null) {
+                    if (response.body().getData().size() > 0) {
                         TaskEventList.clear();
                         TaskEventList.addAll(response.body().getData());
                         binding.noDatafound.setVisibility(View.GONE);
                         setAdapter();
-                    }else{
+                    } else {
                         binding.noDatafound.setVisibility(View.VISIBLE);
 
                     }
 
-                }
-                else
-                {
+                } else {
                     //Globals.ErrorMessage(CreateContact.this,response.errorBody().toString());
                     Gson gson = new GsonBuilder().create();
                     QuotationResponse mError = new QuotationResponse();
                     try {
-                        String s =response.errorBody().string();
-                        mError= gson.fromJson(s, QuotationResponse.class);
+                        String s = response.errorBody().string();
+                        mError = gson.fromJson(s, QuotationResponse.class);
                         Toast.makeText(getActivity(), mError.getError().getMessage().getValue(), Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         //handle failure to read error
                     }
                     //Toast.makeText(CreateContact.this, msz, Toast.LENGTH_SHORT).show();
                 }
-               binding. loader.setVisibility(View.GONE);
+                binding.loader.setVisibility(View.GONE);
             }
+
             @Override
             public void onFailure(Call<EventResponse> call, Throwable t) {
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-               binding. loader.setVisibility(View.GONE);
+                binding.loader.setVisibility(View.GONE);
             }
 
         });
@@ -147,11 +153,11 @@ public class Followup_Fragment extends Fragment {
 
     private void setAdapter() {
         FollowUpAdapter adapter;
-        if(filter("Followup").size()>0){
+        if (filter("Followup").size() > 0) {
             binding.noDatafound.setVisibility(View.GONE);
-           binding. eventList.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false));
+            binding.eventList.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
             adapter = new FollowUpAdapter(getActivity(), filter("Followup"));
-           binding. eventList.setAdapter(adapter);
+            binding.eventList.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         } else {
             binding.noDatafound.setVisibility(View.VISIBLE);
@@ -159,15 +165,15 @@ public class Followup_Fragment extends Fragment {
         }
 
 
-
     }
-    public ArrayList<EventValue> filter(String text ) {
 
-        ArrayList<EventValue> templist= new ArrayList<>();
+    public ArrayList<EventValue> filter(String text) {
+
+        ArrayList<EventValue> templist = new ArrayList<>();
         templist.clear();
         for (EventValue st : TaskEventList) {
 
-            if(st.getType().equals(text)) {
+            if (st.getType().equals(text)) {
 
                 templist.add(st);
 
@@ -178,15 +184,15 @@ public class Followup_Fragment extends Fragment {
 
         return templist;
     }
-    private ArrayList<NewEvent> geEvents(ArrayList<NewEvent> list)
-          {
 
-      ArrayList<NewEvent> events = new ArrayList<>();
-        for (NewEvent event :list
-             ) {
+    private ArrayList<NewEvent> geEvents(ArrayList<NewEvent> list) {
+
+        ArrayList<NewEvent> events = new ArrayList<>();
+        for (NewEvent event : list
+        ) {
 
 
-            if(event.getType()== Globals.TYPE_EVENT) {
+            if (event.getType() == Globals.TYPE_EVENT) {
                 // &&Globals.CurrentSelectedDate.equalsIgnoreCase(event.getDateFrom())
 
                 try {
@@ -214,21 +220,19 @@ public class Followup_Fragment extends Fragment {
         return events;
     }
 
-    public static boolean isDateInBetweenIncludingEndPoints(final Date min, final Date max, final Date date){
+    public static boolean isDateInBetweenIncludingEndPoints(final Date min, final Date max, final Date date) {
         return !(date.before(min) || date.after(max));
     }
 
 
-
-
     /********************** Manage List in local *******************************/
 
-    private void loadData()
-          {
+    private void loadData() {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString(Globals.TaskEventList, null);
-        Type type = new TypeToken<ArrayList<NewEvent>>() {}.getType();
+        Type type = new TypeToken<ArrayList<NewEvent>>() {
+        }.getType();
         TaskEventList = gson.fromJson(json, type);
         if (TaskEventList == null) {
             TaskEventList = new ArrayList<>();
@@ -236,5 +240,5 @@ public class Followup_Fragment extends Fragment {
 
   /*      eventList.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false));
         eventList.setAdapter(new EventsAdapter(getActivity(), geEvents(TaskEventList)));*/
-       }
+    }
 }

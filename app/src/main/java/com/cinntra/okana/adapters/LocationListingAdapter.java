@@ -13,6 +13,7 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cinntra.okana.R;
+import com.cinntra.okana.globals.Globals;
 import com.cinntra.okana.model.ExpenseResponse;
 import com.cinntra.okana.model.MapData;
 import com.cinntra.okana.webservices.NewApiClient;
@@ -52,7 +53,7 @@ public class LocationListingAdapter extends RecyclerView.Adapter<LocationListing
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MapData lv = leadValueList.get(position);
         holder.customerName.setText(lv.getAddress());
-        holder.date.setText( lv.getUpdateDate());
+        holder.date.setText(Globals.convert_yyyy_mm_dd_to_dd_mm_yyyy(lv.getUpdateDate()));
 
         holder.cardNumber.setText(lv.getUpdateTime());
 

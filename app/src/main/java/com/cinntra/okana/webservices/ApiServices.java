@@ -342,6 +342,11 @@ public interface ApiServices {
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     Call<LocationLatLongResponse> getCurrentLocationLatLong(@Body JsonObject jsonObject);
 
+
+    @POST("activity/maps")
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    Call<MapResponse> sendMaplatlong(@Body MapData mapData);
+
     @POST("businesspartner/employee/all")
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     Call<ContactPerson> ContactEmployeesList(@Body ContactPersonData businessPartnerData);
@@ -790,9 +795,6 @@ public interface ApiServices {
     Call<CounterResponse> projectiondata(@Body SalesEmployeeItem salesEmployeeItem);
 
 
-    @POST("activity/maps")
-    @Headers({"Content-Type: application/json;charset=UTF-8"})
-    Call<MapResponse> sendMaplatlong(@Body MapData mapData);
 
     @POST("notification/all")
     @Headers({"Content-Type: application/json;charset=UTF-8"})

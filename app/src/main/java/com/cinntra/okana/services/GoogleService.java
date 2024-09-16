@@ -82,13 +82,11 @@ public class GoogleService extends Service implements LocationListener {
     @Override
     public void onCreate() {
         super.onCreate();
-        client = LocationServices
-                .getFusedLocationProviderClient(
-                        getApplicationContext());
+//        client = LocationServices.getFusedLocationProviderClient(getApplicationContext());
         mTimer = new Timer();
         buildnotification();
-        mTimer.schedule(new TimerTaskToGetLocation(), 1000, notify_interval);
-        intent = new Intent(str_receiver);
+//        mTimer.schedule(new TimerTaskToGetLocation(), 1000, notify_interval);
+//        intent = new Intent(str_receiver);
     }
 
     @SuppressLint("LaunchActivityFromNotification")
@@ -139,7 +137,7 @@ public class GoogleService extends Service implements LocationListener {
     @RequiresApi(api = Build.VERSION_CODES.S)
     @Override
     public void onTaskRemoved(Intent rootIntent) {
-        if (Prefs.getString(Globals.locationcondition, "Off").equalsIgnoreCase("On") || Prefs.getString(Globals.MeetingMode, "Off").equalsIgnoreCase("On")) {
+        /*if (Prefs.getString(Globals.locationcondition, "Off").equalsIgnoreCase("On") || Prefs.getString(Globals.MeetingMode, "Off").equalsIgnoreCase("On")) {
             long ct = System.currentTimeMillis(); //get current time
             Intent restartService = new Intent(getApplicationContext(),
                     GoogleService.class);
@@ -149,19 +147,19 @@ public class GoogleService extends Service implements LocationListener {
 
             AlarmManager mgr = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
             mgr.setRepeating(AlarmManager.RTC_WAKEUP, ct, 1 * 1000, restartServicePI);
-        }
+        }*/
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (Prefs.getString(Globals.locationcondition, "Off").equalsIgnoreCase("On") || Prefs.getString(Globals.MeetingMode, "Off").equalsIgnoreCase("On")) {
+       /* if (Prefs.getString(Globals.locationcondition, "Off").equalsIgnoreCase("On") || Prefs.getString(Globals.MeetingMode, "Off").equalsIgnoreCase("On")) {
 
             startService(new Intent(this, GoogleService.class));
         } else {
             stopService(new Intent(this, GoogleService.class));
 
-        }
+        }*/
     }
 
     private class TimerTaskToGetLocation extends TimerTask {
@@ -178,7 +176,7 @@ public class GoogleService extends Service implements LocationListener {
 
         }
     }
-
+/*
     @SuppressLint("MissingPermission")
     private void getmyCurrentLocation(String type) {
         // Initialize Location manager
@@ -318,7 +316,7 @@ public class GoogleService extends Service implements LocationListener {
                             .setFlags(
                                     Intent.FLAG_ACTIVITY_NEW_TASK));
         }
-    }
+    }*/
 
     private void fn_update(Location location) {
 
@@ -326,8 +324,7 @@ public class GoogleService extends Service implements LocationListener {
         intent.putExtra("longitude", location.getLongitude() + "");
         sendBroadcast(intent);
     }
-
-    private void callApi(double latitude, double longitude, String type, String address) {
+    /*private void callApi(double latitude, double longitude, String type, String address) {
         Log.e("savelatlong", String.valueOf(latitude) + "==>" + longitude);
 
         Prefs.putDouble(Globals.Lattitude, latitude);
@@ -338,7 +335,7 @@ public class GoogleService extends Service implements LocationListener {
         mapData.setLat(String.valueOf(latitude));
         mapData.setLong(String.valueOf(longitude));
         mapData.setUpdateDate(Globals.getTodaysDatervrsfrmt());
-        mapData.setUpdateTime(Globals.getTCurrentTime());
+        mapData.setUpdateTime(Globals.getCurrentTimeIn_hh_mm_ss());
         mapData.setAddress(address);
         mapData.setShape("location");
         mapData.setType("");
@@ -360,12 +357,12 @@ public class GoogleService extends Service implements LocationListener {
 
             }
         });
-    }
+    }*/
 
 
     private class MyBinder extends Binder {
-        public GoogleService getService() {
+       /* public GoogleService getService() {
             return GoogleService.this;
-        }
+        }*/
     }
 }

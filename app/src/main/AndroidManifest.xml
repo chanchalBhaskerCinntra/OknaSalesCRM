@@ -187,7 +187,7 @@
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/FullScreen" />
+            android:theme="@style/FullScreenMateial" />
         <activity
             android:name=".activities.LeadsActivity"
             android:label="@string/leads"
@@ -323,7 +323,9 @@
             </intent-filter>
         </receiver>
         -->
-        <service android:name="com.cinntra.okana.services.GoogleService" />
+        <!--<service android:name="com.cinntra.okana.services.GoogleService" />-->
+
+
         <service
             android:name="com.cinntra.okana.FirebaseMessageReceiver"
             android:foregroundServiceType="location"
@@ -337,10 +339,11 @@
             android:permission="android.permission.BIND_JOB_SERVICE"
             android:foregroundServiceType="location"/>
 
-        <service android:name=".workManager.BackgroundLocationService"
+       <!-- <service android:name=".workManager.BackgroundLocationService"
             android:exported="false"
             android:enabled="true"
-            android:foregroundServiceType="location"/>
+            android:foregroundServiceType="location"/> todo comment -->
+
     </application>
 
 </manifest>

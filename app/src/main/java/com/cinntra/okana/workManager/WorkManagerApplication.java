@@ -171,7 +171,6 @@ public class WorkManagerApplication extends JobService {
 
     private void bindLocationApi(double latitude, double longitude, String address) {
 
-
         Intent batteryStatus = context.registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
         float batteryPercentage = 0.0f;
         // Check if the battery status is available
@@ -198,7 +197,7 @@ public class WorkManagerApplication extends JobService {
         jsonObject.addProperty("UpdateTime", Globals.getCurrentTimeIn_hh_mm_ss()); //getTCurrentTime
         jsonObject.addProperty("type", "");
         jsonObject.addProperty("shape", "location");//meeting
-        jsonObject.addProperty("remark", "Battery Percentage " + batteryPercentage);
+        jsonObject.addProperty("remark", "Background Location");//"Battery Percentage " + batteryPercentage
 
         Log.d("jsonObject === >", "bindLocationApi: " + jsonObject);
 

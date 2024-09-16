@@ -1,41 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/temp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.BlankFragment"
     android:background="@color/white"
-    android:id="@+id/temp">
+    tools:context=".fragments.BlankFragment">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/task_event_List"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
         </androidx.recyclerview.widget.RecyclerView>
+
     </LinearLayout>
 
 
-    <com.github.ybq.android.spinkit.SpinKitView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/loader"
-        android:visibility="gone"
         style="@style/SpinKitView.Large.Circle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:visibility="gone"
         app:SpinKit_Color="@color/colorPrimary" />
-
 
 
     <ImageView
         android:id="@+id/no_datafound"
         android:layout_width="@dimen/size_120"
         android:layout_height="@dimen/size_120"
-        android:visibility="gone"
         android:layout_gravity="center"
-        android:background="@drawable/nodatafound"/>
+        android:background="@drawable/nodatafound"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp"
+        android:visibility="visible">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_baseline_add_24"
+            app:tint="@color/white" />
+
+
+    </LinearLayout>
+
+
 </FrameLayout>

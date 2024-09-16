@@ -138,13 +138,15 @@ public class MyMapLocation extends FragmentActivity implements OnMapReadyCallbac
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
 
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(homeLatLng, zoomLevel));
-*/                }
+*/
 
-
+                }
 
 
             }
+
             if (lngList.size() > 1) {
+
                 for (int i = 0; i < lngList.size(); i++) {
                     if (i < lngList.size() - 1) {
                         drawPolylineWithArrowEndcap(this, mMap, lngList.get(i), lngList.get(i + 1));
@@ -154,6 +156,7 @@ public class MyMapLocation extends FragmentActivity implements OnMapReadyCallbac
                 new FetchURL(MyMapLocation.this).execute(getUrl(lngList.get(0), lngList.get(lngList.size() - 1), "driving"), "driving");
 
             }
+
 
           /*  circle = mMap.addCircle(new CircleOptions()
                     .center(homeLatLng)
@@ -178,7 +181,9 @@ public class MyMapLocation extends FragmentActivity implements OnMapReadyCallbac
                     .geodesic(true));*/
 
 
+
         } else {
+
             homeLatLng = new LatLng(Double.parseDouble(mdplist.get(0).getLat()), Double.parseDouble(mdplist.get(0).getLong()));
 
             mMap.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(mdplist.get(0).getLat()), Double.parseDouble(mdplist.get(0).getLong())))
@@ -187,7 +192,11 @@ public class MyMapLocation extends FragmentActivity implements OnMapReadyCallbac
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
 
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(homeLatLng, zoomLevel));
+
+
         }
+
+
     }
 
     Polyline polyline;

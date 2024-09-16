@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +21,7 @@ import com.cinntra.okana.model.EventValue;
 import com.cinntra.okana.model.NewEvent;
 import com.cinntra.okana.model.QuotationResponse;
 import com.cinntra.okana.model.SalesEmployeeItem;
+import com.cinntra.okana.newapimodel.NewOpportunityRespose;
 import com.cinntra.okana.webservices.NewApiClient;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,6 +49,7 @@ public class Event_Fragment extends Fragment {
 
     private ArrayList<EventValue> TaskEventList;
 
+    NewOpportunityRespose opportunityItem;
     public Event_Fragment() {
         // Required empty public constructor
     }
@@ -65,7 +68,8 @@ public class Event_Fragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-
+            Bundle b = getArguments();
+            opportunityItem = (NewOpportunityRespose) b.getParcelable(Globals.OpportunityItem);
         }
     }
 
@@ -78,8 +82,28 @@ public class Event_Fragment extends Fragment {
         binding = FragmentEventsBinding.inflate(inflater, container, false);
 
         callApi();
+
+        binding.addNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEventDialog();
+            }
+        });
+
+
         return binding.getRoot();
     }
+
+
+    private void showEventDialog() {
+        Bundle b = new Bundle();
+        b.putParcelable(Globals.OpportunityItem, opportunityItem);
+        FragmentManager fm = getChildFragmentManager();
+        AddEventDialogue editNameDialogFragment = AddEventDialogue.newInstance("Some Title");
+        editNameDialogFragment.setArguments(b);
+        editNameDialogFragment.show(fm, "");
+    }
+
 
     private void callApi() {
         TaskEventList = new ArrayList<>();
@@ -134,6 +158,7 @@ public class Event_Fragment extends Fragment {
         });
 
     }
+
 
 
     private void setAdapter() {

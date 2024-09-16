@@ -64,10 +64,12 @@ public class Calender extends Fragment implements DatePickerListener, View.OnCli
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             Bundle b = getArguments();
             opportunityItem = (NewOpportunityRespose) b.getParcelable(Globals.OpportunityItem);
         }
+
     }
 
 
@@ -100,18 +102,21 @@ public class Calender extends Fragment implements DatePickerListener, View.OnCli
         pagerAdapter = new OrderPagerAdapter(getChildFragmentManager(), fragmentList, tabs);
         binding.viewpager.setAdapter(pagerAdapter);
         binding.tabLayout.setupWithViewPager(binding.viewpager);
+
         binding.addNew.setOnClickListener(this);
         // binding..setOnClickListener(this);
-        binding.addNew.setVisibility(View.VISIBLE);
+//        binding.addNew.setVisibility(View.VISIBLE);//todo comment due to not need for now add global button...
 
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 currentItem = tab.getPosition();
-                if (currentItem == 0 || currentItem == 3)
+
+                /*if (currentItem == 0 || currentItem == 3)
                     binding.addNew.setVisibility(View.GONE);
-                else
+                else {
                     binding.addNew.setVisibility(View.VISIBLE);
+                }*///todo comment due to not need for now add global button...
 
 
             }

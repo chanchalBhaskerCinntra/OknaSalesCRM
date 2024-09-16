@@ -1,4 +1,5 @@
 package com.cinntra.okana.fragments;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.cinntra.okana.R;
 import com.cinntra.okana.adapters.TasksAdapter;
 import com.cinntra.okana.databinding.FragmentTasksBinding;
@@ -18,6 +21,7 @@ import com.cinntra.okana.model.EventValue;
 import com.cinntra.okana.model.NewEvent;
 import com.cinntra.okana.model.QuotationResponse;
 import com.cinntra.okana.model.SalesEmployeeItem;
+import com.cinntra.okana.newapimodel.NewOpportunityRespose;
 import com.cinntra.okana.webservices.NewApiClient;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -36,11 +40,10 @@ import retrofit2.Response;
 import static android.content.Context.MODE_PRIVATE;
 
 
-
 public class Tasks_Fragment extends Fragment {
 
 
-//    @BindView(R.id.taskList)
+    //    @BindView(R.id.taskList)
 //    RecyclerView taskList;
 //    @BindView(R.id.loader)
 //    SpinKitView loader;
@@ -63,32 +66,54 @@ public class Tasks_Fragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-
+            Bundle b = getArguments();
+            opportunityItem = (NewOpportunityRespose) b.getParcelable(Globals.OpportunityItem);
         }
     }
 
 
     FragmentTasksBinding binding;
+    NewOpportunityRespose opportunityItem;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        binding=FragmentTasksBinding.inflate(getLayoutInflater());
-        View v=inflater.inflate(R.layout.fragment_tasks, container, false);
+        binding = FragmentTasksBinding.inflate(getLayoutInflater());
+        View v = inflater.inflate(R.layout.fragment_tasks, container, false);
         //ButterKnife.bind(this,v);
 
-       // loadData();
+        // loadData();
         callApi();
-       return binding.getRoot();
+
+        binding.addNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTaskDialog();
+            }
+        });
+
+        return binding.getRoot();
     }
+
+
+    private void showTaskDialog() {
+        Bundle b = new Bundle();
+        b.putParcelable(Globals.OpportunityItem, opportunityItem);
+        FragmentManager fm = getChildFragmentManager();
+        AddTaskDialogue editNameDialogFragment = AddTaskDialogue.newInstance("Some Title");
+        editNameDialogFragment.setArguments(b);
+        editNameDialogFragment.show(fm, "");
+    }
+
+
     private void callApi() {
-        TaskEventList= new ArrayList<>();
-       binding.loader .setVisibility(View.VISIBLE);
+        TaskEventList = new ArrayList<>();
+        binding.loader.setVisibility(View.VISIBLE);
 
         SalesEmployeeItem eventValue = new SalesEmployeeItem();
-        eventValue.setEmp(Prefs.getString(Globals.EmployeeID,""));
+        eventValue.setEmp(Prefs.getString(Globals.EmployeeID, ""));
         eventValue.setDate(Globals.CurrentSelectedDate);
 
 
@@ -101,40 +126,37 @@ public class Tasks_Fragment extends Fragment {
             @Override
             public void onResponse(Call<EventResponse> call, Response<EventResponse> response) {
 
-                if(response.code()==200||response.body()!=null)
-                {
-                    if(response.body().getData().size()>0){
+                if (response.code() == 200 || response.body() != null) {
+                    if (response.body().getData().size() > 0) {
                         binding.noDatafound.setVisibility(View.GONE);
                         TaskEventList.clear();
                         TaskEventList.addAll(response.body().getData());
                         binding.loader.setVisibility(View.GONE);
                         setAdapter();
-                    }
-                    else {
+                    } else {
                         binding.noDatafound.setVisibility(View.VISIBLE);
                         binding.loader.setVisibility(View.GONE);
                     }
-                }
-                else
-                {
+                } else {
                     //Globals.ErrorMessage(CreateContact.this,response.errorBody().toString());
                     Gson gson = new GsonBuilder().create();
                     QuotationResponse mError = new QuotationResponse();
                     try {
-                        String s =response.errorBody().string();
-                        mError= gson.fromJson(s,QuotationResponse.class);
+                        String s = response.errorBody().string();
+                        mError = gson.fromJson(s, QuotationResponse.class);
                         Toast.makeText(getActivity(), mError.getError().getMessage().getValue(), Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         //handle failure to read error
                     }
-                   binding. loader.setVisibility(View.GONE);
+                    binding.loader.setVisibility(View.GONE);
                     //Toast.makeText(CreateContact.this, msz, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(Call<EventResponse> call, Throwable t) {
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-               binding. loader.setVisibility(View.GONE);
+                binding.loader.setVisibility(View.GONE);
             }
 
         });
@@ -144,22 +166,23 @@ public class Tasks_Fragment extends Fragment {
 
     private void setAdapter() {
 
-       binding.taskList.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false));
+        binding.taskList.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         binding.taskList.setAdapter(new TasksAdapter(getActivity(), filter("Task")));
-        if(filter("Task").size()==0){
+        if (filter("Task").size() == 0) {
             binding.noDatafound.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             binding.noDatafound.setVisibility(View.GONE);
         }
 
     }
-    public ArrayList<EventValue> filter(String text ) {
 
-        ArrayList<EventValue> templist= new ArrayList<>();
+    public ArrayList<EventValue> filter(String text) {
+
+        ArrayList<EventValue> templist = new ArrayList<>();
         templist.clear();
         for (EventValue st : TaskEventList) {
 
-            if(st.getType().equals(text)) {
+            if (st.getType().equals(text)) {
 
                 templist.add(st);
 
@@ -170,12 +193,12 @@ public class Tasks_Fragment extends Fragment {
 
         return templist;
     }
-    private ArrayList<NewEvent> geTasks(ArrayList<NewEvent> list)
-        {
+
+    private ArrayList<NewEvent> geTasks(ArrayList<NewEvent> list) {
         ArrayList<NewEvent> events = new ArrayList<>();
-        for (NewEvent event :list
+        for (NewEvent event : list
         ) {
-            if(event.getType()==Globals.TYPE_TASK&&Globals.CurrentSelectedDate.equalsIgnoreCase(event.getDateFrom()))
+            if (event.getType() == Globals.TYPE_TASK && Globals.CurrentSelectedDate.equalsIgnoreCase(event.getDateFrom()))
                 events.add(event);
         }
 
@@ -185,12 +208,13 @@ public class Tasks_Fragment extends Fragment {
 
     /********************** Manage List in local *******************************/
     private ArrayList<EventValue> TaskEventList;
-    private void loadData()
-       {
+
+    private void loadData() {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString(Globals.TaskEventList, null);
-        Type type = new TypeToken<ArrayList<NewEvent>>() {}.getType();
+        Type type = new TypeToken<ArrayList<NewEvent>>() {
+        }.getType();
         TaskEventList = gson.fromJson(json, type);
         if (TaskEventList == null) {
             TaskEventList = new ArrayList<>();
@@ -200,15 +224,6 @@ public class Tasks_Fragment extends Fragment {
         taskList.setAdapter(new TasksAdapter(getActivity(), geTasks(TaskEventList)));*/
 
     }
-
-
-
-
-
-
-
-
-
 
 
 }

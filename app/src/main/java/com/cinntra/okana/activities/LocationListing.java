@@ -54,7 +54,7 @@ import retrofit2.Response;
 
 public class LocationListing extends MainBaseActivity {
 
-
+/*todo*/
     String employeeid;
 
     @Override
@@ -92,14 +92,16 @@ public class LocationListing extends MainBaseActivity {
         //todo call map listing and set emp id_----
         employeeid = Prefs.getString(Globals.SalesEmployeeCode, "");
 
-        callgetlocationApi(Globals.getTodaysDatervrsfrmt(), "meeting");
+        callgetlocationApi(Globals.getTodaysDate(), "meeting");
+//        callgetlocationApi(Globals.getTodaysDatervrsfrmt(), "meeting");
 
 
         binding.empSpinner.setAdapter(new EmployeeHeirarchiDropdownAdapter(LocationListing.this, Dashboard.salesAllList_Hearchi));
 
         binding.loaderLayout.loader.setVisibility(View.GONE);
 
-        binding.dateText.setText(Globals.getTodaysDatervrsfrmt());
+        binding.dateText.setText(Globals.getTodaysDate());
+
         binding.dateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,8 +117,9 @@ public class LocationListing extends MainBaseActivity {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                                String s = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
-                                SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+//                                String s = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+                                String s = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
+                                SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
                                 try {
                                     Date strDate = dateFormatter.parse(s);
                                     binding.dateText.setText(dateFormatter.format(strDate));
@@ -167,6 +170,8 @@ public class LocationListing extends MainBaseActivity {
 
             }
         });
+
+
         binding.swipeRefreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -208,7 +213,7 @@ public class LocationListing extends MainBaseActivity {
         HashMap<String, String> mapData = new HashMap<>();
 
         mapData.put("Emp_Id", employeeid);
-        mapData.put("UpdateDate", date);
+        mapData.put("UpdateDate", Globals.convert_dd_MM_yyyy_to_yyyy_MM_dd(date));
         mapData.put("shape", shape);
 
 
@@ -303,12 +308,12 @@ public class LocationListing extends MainBaseActivity {
 
             case R.id.iten_meeting:
                 ShapeType = "meeting";
-                callgetlocationApi("", "meeting");
+                callgetlocationApi(binding.dateText.getText().toString(), "meeting");
                 // Do something when "Meeting" item is clicked
                 return true;
             case R.id.location:
                 ShapeType= "location";
-                callgetlocationApi("", "location");
+                callgetlocationApi(binding.dateText.getText().toString(), "location");
                 // Do something when "Location" item is clicked
                 return true;
 

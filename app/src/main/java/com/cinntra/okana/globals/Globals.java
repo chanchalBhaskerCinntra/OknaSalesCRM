@@ -103,7 +103,7 @@ public class Globals {
 
 
     /************Development*******************/
- /*   public static   String NewBaseUrl  =  "http://103.234.187.197:8019/";
+   /* public static   String NewBaseUrl  =  "http://103.234.187.197:8019/";
     public static String ImageURl = "http://103.234.187.197:8019";
     public static String PDFURL = "http://103.234.187.197:4250/assets/html/";*/
 
@@ -374,10 +374,11 @@ public class Globals {
         return currentTime;
     }
 
-    public static String getCurrentTimeIn_hh_mm_ss_aa() {
+
+    /*public static String getCurrentTimeIn_hh_mm_ss_aa() {
         String currentTime = new SimpleDateFormat("HH:mm:ss aa", Locale.getDefault()).format(new Date());
         return currentTime;
-    }
+    }*/
 
 
     public static String getCurrentTimeIn_hh_mm_ss() {
